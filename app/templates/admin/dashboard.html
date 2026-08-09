@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Панель администратора | Записи{% endblock %}
+
+{% block content %}
+<h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Все заявки на запись</h2>
+
+<div style="background: #fff; padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow-x: auto;">
+  <table style="width: 100%; border-collapse: collapse; text-align: left;">
+    <thead>
+      <tr style="border-bottom: 2px solid #e9edc9; color: var(--primary-color);">
+        <th style="padding: 0.75rem;">ID</th>
+        <th style="padding: 0.75rem;">Клиент</th>
+        <th style="padding: 0.75rem;">Телефон</th>
+        <th style="padding: 0.75rem;">Услуга</th>
+        <th style="padding: 0.75rem;">Мастер</th>
+        <th style="padding: 0.75rem;">Дата сеанса</th>
+        <th style="padding: 0.75rem;">Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in bookings %}
+      <tr style="border-bottom: 1px solid #f0f0f0;">
+        <td style="padding: 0.75rem;">#{{ b.id }}</td>
+        <td style="padding: 0.75rem; font-weight: 600;">{{ b.client_name }}</td>
+        <td style="padding: 0.75rem;">{{ b.client_phone }}</td>
+        <td style="padding: 0.75rem;">{{ b.service.title if b.service else '-' }}</td>
+        <td style="padding: 0.75rem;">{{ b.master.name if b.master else 'Любой' }}</td>
+        <td style="padding: 0.75rem;">{{ b.booking_date.strftime('%d.%m.%Y %H:%M') }}</td>
+        <td style="padding: 0.75rem;">
+          <span style="background: #e9edc9; color: var(--primary-color); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">
+            {{ b.status }}
+          </span>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="7" style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Заявок пока нет</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
