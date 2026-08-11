@@ -3,19 +3,25 @@ import { STOCK_IMAGES } from '../data';
 import { Heart, MessageCircle, Camera } from 'lucide-react';
 
 export const Gallery: React.FC = () => {
-  const [likes, setLikes] = React.useState<{ [key: number]: number }>({
+  const INITIAL_LIKES: { [key: number]: number } = {
     0: 142, 1: 98, 2: 210, 3: 176, 4: 115, 5: 189
-  });
-  const [likedState, setLikedState] = React.useState<{ [key: number]: boolean }>({});
+  };
+  const [likes, setLikes] = React.useState<{ [key: number]: { count: number; liked: boolean } }>(
+    Object.fromEntries(
+      Object.entries(INITIAL_LIKES).map(([idx, count]) => [idx, { count, liked: false }])
+    )
+  );
 
   const toggleLike = (index: number) => {
-    setLikedState(prev => {
-      const isLiked = prev[index];
-      setLikes(lPrev => ({
-        ...lPrev,
-        [index]: isLiked ? lPrev[index] - 1 : lPrev[index] + 1
-      }));
-      return { ...prev, [index]: !isLiked };
+    setLikes(prev => {
+      const current = prev[index];
+      return {
+        ...prev,
+        [index]: {
+          liked: !current.liked,
+          count: current.liked ? current.count - 1 : current.count + 1
+        }
+      };
     });
   };
 
@@ -72,7 +78,7 @@ export const Gallery: React.FC = () => {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    filter: 'contrast(108%) warm-light(10%)',
+                    filter: 'contrast(112%) saturate(0%) brightness(1.02)',
                     transition: 'var(--transition-smooth)'
                   }}
                 />
@@ -121,12 +127,12 @@ export const Gallery: React.FC = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '6px',
-                      color: likedState[idx] ? '#e53e3e' : 'var(--text-muted)',
+                      color: likes[idx].liked ? '#e53e3e' : 'var(--text-muted)',
                       transition: 'var(--transition-smooth)'
                     }}
                   >
-                    <Heart size={18} fill={likedState[idx] ? '#e53e3e' : 'none'} />
-                    <span style={{ fontSize: '0.8rem', fontWeight: 500 }}>{likes[idx]}</span>
+                    <Heart size={18} fill={likes[idx].liked ? '#e53e3e' : 'none'} />
+                    <span style={{ fontSize: '0.8rem', fontWeight: 500 }}>{likes[idx].count}</span>
                   </button>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-subtle)' }}>

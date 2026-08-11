@@ -1,59 +1,62 @@
-// Unsplash dark editorial high-quality curated wellness stock photos
+// Self-hosted editorial stock photography, graded to match the studio's dark/warm moodboard
+// (see /home/kingflayer/Рабочий стол/Prog/site/app/static/images/stock for the raw + graded source set)
+
+const S = "/images/stock";
 
 export const STOCK_IMAGES = {
-  hero: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=85&w=1600",
-  about: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=85&w=1200",
-  atmosphere: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=85&w=1200",
-  
+  hero: `${S}/pexels_04_stone.jpg`,
+  about: `${S}/pexels_10_stone.jpg`,
+  atmosphere: `${S}/pexels_08_stone.jpg`,
+
   services: {
-    relaxing: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=85&w=800",
-    deepTissue: "https://images.unsplash.com/photo-1519824921617-01d4524888bc?auto=format&fit=crop&q=85&w=800",
-    backNeck: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=85&w=800",
-    face: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=85&w=800",
-    lymphatic: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=85&w=800",
-    fullBody: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=85&w=800",
-    antiStress: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=85&w=800"
+    relaxing: `${S}/pexels_02_stone.jpg`,
+    deepTissue: `${S}/pexels_07_stone.jpg`,
+    backNeck: `${S}/pexels_03_stone.jpg`,
+    face: `${S}/pexels_06_stone.jpg`,
+    lymphatic: `${S}/pexels_05_stone.jpg`,
+    fullBody: `${S}/pexels_04_stone.jpg`,
+    antiStress: `${S}/pexels_01_stone.jpg`
   },
-  
+
   gallery: [
     {
-      url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=85&w=800",
+      url: `${S}/pexels_01_stone.jpg`,
       caption: "TACTILE HARMONY",
       tag: "CONVERSATION WITH THE BODY"
     },
     {
-      url: "https://images.unsplash.com/photo-1519824921617-01d4524888bc?auto=format&fit=crop&q=85&w=800",
+      url: `${S}/pexels_06_stone.jpg`,
       caption: "COMFORT DETAILS",
       tag: "MASTER TOUCH"
     },
     {
-      url: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=85&w=800",
+      url: `${S}/pexels_08_stone.jpg`,
       caption: "ATMOSPHERE",
       tag: "BATUMI STUDIO"
     },
     {
-      url: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=85&w=800",
+      url: `${S}/pexels_04_stone.jpg`,
       caption: "DEEP RELAXATION",
       tag: "CLASSIC BODYWORK"
     },
     {
-      url: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=85&w=800",
+      url: `${S}/pexels_03_stone.jpg`,
       caption: "NATURAL RECOVERY",
-      tag: "FACE THERAPY"
+      tag: "OUTDOOR RITUAL"
     },
     {
-      url: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=85&w=800",
+      url: `${S}/pexels_07_stone.jpg`,
       caption: "INNER CALM",
-      tag: "ANTI-STRESS RITUAL"
+      tag: "TECHNIQUE & PRECISION"
     }
   ],
 
   highlights: [
-    { id: 'about', label: 'About Studio', icon: 'Sparkles', bg: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=200' },
-    { id: 'reviews', label: 'Reviews', icon: 'Star', bg: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=200' },
-    { id: 'price', label: 'Price List', icon: 'Tag', bg: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=200' },
-    { id: 'faq', label: 'FAQ', icon: 'HelpCircle', bg: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=200' },
-    { id: 'location', label: 'Batumi Map', icon: 'MapPin', bg: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=200' }
+    { id: 'about', label: 'About Studio', icon: 'Sparkles', bg: `${S}/pexels_08_stone.jpg` },
+    { id: 'reviews', label: 'Reviews', icon: 'Star', bg: `${S}/pexels_02_stone.jpg` },
+    { id: 'price', label: 'Price List', icon: 'Tag', bg: `${S}/pexels_09_stone.jpg` },
+    { id: 'faq', label: 'FAQ', icon: 'HelpCircle', bg: `${S}/pexels_05_stone.jpg` },
+    { id: 'location', label: 'Batumi Map', icon: 'MapPin', bg: `${S}/pexels_03_stone.jpg` }
   ]
 };
 

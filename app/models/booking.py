@@ -38,11 +38,12 @@ class Booking(Base):
     client_name = Column(String(100), nullable=False)
     client_phone = Column(String(20), nullable=False)
     client_email = Column(String(100), nullable=True)
-    
+
     service_id = Column(Integer, ForeignKey("services.id"), nullable=False)
     master_id = Column(Integer, ForeignKey("masters.id"), nullable=True)
-    
+
     booking_date = Column(DateTime, nullable=False)
+    notes = Column(Text, nullable=True)
     status = Column(String(20), default=BookingStatus.PENDING)
     created_at = Column(DateTime, default=datetime.utcnow)
 

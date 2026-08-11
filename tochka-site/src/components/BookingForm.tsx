@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Phone, MessageSquare, Camera, CheckCircle2 } from 'lucide-react';
-import { SERVICES_DATA } from '../data';
+import { getServices, createBooking, type ApiService } from '../api';
 
 interface BookingFormProps {
   preselectedService?: string;
@@ -8,26 +8,67 @@ interface BookingFormProps {
 }
 
 export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '', lang }) => {
+  const [services, setServices] = useState<ApiService[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    service: preselectedService || SERVICES_DATA[0].titleRu,
+    serviceId: '',
     date: '',
     time: '',
     comment: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    if (preselectedService) {
-      setFormData(prev => ({ ...prev, service: preselectedService }));
-    }
-  }, [preselectedService]);
+    getServices()
+      .then(list => {
+        setServices(list);
+        setFormData(prev => {
+          if (prev.serviceId) return prev;
+          const matched = preselectedService
+            ? list.find(s => s.title === preselectedService)
+            : undefined;
+          return { ...prev, serviceId: String((matched ?? list[0])?.id ?? '') };
+        });
+      })
+      .catch(() => setError(lang === 'RU'
+        ? 'Не удалось загрузить список услуг. Обновите страницу.'
+        : 'Failed to load services. Please refresh the page.'));
+  }, [lang, preselectedService]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (!preselectedService || services.length === 0) return;
+    const matched = services.find(s => s.title === preselectedService);
+    if (matched) {
+      setFormData(prev => ({ ...prev, serviceId: String(matched.id) }));
+    }
+  }, [preselectedService, services]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!formData.serviceId || !formData.date || !formData.time) return;
+
+    setSubmitting(true);
+    setError('');
+    try {
+      await createBooking({
+        client_name: formData.name,
+        client_phone: formData.phone,
+        service_id: Number(formData.serviceId),
+        booking_date: new Date(`${formData.date}T${formData.time}`).toISOString(),
+        notes: formData.comment || undefined
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : (lang === 'RU'
+        ? 'Не удалось отправить заявку. Попробуйте позже.'
+        : 'Failed to submit the request. Please try again later.'));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -172,8 +213,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
                     {lang === 'RU' ? 'Услуга *' : 'Select Service *'}
                   </label>
                   <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    required
+                    value={formData.serviceId}
+                    onChange={(e) => setFormData({ ...formData, serviceId: e.target.value })}
                     style={{
                       backgroundColor: 'var(--bg-dark)',
                       border: '1px solid var(--border-subtle)',
@@ -185,9 +227,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
                       cursor: 'pointer'
                     }}
                   >
-                    {SERVICES_DATA.map((s) => (
-                      <option key={s.id} value={s.titleRu} style={{ backgroundColor: 'var(--bg-card)' }}>
-                        {lang === 'RU' ? s.titleRu : s.title} ({s.price})
+                    {services.length === 0 && (
+                      <option value="">{lang === 'RU' ? 'Загрузка...' : 'Loading...'}</option>
+                    )}
+                    {services.map((s) => (
+                      <option key={s.id} value={s.id} style={{ backgroundColor: 'var(--bg-card)' }}>
+                        {s.title} ({s.price} GEL)
                       </option>
                     ))}
                   </select>
@@ -196,10 +241,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
                 {/* Date */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <label style={{ fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                    {lang === 'RU' ? 'Желаемая дата' : 'Preferred Date'}
+                    {lang === 'RU' ? 'Желаемая дата *' : 'Preferred Date *'}
                   </label>
                   <input
                     type="date"
+                    required
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                     style={{
@@ -217,10 +263,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
                 {/* Time */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <label style={{ fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                    {lang === 'RU' ? 'Желаемое время' : 'Preferred Time'}
+                    {lang === 'RU' ? 'Желаемое время *' : 'Preferred Time *'}
                   </label>
                   <input
                     type="time"
+                    required
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                     style={{
@@ -258,9 +305,22 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
                   />
                 </div>
 
+                {error && (
+                  <div style={{ gridColumn: '1 / -1', color: '#e53e3e', fontSize: '0.85rem' }}>
+                    {error}
+                  </div>
+                )}
+
                 <div style={{ gridColumn: '1 / -1', marginTop: '12px' }}>
-                  <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-                    {lang === 'RU' ? 'Отправить заявку на бронирование' : 'Submit Booking Request'}
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    disabled={submitting}
+                    style={{ width: '100%', opacity: submitting ? 0.6 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
+                  >
+                    {submitting
+                      ? (lang === 'RU' ? 'Отправка...' : 'Submitting...')
+                      : (lang === 'RU' ? 'Отправить заявку на бронирование' : 'Submit Booking Request')}
                   </button>
                 </div>
 

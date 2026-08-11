@@ -24,15 +24,16 @@ export const Footer: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
           {/* Brand Col */}
           <div>
             <span style={{
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'var(--font-logo)',
               fontSize: '1.8rem',
-              fontWeight: 600,
-              letterSpacing: '4px',
+              fontWeight: 400,
+              letterSpacing: '6px',
+              textTransform: 'lowercase',
               color: 'var(--text-main)',
               display: 'block',
               marginBottom: '12px'
             }}>
-              TOCH<span style={{ color: 'var(--accent-gold)' }}>_</span>KA
+              toch<span style={{ color: 'var(--accent-gold)' }}>_</span>ka
             </span>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 300, maxWidth: '280px' }}>
               {lang === 'RU'

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from app.auth import verify_admin
 from app.database import get_db
 from app.models.booking import Booking, Service, Master
 from app.schemas.booking import BookingCreate, BookingResponse
@@ -24,6 +25,6 @@ def create_booking(booking_data: BookingCreate, db: Session = Depends(get_db)):
     db.refresh(new_booking)
     return new_booking
 
-@router.get("/", response_model=List[BookingResponse])
+@router.get("/", response_model=List[BookingResponse], dependencies=[Depends(verify_admin)])
 def get_bookings(db: Session = Depends(get_db)):
     return db.query(Booking).order_by(Booking.created_at.desc()).all()

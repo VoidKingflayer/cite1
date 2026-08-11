@@ -27,8 +27,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
       left: 0,
       right: 0,
       zIndex: 100,
-      backgroundColor: 'rgba(13, 14, 16, 0.85)',
-      backdropFilter: 'blur(16px)',
+      backgroundColor: 'rgba(13, 14, 16, 0.92)',
+      backdropFilter: 'blur(20px)',
       borderBottom: '1px solid var(--border-subtle)',
       transition: 'var(--transition-smooth)'
     }}>
@@ -36,34 +36,37 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '80px'
+        height: '92px'
       }}>
-        {/* Brand Logo */}
+        {/* Brand Logo - Replicating exact Omra Spa logo proportion & spacing */}
         <a href="#" style={{
           textDecoration: 'none',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start'
+          alignItems: 'center',
+          gap: '2px'
         }}>
           <span style={{
-            fontFamily: 'var(--font-serif)',
+            fontFamily: 'var(--font-logo)',
             fontSize: '1.75rem',
-            fontWeight: 600,
-            letterSpacing: '4px',
-            color: 'var(--text-main)',
-            lineHeight: 1
+            fontWeight: 300,
+            letterSpacing: '10px',
+            color: 'var(--omra-sand-light)',
+            lineHeight: 1,
+            textTransform: 'lowercase'
           }}>
-            TOCH<span style={{ color: 'var(--accent-gold)' }}>_</span>KA
+            tochka
           </span>
           <span style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: '0.625rem',
-            letterSpacing: '2.5px',
+            fontFamily: 'var(--font-logo)',
+            fontSize: '0.58rem',
+            letterSpacing: '8px',
             textTransform: 'uppercase',
-            color: 'var(--text-muted)',
-            marginTop: '4px'
+            color: 'var(--omra-taupe)',
+            fontWeight: 400,
+            paddingLeft: '6px'
           }}>
-            BATUMI • BODYWORK
+            S P A
           </span>
         </a>
 
@@ -71,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
         <nav className="desktop-nav" style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '28px'
+          gap: '36px'
         }}>
           {navLinks.map((link, idx) => (
             <a
@@ -80,13 +83,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
               style={{
                 color: 'var(--text-muted)',
                 textDecoration: 'none',
-                fontSize: '0.8125rem',
-                letterSpacing: '1.5px',
+                fontSize: '0.75rem',
+                letterSpacing: '2.5px',
                 textTransform: 'uppercase',
                 fontWeight: 500,
                 transition: 'var(--transition-smooth)'
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-gold)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--omra-sand-light)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
               {link.label}
@@ -95,22 +98,22 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
         </nav>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           {/* Language Toggle */}
           <button
             onClick={() => setLang(lang === 'RU' ? 'EN' : 'RU')}
             style={{
               background: 'transparent',
               border: '1px solid var(--border-subtle)',
-              color: 'var(--text-muted)',
-              padding: '6px 12px',
-              borderRadius: '4px',
+              color: 'var(--omra-sand-light)',
+              padding: '6px 14px',
+              borderRadius: '0px',
               cursor: 'pointer',
-              fontSize: '0.75rem',
-              letterSpacing: '1px',
+              fontSize: '0.7rem',
+              letterSpacing: '2px',
               transition: 'var(--transition-smooth)'
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--accent-gold)')}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--omra-taupe)')}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--border-subtle)')}
           >
             {lang}
@@ -120,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
           <button
             onClick={onOpenBooking}
             className="btn-primary desktop-cta"
-            style={{ padding: '10px 20px', fontSize: '0.75rem' }}
+            style={{ padding: '12px 24px', fontSize: '0.7rem' }}
           >
             <Calendar size={14} />
             {lang === 'RU' ? 'Записаться' : 'Book Now'}
@@ -149,7 +152,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
         <div style={{
           backgroundColor: 'var(--bg-dark)',
           borderBottom: '1px solid var(--border-subtle)',
-          padding: '24px',
+          padding: '28px 24px',
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
@@ -163,8 +166,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
               style={{
                 color: 'var(--text-main)',
                 textDecoration: 'none',
-                fontSize: '1rem',
-                letterSpacing: '2px',
+                fontSize: '0.95rem',
+                letterSpacing: '3px',
                 textTransform: 'uppercase',
                 display: 'flex',
                 alignItems: 'center',
@@ -174,7 +177,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
               }}
             >
               <span>{link.label}</span>
-              <ChevronRight size={16} color="var(--accent-gold)" />
+              <ChevronRight size={16} color="var(--omra-taupe)" />
             </a>
           ))}
           <button

@@ -9,6 +9,7 @@ class BookingCreate(BaseModel):
     service_id: int
     master_id: Optional[int] = None
     booking_date: datetime
+    notes: Optional[str] = None
 
 class BookingResponse(BaseModel):
     id: int
@@ -17,6 +18,7 @@ class BookingResponse(BaseModel):
     service_id: int
     master_id: Optional[int]
     booking_date: datetime
+    notes: Optional[str]
     status: str
     created_at: datetime
 

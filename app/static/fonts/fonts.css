@@ -1,0 +1,67 @@
+/*
+  Editorial spa/massage-studio type system.
+  Italiana / Marcellus  -> logotype & large display words ("EASE", "ATMOSPHERE")
+  Cormorant Garamond     -> section titles, quotes, elegant serif body
+  Jost                    -> tracked-out uppercase labels ("CLASSIC MASSAGE", "COMFORT DETAILS")
+*/
+
+@font-face {
+  font-family: "Italiana";
+  src: url("Italiana-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Marcellus";
+  src: url("Marcellus-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("CormorantGaramond-Variable.ttf") format("truetype-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("CormorantGaramond-Italic-Variable.ttf") format("truetype-variations");
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("Jost-Variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("Jost-Italic-Variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-logo: "Italiana", "Marcellus", serif;      /* EASE / ATMOSPHERE style wordmarks */
+  --font-display: "Cormorant Garamond", serif;       /* headings, pull quotes */
+  --font-label: "Jost", sans-serif;                   /* tracked uppercase captions */
+}
+
+.label-caps {
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 400;
+}

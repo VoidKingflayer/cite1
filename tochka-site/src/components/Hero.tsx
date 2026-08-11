@@ -14,11 +14,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, lang }) => {
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
-      paddingTop: '100px',
+      paddingTop: '120px',
+      paddingBottom: '80px',
       overflow: 'hidden',
       backgroundColor: 'var(--bg-dark)'
     }}>
-      {/* Background Mood Image with Editorial Gradient Overlay */}
+      {/* Background Mood Image with Warm Editorial Earthy Gradient Overlay */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -28,9 +29,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, lang }) => {
         zIndex: 1,
         backgroundImage: `url(${STOCK_IMAGES.hero})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center 30%',
-        opacity: 0.38,
-        filter: 'contrast(105%) saturate(85%)'
+        backgroundPosition: 'center 35%',
+        opacity: 0.28,
+        filter: 'contrast(118%) saturate(0%)'
       }} />
 
       <div style={{
@@ -40,66 +41,76 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, lang }) => {
         right: 0,
         bottom: 0,
         zIndex: 2,
-        background: 'radial-gradient(circle at center, rgba(13, 14, 16, 0.4) 0%, rgba(13, 14, 16, 0.95) 85%)'
+        background: 'radial-gradient(ellipse at center, rgba(13, 14, 16, 0.4) 0%, rgba(13, 14, 16, 0.97) 82%)'
       }} />
 
       {/* Main Hero Content Container */}
       <div className="container" style={{ position: 'relative', zIndex: 3, width: '100%' }}>
-        <div style={{ maxWidth: '820px' }}>
+        <div style={{ maxWidth: '880px', textAlign: 'center', margin: '0 auto' }}>
           
           {/* Location Badge */}
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '6px 16px',
-            backgroundColor: 'rgba(200, 169, 126, 0.08)',
-            border: '1px solid var(--border-gold)',
-            borderRadius: '30px',
-            marginBottom: '28px',
-            backdropFilter: 'blur(10px)'
+            gap: '7px',
+            padding: '5px 14px',
+            backgroundColor: 'rgba(233, 231, 226, 0.04)',
+            border: '1px solid var(--border-taupe)',
+            borderRadius: '0px',
+            marginBottom: '32px',
+            backdropFilter: 'blur(12px)'
           }}>
-            <MapPin size={14} color="var(--accent-gold)" />
+            <MapPin size={11} color="var(--omra-taupe)" />
             <span style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.75rem',
-              letterSpacing: '2px',
+              fontSize: '0.62rem',
+              letterSpacing: '2.5px',
               textTransform: 'uppercase',
-              color: 'var(--accent-gold-light)',
+              color: 'var(--omra-sand-mid)',
               fontWeight: 500
             }}>
-              BATUMI, GEORGIA • PRIVATE WELLNESS STUDIO
+              Batumi, Georgia — Private Bodywork Sanctuary
             </span>
           </div>
 
-          {/* Main Title */}
+          {/* Main Title - Replicating Clean Monoline Display from Omra Spa */}
           <h1 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(2.8rem, 6.5vw, 5.2rem)',
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2.4rem, 5vw, 4.5rem)',
             fontWeight: 300,
-            lineHeight: 1.08,
-            letterSpacing: '-0.5px',
-            color: 'var(--text-main)',
-            marginBottom: '24px'
+            lineHeight: 1.15,
+            letterSpacing: '6px',
+            textTransform: 'uppercase',
+            color: 'var(--omra-sand-light)',
+            marginBottom: '28px'
           }}>
             Профессиональный массаж в Batumi.{' '}
             <span style={{
+              fontFamily: 'var(--font-display)',
+              textTransform: 'uppercase',
+              color: 'var(--omra-taupe)',
+              fontWeight: 300,
               fontStyle: 'italic',
-              color: 'var(--accent-gold)',
-              fontWeight: 400
+              display: 'block',
+              marginTop: '12px',
+              fontSize: '0.85em',
+              letterSpacing: '5px'
             }}>
-              Точность, тишина, восстановление.
+              Точность • Тишина • Восстановление
             </span>
           </h1>
 
-          {/* Subtitle / Value Statement */}
+          <div className="omra-divider" style={{ marginBottom: '36px' }} />
+
+          {/* Subtitle Statement */}
           <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            fontSize: 'clamp(0.98rem, 1.6vw, 1.15rem)',
             color: 'var(--text-muted)',
             fontWeight: 300,
-            lineHeight: 1.7,
-            marginBottom: '40px',
-            maxWidth: '640px'
+            lineHeight: 1.85,
+            marginBottom: '48px',
+            maxWidth: '680px',
+            margin: '0 auto 48px'
           }}>
             {lang === 'RU'
               ? 'Персональная телесная терапия в уединенной атмосфере dark editorial luxury. Освободите тело от гипертонуса и верните внутренний баланс.'
@@ -110,13 +121,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, lang }) => {
           <div style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '16px',
+            gap: '20px',
             alignItems: 'center',
-            marginBottom: '60px'
+            justifyContent: 'center',
+            marginBottom: '64px'
           }}>
             <button onClick={onOpenBooking} className="btn-primary">
               <span>{lang === 'RU' ? 'Записаться на сеанс' : 'Book Appointment'}</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={15} />
             </button>
 
             <a href="#services" className="btn-secondary">
@@ -127,21 +139,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, lang }) => {
           {/* Trust Highlights Strip */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '20px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '24px',
             borderTop: '1px solid var(--border-subtle)',
-            paddingTop: '32px'
+            paddingTop: '36px'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <ShieldCheck size={20} color="var(--accent-gold)" />
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                100% Приватность и комфорт
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+              <ShieldCheck size={18} color="var(--omra-taupe)" />
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                100% Приватность
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <Sparkles size={20} color="var(--accent-gold)" />
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                Индивидуальный подбор техник
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+              <Sparkles size={18} color="var(--omra-taupe)" />
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                Индивидуальные техники
               </span>
             </div>
           </div>
