@@ -1,15 +1,33 @@
-import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { REVIEWS_DATA } from '../data';
+import { Magnetic, Reveal } from '../lib/interactive';
 
 export const Reviews: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % REVIEWS_DATA.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const go = (dir: 1 | -1) => {
+    setIndex((i) => (i + dir + REVIEWS_DATA.length) % REVIEWS_DATA.length);
+  };
+
+  const rev = REVIEWS_DATA[index];
+
   return (
     <section id="reviews" className="section-padding" style={{ backgroundColor: 'var(--bg-dark)' }}>
       <div className="container">
-        
+
         <div className="section-header">
           <span className="section-tag">
-            {lang === 'RU' ? 'ОТЗЫВЫ ГОСТЕЙ' : 'GUEST REVIEWS'}
+            {lang === 'RU' ? '004 / ОТЗЫВЫ ГОСТЕЙ' : '004 / GUEST REVIEWS'}
           </span>
           <h2 className="section-title">
             {lang === 'RU' ? 'Живые впечатления' : 'Real Experiences'}
@@ -21,48 +39,42 @@ export const Reviews: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '32px'
-        }}>
-          {REVIEWS_DATA.map((rev, idx) => (
+        <Reveal>
+          <div
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            style={{ maxWidth: '760px', margin: '0 auto' }}
+          >
             <div
-              key={idx}
               className="editorial-card"
               style={{
-                padding: '36px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                position: 'relative'
+                padding: '48px',
+                position: 'relative',
+                minHeight: '260px'
               }}
             >
               <Quote
-                size={36}
-                color="var(--accent-gold)"
-                style={{ opacity: 0.2, position: 'absolute', top: '24px', right: '24px' }}
+                size={40}
+                color="var(--accent)"
+                style={{ opacity: 0.2, position: 'absolute', top: '28px', right: '28px' }}
               />
 
-              <div>
-                {/* Rating Stars */}
-                <div style={{ display: 'flex', gap: '4px', marginBottom: '20px' }}>
-                  {[...Array(rev.rating)].map((_, i) => (
-                    <Star key={i} size={16} fill="var(--accent-gold)" color="var(--accent-gold)" />
-                  ))}
-                </div>
-
-                <p style={{
-                  fontSize: '0.95rem',
-                  color: 'var(--text-main)',
-                  lineHeight: 1.7,
-                  fontStyle: 'italic',
-                  marginBottom: '28px',
-                  fontWeight: 300
-                }}>
-                  «{rev.text}»
-                </p>
+              <div style={{ display: 'flex', gap: '4px', marginBottom: '20px' }}>
+                {[...Array(rev.rating)].map((_, i) => (
+                  <Star key={i} size={16} fill="var(--accent)" color="var(--accent)" />
+                ))}
               </div>
+
+              <p style={{
+                fontSize: '1.05rem',
+                color: 'var(--text-main)',
+                lineHeight: 1.75,
+                marginBottom: '32px',
+                fontWeight: 300,
+                minHeight: '110px'
+              }}>
+                «{rev.text}»
+              </p>
 
               <div style={{
                 borderTop: '1px solid var(--border-subtle)',
@@ -72,22 +84,69 @@ export const Reviews: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
                 alignItems: 'center'
               }}>
                 <div>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
                     {rev.name}
                   </h4>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-subtle)' }}>
                     {rev.city}
                   </span>
                 </div>
-
-                <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>
                   {rev.date}
                 </span>
               </div>
-
             </div>
-          ))}
-        </div>
+
+            {/* Carousel controls */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '20px',
+              marginTop: '28px'
+            }}>
+              <Magnetic strength={0.4}>
+                <button
+                  onClick={() => go(-1)}
+                  className="btn-secondary"
+                  style={{ padding: '10px', width: '42px', height: '42px' }}
+                  aria-label="Previous review"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+              </Magnetic>
+
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {REVIEWS_DATA.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    aria-label={`Review ${i + 1}`}
+                    style={{
+                      width: i === index ? '24px' : '8px',
+                      height: '8px',
+                      background: i === index ? 'var(--accent)' : 'var(--border-subtle)',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'var(--transition-smooth)'
+                    }}
+                  />
+                ))}
+              </div>
+
+              <Magnetic strength={0.4}>
+                <button
+                  onClick={() => go(1)}
+                  className="btn-secondary"
+                  style={{ padding: '10px', width: '42px', height: '42px' }}
+                  aria-label="Next review"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </Magnetic>
+            </div>
+          </div>
+        </Reveal>
 
       </div>
     </section>

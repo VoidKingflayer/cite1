@@ -1,5 +1,6 @@
-// Self-hosted editorial stock photography, graded to match the studio's dark/warm moodboard
+// Self-hosted editorial stock photography, graded to match the studio's moodboard
 // (see /home/kingflayer/Рабочий стол/Prog/site/app/static/images/stock for the raw + graded source set)
+// "teal" = biotech-case-study duotone accent shots, "stone" = neutral b&w for supporting tiles
 
 const S = "/images/stock";
 
@@ -60,9 +61,59 @@ export const STOCK_IMAGES = {
   ]
 };
 
+export const MARQUEE_ITEMS = [
+  'ТОЧНОСТЬ ДАВЛЕНИЯ',
+  'СТАЛЬНАЯ ДИСЦИПЛИНА ТЕХНИКИ',
+  'ТИШИНА И ПРИВАТНОСТЬ',
+  'ВОССТАНОВЛЕНИЕ ТЕЛА',
+  'BATUMI, GEORGIA'
+];
+
+export const STATS_DATA = [
+  { value: 7, suffix: '+', label: 'лет практики' },
+  { value: 1400, suffix: '+', label: 'сеансов проведено' },
+  { value: 100, suffix: '%', label: 'приватность' },
+  { value: 2, suffix: '', label: 'мастера в студии' }
+];
+
+export const PROCESS_DATA = [
+  {
+    n: '01',
+    title: 'Диагностика',
+    titleEn: 'Diagnostics',
+    desc: 'Короткая беседа и пальпация — находим зоны гипертонуса и определяем допустимую интенсивность.'
+  },
+  {
+    n: '02',
+    title: 'Подбор техники',
+    titleEn: 'Technique fit',
+    desc: 'Комбинируем методики под конкретный запрос: от мягкой релаксации до глубокой проработки фасций.'
+  },
+  {
+    n: '03',
+    title: 'Сеанс',
+    titleEn: 'The session',
+    desc: 'Выверенное давление и ритм без спешки — тело ведёт, мастер точно считывает отклик.'
+  },
+  {
+    n: '04',
+    title: 'Рекомендации',
+    titleEn: 'Aftercare',
+    desc: 'После сеанса — короткий разбор состояния тела и рекомендации по восстановлению до следующего визита.'
+  }
+];
+
+export const SERVICE_CATEGORIES = [
+  { id: 'all', label: 'Все', labelEn: 'All' },
+  { id: 'relax', label: 'Релакс', labelEn: 'Relax' },
+  { id: 'therapeutic', label: 'Терапия', labelEn: 'Therapeutic' },
+  { id: 'signature', label: 'Авторские', labelEn: 'Signature' }
+];
+
 export const SERVICES_DATA = [
   {
     id: "relaxing",
+    category: "relax",
     title: "Relaxing Massage",
     titleRu: "Расслабляющий массаж",
     desc: "Мягкие глубокие поглаживания и акупрессура для полного снятия ментального и физического напряжения.",
@@ -73,6 +124,7 @@ export const SERVICES_DATA = [
   },
   {
     id: "deep-tissue",
+    category: "therapeutic",
     title: "Deep Tissue Massage",
     titleRu: "Глубокотканный массаж",
     desc: "Интенсивная проработка фасций и глубоких мышц. Устраняет зажимы, триггерные точки и застарелую боли.",
@@ -83,6 +135,7 @@ export const SERVICES_DATA = [
   },
   {
     id: "back-neck",
+    category: "therapeutic",
     title: "Back & Neck Recovery",
     titleRu: "Восстановление спины и шеи",
     desc: "Прицельная терапия осевого скелета. Снимает синдром офисной шеи, гипертонус и головные боли напряжения.",
@@ -93,6 +146,7 @@ export const SERVICES_DATA = [
   },
   {
     id: "face-sculpting",
+    category: "signature",
     title: "Face Sculpting Massage",
     titleRu: "Скульптурирующий массаж лица",
     desc: "Миофасциальный лифтинг-массаж лица, зоны декольте и шейно-воротниковой зоны. Улучшает овал и тонус кожи.",
@@ -103,6 +157,7 @@ export const SERVICES_DATA = [
   },
   {
     id: "lymphatic",
+    category: "relax",
     title: "Lymphatic Drainage",
     titleRu: "Лимфодренажный массаж",
     desc: "Ритмичная мягкая техника для стимуляции лимфооттока, снятия отечности и детоксикации организма.",
@@ -113,6 +168,7 @@ export const SERVICES_DATA = [
   },
   {
     id: "full-body",
+    category: "signature",
     title: "Full Body Treatment",
     titleRu: "Авторский ритуал TOCH_KA",
     desc: "Комплексное погружение: сочетание релаксации, проработки глубоких мышц и ароматерапии натуральными маслами.",

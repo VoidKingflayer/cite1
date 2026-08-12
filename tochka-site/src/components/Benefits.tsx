@@ -1,4 +1,5 @@
 import React from 'react';
+import { Reveal } from '../lib/interactive';
 
 export const Benefits: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
   const items = [
@@ -33,7 +34,7 @@ export const Benefits: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-tag">{lang === 'RU' ? 'ПОЧЕМУ ВЫБИРАЮТ TOCH_KA' : 'WHY CHOOSE TOCH_KA'}</span>
+          <span className="section-tag">005 / {lang === 'RU' ? 'ПОЧЕМУ ВЫБИРАЮТ TOCH_KA' : 'WHY CHOOSE TOCH_KA'}</span>
           <h2 className="section-title">{lang === 'RU' ? 'Стандарты нашего сервиса' : 'Our Studio Standards'}</h2>
         </div>
 
@@ -43,34 +44,39 @@ export const Benefits: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
           gap: '28px'
         }}>
           {items.map((b, i) => (
-            <div
-              key={i}
-              className="editorial-card"
-              style={{
-                padding: '32px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}
-            >
-              <h3 style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: '1.4rem',
-                fontWeight: 400,
-                color: 'var(--text-main)'
-              }}>
-                {b.title}
-              </h3>
+            <Reveal key={i} delay={(i % 3) * 90}>
+              <div
+                className="editorial-card"
+                style={{
+                  padding: '32px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '16px',
+                  height: '100%'
+                }}
+              >
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent)' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.3rem',
+                  fontWeight: 700,
+                  color: 'var(--text-main)'
+                }}>
+                  {b.title}
+                </h3>
 
-              <p style={{
-                fontSize: '0.9rem',
-                color: 'var(--text-muted)',
-                lineHeight: 1.6,
-                fontWeight: 300
-              }}>
-                {b.desc}
-              </p>
-            </div>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: 'var(--text-muted)',
+                  lineHeight: 1.6,
+                  fontWeight: 300
+                }}>
+                  {b.desc}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
 

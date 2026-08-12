@@ -26,14 +26,14 @@ export const Footer: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
             <span style={{
               fontFamily: 'var(--font-logo)',
               fontSize: '1.8rem',
-              fontWeight: 400,
-              letterSpacing: '6px',
+              fontWeight: 600,
+              letterSpacing: '1px',
               textTransform: 'lowercase',
               color: 'var(--text-main)',
               display: 'block',
               marginBottom: '12px'
             }}>
-              toch<span style={{ color: 'var(--accent-gold)' }}>_</span>ka
+              tochka<span style={{ color: 'var(--accent)' }}>.</span>
             </span>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 300, maxWidth: '280px' }}>
               {lang === 'RU'
@@ -49,6 +49,7 @@ export const Footer: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem' }}>
               <li><a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>{lang === 'RU' ? 'О студии' : 'About'}</a></li>
+              <li><a href="#process" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>{lang === 'RU' ? 'Как это устроено' : 'Process'}</a></li>
               <li><a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>{lang === 'RU' ? 'Коллекция услуг' : 'Services'}</a></li>
               <li><a href="#gallery" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>{lang === 'RU' ? 'Instagram Галерея' : 'Gallery'}</a></li>
               <li><a href="#contacts" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>{lang === 'RU' ? 'Контакты & Карта' : 'Contacts & Map'}</a></li>

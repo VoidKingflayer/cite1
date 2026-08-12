@@ -1,6 +1,7 @@
 import React from 'react';
 import { STOCK_IMAGES } from '../data';
 import { Heart, MessageCircle, Camera } from 'lucide-react';
+import { Reveal } from '../lib/interactive';
 
 export const Gallery: React.FC = () => {
   const INITIAL_LIKES: { [key: number]: number } = {
@@ -39,7 +40,7 @@ export const Gallery: React.FC = () => {
           gap: '20px'
         }}>
           <div>
-            <span className="section-tag">INSTAGRAM FEED AESTHETIC</span>
+            <span className="section-tag">002 / VISUAL LOG</span>
             <h2 className="section-title" style={{ textAlign: 'left' }}>
               Визуальный дневник студии
             </h2>
@@ -52,25 +53,27 @@ export const Gallery: React.FC = () => {
             className="btn-secondary"
             style={{ fontSize: '0.8rem', padding: '10px 20px' }}
           >
-            <Camera size={16} color="var(--accent-gold)" />
+            <Camera size={16} color="var(--accent)" />
             <span>@TOCH_KA.BATUMI</span>
           </a>
         </div>
 
-        {/* Editorial Feed Grid */}
+        {/* Case-study style feed grid — dark/paper tiles alternate like the reference grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
           gap: '24px'
         }}>
-          {STOCK_IMAGES.gallery.map((item, idx) => (
+          {STOCK_IMAGES.gallery.map((item, idx) => {
+            const isPaper = idx % 2 === 1;
+            return (
+            <Reveal key={idx} delay={(idx % 3) * 90}>
             <div
-              key={idx}
-              className="editorial-card feed-post"
-              style={{ borderRadius: '8px', overflow: 'hidden' }}
+              className={`editorial-card feed-post${isPaper ? ' paper-card' : ''}`}
+              style={{ overflow: 'hidden' }}
             >
-              {/* Image Container with Warm Editorial Aesthetics */}
-              <div style={{ position: 'relative', height: '360px', overflow: 'hidden' }}>
+              {/* Image with mono index badge + bottom-left caption, reference tile style */}
+              <div className="duotone-steel" style={{ position: 'relative', height: '360px', overflow: 'hidden' }}>
                 <img
                   src={item.url}
                   alt={item.caption}
@@ -78,44 +81,55 @@ export const Gallery: React.FC = () => {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    filter: 'contrast(112%) saturate(0%) brightness(1.02)',
+                    filter: 'contrast(112%) brightness(1.02)',
                     transition: 'var(--transition-smooth)'
                   }}
                 />
-                
-                {/* Overlay Text Tag matching reference screenshot style */}
+
+                <span style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.68rem',
+                  letterSpacing: '1px',
+                  color: 'var(--accent)',
+                  background: 'rgba(10, 10, 11, 0.55)',
+                  border: '1px solid var(--border-gold)',
+                  borderRadius: 'var(--radius-pill)',
+                  padding: '4px 10px',
+                  backdropFilter: 'blur(6px)'
+                }}>
+                  {String(idx + 1).padStart(3, '0')}
+                </span>
+
                 <div style={{
                   position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: 'rgba(0,0,0,0.25)',
-                  padding: '20px',
-                  textAlign: 'center'
+                  left: '16px',
+                  bottom: '16px',
+                  right: '16px'
                 }}>
                   <span style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '1.25rem',
-                    letterSpacing: '4px',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.78rem',
+                    letterSpacing: '1px',
                     textTransform: 'uppercase',
                     color: 'rgba(243, 243, 240, 0.95)',
-                    fontWeight: 300,
-                    textShadow: '0 2px 10px rgba(0,0,0,0.6)'
+                    textShadow: '0 2px 10px rgba(0,0,0,0.8)'
                   }}>
                     {item.tag}
                   </span>
                 </div>
               </div>
 
-              {/* Instagram Like & Comment Bar */}
+              {/* Like & Comment Bar */}
               <div style={{
                 padding: '16px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                backgroundColor: 'var(--bg-card)',
-                borderTop: '1px solid var(--border-subtle)'
+                backgroundColor: isPaper ? 'var(--paper)' : 'var(--bg-card)',
+                borderTop: isPaper ? '1px solid rgba(10,10,11,0.08)' : '1px solid var(--border-subtle)'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <button
@@ -127,7 +141,7 @@ export const Gallery: React.FC = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '6px',
-                      color: likes[idx].liked ? '#e53e3e' : 'var(--text-muted)',
+                      color: likes[idx].liked ? '#e53e3e' : (isPaper ? 'var(--text-subtle)' : 'var(--text-muted)'),
                       transition: 'var(--transition-smooth)'
                     }}
                   >
@@ -142,10 +156,10 @@ export const Gallery: React.FC = () => {
                 </div>
 
                 <span style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.7rem',
-                  letterSpacing: '1.5px',
-                  color: 'var(--accent-gold)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.68rem',
+                  letterSpacing: '1px',
+                  color: isPaper ? 'var(--accent-dim)' : 'var(--accent)',
                   textTransform: 'uppercase'
                 }}>
                   {item.caption}
@@ -153,7 +167,9 @@ export const Gallery: React.FC = () => {
               </div>
 
             </div>
-          ))}
+            </Reveal>
+            );
+          })}
         </div>
 
       </div>

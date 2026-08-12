@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Clock, ArrowRight, X } from 'lucide-react';
-import { SERVICES_DATA } from '../data';
+import { SERVICES_DATA, SERVICE_CATEGORIES } from '../data';
+import { Magnetic, Reveal } from '../lib/interactive';
 
 interface ServicesProps {
   onSelectService: (serviceTitle: string) => void;
@@ -9,15 +10,20 @@ interface ServicesProps {
 
 export const Services: React.FC<ServicesProps> = ({ onSelectService, lang }) => {
   const [activeModal, setActiveModal] = useState<typeof SERVICES_DATA[0] | null>(null);
+  const [activeTab, setActiveTab] = useState('all');
+
+  const filtered = useMemo(
+    () => activeTab === 'all' ? SERVICES_DATA : SERVICES_DATA.filter(s => s.category === activeTab),
+    [activeTab]
+  );
 
   return (
     <section id="services" className="section-padding" style={{ backgroundColor: 'var(--bg-dark)' }}>
       <div className="container">
-        
-        {/* Section Header */}
+
         <div className="section-header">
           <span className="section-tag">
-            {lang === 'RU' ? 'КОЛЛЕКЦИЯ УСЛУГ' : 'SERVICE COLLECTION'}
+            {lang === 'RU' ? '003 / КОЛЛЕКЦИЯ УСЛУГ' : '003 / SERVICE COLLECTION'}
           </span>
           <h2 className="section-title">
             {lang === 'RU' ? 'Телесные ритуалы и терапия' : 'Bodywork & Massage Rituals'}
@@ -35,99 +41,120 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService, lang }) => 
           </p>
         </div>
 
+        {/* Category tabs */}
+        <div style={{
+          display: 'flex',
+          gap: '10px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          marginBottom: '48px'
+        }}>
+          {SERVICE_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveTab(cat.id)}
+              className={`tab-pill${activeTab === cat.id ? ' active' : ''}`}
+            >
+              {lang === 'RU' ? cat.label : cat.labelEn}
+            </button>
+          ))}
+        </div>
+
         {/* Services Grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
           gap: '32px'
         }}>
-          {SERVICES_DATA.map((service) => (
-            <div key={service.id} className="editorial-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              
-              {/* Card Image */}
-              <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                <img
-                  src={service.img}
-                  alt={service.titleRu}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'var(--transition-smooth)'
-                  }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, var(--bg-card) 0%, transparent 70%)'
-                }} />
-                
-                {/* Price Tag Badge */}
-                <div style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '16px',
-                  backgroundColor: 'rgba(13, 14, 16, 0.85)',
-                  backdropFilter: 'blur(8px)',
-                  border: '1px solid var(--border-gold)',
-                  padding: '6px 12px',
-                  borderRadius: '4px',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  color: 'var(--accent-gold-light)'
-                }}>
-                  {service.price}
+          {filtered.map((service, idx) => (
+            <Reveal key={service.id} delay={idx * 60}>
+              <div className="editorial-card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+
+                {/* Card Image */}
+                <div className="duotone-steel" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <img
+                    src={service.img}
+                    alt={service.titleRu}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'var(--transition-smooth)'
+                    }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to top, var(--bg-card) 0%, transparent 70%)'
+                  }} />
+
+                  <div style={{
+                    position: 'absolute',
+                    top: '16px',
+                    right: '16px',
+                    backgroundColor: 'rgba(10, 11, 13, 0.85)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid var(--border-gold)',
+                    padding: '6px 12px',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    color: 'var(--accent-gold-light)'
+                  }}>
+                    {service.price}
+                  </div>
                 </div>
+
+                {/* Card Body */}
+                <div style={{ padding: '28px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-subtle)', fontSize: '0.75rem', marginBottom: '8px' }}>
+                    <Clock size={14} color="var(--accent-gold)" />
+                    <span style={{ fontFamily: 'var(--font-mono)' }}>{service.duration}</span>
+                  </div>
+
+                  <h3 style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.5rem',
+                    fontWeight: 700,
+                    color: 'var(--text-main)',
+                    marginBottom: '12px'
+                  }}>
+                    {lang === 'RU' ? service.titleRu : service.title}
+                  </h3>
+
+                  <p style={{
+                    fontSize: '0.875rem',
+                    color: 'var(--text-muted)',
+                    lineHeight: 1.6,
+                    marginBottom: '24px',
+                    flexGrow: 1,
+                    fontWeight: 300
+                  }}>
+                    {service.desc}
+                  </p>
+
+                  <div style={{ display: 'flex', gap: '12px', marginTop: 'auto' }}>
+                    <button
+                      onClick={() => setActiveModal(service)}
+                      className="btn-secondary"
+                      style={{ flex: 1, padding: '10px', fontSize: '0.75rem' }}
+                    >
+                      {lang === 'RU' ? 'Подробнее' : 'Details'}
+                    </button>
+                    <Magnetic strength={0.3}>
+                      <button
+                        onClick={() => onSelectService(service.titleRu)}
+                        className="btn-primary"
+                        style={{ padding: '10px 16px', fontSize: '0.75rem' }}
+                      >
+                        <ArrowRight size={14} />
+                      </button>
+                    </Magnetic>
+                  </div>
+                </div>
+
               </div>
-
-              {/* Card Body */}
-              <div style={{ padding: '28px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-subtle)', fontSize: '0.75rem', marginBottom: '8px' }}>
-                  <Clock size={14} color="var(--accent-gold)" />
-                  <span>{service.duration}</span>
-                </div>
-
-                <h3 style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.6rem',
-                  fontWeight: 400,
-                  color: 'var(--text-main)',
-                  marginBottom: '12px'
-                }}>
-                  {lang === 'RU' ? service.titleRu : service.title}
-                </h3>
-
-                <p style={{
-                  fontSize: '0.875rem',
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.6,
-                  marginBottom: '24px',
-                  flexGrow: 1,
-                  fontWeight: 300
-                }}>
-                  {service.desc}
-                </p>
-
-                {/* Card CTA Actions */}
-                <div style={{ display: 'flex', gap: '12px', marginTop: 'auto' }}>
-                  <button
-                    onClick={() => setActiveModal(service)}
-                    className="btn-secondary"
-                    style={{ flex: 1, padding: '10px', fontSize: '0.75rem' }}
-                  >
-                    {lang === 'RU' ? 'Подробнее' : 'Details'}
-                  </button>
-                  <button
-                    onClick={() => onSelectService(service.titleRu)}
-                    className="btn-primary"
-                    style={{ padding: '10px 16px', fontSize: '0.75rem' }}
-                  >
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -148,7 +175,6 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService, lang }) => 
           <div style={{
             backgroundColor: 'var(--bg-card)',
             border: '1px solid var(--border-gold)',
-            borderRadius: '12px',
             maxWidth: '540px',
             width: '100%',
             overflow: 'hidden',

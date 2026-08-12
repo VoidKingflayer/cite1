@@ -1,82 +1,73 @@
-/* Self-hosted editorial type system */
+/* Self-hosted type system — industrial/steel register: bold Space Grotesk for display,
+   JetBrains Mono for technical uppercase labels/index numbers. */
 @font-face {
-  font-family: 'Italiana';
-  src: url('/fonts/Italiana-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Marcellus';
-  src: url('/fonts/Marcellus-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-Variable.ttf') format('truetype-variations');
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-Variable.ttf') format('truetype-variations');
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-Italic-Variable.ttf') format('truetype-variations');
-  font-weight: 300 700;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Jost';
-  src: url('/fonts/Jost-Variable.ttf') format('truetype-variations');
-  font-weight: 100 900;
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Variable.ttf') format('truetype-variations');
+  font-weight: 100 800;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Jost';
-  src: url('/fonts/Jost-Italic-Variable.ttf') format('truetype-variations');
-  font-weight: 100 900;
-  font-style: italic;
   font-display: swap;
 }
 
 :root {
-  /* Stone / graphite monochrome palette — quarried, cool, no warm sepia cast */
-  --omra-sand-light: #E9E7E2;   /* light stone */
-  --omra-sand-mid: #B6B2AB;     /* mid stone */
-  --omra-taupe: #78756E;        /* graphite stone */
-  --omra-espresso: #232320;     /* charcoal */
-  --omra-black: #0a0a0b;        /* near-black */
+  /* Magnetic Steel & Sand — brushed-metal black base, warm sand/brass accent */
+  --ink: #0a0b0d;
+  --ink-raised: #101113;
+  --ink-card: #16181a;
+  --paper: #E4D8BC;           /* sand-paper light tile */
+  --paper-raised: #D9CAA5;
 
-  /* Theme Variables using stone palette */
-  --bg-dark: #0a0a0b;
-  --bg-surface: #131313;
-  --bg-card: #191918;
-  --bg-sand-accent: #E9E7E2;
+  --accent: #C9A868;          /* brass / sand accent */
+  --accent-bright: #E6C888;
+  --accent-dim: #8A6E3E;
+  --accent-ink: #14110a;
 
-  --text-main: #E9E7E2;
-  --text-dark: #0a0a0b;
-  --text-muted: #B6B2AB;
-  --text-subtle: #78756E;
+  /* Back-compat aliases so existing component code (var(--teal), var(--omra-*)) still resolves */
+  --teal: var(--accent);
+  --teal-dim: var(--accent-dim);
+  --teal-ink: var(--accent-ink);
+  --omra-sand-light: #EDE7DA;
+  --omra-sand-mid: #ABA290;
+  --omra-taupe: #746C5C;
+  --omra-espresso: #1c1a16;
+  --omra-black: #0a0b0d;
 
-  --accent-taupe: #78756E;
-  --accent-gold: #9A968D;
-  --accent-sand: #E9E7E2;
-  --accent-gold-light: #E9E7E2;
+  --bg-dark: #0a0b0d;
+  --bg-surface: #101113;
+  --bg-card: #16181a;
+  --bg-sand-accent: #EDE7DA;
 
-  --border-subtle: rgba(233, 231, 226, 0.1);
-  --border-taupe: rgba(120, 117, 110, 0.35);
-  --border-gold: rgba(120, 117, 110, 0.45);
-  --accent-gold-glow: rgba(120, 117, 110, 0.5);
+  --text-main: #EDE7DA;
+  --text-dark: #14120d;
+  --text-muted: #A79E8C;
+  --text-subtle: #6F6858;
 
-  /* Typography — serif display carries the "expensive editorial" register,
-     tracked-out Jost carries small caps labels (matches the moodboard: "EASE" + "COMFORT DETAILS") */
-  --font-logo: 'Italiana', 'Marcellus', serif;
-  --font-display: 'Cormorant Garamond', 'Marcellus', serif;
-  --font-serif: 'Cormorant Garamond', 'Marcellus', serif;
-  --font-sans: 'Jost', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --accent-taupe: #746C5C;
+  --accent-gold: var(--accent);
+  --accent-sand: #EDE7DA;
+  --accent-gold-light: var(--accent);
+
+  --border-subtle: rgba(237, 231, 218, 0.09);
+  --border-taupe: rgba(201, 168, 104, 0.32);
+  --border-gold: rgba(201, 168, 104, 0.42);
+  --accent-gold-glow: rgba(201, 168, 104, 0.55);
+
+  --radius: 4px;
+  --radius-sm: 3px;
+  --radius-pill: 3px;
+  --bevel: 16px; /* cut-corner "steel plate" bevel size */
+
+  --font-logo: 'Space Grotesk', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-serif: 'Space Grotesk', sans-serif;
+  --font-sans: 'Space Grotesk', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --transition-smooth: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -97,38 +88,30 @@ html {
 
 body {
   background-color: var(--bg-dark);
+  background-image:
+    repeating-linear-gradient(115deg, rgba(237,231,218,0.025) 0px, rgba(237,231,218,0.025) 1px, transparent 1px, transparent 5px);
   color: var(--text-main);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
 
-/* Subtle film-grain texture — the tactile finish that reads as "expensive" on a flat dark ground */
+/* Film-grain texture */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.045;
+  opacity: 0.04;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--omra-espresso);
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--omra-taupe);
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--omra-espresso); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 /* Layout Utilities */
 .container {
@@ -137,31 +120,21 @@ body::before {
   padding: 0 32px;
 }
 
-.section-padding {
-  padding: 120px 0;
-}
+.section-padding { padding: 120px 0; }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-  .section-padding {
-    padding: 70px 0;
-  }
+  .container { padding: 0 20px; }
+  .section-padding { padding: 70px 0; }
 }
 
-/* Omra Minimal Section Titles */
-.section-header {
-  margin-bottom: 72px;
-  text-align: center;
-}
+.section-header { margin-bottom: 72px; text-align: center; }
 
 .section-tag {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  color: var(--omra-taupe);
+  letter-spacing: 3px;
+  color: var(--accent);
   margin-bottom: 16px;
   display: inline-block;
   font-weight: 500;
@@ -170,25 +143,24 @@ body::before {
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.2vw, 3.6rem);
-  font-weight: 300;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  text-transform: none;
   color: var(--text-main);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
-/* Omra Minimal Luxury Card Styling */
+/* Steel-plate cards — cut top-right / bottom-left corners, brushed card ground */
 .editorial-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 0px; /* Sharp 0px crisp corners matching Omra cards */
+  clip-path: polygon(0 0, calc(100% - var(--bevel)) 0, 100% var(--bevel), 100% 100%, var(--bevel) 100%, 0 calc(100% - var(--bevel)));
   transition: var(--transition-smooth);
   position: relative;
-  overflow: hidden;
 }
 
 .editorial-card:hover {
-  border-color: var(--omra-taupe);
+  border-color: var(--accent);
   transform: translateY(-4px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
 }
@@ -197,52 +169,66 @@ body::before {
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
 }
 
-.editorial-card:hover img {
-  transform: scale(1.06);
+.editorial-card:hover img { transform: scale(1.06); }
+
+/* Light sand-paper tile variant */
+.paper-card {
+  background: var(--paper);
+  color: var(--text-dark);
+  border: 1px solid rgba(20, 17, 10, 0.12);
 }
 
-/* Omra Buttons */
+/* Sand/steel duotone wash for imagery — layered over the neutral b&w photo set */
+.duotone-steel { position: relative; }
+.duotone-steel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, rgba(10,11,13,0.55) 0%, rgba(201,168,104,0.16) 100%);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+/* Buttons — bevelled steel plate, brass accent */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  background: linear-gradient(135deg, var(--omra-sand-light) 0%, var(--omra-sand-mid) 100%);
-  color: var(--omra-black);
+  gap: 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
-  padding: 18px 36px;
-  border-radius: 0px;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  padding: 15px 28px;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   border: none;
   cursor: pointer;
   transition: var(--transition-smooth);
   text-decoration: none;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--omra-sand-mid) 0%, var(--omra-taupe) 100%);
+  background: var(--accent-bright);
   transform: translateY(-2px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 18px 36px rgba(0, 0, 0, 0.45);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 10px;
   background: transparent;
   color: var(--text-main);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 17px 32px;
-  border-radius: 0px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  padding: 14px 26px;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -250,30 +236,69 @@ body::before {
 }
 
 .btn-secondary:hover {
-  border-color: var(--omra-taupe);
-  color: var(--omra-sand-light);
-  background: rgba(158, 129, 97, 0.08);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(201, 168, 104, 0.08);
 }
 
 .omra-divider {
   width: 50px;
   height: 1px;
-  background: var(--omra-taupe);
+  background: var(--accent);
   margin: 24px auto 0;
   opacity: 0.6;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Magnetic field glow — tracks --mx/--my set via JS mousemove */
+.magnetic-field {
+  position: relative;
+}
+.magnetic-field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 30%), rgba(201, 168, 104, 0.16), transparent 60%);
+  transition: background 0.1s ease-out;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+/* Tab pills — used by the Services category switcher */
+.tab-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: var(--transition-smooth);
+}
+.tab-pill.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.tab-pill:not(.active):hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }

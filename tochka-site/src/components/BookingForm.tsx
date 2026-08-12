@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Phone, MessageSquare, Camera, CheckCircle2 } from 'lucide-react';
 import { getServices, createBooking, type ApiService } from '../api';
+import { Reveal } from '../lib/interactive';
 
 interface BookingFormProps {
   preselectedService?: string;
@@ -78,7 +79,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
           
           <div className="section-header">
             <span className="section-tag">
-              {lang === 'RU' ? 'ОНЛАЙН БРОНИРОВАНИЕ' : 'ONLINE BOOKING'}
+              006 / {lang === 'RU' ? 'ОНЛАЙН БРОНИРОВАНИЕ' : 'ONLINE BOOKING'}
             </span>
             <h2 className="section-title">
               {lang === 'RU' ? 'Записаться на сеанс' : 'Book an Appointment'}
@@ -138,6 +139,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
           </div>
 
           {/* Booking Form Card */}
+          <Reveal>
           <div className="editorial-card" style={{ padding: '40px' }}>
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '40px 20px', animation: 'fadeIn 0.5s ease' }}>
@@ -327,6 +329,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ preselectedService = '
               </form>
             )}
           </div>
+          </Reveal>
 
         </div>
       </div>

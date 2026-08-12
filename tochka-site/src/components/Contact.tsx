@@ -1,14 +1,15 @@
 import React from 'react';
 import { MapPin, Clock, Phone, Send, MessageSquare, Camera, Navigation } from 'lucide-react';
+import { Magnetic, Reveal } from '../lib/interactive';
 
 export const Contact: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
   return (
     <section id="contacts" className="section-padding" style={{ backgroundColor: 'var(--bg-dark)' }}>
       <div className="container">
-        
+
         <div className="section-header">
           <span className="section-tag">
-            {lang === 'RU' ? 'ЛОКАЦИЯ И СВЯЗЬ' : 'LOCATION & CONTACT'}
+            007 / {lang === 'RU' ? 'ЛОКАЦИЯ И СВЯЗЬ' : 'LOCATION & CONTACT'}
           </span>
           <h2 className="section-title">
             {lang === 'RU' ? 'Ждем вас в Batumi' : 'Visit Us in Batumi'}
@@ -23,9 +24,9 @@ export const Contact: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
         }}>
           
           {/* Info Card Column */}
-          <div className="editorial-card" style={{ padding: '36px' }}>
-            
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: 'var(--text-main)', marginBottom: '24px' }}>
+          <Reveal><div className="editorial-card" style={{ padding: '36px' }}>
+
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1.8rem', color: 'var(--text-main)', marginBottom: '24px' }}>
               {lang === 'RU' ? 'Контактные данные' : 'Contact Details'}
             </h3>
 
@@ -88,21 +89,23 @@ export const Contact: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
               </a>
             </div>
 
-            <a
-              href="https://maps.google.com/?q=Batumi,Georgia"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-              style={{ width: '100%', marginTop: '28px' }}
-            >
-              <Navigation size={16} />
-              <span>{lang === 'RU' ? 'Построить маршрут' : 'Get Directions'}</span>
-            </a>
+            <Magnetic strength={0.15}>
+              <a
+                href="https://maps.google.com/?q=Batumi,Georgia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                style={{ width: '100%', marginTop: '28px' }}
+              >
+                <Navigation size={16} />
+                <span>{lang === 'RU' ? 'Построить маршрут' : 'Get Directions'}</span>
+              </a>
+            </Magnetic>
 
-          </div>
+          </div></Reveal>
 
-          {/* Interactive Styled Map Embed */}
-          <div className="editorial-card" style={{ height: '440px', overflow: 'hidden', position: 'relative' }}>
+          {/* Styled Map Embed */}
+          <Reveal delay={100}><div className="editorial-card" style={{ height: '440px', overflow: 'hidden', position: 'relative' }}>
             <iframe
               title="TOCH_KA Batumi Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2983.476483748231!2d41.63666!3d41.64583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406786304ea777b1%3A0x6b13e8b0a13e2f10!2sBatumi%2C%20Georgia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
@@ -110,12 +113,12 @@ export const Contact: React.FC<{ lang: 'RU' | 'EN' }> = ({ lang }) => {
               height="100%"
               style={{
                 border: 0,
-                filter: 'invert(90%) hue-rotate(180deg) contrast(120%) opacity(0.85)'
+                filter: 'grayscale(45%) invert(92%) contrast(108%) brightness(0.88)'
               }}
               allowFullScreen={false}
               loading="lazy"
             />
-          </div>
+          </div></Reveal>
 
         </div>
       </div>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, X, Calendar, ChevronRight } from 'lucide-react';
+import { Magnetic } from '../lib/interactive';
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -9,13 +10,21 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const navLinks = [
     { href: "#about", label: lang === 'RU' ? "О студии" : "About" },
+    { href: "#process", label: lang === 'RU' ? "Процесс" : "Process" },
     { href: "#services", label: lang === 'RU' ? "Услуги" : "Services" },
-    { href: "#highlights", label: lang === 'RU' ? "Инфо" : "Highlights" },
     { href: "#gallery", label: lang === 'RU' ? "Галерея" : "Gallery" },
-    { href: "#benefits", label: lang === 'RU' ? "Преимущества" : "Benefits" },
+    { href: "#benefits", label: lang === 'RU' ? "Плюсы" : "Benefits" },
     { href: "#reviews", label: lang === 'RU' ? "Отзывы" : "Reviews" },
     { href: "#contacts", label: lang === 'RU' ? "Контакты" : "Contacts" },
   ];
@@ -27,46 +36,46 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
       left: 0,
       right: 0,
       zIndex: 100,
-      backgroundColor: 'rgba(13, 14, 16, 0.92)',
+      backgroundColor: scrolled ? 'rgba(10, 11, 13, 0.92)' : 'rgba(10, 11, 13, 0.5)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid var(--border-subtle)',
+      borderBottom: scrolled ? '1px solid var(--border-subtle)' : '1px solid transparent',
       transition: 'var(--transition-smooth)'
     }}>
       <div className="container" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '92px'
+        height: scrolled ? '72px' : '92px',
+        transition: 'var(--transition-smooth)'
       }}>
-        {/* Brand Logo - Replicating exact Omra Spa logo proportion & spacing */}
+        {/* Brand Logo */}
         <a href="#" style={{
           textDecoration: 'none',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           gap: '2px'
         }}>
           <span style={{
             fontFamily: 'var(--font-logo)',
-            fontSize: '1.75rem',
-            fontWeight: 300,
-            letterSpacing: '10px',
+            fontSize: '1.6rem',
+            fontWeight: 700,
+            letterSpacing: '0.5px',
             color: 'var(--omra-sand-light)',
             lineHeight: 1,
             textTransform: 'lowercase'
           }}>
-            tochka
+            tochka<span style={{ color: 'var(--accent)' }}>.</span>
           </span>
           <span style={{
-            fontFamily: 'var(--font-logo)',
-            fontSize: '0.58rem',
-            letterSpacing: '8px',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.56rem',
+            letterSpacing: '3px',
             textTransform: 'uppercase',
-            color: 'var(--omra-taupe)',
-            fontWeight: 400,
-            paddingLeft: '6px'
+            color: 'var(--accent)',
+            fontWeight: 400
           }}>
-            S P A
+            STEEL &amp; SAND SPA
           </span>
         </a>
 
@@ -74,62 +83,64 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
         <nav className="desktop-nav" style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '36px'
+          gap: '4px'
         }}>
           {navLinks.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              style={{
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.75rem',
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                fontWeight: 500,
-                transition: 'var(--transition-smooth)'
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--omra-sand-light)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
-            >
-              {link.label}
-            </a>
+            <Magnetic key={idx} strength={0.4}>
+              <a
+                href={link.href}
+                style={{
+                  color: 'var(--text-muted)',
+                  textDecoration: 'none',
+                  fontSize: '0.75rem',
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                  padding: '8px 14px',
+                  display: 'inline-block',
+                  transition: 'var(--transition-smooth)'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              >
+                {link.label}
+              </a>
+            </Magnetic>
           ))}
         </nav>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          {/* Language Toggle */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <button
             onClick={() => setLang(lang === 'RU' ? 'EN' : 'RU')}
             style={{
               background: 'transparent',
               border: '1px solid var(--border-subtle)',
-              color: 'var(--omra-sand-light)',
+              color: 'var(--accent)',
               padding: '6px 14px',
-              borderRadius: '0px',
+              fontFamily: 'var(--font-mono)',
               cursor: 'pointer',
               fontSize: '0.7rem',
-              letterSpacing: '2px',
+              letterSpacing: '1px',
               transition: 'var(--transition-smooth)'
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--omra-taupe)')}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--accent)')}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--border-subtle)')}
           >
             {lang}
           </button>
 
-          {/* CTA Book Button */}
-          <button
-            onClick={onOpenBooking}
-            className="btn-primary desktop-cta"
-            style={{ padding: '12px 24px', fontSize: '0.7rem' }}
-          >
-            <Calendar size={14} />
-            {lang === 'RU' ? 'Записаться' : 'Book Now'}
-          </button>
+          <Magnetic strength={0.3}>
+            <button
+              onClick={onOpenBooking}
+              className="btn-primary desktop-cta"
+              style={{ padding: '12px 22px', fontSize: '0.7rem' }}
+            >
+              <Calendar size={14} />
+              {lang === 'RU' ? 'Записаться' : 'Book Now'}
+            </button>
+          </Magnetic>
 
-          {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-toggle"
@@ -177,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, lang, setLang }) 
               }}
             >
               <span>{link.label}</span>
-              <ChevronRight size={16} color="var(--omra-taupe)" />
+              <ChevronRight size={16} color="var(--accent)" />
             </a>
           ))}
           <button
