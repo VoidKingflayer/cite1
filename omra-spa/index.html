@@ -15,24 +15,37 @@
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
+  <!-- Top Announcement Bar with Dedicated Language Switcher -->
   <div class="top-announcement-bar">
-    <div class="announcement-track">
-      <span>WE PRESS PAUSE FOR YOU</span>
-      <span class="dot-sep">•</span>
-      <span>YOUR SPACE TO BREATHE</span>
-      <span class="dot-sep">•</span>
-      <span>6TH COMPLIMENTARY RITUAL AS OUR GIFT</span>
-      <span class="dot-sep">•</span>
-      <span>JALAN PANTAI BATU MEJAN NO. 33A & NEW YORK</span>
-      <span class="dot-sep">•</span>
-      <span>WE PRESS PAUSE FOR YOU</span>
-      <span class="dot-sep">•</span>
-      <span>YOUR SPACE TO BREATHE</span>
-      <span class="dot-sep">•</span>
-      <span>6TH COMPLIMENTARY RITUAL AS OUR GIFT</span>
-      <span class="dot-sep">•</span>
-      <span>JALAN PANTAI BATU MEJAN NO. 33A & NEW YORK</span>
+    <div class="announcement-left">
+      <div class="announcement-track">
+        <span>TOCHKA RITUAL</span>
+        <span class="dot-sep">•</span>
+        <span>YOUR SPACE TO BREATHE</span>
+        <span class="dot-sep">•</span>
+        <span>WE PRESS PAUSE FOR YOU</span>
+        <span class="dot-sep">•</span>
+        <span>6TH COMPLIMENTARY RITUAL AS OUR GIFT</span>
+        <span class="dot-sep">•</span>
+        <span>JALAN PANTAI BATU MEJAN NO. 33A & NEW YORK</span>
+        <span class="dot-sep">•</span>
+        <span>TOCHKA RITUAL</span>
+        <span class="dot-sep">•</span>
+        <span>YOUR SPACE TO BREATHE</span>
+        <span class="dot-sep">•</span>
+        <span>WE PRESS PAUSE FOR YOU</span>
+        <span class="dot-sep">•</span>
+        <span>6TH COMPLIMENTARY RITUAL AS OUR GIFT</span>
+        <span class="dot-sep">•</span>
+        <span>JALAN PANTAI BATU MEJAN NO. 33A & NEW YORK</span>
+      </div>
+    </div>
+    <div class="top-lang-wrap">
+      <div class="omra-top-lang-switcher" id="topLangSwitcher">
+        <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
+        <button type="button" class="lang-btn" data-lang="ru" title="Русский">RU</button>
+        <button type="button" class="lang-btn" data-lang="ka" title="ქართული">GE</button>
+      </div>
     </div>
   </div>
 
@@ -47,16 +60,17 @@
       </a>
 
       <nav class="omra-nav" id="omraNav">
-        <a href="#concept" class="nav-item">CONCEPT</a>
-        <a href="#rituals" class="nav-item">RITUALS & PRICES</a>
-        <a href="#loyalty" class="nav-item">LOYALTY</a>
-        <a href="#giftcards" class="nav-item">GIFT CARDS</a>
-        <a href="#palette" class="nav-item">IDENTITY</a>
-        <a href="#booking" class="nav-item">CONTACTS</a>
+        <a href="#concept" class="nav-item" data-i18n="nav_concept">CONCEPT</a>
+        <a href="#rituals" class="nav-item" data-i18n="nav_rituals">RITUALS & PRICES</a>
+        <a href="#loyalty" class="nav-item" data-i18n="nav_loyalty">LOYALTY</a>
+        <a href="#giftcards" class="nav-item" data-i18n="nav_giftcards">GIFT CARDS</a>
+        <a href="#atmosphere" class="nav-item" data-i18n="nav_atmosphere">ATMOSPHERE</a>
+        <a href="#palette" class="nav-item" data-i18n="nav_palette">IDENTITY</a>
+        <a href="#booking" class="nav-item" data-i18n="nav_booking">CONTACTS</a>
       </nav>
 
       <div class="header-right">
-        <a href="#booking" class="btn-book-header">BOOK A SESSION</a>
+        <a href="#booking" class="btn-book-header" data-i18n="btn_book_header">BOOK A SESSION</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
           <span></span>
           <span></span>
@@ -67,14 +81,23 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobileDrawer">
+    <div class="m-omra-lang-row">
+      <span class="m-omra-lang-title" data-i18n="lang_select">LANGUAGE:</span>
+      <div class="m-omra-lang-switcher" id="mOmraLangSwitcher">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="ka">GE</button>
+      </div>
+    </div>
     <nav class="m-nav-list">
-      <a href="#concept" class="m-link">CONCEPT</a>
-      <a href="#rituals" class="m-link">RITUALS & PRICES</a>
-      <a href="#loyalty" class="m-link">LOYALTY PROGRAM</a>
-      <a href="#giftcards" class="m-link">GIFT CARDS</a>
-      <a href="#palette" class="m-link">COLOR & IDENTITY</a>
-      <a href="#booking" class="m-link">BOOK A SESSION</a>
-      <a href="#booking" class="m-btn-primary">RESERVE APPOINTMENT</a>
+      <a href="#concept" class="m-link" data-i18n="nav_concept">CONCEPT</a>
+      <a href="#rituals" class="m-link" data-i18n="nav_rituals">RITUALS & PRICES</a>
+      <a href="#loyalty" class="m-link" data-i18n="nav_loyalty">LOYALTY PROGRAM</a>
+      <a href="#giftcards" class="m-link" data-i18n="nav_giftcards">GIFT CARDS</a>
+      <a href="#atmosphere" class="m-link" data-i18n="nav_atmosphere">ATMOSPHERE & REELS</a>
+      <a href="#palette" class="m-link" data-i18n="nav_palette">COLOR & IDENTITY</a>
+      <a href="#booking" class="m-link" data-i18n="nav_booking">BOOK A SESSION</a>
+      <a href="#booking" class="m-btn-primary" data-i18n="btn_book_header">RESERVE APPOINTMENT</a>
     </nav>
   </div>
 
@@ -127,9 +150,9 @@
         <!-- Right: Dewy Skin & Tactile Visual -->
         <div class="hero-visual-col">
           <div class="hero-image-card">
-            <img src="images/omra_module_4.jpg" alt="TOCHKA SPA Sensual Aesthetics & Dewy Skin" class="hero-art-img" />
+            <img src="images/3903587528438016601.jpg" alt="TOCHKA SPA Sensual Aesthetics & Dewy Skin" class="hero-art-img" />
             <div class="hero-card-tag">
-              <span class="tag-title">WE PRESS PAUSE FOR YOU</span>
+              <span class="tag-title">TOCHKA RITUAL</span>
               <span class="tag-loc">BALI • NEW YORK</span>
             </div>
           </div>
@@ -440,7 +463,7 @@
 
           <div class="loyalty-visual-col">
             <div class="loyalty-mockup-card">
-              <img src="images/omra_module_3.jpg" alt="TOCHKA SPA Loyalty Card on Natural Stone" class="loyalty-img" />
+              <img src="images/3903611317898741075_3903611114787886062.jpg" alt="TOCHKA SPA Loyalty Card on Natural Stone" class="loyalty-img" />
             </div>
           </div>
         </div>
@@ -504,10 +527,71 @@
     </div>
   </section>
 
-  <!-- 05 / Full-Width Manifesto Banner ("ALL YOU KNEAD IS LOVE") -->
+  <!-- Atmosphere & Video Reels Section -->
+  <section class="omra-reels-section" id="atmosphere">
+    <div class="omra-container">
+      <div class="section-badge-header">
+        <span class="section-serial">05</span>
+        <h2 class="section-heading">ATMOSPHERE & INSTAGRAM REELS</h2>
+        <p class="section-subtext">Moments of deep breath, flowing oils and restorative touch at <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">@toch._ka</a></p>
+      </div>
+
+      <div class="omra-reels-grid">
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="images/3903587528438016601.jpg">
+              <source src="images/3903588512237354348.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="omra-reel-meta">
+            <span class="omra-reel-title">Ritual Harmony</span>
+            <span class="omra-reel-desc">Synchronized flow & deep peace</span>
+          </div>
+        </div>
+
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="images/3941719025657177039.jpg">
+              <source src="images/3937630035152798052.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="omra-reel-meta">
+            <span class="omra-reel-title">Healing Touch</span>
+            <span class="omra-reel-desc">Restoring natural energy flow</span>
+          </div>
+        </div>
+
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="images/3944508926823954774.jpg">
+              <source src="images/3941054178502280147.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="omra-reel-meta">
+            <span class="omra-reel-title">Aromatic Warmth</span>
+            <span class="omra-reel-desc">Pure botanical oils & herbs</span>
+          </div>
+        </div>
+
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="images/3924477178190894561.jpg">
+              <source src="images/3959919174497769469.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="omra-reel-meta">
+            <span class="omra-reel-title">Sacred Pause</span>
+            <span class="omra-reel-desc">Your sanctuary in the city</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 / Full-Width Manifesto Banner ("ALL YOU KNEAD IS LOVE") -->
   <section class="omra-manifesto-banner">
     <div class="banner-photo-wrapper">
-      <img src="images/omra_module_7.jpg" alt="Tactile Wooden Branch & Spa Rituals" class="banner-img" />
+      <img src="images/3941719025657177039.jpg" alt="Tactile Wooden Branch & Spa Rituals" class="banner-img" />
       <div class="banner-tint-overlay">
         <h2 class="banner-huge-text">ALL YOU KNEAD IS LOVE</h2>
         <span class="banner-small-text">TOCHKA SPA • BALI & NEW YORK</span>

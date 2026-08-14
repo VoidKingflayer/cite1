@@ -18,9 +18,18 @@
   <!-- Top Metadata Bar (as in Behance original) -->
   <div class="top-meta-bar">
     <div class="meta-inner">
-      <span class="meta-item">web-designer</span>
-      <span class="meta-item">2023</span>
-      <span class="meta-item">Elvira Putyato</span>
+      <div class="meta-left">
+        <span class="meta-item">web-designer</span>
+        <span class="meta-item">2023</span>
+        <span class="meta-item">Elvira Putyato</span>
+      </div>
+      <div class="top-lang-wrap">
+        <div class="lang-switcher" id="topLangSwitcher">
+          <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru" title="Русский">RU</button>
+          <button type="button" class="lang-btn" data-lang="ka" title="ქართული">GE</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -29,20 +38,21 @@
     <div class="header-container">
       <a href="#hero" class="brand-link">
         <div class="giso-logo">
-          <span class="giso-text">T<span class="sparkle-o">O<svg class="sparkle-svg" viewBox="0 0 24 24"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" fill="currentColor"/></svg></span>CHKA</span>
+          <span class="giso-text">T<span class="dot-o">O<span class="dot-orbit"></span></span>CHKA</span>
           <span class="giso-sub">MASSAGE&SPA</span>
         </div>
       </a>
 
       <nav class="desktop-nav">
-        <a href="#about" class="nav-item">ABOUT</a>
-        <a href="#services" class="nav-item">SERVICES</a>
-        <a href="#masters" class="nav-item">MASTERS</a>
-        <a href="#contacts" class="nav-item">CONTACTS</a>
+        <a href="#about" class="nav-item" data-i18n="nav_about">ABOUT</a>
+        <a href="#services" class="nav-item" data-i18n="nav_services">SERVICES</a>
+        <a href="#masters" class="nav-item" data-i18n="nav_masters">MASTERS</a>
+        <a href="#reels" class="nav-item" data-i18n="nav_reels">ATMOSPHERE</a>
+        <a href="#contacts" class="nav-item" data-i18n="nav_contacts">CONTACTS</a>
       </nav>
 
       <div class="header-cta-wrap">
-        <a href="#contacts" class="btn-book-header">BOOK APPOINTMENT</a>
+        <a href="#contacts" class="btn-book-header" data-i18n="btn_book_header">BOOK APPOINTMENT</a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
           <span></span>
           <span></span>
@@ -53,22 +63,34 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobileDrawer">
+    <div class="m-lang-row">
+      <span class="m-lang-title" data-i18n="lang_select">LANGUAGE:</span>
+      <div class="m-lang-switcher" id="mobileLangSwitcher">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="ka">GE</button>
+      </div>
+    </div>
     <nav class="mobile-nav-list">
-      <a href="#about" class="m-nav-link">ABOUT</a>
-      <a href="#services" class="m-nav-link">SERVICES</a>
-      <a href="#masters" class="m-nav-link">MASTERS</a>
-      <a href="#contacts" class="m-nav-link">CONTACTS</a>
-      <a href="#contacts" class="m-btn-book">BOOK APPOINTMENT</a>
+      <a href="#about" class="m-nav-link" data-i18n="nav_about">ABOUT</a>
+      <a href="#services" class="m-nav-link" data-i18n="nav_services">SERVICES</a>
+      <a href="#masters" class="m-nav-link" data-i18n="nav_masters">MASTERS</a>
+      <a href="#reels" class="m-nav-link" data-i18n="nav_reels">ATMOSPHERE & REELS</a>
+      <a href="#contacts" class="m-nav-link" data-i18n="nav_contacts">CONTACTS</a>
+      <a href="#contacts" class="m-btn-book" data-i18n="btn_book_header">BOOK APPOINTMENT</a>
     </nav>
   </div>
 
   <!-- Hero Section -->
   <section class="hero-section" id="hero">
     <div class="hero-image-wrapper">
-      <img src="images/hero_water.jpg" alt="TOCHKA Sensual Spa & Body Relaxation" class="hero-bg-img" />
+      <video class="hero-bg-video" autoplay muted loop playsinline poster="images/3903587528438016601.jpg">
+        <source src="images/3959919174497769469.mp4" type="video/mp4" />
+        <img src="images/3903587528438016601.jpg" alt="TOCHKA Sensual Spa & Body Relaxation" class="hero-bg-img" />
+      </video>
       <div class="hero-brand-overlay">
         <div class="hero-giant-logo">
-          <span class="h-giso">T<span class="h-sparkle-o">O<svg class="h-sparkle-icon" viewBox="0 0 24 24"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" fill="currentColor"/></svg></span>CHKA</span>
+          <span class="h-giso">T<span class="h-dot-o">O<span class="h-dot-orbit"></span></span>CHKA</span>
           <span class="h-sub">MASSAGE&SPA</span>
         </div>
       </div>
@@ -95,7 +117,7 @@
   <section class="body-canvas-section">
     <div class="canvas-inner">
       <div class="canvas-image-card">
-        <img src="images/hero_water.jpg" alt="Relaxation in warm water" class="canvas-main-img" />
+        <img src="images/3903611317898741075_3903611114787886062.jpg" alt="Relaxation in warm water" class="canvas-main-img" />
         
         <!-- Interactive hotspots from Behance mockup -->
         <a href="#about" class="hotspot-pin pin-about" style="top: 65%; left: 30%;">
@@ -123,10 +145,10 @@
     <div class="about-content-wrapper">
       <div class="about-photos-duo">
         <div class="about-photo-item photo-left">
-          <img src="images/about_massage.jpg" alt="Delicate relaxing body therapy" />
+          <img src="images/3903611317898741075_3903611209218427446.jpg" alt="Delicate relaxing body therapy" />
         </div>
         <div class="about-photo-item photo-right">
-          <img src="images/hero_water.jpg" alt="Serene wellness atmosphere" />
+          <img src="images/3903611317898741075_3903611219158793808.jpg" alt="Serene wellness atmosphere" />
         </div>
       </div>
 
@@ -160,7 +182,7 @@
       <!-- 02: Sports Massage -->
       <div class="service-card tile-cream with-image" data-service="Sports Massage" data-price="$115" data-duration="1 hr">
         <div class="service-image-cutout round-cutout">
-          <img src="images/oil_dropper.jpg" alt="Sports therapeutic oil" />
+          <img src="images/3915819731536431585.jpg" alt="Sports therapeutic oil" />
         </div>
         <div class="service-card-content">
           <h3 class="service-name">Sports Massage</h3>
@@ -171,7 +193,7 @@
       <!-- 03: Hot Stones Massage -->
       <div class="service-card tile-sand with-image" data-service="Hot Stones Massage" data-price="$170" data-duration="1 hr">
         <div class="service-image-cutout">
-          <img src="images/hot_stones.jpg" alt="Basalt hot massage stones" />
+          <img src="images/3916356215272340107.jpg" alt="Basalt hot massage stones" />
         </div>
         <div class="service-card-content">
           <h3 class="service-name">Hot Stones Massage</h3>
@@ -182,7 +204,7 @@
       <!-- 04: Hot Oil Massage -->
       <div class="service-card tile-cream with-image" data-service="Hot Oil Massage" data-price="$175" data-duration="1 hr">
         <div class="service-image-cutout round-cutout">
-          <img src="images/oil_dropper.jpg" alt="Warm nourishing botanical oils" />
+          <img src="images/3916381479956066379.jpg" alt="Warm nourishing botanical oils" />
         </div>
         <div class="service-card-content">
           <h3 class="service-name">Hot Oil Massage</h3>
@@ -193,7 +215,7 @@
       <!-- 05: 60-Minute Full Body Massage -->
       <div class="service-card tile-cream with-image" data-service="60-Minute Full Body Massage" data-price="$185" data-duration="1 hr">
         <div class="service-image-cutout">
-          <img src="images/about_massage.jpg" alt="60-minute relaxing massage" />
+          <img src="images/3903611317898741075_3903611231280471447.jpg" alt="60-minute relaxing massage" />
         </div>
         <div class="service-card-content">
           <h3 class="service-name">60-Minute Full Body Massage</h3>
@@ -204,7 +226,7 @@
       <!-- 06: 90-Minute Full Body Massage -->
       <div class="service-card tile-taupe with-image" data-service="90-Minute Full Body Massage" data-price="$195" data-duration="1 hr 30 min">
         <div class="service-image-cutout">
-          <img src="images/about_massage.jpg" alt="90-minute full body massage" />
+          <img src="images/3924477178190894561.jpg" alt="90-minute full body massage" />
         </div>
         <div class="service-card-content">
           <h3 class="service-name">90-Minute Full Body Massage</h3>
@@ -215,7 +237,7 @@
       <!-- 07: Aromatherapy -->
       <div class="service-card tile-cream with-image" data-service="Aromatherapy" data-price="$180" data-duration="1 hr">
         <div class="service-image-cutout round-cutout">
-          <img src="images/oil_dropper.jpg" alt="Botanical essential oil aromatherapy" />
+          <img src="images/3940308244369539783.jpg" alt="Botanical essential oil aromatherapy" />
         </div>
         <div class="service-card-content">
           <h3 class="service-name">Aromatherapy</h3>
@@ -260,7 +282,7 @@
       <!-- Master 1: Norma Crawford -->
       <div class="master-card">
         <div class="master-photo-pill">
-          <img src="images/hero_water.jpg" alt="Norma Crawford — Founder & Lead Master" />
+          <img src="images/3941719025657177039.jpg" alt="Norma Crawford — Founder & Lead Master" />
         </div>
         <div class="master-info">
           <h3 class="master-name">Norma Crawford</h3>
@@ -271,7 +293,7 @@
       <!-- Master 2: Laura Becker -->
       <div class="master-card">
         <div class="master-photo-pill">
-          <img src="images/about_massage.jpg" alt="Laura Becker — Esthetician" />
+          <img src="images/3944508926823954774.jpg" alt="Laura Becker — Esthetician" />
         </div>
         <div class="master-info">
           <h3 class="master-name">Laura Becker</h3>
@@ -282,7 +304,7 @@
       <!-- Master 3: Michael Warren -->
       <div class="master-card">
         <div class="master-photo-pill">
-          <img src="images/hot_stones.jpg" alt="Michael Warren — Therapist" />
+          <img src="images/3903611317898741075_3903611233268464602.jpg" alt="Michael Warren — Therapist" />
         </div>
         <div class="master-info">
           <h3 class="master-name">Michael Warren</h3>
@@ -293,7 +315,7 @@
       <!-- Master 4: Lisa May -->
       <div class="master-card">
         <div class="master-photo-pill">
-          <img src="images/oil_dropper.jpg" alt="Lisa May — Therapist" />
+          <img src="images/3916381479956066379.jpg" alt="Lisa May — Therapist" />
         </div>
         <div class="master-info">
           <h3 class="master-name">Lisa May</h3>
@@ -303,10 +325,64 @@
     </div>
   </section>
 
+  <!-- Atmosphere & Video Reels Section -->
+  <section class="video-reels-section" id="reels">
+    <div class="section-title-wrap">
+      <h2 class="section-title">ATMOSPHERE & REELS</h2>
+      <p class="section-subtitle">Follow us on Instagram <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none;">@toch._ka</a></p>
+    </div>
+
+    <div class="reels-grid">
+      <div class="reel-card">
+        <div class="reel-video-wrap">
+          <video autoplay muted loop playsinline poster="images/3903587528438016601.jpg">
+            <source src="images/3903588512237354348.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="reel-info">
+          <span class="reel-tag">★ Ritual Flow</span>
+        </div>
+      </div>
+
+      <div class="reel-card">
+        <div class="reel-video-wrap">
+          <video autoplay muted loop playsinline poster="images/3941719025657177039.jpg">
+            <source src="images/3937630035152798052.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="reel-info">
+          <span class="reel-tag">★ Sacred Touch</span>
+        </div>
+      </div>
+
+      <div class="reel-card">
+        <div class="reel-video-wrap">
+          <video autoplay muted loop playsinline poster="images/3944508926823954774.jpg">
+            <source src="images/3941054178502280147.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="reel-info">
+          <span class="reel-tag">★ Healing Oils</span>
+        </div>
+      </div>
+
+      <div class="reel-card">
+        <div class="reel-video-wrap">
+          <video autoplay muted loop playsinline poster="images/3924477178190894561.jpg">
+            <source src="images/3959919174497769469.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="reel-info">
+          <span class="reel-tag">★ Deep Relaxation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Full-Width Manifesto Banner -->
   <section class="temple-banner-section">
     <div class="temple-bg-wrap">
-      <img src="images/about_massage.jpg" alt="Sensual touching hands" class="temple-bg-img" />
+      <img src="images/3903587528438016601.jpg" alt="Sensual touching hands" class="temple-bg-img" />
       <div class="temple-overlay">
         <h2 class="temple-title">BODY'S YOUR TEMPLE, RIGHT?</h2>
       </div>
