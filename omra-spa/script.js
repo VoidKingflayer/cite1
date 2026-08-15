@@ -1,5 +1,5 @@
 /**
- * TOCHKA SPA — INTERACTIVE LOGIC & MULTILINGUAL (EN, RU, GE)
+ * TOCHKA — INTERACTIVE LOGIC & MULTILINGUAL (EN, RU, GE)
  */
 
 const OMRA_TRANSLATIONS = {
@@ -15,7 +15,7 @@ const OMRA_TRANSLATIONS = {
     lang_select: "LANGUAGE:",
     hero_badge: "WELLNESS SANCTUARY",
     hero_title: 'Your space<br /><span class="italic-serif">to breathe.</span>',
-    hero_desc: "TOCHKA SPA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. It is a place where the noise of the city can be left behind, and one can hear themselves again.",
+    hero_desc: "TOCHKA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. It is a place where the noise of the city can be left behind, and one can hear themselves again.",
     hero_btn_explore: "EXPLORE RITUALS",
     hero_btn_book: "BOOK APPOINTMENT",
     h_feat_1: "Synchronized 4-Hands",
@@ -24,7 +24,7 @@ const OMRA_TRANSLATIONS = {
     hero_tag_title: "WE PRESS PAUSE FOR YOU",
     concept_serial: "01",
     concept_heading: "CONCEPT & PHILOSOPHY",
-    concept_quote: '"TOCHKA SPA sounds confident and clear here, like a deep breath and a slow exhale. The strictness of the lines creates a sense of stability and support — the foundation on which recovery is built."',
+    concept_quote: '"TOCHKA sounds confident and clear here, like a deep breath and a slow exhale. The strictness of the lines creates a sense of stability and support — the foundation on which recovery is built."',
     concept_author: "— Brand Identity & Architecture Concept",
     c_card_1_title: "Balance of Straight & Soft",
     c_card_1_text: "The simplicity of the form resembles an architectural object: it has clarity, structure, and rhythm. The subtle curve in our philosophy adds softness, hinting at touch, flowing oils, and smooth synchronized movements.",
@@ -62,7 +62,7 @@ const OMRA_TRANSLATIONS = {
     loyalty_desc: "Receive more pleasure and care for yourself. Your 6th massage is complimentary — our little ritual of gratitude. Collect 5 stamps and enjoy your next session as our gift.",
     stamp_prompt: "CLICK TO TEST STAMP COLLECTION:",
     stamp_counter_3: "3 of 5 stamps collected. 2 more until your complimentary session!",
-    stamp_counter_win: "🎉 <strong>Congratulations!</strong> All 5 stamps collected. Your 6th session is 100% complimentary!",
+    stamp_counter_win: "🎉 <strong>Congratulations!</strong> All 5 stamps collected. Your 6th session is 100% complimentary from TOCHKA!",
     gift_serial: "04",
     gift_heading: "GIFT CARDS & CERTIFICATES",
     gift_subtext: "Give the gift of presence, tranquility, and restorative self-care.",
@@ -86,7 +86,7 @@ const OMRA_TRANSLATIONS = {
     palette_subtext: "Iron metallic black, brushed titanium steel, platinum sand, and raw forged charcoal.",
     booking_serial: "07",
     booking_heading: "RESERVE YOUR SANCTUARY",
-    booking_lead: "Select your ritual and preferred time. Our spa concierge will confirm your private suite within 15 minutes.",
+    booking_lead: "Select your ritual and preferred time. Our concierge will confirm your private suite within 15 minutes.",
     form_name_lbl: "FULL NAME *",
     form_phone_lbl: "PHONE / WHATSAPP *",
     form_email_lbl: "E-MAIL ADDRESS *",
@@ -96,12 +96,16 @@ const OMRA_TRANSLATIONS = {
     form_notes_ph: "Lower back focus, essential oil preference, pressure level...",
     form_submit_btn: "CONFIRM RESERVATION",
     form_transmitting: "TRANSMITTING RESERVATION...",
-    form_success: "✦ Reservation request received. Our TOCHKA Spa concierge will contact you via WhatsApp / Phone within 15 minutes to confirm your private suite.",
-    loc_heading: "SANCTUARY LOCATIONS",
-    loc_hours_bali: "Daily: 09:00 — 21:00",
-    loc_hours_ny: "Daily: 10:00 — 22:00",
+    form_success: "✦ Reservation request received. Our TOCHKA concierge will contact you via WhatsApp / Phone within 15 minutes to confirm your private suite.",
+    loc_heading: "SANCTUARY LOCATION",
+    loc_city_batumi: "BATUMI SANCTUARY",
+    loc_hours_batumi: "Daily: 10:00 — 22:00",
+    btn_gmaps: "Open in Google Maps",
+    f_title_nav: "NAVIGATION",
+    f_title_rituals: "RITUALS",
+    f_title_connect: "LOCATION & CONNECT",
     footer_motto: "Your space to breathe. Aesthetics & comfort as part of the healing process.",
-    footer_copy: "© 2023–2025 TOCHKA SPA. Design & Branding based on Aiya Kerimova's architectural identity."
+    footer_copy: "© 2023–2025 TOCHKA. Design & Branding based on Aiya Kerimova's architectural identity."
   },
   ru: {
     nav_concept: "КОНЦЕПЦИЯ",
@@ -115,7 +119,7 @@ const OMRA_TRANSLATIONS = {
     lang_select: "ЯЗЫК:",
     hero_badge: "SANCTUARY ПРОСТРАНСТВО",
     hero_title: 'Ваше пространство<br /><span class="italic-serif">для дыхания.</span>',
-    hero_desc: "TOCHKA SPA рождается на стыке тела и души — там, где прикосновение становится языком заботы, а само пространство дышит спокойствием. Это место, где можно оставить за порогом шум города и снова услышать себя.",
+    hero_desc: "ТОЧКА рождается на стыке тела и души — там, где прикосновение становится языком заботы, а само пространство дышит спокойствием. Это место, где можно оставить за порогом шум города и снова услышать себя.",
     hero_btn_explore: "ВЫБРАТЬ РИТУАЛ",
     hero_btn_book: "ЗАПИСАТЬСЯ НА СЕАНС",
     h_feat_1: "Синхронный массаж в 4 руки",
@@ -124,7 +128,7 @@ const OMRA_TRANSLATIONS = {
     hero_tag_title: "МЫ СТАВИМ СУЕТУ НА ПАУЗУ",
     concept_serial: "01",
     concept_heading: "КОНЦЕПЦИЯ И ФИЛОСОФИЯ",
-    concept_quote: '«TOCHKA SPA звучит уверенно и чисто, как глубокий вдох и медленный выдох. Строгость линий создает ощущение стабильности и опоры — фундамент, на котором строится восстановление».',
+    concept_quote: '«ТОЧКА звучит уверенно и чисто, как глубокий вдох и медленный выдох. Строгость линий создает ощущение стабильности и опоры — фундамент, на котором строится восстановление».',
     concept_author: "— Архитектурная концепция и айдентика бренда",
     c_card_1_title: "Баланс строгих и мягких линий",
     c_card_1_text: "Лаконичность формы напоминает архитектурный объект: в ней есть четкость, структура и ритм. Мягкие изгибы символизируют тактильность, текучесть масел и плавность синхронных движений мастеров.",
@@ -132,7 +136,7 @@ const OMRA_TRANSLATIONS = {
     c_card_2_text: "Каждый элемент работает на обновление: легкость дыхания, теплота рук терапевта, натуральный лен и приглушенный свет, где эстетика становится неотъемлемой частью восстановления.",
     rituals_serial: "02",
     rituals_heading: "ТЕРАПИИ И РИТУАЛЫ",
-    rituals_subtext: "Авторские массажи, синхронные спа-ритуалы и холистический уход.",
+    rituals_subtext: "Авторские массажи, синхронные ритуалы и холистический уход.",
     f_all: "Все ритуалы",
     f_massage: "Массажи",
     f_special: "Специальные и в 4 руки",
@@ -162,7 +166,7 @@ const OMRA_TRANSLATIONS = {
     loyalty_desc: "Дарите себе больше заботы и наслаждения. Каждый 6-й визит комплиментарен — наш знак признательности за ваше доверие. Соберите 5 отметок и получите следующий сеанс в подарок.",
     stamp_prompt: "НАЖМИТЕ, ЧТОБЫ ПРОТЕСТИРОВАТЬ ШТАМПЫ:",
     stamp_counter_3: "Собрано 3 из 5 отметок. Еще 2 сеанса до бесплатного ритуала!",
-    stamp_counter_win: "🎉 <strong>Поздравляем!</strong> Все 5 отметок собраны. Ваш 6-й сеанс — на 100% бесплатный подарок от TOCHKA SPA!",
+    stamp_counter_win: "🎉 <strong>Поздравляем!</strong> Все 5 отметок собраны. Ваш 6-й сеанс — на 100% бесплатный подарок от ТОЧКА!",
     gift_serial: "04",
     gift_heading: "ПОДАРОЧНЫЕ СЕРТИФИКАТЫ",
     gift_subtext: "Подарите близким моменты тишины, заботы и глубокого расслабления.",
@@ -196,12 +200,16 @@ const OMRA_TRANSLATIONS = {
     form_notes_ph: "Акцент на поясницу, предпочтения по маслам, желаемая сила нажима...",
     form_submit_btn: "ПОДТВЕРДИТЬ БРОНИРОВАНИЕ",
     form_transmitting: "ОТПРАВКА БРОНИРОВАНИЯ...",
-    form_success: "✦ Запрос на бронирование получен. Консьерж TOCHKA Spa свяжется с вами по WhatsApp / телефону в течение 15 минут для подтверждения сьюта.",
-    loc_heading: "ЛОКАЦИИ САНКТУАРИЕВ",
-    loc_hours_bali: "Ежедневно: 09:00 — 21:00",
-    loc_hours_ny: "Ежедневно: 10:00 — 22:00",
+    form_success: "✦ Запрос на бронирование получен. Консьерж ТОЧКА свяжется с вами по WhatsApp / телефону в течение 15 минут для подтверждения сьюта.",
+    loc_heading: "ЛОКАЦИЯ САНКТУАРИЯ",
+    loc_city_batumi: "БАТУМИ САНКТУАРИЙ",
+    loc_hours_batumi: "Ежедневно: 10:00 — 22:00",
+    btn_gmaps: "Открыть в Google Maps",
+    f_title_nav: "НАВИГАЦИЯ",
+    f_title_rituals: "РИТУАЛЫ",
+    f_title_connect: "ЛОКАЦИЯ И СВЯЗЬ",
     footer_motto: "Ваше пространство для дыхания. Эстетика и комфорт как путь к исцелению.",
-    footer_copy: "© 2023–2025 TOCHKA SPA. Дизайн и концепция бренда основаны на архитектурной айдентике Айи Керимовой."
+    footer_copy: "© 2023–2025 TOCHKA. Дизайн и концепция бренда основаны на архитектурной айдентике Айи Керимовой."
   },
   ka: {
     nav_concept: "კონცეფცია",
@@ -215,7 +223,7 @@ const OMRA_TRANSLATIONS = {
     lang_select: "ენა:",
     hero_badge: "SANCTUARY სივრცე",
     hero_title: 'თქვენი სივრცე<br /><span class="italic-serif">სუნთქვისთვის.</span>',
-    hero_desc: "TOCHKA SPA იბადება სხეულისა და სულის შეხვედრის ადგილას — სადაც შეხება ხდება მზრუნველობის ენა, ხოლო თავად სივრცე სუნთქავს სიმშვიდით. ეს არის ადგილი, სადაც შეგიძლიათ დაივიწყოთ ქალაქის ხმაური და კვლავ მოუსმინოთ საკუთარ თავს.",
+    hero_desc: "TOCHKA იბადება სხეულისა და სულის შეხვედრის ადგილას — სადაც შეხება ხდება მზრუნველობის ენა, ხოლო თავად სივრცე სუნთქავს სიმშვიდით. ეს არის ადგილი, სადაც შეგიძლიათ დაივიწყოთ ქალაქის ხმაური და კვლავ მოუსმინოთ საკუთარ თავს.",
     hero_btn_explore: "რიტუალების ნახვა",
     hero_btn_book: "სეანსზე ჩაწერა",
     h_feat_1: "სინქრონული 4-ხელიანი მასაჟი",
@@ -224,7 +232,7 @@ const OMRA_TRANSLATIONS = {
     hero_tag_title: "ჩვენ ვაჩერებთ დროს თქვენთვის",
     concept_serial: "01",
     concept_heading: "კონცეფცია და ფილოსოფია",
-    concept_quote: '„TOCHKA SPA ჟღერს თავდაჯერებულად და სუფთად, როგორც ღრმა ჩასუნთქვა და ნელი ამოსუნთქვა. ხაზების სიმკაცრე ქმნის სტაბილურობისა და საყრდენის შეგრძნებას — საძირკველს, რომელზეც შენდება აღდგენა.“',
+    concept_quote: '„TOCHKA ჟღერს თავდაჯერებულად და სუფთად, როგორც ღრმა ჩასუნთქვა და ნელი ამოსუნთქვა. ხაზების სიმკაცრე ქმნის სტაბილურობისა და საყრდენის შეგრძნებას — საძირკველს, რომელზეც შენდება აღდგენა.“',
     concept_author: "— ბრენდის არქიტექტურული იდენტობის კონცეფცია",
     c_card_1_title: "მკაცრი და რბილი ხაზების ბალანსი",
     c_card_1_text: "ფორმის ლაკონიურობა წააგავს არქიტექტურულ ობიექტს: მასში არის სიცხადე, სტრუქტურა და რიტმი. რბილი მოსახვევები მიუთითებს შეხებაზე, ზეთების დინებასა და ოსტატების სინქრონულ მოძრაობებზე.",
@@ -232,7 +240,7 @@ const OMRA_TRANSLATIONS = {
     c_card_2_text: "თითოეული ელემენტი მუშაობს განახლებაზე: სუნთქვის სიმსუბუქე, თერაპევტის თბილი ხელები, ბუნებრივი თეთრეული და ესთეტიკა, რომელიც ხდება აღდგენის განუყოფელი ნაწილი.",
     rituals_serial: "02",
     rituals_heading: "თერაპიები და რიტუალები",
-    rituals_subtext: "საავტორო მასაჟები, სინქრონული სპა-რიტუალები და ჰოლისტური მოვლა.",
+    rituals_subtext: "საავტორო მასაჟები, სინქრონული რიტუალები და ჰოლისტური მოვლა.",
     f_all: "ყველა რიტუალი",
     f_massage: "მასაჟები",
     f_special: "სპეციალური & 4-ხელიანი",
@@ -262,7 +270,7 @@ const OMRA_TRANSLATIONS = {
     loyalty_desc: "აჩუქეთ საკუთარ თავს მეტი სიამოვნება. ყოველი მე-6 ვიზიტი უფასოა — ჩვენი მადლიერების ნიშნად. შეაგროვეთ 5 შტამპი და მიიღეთ შემდეგი სეანსი საჩუქრად.",
     stamp_prompt: "დააჭირეთ შტამპების გასატესტად:",
     stamp_counter_3: "შეგროვებულია 3 შტამპი 5-დან. კიდევ 2 სეანსი უფასო მასაჟამდე!",
-    stamp_counter_win: "🎉 <strong>გილოცავთ!</strong> 5-ვე შტამპი შეგროვებულია. თქვენი მე-6 სეანსი 100%-ით უფასოა!",
+    stamp_counter_win: "🎉 <strong>გილოცავთ!</strong> 5-ვე შტამპი შეგროვებულია. თქვენი მე-6 სეანსი 100%-ით უფასოა TOCHKA-სგან!",
     gift_serial: "04",
     gift_heading: "სასაჩუქრე სერტიფიკატები",
     gift_subtext: "აჩუქეთ საყვარელ ადამიანებს სიმშვიდისა და ღრმა განტვირთვის წუთები.",
@@ -296,12 +304,16 @@ const OMRA_TRANSLATIONS = {
     form_notes_ph: "წელის ზონაზე აქცენტი, ზეთების პრეფერენცია, წნევის დონე...",
     form_submit_btn: "ჯავშნის დადასტურება",
     form_transmitting: "ჯავშანი იგზავნება...",
-    form_success: "✦ ჯავშნის მოთხოვნა მიღებულია. TOCHKA Spa-ს კონსიერჟი დაგიკავშირდებათ WhatsApp-ით ან ტელეფონით 15 წუთში.",
-    loc_heading: "სანქტუარიების ლოკაციები",
-    loc_hours_bali: "ყოველდღე: 09:00 — 21:00",
-    loc_hours_ny: "ყოველდღე: 10:00 — 22:00",
+    form_success: "✦ ჯავშნის მოთხოვნა მიღებულია. TOCHKA-ს კონსიერჟი დაგიკავშირდებათ WhatsApp-ით ან ტელეფონით 15 წუთში.",
+    loc_heading: "სანქტუარიის ლოკაცია",
+    loc_city_batumi: "ბათუმის სანქტუარია",
+    loc_hours_batumi: "ყოველდღე: 10:00 — 22:00",
+    btn_gmaps: "Google Maps-ზე გახსნა",
+    f_title_nav: "ნავიგაცია",
+    f_title_rituals: "რიტუალები",
+    f_title_connect: "ლოკაცია და კონტაქტი",
     footer_motto: "თქვენი სივრცე სუნთქვისთვის. ესთეტიკა და კომფორტი, როგორც განკურნების გზა.",
-    footer_copy: "© 2023–2025 TOCHKA SPA. ბრენდის დიზაინი ეფუძნება აია ქერიმოვას არქიტექტურულ იდენტობას."
+    footer_copy: "© 2023–2025 TOCHKA. ბრენდის დიზაინი ეფუძნება აია ქერიმოვას არქიტექტურულ იდენტობას."
   }
 };
 
@@ -334,6 +346,13 @@ function applyOmraLanguage(lang) {
   document.querySelectorAll('[data-i18n="nav_booking"]').forEach(el => el.textContent = t.nav_booking);
   document.querySelectorAll('[data-i18n="btn_book_header"]').forEach(el => el.textContent = t.btn_book_header);
   document.querySelectorAll('[data-i18n="lang_select"]').forEach(el => el.textContent = t.lang_select);
+  document.querySelectorAll('[data-i18n="loc_heading"]').forEach(el => el.textContent = t.loc_heading);
+  document.querySelectorAll('[data-i18n="loc_city_batumi"]').forEach(el => el.textContent = t.loc_city_batumi);
+  document.querySelectorAll('[data-i18n="loc_hours_batumi"]').forEach(el => el.textContent = t.loc_hours_batumi);
+  document.querySelectorAll('[data-i18n="btn_gmaps"]').forEach(el => el.textContent = t.btn_gmaps);
+  document.querySelectorAll('[data-i18n="f_title_nav"]').forEach(el => el.textContent = t.f_title_nav);
+  document.querySelectorAll('[data-i18n="f_title_rituals"]').forEach(el => el.textContent = t.f_title_rituals);
+  document.querySelectorAll('[data-i18n="f_title_connect"]').forEach(el => el.textContent = t.f_title_connect);
 
   // 2. Hero Section
   const heroBadge = document.querySelector('.hero-brand-badge .badge-tag');
@@ -495,13 +514,6 @@ function applyOmraLanguage(lang) {
 
     const submitBtn = bookSec.querySelector('.btn-submit span');
     if (submitBtn) submitBtn.textContent = t.form_submit_btn;
-
-    const locHead = bookSec.querySelector('.loc-heading');
-    if (locHead) locHead.textContent = t.loc_heading;
-
-    const hours = bookSec.querySelectorAll('.loc-hours');
-    if (hours[0]) hours[0].textContent = t.loc_hours_bali;
-    if (hours[1]) hours[1].textContent = t.loc_hours_ny;
   }
 
   // 10. Footer
