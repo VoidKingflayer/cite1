@@ -1,0 +1,180 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    {% block title %}
+    {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title|default:"TOCHKA — Your Space to Breathe | Luxury Wellness & Body Rituals" }}{% endif %}
+    {% endblock %}
+  </title>
+  <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% else %}TOCHKA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. Luxury massage therapies, body rituals, and wellness sanctuary in Batumi.{% endif %}" />
+
+  <!-- Google Fonts: Tenor Sans, Cormorant Garamond, Syne, Montserrat, Inter, Italiana, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Italiana&family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'home/css/style.css' %}?v=2.6" />
+  <style>
+    /* Clean Link & Element Overrides */
+    a {
+      text-decoration: none !important;
+      outline: none !important;
+    }
+    .omra-nav .nav-item,
+    .omra-nav .nav-item:link,
+    .omra-nav .nav-item:visited {
+      color: #C8CFD8 !important;
+      text-decoration: none !important;
+      font-weight: 500 !important;
+    }
+    .omra-nav .nav-item:hover {
+      color: #FFFFFF !important;
+    }
+    .btn-book-header,
+    .btn-book-header:link,
+    .btn-book-header:visited {
+      color: #16181B !important;
+      background: linear-gradient(135deg, #E8ECEF 0%, #CCD5DF 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+    }
+    .btn-book-header:hover {
+      background: #FFFFFF !important;
+      border-color: #FFFFFF !important;
+      color: #08090A !important;
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25) !important;
+    }
+    .location-card a,
+    .location-card a:link,
+    .location-card a:visited {
+      color: #DFE5EC !important;
+      text-decoration: none !important;
+    }
+    .btn-gmaps-card,
+    .btn-gmaps-card:link,
+    .btn-gmaps-card:visited {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      margin-top: 0.9rem !important;
+      padding: 0.85rem 1.25rem !important;
+      background: linear-gradient(135deg, rgba(232, 236, 239, 0.12) 0%, rgba(200, 207, 216, 0.05) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      border-radius: 2px !important;
+      color: #E8ECEF !important;
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      text-decoration: none !important;
+      text-transform: uppercase !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-gmaps-card:hover {
+      background: rgba(255, 255, 255, 0.22) !important;
+      border-color: rgba(255, 255, 255, 0.45) !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+    }
+    .loc-contact-link,
+    .loc-contact-link:link,
+    .loc-contact-link:visited {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      color: #DFE5EC !important;
+      text-decoration: none !important;
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      transition: all 0.2s ease !important;
+      padding: 0.25rem 0 !important;
+      outline: none !important;
+    }
+    .loc-contact-link:hover {
+      color: #FFFFFF !important;
+      transform: translateX(4px) !important;
+    }
+    .loc-contact-link .loc-icon {
+      color: #9BA4B0 !important;
+      transition: color 0.2s ease !important;
+    }
+    .loc-contact-link:hover .loc-icon {
+      color: #FFFFFF !important;
+    }
+  </style>
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  {% wagtailuserbar %}
+
+  {% block content %}{% endblock %}
+
+  <script src="{% static 'home/js/script.js' %}?v=2026_v20"></script>
+  
+  <script>
+  // Integrated AJAX Booking to Wagtail CMS API
+  document.addEventListener('DOMContentLoaded', function() {
+    const bookingForm = document.getElementById('omraBookingForm');
+    const feedback = document.getElementById('omraFeedback');
+
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = bookingForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>TRANSMITTING APPOINTMENT...</span>';
+        if (feedback) feedback.innerHTML = '';
+
+        const formData = {
+          client_name: document.getElementById('guestName')?.value || '',
+          client_phone: document.getElementById('guestPhone')?.value || '',
+          client_email: document.getElementById('guestEmail')?.value || '',
+          service: document.getElementById('ritualSelect')?.value || '',
+          booking_date: document.getElementById('bookingDate')?.value || '',
+          notes: document.getElementById('specialRequests')?.value || ''
+        };
+
+        fetch('/api/bookings/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          if (data.success) {
+            if (feedback) {
+              feedback.innerHTML = `<div style="background: rgba(232, 236, 239, 0.08); border: 1px solid rgba(255, 255, 255, 0.4); color: #E8ECEF; padding: 1.25rem; border-radius: 2px; font-weight: 500; font-size: 0.9rem; line-height: 1.6; margin-top: 1.5rem; text-align: center;">${data.message}</div>`;
+            }
+            bookingForm.reset();
+          } else {
+            if (feedback) {
+              feedback.innerHTML = `<div style="background: rgba(220, 38, 38, 0.15); border: 1px solid #dc2626; color: #f87171; padding: 1rem; border-radius: 2px; font-weight: 500; margin-top: 1.5rem;">${data.error || 'Failed to submit booking.'}</div>`;
+            }
+          }
+        })
+        .catch(err => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          if (feedback) {
+            feedback.innerHTML = `<div style="background: rgba(220, 38, 38, 0.15); border: 1px solid #dc2626; color: #f87171; padding: 1rem; border-radius: 2px; font-weight: 500; margin-top: 1.5rem;">Network error. Please try again or contact via WhatsApp.</div>`;
+          }
+        });
+      });
+    }
+  });
+  </script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pixwox - Instagram Profile Viewer and Downloader</title>
+    <meta name="description" content="Pixwox - Instagram profile viewer and downloader helps you to download and view Insta profiles, posts, DP, photos, videos, reels, and stories anonymously.">
+    <link rel="canonical" href="https://pixwox.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    
+     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="https://pixwox.net/images/icon32x32.png" sizes="32x32">
+<link rel="icon" href="https://pixwox.net/images/icon192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://pixwox.net/images/icon.png">
+<meta name="msapplication-TileImage" content="https://pixwox.net/images/icon.png">
+<meta name="csrf-token" content="FOT2PjAEjR6OvuRQoL7eIVv206RtukoRL1TkgYSB">
+<meta name="google-site-verification" content="FVGjP4rxuupvOlXOexaoC94Xs4MbY-Ea-Fgi0qTjLBM" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7GC41EFBB0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7GC41EFBB0');
+</script>    <style>.dropdown-item{border-bottom:1px dashed rgb(216, 214, 214);margin-bottom:2px}.fa{font-size:28px}.bg{background-color:#fcfcfc} #bi{font-size:25px}.atag{color:black}.atag:hover{color:blue}.img-size{min-height:300px;max-height:300px;object-fit:cover}.loader-bg{position:fixed;z-index:2;background:#00000077;width:100%;height:100vh;display:flex;justify-content:center;align-items:center}.loader{width:48px;height:48px;border:3px solid #FFF;border-radius:50%;display:inline-block;position:relative;box-sizing:border-box;animation:rotation 1s linear infinite}.loader::after{content:'';box-sizing:border-box;position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:56px;height:56px;border-radius:50%;border:3px solid;border-color:#065464 transparent}.loader-bg-result{position:absolute;z-index:2;background:#00000077;width:100%;height:100vh;display:flex;justify-content:center;align-items:center}.loader-result{width:48px;height:48px;border:3px solid #FFF;border-radius:50%;display:inline-block;position:relative;box-sizing:border-box;animation:rotation 1s linear infinite}.loader-result::after{content:'';box-sizing:border-box;position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:56px;height:56px;border-radius:50%;border:3px solid;border-color:#005ede transparent} @keyframes rotation{0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)}}.bi-chevron-right{font-size:12px}.dropdown-item{border-bottom:1px dashed rgb(216, 214, 214);margin-bottom:2px}.fa{font-size:28px}.bg{background-color:#fcfcfc}#bi{font-size:25px}.atag{color:black}.atag:hover{color:blue}.swiper-container{overflow:hidden}.swiper-slide{text-align:center;font-size:18px;background:#fff;display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center}.card{min-height:260px!important}</style>
+    <style>
+#username-section .card{
+	min-height:auto !important;
+}
+</style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1320796006817308"
+     crossorigin="anonymous"></script>
+     <script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//cdn.adpushup.com/45445/adpushup.js'; s.crossOrigin='anonymous'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); w.adpushup = w.adpushup || {que:[]}; })(window, document);</script>
+</head>
+<body>
+    <div class="loader-bg d-none" id="layer">
+    <span class="loader"></span>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="https://pixwox.net">
+            <img src="https://pixwox.net/images/logo.png" alt="Picwow logo" height="25" width="25" class="img-fluid me-1">
+            ixwox
+        </a>
+        <div class="col-lg-6 col-md-5 col-6">
+            <div class="input-group">
+                <input class="form-control rounded-0 border border-end-0 shadow-none" type="search" placeholder="Enter instagram username or profile url" 
+					aria-label="Search" id="searchinsta" name="searchinsta" >
+                <button class="input-group-text bg-white" id="submitform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/> </svg>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</nav>    <div class="bg">
+         <div class="container py-5">
+    <div class="row text-lg-end text-center">
+        <div class="col-lg-12">
+                <a class="text-decoration-none" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpixwox.net%2F&amp;title=" target="_blank" rel="nofollow noopener">
+                    <i class="fa fa-facebook text-secondary"></i>
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=&media=https%3A//pixwox.net/" class="text-decoration-none" target="_blank" rel="nofollow noopener">
+                    <i class="fa fa-pinterest-p text-secondary ms-3" aria-hidden="true"></i>
+                </a>
+                <a class="text-decoration-none" href="https://twitter.com/intent/tweet?url=https://pixwox.net/&text=" target="_blank" rel="nofollow noopener">
+                    <i class="fa fa-twitter text-secondary ms-3"></i>
+                </a>
+                <a class="text-decoration-none" href="http://reddit.com/submit?url=https%3A%2F%2Fpixwox.net%2F" target="_blank" rel="nofollow noopener">
+                    <i class="fa fa-reddit-alien text-secondary ms-3"></i>
+                </a>
+        </div>
+    </div>
+</div><!-- <div class="container my-5 d-none" id="result-box">
+    <div id="topbox"></div>
+    <div class="row g-4 py-4" id="result"></div>
+</div> -->
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12 text-center">
+            <h1>Pixwox Instagram Profile Viewer</h1>
+ <div class="col-lg-12 text-center">
+            <p>Check out our Instagram profile viewer to explore Stories and see the world.</p>
+        </div>
+ 			<div id="2ab72c46-0dd2-4c83-96c8-42762b6fee99" class="_ap_apex_ad py-2" style="width: 336px; height: 280px;">
+	<script>
+		var adpushup = window.adpushup = window.adpushup || {};
+		adpushup.que = adpushup.que || [];
+		adpushup.que.push(function() {
+			adpushup.triggerAd("2ab72c46-0dd2-4c83-96c8-42762b6fee99");
+		});
+	</script>
+</div>
+        </div>
+       
+    </div>
+</div>
+	
+    <div id="username-section" class="container d-none">
+    	
+    </div>
+    
+    
+<div class="container my-5">
+     
+</div>
+<div class="container my-5">
+    <div class="py-4 d-flex justify-content-between align-items-center g-3">
+        <div>
+            <span class="fw-normal h5">Popular #hashtag</span>
+        </div>
+        
+    </div>
+    <div class="row g-4 ">
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/girl" class="text-decoration-none fw-light atag">Girl</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/life" class="text-decoration-none fw-light atag">Life</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/support" class="text-decoration-none fw-light atag">Support</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm bb-white p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/happy" class="text-decoration-none fw-light atag">Happy</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/beautiful" class="text-decoration-none fw-light atag">Beautiful</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/love" class="text-decoration-none fw-light atag">Love</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/fashion" class="text-decoration-none fw-light atag">Fashion</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/food" class="text-decoration-none fw-light atag">Food</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/travel" class="text-decoration-none fw-light atag">Travel</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/model" class="text-decoration-none fw-light atag">Model</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/style" class="text-decoration-none fw-light atag">Style</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/cool" class="text-decoration-none fw-light atag">Cool</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/music" class="text-decoration-none fw-light atag">Music</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/movie" class="text-decoration-none fw-light atag">Movie</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/nature" class="text-decoration-none fw-light atag">Nature</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/instagood" class="text-decoration-none fw-light atag">Instagood</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/friend" class="text-decoration-none fw-light atag">Friend</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/game" class="text-decoration-none fw-light atag">Game</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/clothes" class="text-decoration-none fw-light atag">Clothes</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/like4like" class="text-decoration-none fw-light atag">Like4like</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/photooftheday" class="text-decoration-none fw-light atag"> Photooftheday</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/picoftheday" class="text-decoration-none fw-light atag">Picoftheday</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/instadaily" class="text-decoration-none fw-light atag">Instadaily</a>
+            </h6>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 shadow-sm p-2">
+            <h6>
+                <a href="https://pixwox.net/tag/piwox" class="text-decoration-none fw-light atag">Piwox</a>
+            </h6>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 mx-auto">
+            <h2><strong>What is Insta Profile Viewer?</strong></h2>
+            <p>Instagram profile viewer is an online tool that can give users access to any public Instagram account's content without letting the user know. It can view specific user’s Instagram profiles in high quality. It will show the user's Instagram media files and full-sized profile pictures.</p>
+            <h2><strong>How To Use Pixwox Instagram Profile Viewer?</strong></h2>
+            <p>There is no registration or need to log into an account on this website. You have to follow the given steps:</p>
+            <ol>
+                <li><strong>Copy Profile Link:</strong></li>
+            </ol>
+            <p>Head to your Instagram account and open the user’s profile whose profile you want to view. Copy its profile URL.</p>
+            <ol start="2">
+                <li><strong>Paste URL:</strong></li>
+            </ol>
+            <p>Open your device’s browser and open this Instagram profile viewer <a
+                href="https://pixwox.net">Pixwox.net</a>. Now, paste the copied link in the search bar of this Instagram viewer to view Insta profiles anonymously.</p>
+            <ol start="3">
+                <li><strong>View Instagram Profile:</strong></li>
+            </ol>
+            <p>Click on the “View” button, and within a few seconds, you will get access to that profile. You can also view Insta profiles from that profile.</p>
+                
+            <h2><strong>Reasons to Use Pixwox Instagram Viewer</strong></h2>
+            <p>There are numerous reasons to use Pixwox Instagram viewer. Here are a few reasons why someone might think about using such an IG viewer and some things to think about:</p>
+            <ul>
+                <li>View Instagram profiles for artistic purposes, such as creating graphics or getting photography ideas.</li>
+                <li>People also use this Insta viewer to view Instagram content for educational, research, and analysis purposes.</li>
+                <li>You can view Insta content to work on projects with others that need offline access.</li>
+            </ul>
+            <h2><strong>Benefits of Using Instagram Profile Viewer</strong></h2>
+            <p>Below are some of the benefits offered by this IG profile viewer that follow Instagram’s terms of service:</p>
+            
+            <h3><strong>Convenience</strong></h3>
+            <p>It provides a convenient way to access public profiles and content without needing to log in to your Instagram.</p>
+            
+            <h3><strong>Exploration</strong></h3>
+            <p>You can also broaden your Insta experience by finding new accounts, materials, and trends that grab your attention.</p>
+            
+            <h3><strong>Anonymity</strong></h3>
+            <p>It will preserve your anonymity while viewing the Instagram profile of any user. You can browse content without leaving likes, comments, or other indications of your activity.</p>
+            
+            
+            <h3><strong>Comparative Analysis</strong></h3>
+            <p>Influencers or businesses may use viewers to contrast their profiles with those of rivals to learn more about their engagement strategies.</p>
+            
+            <h3><strong>100% Free</strong></h3>
+            <p>One of the main benefits of using this IG Profile viewer is that it is 100% free and safe to use. You can use it without paying a fee or submitting any personal data.</p>
+            
+             <h3><strong>Unlimited Usage</strong></h3>
+            <p>Unlimited usage is another benefit of this incredible tool. This tool will never limit the number of profile pictures its users can download. Enjoy unlimited downloads with Pixwox.</p>
+            
+            <h3><strong>High-Quality DP Downloads</strong></h3>
+            <p>You can easily download the DP of any public or private account in its original quality. So, say goodbye to blur and low-quality downloaded images.</p>
+            
+            
+            <h3><strong>Safe and Secure</strong></h3>
+            <p>Our Ig viewer is designed with advanced technology and ensures no one gets access to users data. So, don’t worry about data theft while using this Instagram profile downloader.</p>
+            
+            
+            <h3><strong>Works at Lightning Speed</strong></h3>
+            <p>Fast downloading speed is another incredible benefit of this tool. You don’t need to wait too long to view and download insta DPs using this tool.
+
+</p>
+            
+            
+           
+            
+            <p class="my-4 text-center fw-bold">If You Want to <a class="text-decoration-none" href="https://pixwox.net/instagram-story-viewer">Download Instagram Stories</a> we have a Free online 
+             Story Downloader Tool That is easy to use, fast, and reliable.</p> 
+            
+            
+               <h2><strong>Use Cases of Pixwox Instagram Profile Viewer</strong></h2>
+            <h3><strong>Enlarge the Smallest Images</strong></h3>
+            <p>Sometimes, people want to view the display pictures of other Insta  users and want to download them. This is where they need to use  Pixwox, which will help them enlarge the smallest DPs into genuine resolution.</p>
+            
+             <h3><strong>Find Out Who Is Texting You</strong></h3>
+            <p>If you ever get a message request on your Instagram and want to know who they are immediately, you can use this tool. You can browse their DPs to find out who this unknown person is. You can also download their DP to share with your friends if they have any idea who he is.</p>
+            
+             <h3><strong>Get Inspiration For Profile Picture</strong></h3>
+            <p>You can view different Instagram users to get an idea of what kind of display picture can impact your account's appearance. Pixwox.net can allow you to view and download other users’ DPs to get inspiration for profile pictures.</p>
+            
+            
+            
+            
+            <h2><strong>Frequently Asked Questions</strong></h2>
+            <h3><strong>Can I view the Instagram profile photo of any Instagram user?</strong></h3>
+            <p>Yes, of course. Our Insta profile viewer will give you access to view the images of any user who has signed up for Instagram. Check out any private account, including those of friends, businesses, and celebrities.</p>
+            
+            <h3><strong>Is this Instagram profile viewer free to use?</strong></h3>
+            <p>This incredible IG profile viewer online tool is 100% free and safe to use. You can use it without paying a fee or submitting any personal data.</p>
+            
+            <h3><strong>Can I download someone’s Insta DP without letting them know?</strong></h3>
+            <p>Yes, you can view Instagram dp downloader anonymously any Instagram public profile’s DP without letting them know. Our online Instagram viewer will preserve your anonymity while viewing the Insta profile of any user. You can browse content without leaving likes, comments, or other activity-related markers.
+            </p>
+            
+            <h3><strong>How can I use this Instagram Profile Viewer?</strong></h3>
+            <p>Using this IG profile viewer to view Insta content from any public profile is very simple. All you need to do to use our free ig viewer is paste the link to the profile whose media you wish to download.</p>
+                
+            <h3><strong>Can I use this tool without logging into my Instagram account?</strong></h3>
+            <p>Yes, you can still check out the primary account icons even if you are not signed up or have deleted your profile. The only thing you need to know when using this web-based service is the proper IG profile link that a person or business uses.</p>
+        </div>
+    </div>
+</div>
+        <div class="footer footer-background pt-5">
+    <div class="container mx-auto row justify-content-center justify-content-lg-between text-lg-start text-center g-lg-5 g-3">
+        <div class="col-md-6">
+            <ul class="navbar-nav">
+                <li>
+                    <a href="/" class="navbar-brand d-flex mx-md-0 mx-auto">
+                        <h2 class="fw-bold">PIXWOX</h2>
+                    </a>
+                    <p>Pixwox does not belong to Instagram, does not host or save any Instagram content, all rights belong to Instagram users.</p>
+                </li>
+                <li>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-lg-3 d-lg-flex">
+            <ul class="navbar-nav mx-lg-auto">
+                    <li class="nav-item">
+                        <a href="/blog/about/" class="nav-link tect-decoration-none text-black">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/blog/content-removal/" class="nav-link tect-decoration-none text-black">Content Remove</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/blog/" class="nav-link tect-decoration-none text-black">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact-us" class="nav-link tect-decoration-none text-black">Contact Us</a>
+                    </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-lg-3 d-lg-flex">
+            <ul class="navbar-nav mx-lg-auto">
+                 <li class="nav-item">
+                        <a href="/blog/testimonials/" class="nav-link tect-decoration-none text-black">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/privacy-policy" class="nav-link tect-decoration-none text-black">Privacy policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/terms-and-conditions" class="nav-link tect-decoration-none text-black">Terms and Conditions</a>
+                    </li>
+             
+            </ul>
+        </div>
+
+    </div>
+    <div class="container mx-auto">
+        <hr class=" ">
+        <div class="row">
+            <div class="col-6 ">
+                <p class="  ">Copyright © 2024 Pixwox. All Rights Reserved.</p>
+            </div>
+            <!-- <div class="col-6 text-end ">
+                <ul class=" d-flex pt-1">
+                    <li class="nav-item">
+                        <a class="nav-link   mail ps-0 " href="/remove-content">Terms of Use</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link   mail ps-0 " href="/privacy-policy">Privacy Policy</a>
+                    </li>
+
+                </ul>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container">
+    <footer class="my-5">
+        <div class="row">
+            <div class="col-lg-12 my-3 text-lg-start text-center">
+                <p>Pixwox does not belong to Instagram, does not host or save any Instagram content, all rights belong to Instagram users.</p>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-lg-row justify-content-md-between align-items-center">
+            <div>
+                <p class="text-center mb-0">pixwox.net 2023</p>
+            </div>
+            <div>
+                <ul class="nav navbar-expand-md justify-content-center">
+                    <li class="nav-item">
+                        <a href="/blog/about/" class="nav-link tect-decoration-none text-black">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/blog/content-removal/" class="nav-link tect-decoration-none text-black">Content Remove</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/blog/" class="nav-link tect-decoration-none text-black">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact-us" class="nav-link tect-decoration-none text-black">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/blog/testimonials/" class="nav-link tect-decoration-none text-black">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/privacy-policy" class="nav-link tect-decoration-none text-black">Privacy policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/terms-and-conditions" class="nav-link tect-decoration-none text-black">Terms and Conditions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div> -->    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    localStorage.removeItem('profileinfo');
+    localStorage.removeItem('datasearch');
+    localStorage.removeItem('username');
+</script>
+    <script>
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+
+    const input = document.getElementById("searchinsta");
+
+    // Pressing Enter submits the form
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("submitform").click();
+        }
+    });
+
+    // Handle ?q=username from URL (only on home page)
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q");
+
+    if (query && window.location.pathname === "/") {
+        $("#searchinsta").val(query);
+
+        // Wait a moment before triggering the click to ensure DOM is fully ready
+        setTimeout(() => {
+            $("#submitform").trigger("click");
+
+            // Remove ?q= from the URL (without reload)
+            const newUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
+        }, 200);
+    }
+
+    // Submit button logic
+    $("#submitform").click(function (event) {
+        event.preventDefault();
+        const searchinsta = $("#searchinsta").val().trim();
+
+        if (!searchinsta) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please enter valid Username/Url",
+            });
+            return;
+        }
+
+        // Redirect to home if not already there
+        const isHome = window.location.pathname === "/";
+        if (!isHome) {
+            window.location.href = "https://pixwox.net?q=" + encodeURIComponent(searchinsta);
+            return;
+        }
+
+        // Clear localStorage before search
+        localStorage.removeItem("profileinfo");
+        localStorage.removeItem("datasearch");
+        localStorage.removeItem("username");
+
+        $.ajax({
+            type: "POST",
+            url: "https://pixwox.net",
+            data: { searchinsta },
+            beforeSend: function () {
+                $("#layer").removeClass("d-none");
+            },
+            success: function (data) {
+                $("#layer").addClass("d-none");
+
+                if (data.error) {
+                    Swal.fire({
+                        icon: "error",
+                        text: data.error,
+                    });
+                    return;
+                }
+
+                const users = data;
+                const $container = $("#username-section");
+                const $row = $('<div class="row"><h4 class="mb-3">Accounts Result:</h4></div>');
+
+                users.forEach(function (user) {
+                    const verifiedBadge = user.is_verified
+                        ? '<i class="bi bi-patch-check-fill text-primary ms-1" title="Verified"></i>'
+                        : "";
+
+                    const userCard = `
+<div class="col-md-6 mb-4">
+    <a class="text-decoration-none" style="color: inherit;" href="https://pixwox.net/profile/${user.username}">
+        <div class="card border-0 shadow-lg h-100">
+            <div class="card-body d-flex align-items-center">
+                <img src="${user.profile_pic_url}"
+                     alt="${user.username}"
+                     title="${user.full_name || user.username}"
+                     class="rounded-circle me-3 border border-2"
+                     loading="lazy"
+                     style="width: 70px; height: 70px; object-fit: cover;"
+                     onerror="retryLoad(this)">
+                <div>
+                    <h5 class="fw-semibold mb-1">
+                        ${user.full_name || "No Name"} ${verifiedBadge}
+                    </h5>
+                    <p class="text-muted mb-0">@${user.username}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>`;
+                    $row.append(userCard);
+                });
+
+                $container.empty().append($row).removeClass("d-none");
+            },
+            error: function () {
+                $("#layer").addClass("d-none");
+                Swal.fire({
+                    icon: "error",
+                    text: "Username is not valid",
+                });
+            },
+        });
+    });
+});
+
+// Retry loading image or show fallback
+function retryLoad(img) {
+    if (!img.dataset.retry) {
+        img.dataset.retry = "1";
+        setTimeout(() => {
+            img.src = img.src;
+        }, 500);
+    } else {
+        img.onerror = null;
+        img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNK7-n-r_w_qCEIjsnu8VXMBamUkSmLUr9Eg&usqp=CAU';
+    }
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"3ffefaa8d0f44365922848b484e4052d","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

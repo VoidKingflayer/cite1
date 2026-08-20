@@ -72,8 +72,13 @@ body {
   color: var(--c-text-primary);
   line-height: 1.65;
   overflow-x: hidden;
+  padding-top: 104px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  scroll-margin-top: 120px;
 }
 
 img, video {
@@ -104,20 +109,35 @@ img, video {
 }
 
 /* ==========================================================================
-   TOP METADATA BAR
+   FIXED TOP ZONE (PERMANENT TOP BAR + HEADER)
    ========================================================================== */
+.fixed-top-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* TOP METADATA BAR */
 .top-meta-bar {
+  height: 36px;
+  box-sizing: border-box;
   background: var(--c-obsidian-deep);
   border-bottom: 1px solid var(--c-border-subtle);
-  padding: 0.35rem 2rem;
+  padding: 0 2rem;
   font-family: var(--font-sans);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--c-titanium-light);
+  display: flex;
+  align-items: center;
 }
 
 .meta-inner {
   max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -140,13 +160,10 @@ img, video {
 }
 
 /* ==========================================================================
-   STICKY HEADER
+   LUXURY NAVIGATION HEADER
    ========================================================================== */
 .main-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(11, 12, 14, 0.88);
+  background: rgba(11, 12, 14, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--c-border-subtle);
@@ -362,13 +379,13 @@ img, video {
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 75px;
+  top: 104px;
   left: 0;
   width: 100%;
   background: var(--c-obsidian-deep);
   border-bottom: 1px solid var(--c-border-subtle);
   padding: 0 0 2rem 0;
-  z-index: 999;
+  z-index: 99999;
 }
 
 .mobile-drawer.open {

@@ -17,53 +17,54 @@
     a:hover, a:focus, a:active { text-decoration: none !important; outline: none !important; }
   </style>
 </head>
-<body>
-
-  <!-- Top Metadata Bar (as in Behance original) -->
-  <div class="top-meta-bar">
-    <div class="meta-inner">
-      <div class="meta-left">
-        <span class="meta-item">web-designer</span>
-        <span class="meta-item">2023</span>
-        <span class="meta-item">Elvira Putyato</span>
-      </div>
-      <div class="top-lang-wrap">
-        <div class="lang-switcher" id="topLangSwitcher">
-          <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
-          <button type="button" class="lang-btn" data-lang="ru" title="Русский">RU</button>
-          <button type="button" class="lang-btn" data-lang="ka" title="ქართული">GE</button>
+<body>  <!-- Fixed Top Zone: Top Bar with Corner Language Switcher + Navigation Header -->
+  <div class="fixed-top-zone">
+    <!-- Top Metadata Bar & Language Switcher -->
+    <div class="top-meta-bar">
+      <div class="meta-inner">
+        <div class="meta-left">
+          <span class="meta-item">46 LUKA ASATIANI ST, BATUMI</span>
+          <span class="meta-item">MON–SUN 10:00 — 22:00</span>
+          <span class="meta-item">TEL: +995 591 22 61 45</span>
+        </div>
+        <div class="top-lang-wrap">
+          <div class="lang-switcher" id="topLangSwitcher">
+            <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
+            <button type="button" class="lang-btn" data-lang="ru" title="Русский">RU</button>
+            <button type="button" class="lang-btn" data-lang="ka" title="ქართული">GE</button>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Luxury Navigation Header -->
+    <header class="main-header" id="mainHeader">
+      <div class="header-container">
+        <a href="#hero" class="brand-link">
+          <div class="giso-logo">
+            <span class="giso-text">T<span class="dot-o">O<span class="dot-orbit"></span></span>CHKA</span>
+            <span class="giso-sub">MASSAGE&SPA</span>
+          </div>
+        </a>
+
+        <nav class="desktop-nav">
+          <a href="#about" class="nav-item" data-i18n="nav_about">ABOUT</a>
+          <a href="#services" class="nav-item" data-i18n="nav_services">SERVICES</a>
+          <a href="#masters" class="nav-item" data-i18n="nav_masters">MASTERS</a>
+          <a href="#reels" class="nav-item" data-i18n="nav_reels">ATMOSPHERE</a>
+          <a href="#contacts" class="nav-item" data-i18n="nav_contacts">CONTACTS</a>
+        </nav>
+
+        <div class="header-cta-wrap">
+          <a href="#contacts" class="btn-book-header" data-i18n="btn_book_header">BOOK APPOINTMENT</a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
   </div>
-
-  <!-- Sticky Luxury Navigation -->
-  <header class="main-header" id="mainHeader">
-    <div class="header-container">
-      <a href="#hero" class="brand-link">
-        <div class="giso-logo">
-          <span class="giso-text">T<span class="dot-o">O<span class="dot-orbit"></span></span>CHKA</span>
-          <span class="giso-sub">MASSAGE&SPA</span>
-        </div>
-      </a>
-
-      <nav class="desktop-nav">
-        <a href="#about" class="nav-item" data-i18n="nav_about">ABOUT</a>
-        <a href="#services" class="nav-item" data-i18n="nav_services">SERVICES</a>
-        <a href="#masters" class="nav-item" data-i18n="nav_masters">MASTERS</a>
-        <a href="#reels" class="nav-item" data-i18n="nav_reels">ATMOSPHERE</a>
-        <a href="#contacts" class="nav-item" data-i18n="nav_contacts">CONTACTS</a>
-      </nav>
-
-      <div class="header-cta-wrap">
-        <a href="#contacts" class="btn-book-header" data-i18n="btn_book_header">BOOK APPOINTMENT</a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </header>
 
   <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobileDrawer">
@@ -174,102 +175,86 @@
     </div>
 
     <div class="services-bento-grid">
-      <!-- 01: Deep Tissue Massage -->
-      <div class="service-card tile-moss" data-service="Deep Tissue Massage" data-price="$105" data-duration="1 hr">
+      <!-- 01: Classic Massage -->
+      <div class="service-card tile-moss" data-service="Classic Massage" data-price="$45" data-duration="60 min">
         <div class="service-card-content">
-          <h3 class="service-name">Deep Tissue Massage</h3>
-          <span class="service-pricing">1 hr / $105 + tax</span>
+          <h3 class="service-name">Classic Massage</h3>
+          <span class="service-pricing">60 min / $45</span>
         </div>
-        <button class="service-book-btn" aria-label="Book Deep Tissue Massage">+</button>
+        <button class="service-book-btn" aria-label="Book Classic Massage">+</button>
       </div>
 
-      <!-- 02: Sports Massage -->
-      <div class="service-card tile-cream with-image" data-service="Sports Massage" data-price="$115" data-duration="1 hr">
+      <!-- 02: Relaxing Continuous-Contact Massage -->
+      <div class="service-card tile-cream with-image" data-service="Relaxing Massage (Continuous Contact)" data-price="$45" data-duration="60 min">
         <div class="service-image-cutout round-cutout">
-          <img src="images/3915819731536431585.jpg" alt="Sports therapeutic oil" />
+          <img src="images/3915819731536431585.jpg" alt="Relaxing continuous contact massage" />
         </div>
         <div class="service-card-content">
-          <h3 class="service-name">Sports Massage</h3>
-          <span class="service-pricing">1 hr / $115 + tax</span>
+          <h3 class="service-name">Relaxing Massage<br />(Continuous Contact)</h3>
+          <span class="service-pricing">60 min / $45</span>
         </div>
       </div>
 
-      <!-- 03: Hot Stones Massage -->
-      <div class="service-card tile-sand with-image" data-service="Hot Stones Massage" data-price="$170" data-duration="1 hr">
+      <!-- 03: Lymphatic Drainage Therapy -->
+      <div class="service-card tile-sand with-image" data-service="Lymphatic Drainage Therapy" data-price="$48" data-duration="60 min">
         <div class="service-image-cutout">
-          <img src="images/3916356215272340107.jpg" alt="Basalt hot massage stones" />
+          <img src="images/3916356215272340107.jpg" alt="Lymphatic drainage therapy" />
         </div>
         <div class="service-card-content">
-          <h3 class="service-name">Hot Stones Massage</h3>
-          <span class="service-pricing">1 hr / $170 + tax</span>
+          <h3 class="service-name">Lymphatic Drainage</h3>
+          <span class="service-pricing">60 min / $48</span>
         </div>
       </div>
 
-      <!-- 04: Hot Oil Massage -->
-      <div class="service-card tile-cream with-image" data-service="Hot Oil Massage" data-price="$175" data-duration="1 hr">
+      <!-- 04: Sports & Deep Tissue Massage -->
+      <div class="service-card tile-cream with-image" data-service="Sports & Deep Tissue Massage" data-price="$52" data-duration="60 min">
         <div class="service-image-cutout round-cutout">
-          <img src="images/3916381479956066379.jpg" alt="Warm nourishing botanical oils" />
+          <img src="images/3916381479956066379.jpg" alt="Sports and deep tissue massage" />
         </div>
         <div class="service-card-content">
-          <h3 class="service-name">Hot Oil Massage</h3>
-          <span class="service-pricing">1 hr / $175 + tax</span>
+          <h3 class="service-name">Sports & Deep Tissue</h3>
+          <span class="service-pricing">60 min / $52</span>
         </div>
       </div>
 
-      <!-- 05: 60-Minute Full Body Massage -->
-      <div class="service-card tile-cream with-image" data-service="60-Minute Full Body Massage" data-price="$185" data-duration="1 hr">
+      <!-- 05: Back & Neck Recovery Therapy -->
+      <div class="service-card tile-cream with-image" data-service="Back & Neck Recovery Therapy" data-price="$33" data-duration="45 min">
         <div class="service-image-cutout">
-          <img src="images/3903611317898741075_3903611231280471447.jpg" alt="60-minute relaxing massage" />
+          <img src="images/3903611317898741075_3903611231280471447.jpg" alt="Back and neck recovery therapy" />
         </div>
         <div class="service-card-content">
-          <h3 class="service-name">60-Minute Full Body Massage</h3>
-          <span class="service-pricing">1 hr / $185 + tax</span>
+          <h3 class="service-name">Back & Neck Recovery</h3>
+          <span class="service-pricing">45 min / $33</span>
         </div>
       </div>
 
-      <!-- 06: 90-Minute Full Body Massage -->
-      <div class="service-card tile-taupe with-image" data-service="90-Minute Full Body Massage" data-price="$195" data-duration="1 hr 30 min">
+      <!-- 06: Facial & Decollete Sculpting Lift -->
+      <div class="service-card tile-taupe with-image" data-service="Facial & Decollete Sculpting Lift" data-price="$40" data-duration="50 min">
         <div class="service-image-cutout">
-          <img src="images/3924477178190894561.jpg" alt="90-minute full body massage" />
+          <img src="images/3924477178190894561.jpg" alt="Facial and decollete sculpting lift" />
         </div>
         <div class="service-card-content">
-          <h3 class="service-name">90-Minute Full Body Massage</h3>
-          <span class="service-pricing">1 hr 30 min / $195 + tax</span>
+          <h3 class="service-name">Facial Sculpting Lift</h3>
+          <span class="service-pricing">50 min / $40</span>
         </div>
       </div>
 
-      <!-- 07: Aromatherapy -->
-      <div class="service-card tile-cream with-image" data-service="Aromatherapy" data-price="$180" data-duration="1 hr">
+      <!-- 07: Signature TOCH_KA Ritual -->
+      <div class="service-card tile-cream with-image" data-service="Signature TOCH_KA Sanctuary Ritual" data-price="$70" data-duration="90 min">
         <div class="service-image-cutout round-cutout">
-          <img src="images/3940308244369539783.jpg" alt="Botanical essential oil aromatherapy" />
+          <img src="images/3940308244369539783.jpg" alt="Signature TOCH_KA Sanctuary Ritual" />
         </div>
         <div class="service-card-content">
-          <h3 class="service-name">Aromatherapy</h3>
-          <span class="service-pricing">1 hr / $180 + tax</span>
-        </div>
-      </div>
-
-      <!-- 08: Sea Salt Scrub & 30 Minutes Massage -->
-      <div class="service-card tile-sand" data-service="Sea Salt Scrub & 30 Minutes Massage" data-price="$180" data-duration="1 hr">
-        <div class="service-card-content">
-          <h3 class="service-name">Sea Salt Scrub &<br />30 Minutes Massage</h3>
-          <span class="service-pricing">1 hr / $180 + tax</span>
+          <h3 class="service-name">Signature TOCH_KA Ritual</h3>
+          <span class="service-pricing">90 min / $70</span>
         </div>
       </div>
 
-      <!-- 09: Dry Cupping Therapy -->
-      <div class="service-card tile-wheat" data-service="Dry Cupping Therapy" data-price="$60" data-duration="30 min">
+      <!-- 08: 4 Hands Synchronized Symphony -->
+      <div class="service-card tile-sand" data-service="4 Hands Synchronized Symphony" data-price="$93" data-duration="60 min">
         <div class="service-card-content">
-          <h3 class="service-name">Dry Cupping Therapy</h3>
-          <span class="service-pricing">30 min / $60 + tax</span>
-        </div>
-      </div>
-
-      <!-- 10: Reflexology -->
-      <div class="service-card tile-cream" data-service="Reflexology" data-price="$165" data-duration="1 hr">
-        <div class="service-card-content">
-          <h3 class="service-name">Reflexology</h3>
-          <span class="service-pricing">1 hr / $165 + tax</span>
+          <h3 class="service-name">4 Hands Synchronized</h3>
+          <span class="service-pricing">60 min / $93</span>
         </div>
       </div>
     </div>
@@ -279,51 +264,29 @@
   <section class="masters-section" id="masters">
     <div class="section-title-wrap">
       <h2 class="section-title">MASTERS</h2>
-      <p class="section-subtitle">Meet our professional estheticians and therapists</p>
+      <p class="section-subtitle">Meet our certified therapists and estheticians in Batumi</p>
     </div>
 
     <div class="masters-grid">
-      <!-- Master 1: Norma Crawford -->
+      <!-- Master 1: Anna Kolosova -->
       <div class="master-card">
         <div class="master-photo-pill">
-          <img src="images/3941719025657177039.jpg" alt="Norma Crawford — Founder & Lead Master" />
+          <img src="images/3941719025657177039.jpg" alt="Anna Kolosova — Founder & Lead Therapist" />
         </div>
         <div class="master-info">
-          <h3 class="master-name">Norma Crawford</h3>
-          <span class="master-role">Our BOSS</span>
+          <h3 class="master-name">Anna Kolosova</h3>
+          <span class="master-role">Founder & Lead Therapist</span>
         </div>
       </div>
 
-      <!-- Master 2: Laura Becker -->
+      <!-- Master 2: Mikhail Petrov -->
       <div class="master-card">
         <div class="master-photo-pill">
-          <img src="images/3944508926823954774.jpg" alt="Laura Becker — Esthetician" />
+          <img src="images/3944508926823954774.jpg" alt="Mikhail Petrov — Sports & Recovery Therapist" />
         </div>
         <div class="master-info">
-          <h3 class="master-name">Laura Becker</h3>
-          <span class="master-role">Our esthetician</span>
-        </div>
-      </div>
-
-      <!-- Master 3: Michael Warren -->
-      <div class="master-card">
-        <div class="master-photo-pill">
-          <img src="images/3903611317898741075_3903611233268464602.jpg" alt="Michael Warren — Therapist" />
-        </div>
-        <div class="master-info">
-          <h3 class="master-name">Michael Warren</h3>
-          <span class="master-role">Our therapist</span>
-        </div>
-      </div>
-
-      <!-- Master 4: Lisa May -->
-      <div class="master-card">
-        <div class="master-photo-pill">
-          <img src="images/3916381479956066379.jpg" alt="Lisa May — Therapist" />
-        </div>
-        <div class="master-info">
-          <h3 class="master-name">Lisa May</h3>
-          <span class="master-role">Our therapist</span>
+          <h3 class="master-name">Mikhail Petrov</h3>
+          <span class="master-role">Sports Therapist</span>
         </div>
       </div>
     </div>
@@ -339,45 +302,33 @@
     <div class="reels-grid">
       <div class="reel-card">
         <div class="reel-video-wrap">
-          <video autoplay muted loop playsinline poster="images/3903587528438016601.jpg">
+          <video autoplay muted loop playsinline poster="images/tochka_poster_1.jpg">
             <source src="images/3903588512237354348.mp4" type="video/mp4" />
           </video>
         </div>
-        <div class="reel-info">
-          <span class="reel-tag">★ Ritual Flow</span>
-        </div>
       </div>
 
       <div class="reel-card">
         <div class="reel-video-wrap">
-          <video autoplay muted loop playsinline poster="images/3941719025657177039.jpg">
+          <video autoplay muted loop playsinline poster="images/tochka_poster_2.jpg">
             <source src="images/3937630035152798052.mp4" type="video/mp4" />
           </video>
         </div>
-        <div class="reel-info">
-          <span class="reel-tag">★ Sacred Touch</span>
-        </div>
       </div>
 
       <div class="reel-card">
         <div class="reel-video-wrap">
-          <video autoplay muted loop playsinline poster="images/3944508926823954774.jpg">
-            <source src="images/3941054178502280147.mp4" type="video/mp4" />
+          <video autoplay muted loop playsinline poster="images/tochka_poster_3.jpg">
+            <source src="images/tochka_reel_3.mp4" type="video/mp4" />
           </video>
         </div>
-        <div class="reel-info">
-          <span class="reel-tag">★ Healing Oils</span>
-        </div>
       </div>
 
       <div class="reel-card">
         <div class="reel-video-wrap">
-          <video autoplay muted loop playsinline poster="images/3924477178190894561.jpg">
+          <video autoplay muted loop playsinline poster="images/tochka_poster_4.jpg">
             <source src="images/3959919174497769469.mp4" type="video/mp4" />
           </video>
-        </div>
-        <div class="reel-info">
-          <span class="reel-tag">★ Deep Relaxation</span>
         </div>
       </div>
     </div>
@@ -414,22 +365,20 @@
           </div>
 
           <div class="giso-input-group">
-            <input type="tel" id="clientPhone" name="phone" placeholder="Your Phone (+1 212...)" class="giso-line-input" />
+            <input type="tel" id="clientPhone" name="phone" placeholder="Your Phone (+995 591...)" class="giso-line-input" />
           </div>
 
           <div class="giso-input-group">
             <select id="selectedService" name="service" class="giso-line-input giso-select">
               <option value="" disabled selected>Select desired treatment...</option>
-              <option value="Deep Tissue Massage">Deep Tissue Massage (1 hr / $105)</option>
-              <option value="Sports Massage">Sports Massage (1 hr / $115)</option>
-              <option value="Hot Stones Massage">Hot Stones Massage (1 hr / $170)</option>
-              <option value="Hot Oil Massage">Hot Oil Massage (1 hr / $175)</option>
-              <option value="60-Minute Full Body Massage">60-Minute Full Body Massage (1 hr / $185)</option>
-              <option value="90-Minute Full Body Massage">90-Minute Full Body Massage (1.5 hr / $195)</option>
-              <option value="Aromatherapy">Aromatherapy (1 hr / $180)</option>
-              <option value="Sea Salt Scrub & Massage">Sea Salt Scrub & 30 Min Massage (1 hr / $180)</option>
-              <option value="Dry Cupping Therapy">Dry Cupping Therapy (30 min / $60)</option>
-              <option value="Reflexology">Reflexology (1 hr / $165)</option>
+              <option value="Classic Massage">Classic Massage (60 min / $45)</option>
+              <option value="Relaxing Continuous-Contact Massage">Relaxing Continuous-Contact Massage (60 min / $45)</option>
+              <option value="Lymphatic Drainage Therapy">Lymphatic Drainage Therapy (60 min / $48)</option>
+              <option value="Sports & Deep Tissue Massage">Sports & Deep Tissue Massage (60 min / $52)</option>
+              <option value="Back & Neck Recovery Therapy">Back & Neck Recovery Therapy (45 min / $33)</option>
+              <option value="Facial & Decollete Sculpting Lift">Facial & Decollete Sculpting Lift (50 min / $40)</option>
+              <option value="Signature TOCH_KA Sanctuary Ritual">Signature TOCH_KA Sanctuary Ritual (90 min / $70)</option>
+              <option value="4 Hands Synchronized Symphony">4 Hands Synchronized Symphony (60 min / $93)</option>
             </select>
           </div>
 
@@ -443,16 +392,16 @@
 
       <div class="contact-map-side">
         <div class="stylized-map-card">
-          <!-- Vectorized Stylized NYC Map illustration -->
+          <!-- Vectorized Stylized Batumi Map illustration -->
           <div class="map-graphic-box">
             <div class="map-roads-grid">
-              <div class="road r-h r-h-1"><span>E 57th St</span></div>
-              <div class="road r-h r-h-2"><span>E 56th St</span></div>
-              <div class="road r-h r-h-3 main-road"><span>E 55th St</span></div>
-              <div class="road r-h r-h-4"><span>E 54th St</span></div>
-              <div class="road r-v r-v-1"><span>Park Ave</span></div>
-              <div class="road r-v r-v-2"><span>Lexington Ave</span></div>
-              <div class="road r-v r-v-3"><span>3rd Ave</span></div>
+              <div class="road r-h r-h-1"><span>Chavchavadze St</span></div>
+              <div class="road r-h r-h-2"><span>Gorgiladze St</span></div>
+              <div class="road r-h r-h-3 main-road"><span>Luka Asatiani St</span></div>
+              <div class="road r-h r-h-4"><span>Rustaveli Ave</span></div>
+              <div class="road r-v r-v-1"><span>Vazha-Pshavela St</span></div>
+              <div class="road r-v r-v-2"><span>Baratashvili St</span></div>
+              <div class="road r-v r-v-3"><span>Memed Abashidze Ave</span></div>
             </div>
             <div class="map-location-pin">
               <span class="pin-ripple"></span>
@@ -460,7 +409,7 @@
             </div>
           </div>
           <div class="map-address-label">
-            139 East 55th Street New York, NY 10022
+            46, Luka Asatiani St., Batumi, Georgia (+995 591 22 61 45)
           </div>
         </div>
       </div>
@@ -527,6 +476,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2026_v7"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 /**
- * TOCHKA | MASSAGE & SPA — INTERACTIVE LOGIC & MULTILINGUAL (EN, RU, GE)
+ * TOCHKA | MASSAGE & SPA — AUTHENTIC BATUMI INSTAGRAM SERVICES & LOGIC (EN, RU, GE)
+ * Currency rules:
+ * - English (EN): Dollars only ($)
+ * - Georgian (KA/GE): Lari only (₾)
+ * - Russian (RU): Dual format (₾ — $)
  */
 
 const GISO_TRANSLATIONS = {
@@ -12,40 +16,34 @@ const GISO_TRANSLATIONS = {
     btn_book_header: "BOOK APPOINTMENT",
     lang_select: "LANGUAGE:",
     hero_lead: "TAKE A STEP TOWARDS RELAXATION.<br />A PLACE WHERE NOT ONLY THE BODY IS TAKEN CARE OF, BUT ALSO THE SOUL.<br />YOUR BODY IS YOUR TEMPLE, RIGHT?",
-    curator_tag: "TOCHKA BY NORMA CRAWFORD",
+    curator_tag: "TOCHKA BY ANNA KOLOSOVA",
     pin_about: "about",
     pin_services: "services",
     pin_masters: "masters",
     about_title: "ABOUT",
-    about_p1: "TOCHKA in NYC is renowned for its friendly, unpretentious staff, aesthetically pleasing and soothing atmosphere, and more notably for its qualified and certified professional estheticians and therapists. All spa services are administered by New York State licensed professionals, who provide beneficial treatments using the highest quality products designed to cater to each client specific needs and total body wellness.",
-    about_p2: "Allure, W, Self, TimeOut and Citysearch's Best Of Spas in NYC have applauded TOCHKA for its hands-on therapeutic treatments, knowledgeable therapists, and therapeutic skin care products. Allure Day Spa has everything you need to renew yourself from our award-winning facials, and couples massages to hair removal and body treatments.",
+    about_p1: "TOCHKA in Batumi is renowned for its calming atmosphere, continuous-contact massage technique, and personalized care by certified therapist Anna Kolosova. All treatments use natural coconut oil or delicate creams, accompanied by custom guest playlists and tea/coffee aftercare.",
+    about_p2: "Located at 46 Luka Asatiani St, TOCHKA offers a peaceful sanctuary where you can escape the noise of the city, release tension from tired muscles, and restore internal harmony.",
     services_title: "YOU CHOOSE",
-    s1_name: "Deep Tissue Massage",
-    s1_price: "1 hr / $105 + tax",
-    s2_name: "Sports Massage",
-    s2_price: "1 hr / $115 + tax",
-    s3_name: "Hot Stones Massage",
-    s3_price: "1 hr / $170 + tax",
-    s4_name: "Hot Oil Massage",
-    s4_price: "1 hr / $175 + tax",
-    s5_name: "60-Minute Full Body Massage",
-    s5_price: "1 hr / $185 + tax",
-    s6_name: "90-Minute Full Body Massage",
-    s6_price: "1 hr 30 min / $195 + tax",
-    s7_name: "Aromatherapy",
-    s7_price: "1 hr / $180 + tax",
-    s8_name: "Sea Salt Scrub &<br />30 Minutes Massage",
-    s8_price: "1 hr / $180 + tax",
-    s9_name: "Dry Cupping Therapy",
-    s9_price: "30 min / $60 + tax",
-    s10_name: "Reflexology",
-    s10_price: "1 hr / $165 + tax",
+    s1_name: "Classic Massage",
+    s1_price: "60 min / $45",
+    s2_name: "Relaxing Massage<br />(Continuous Contact)",
+    s2_price: "60 min / $45",
+    s3_name: "Lymphatic Drainage Therapy",
+    s3_price: "60 min / $48",
+    s4_name: "Sports & Deep Tissue Massage",
+    s4_price: "60 min / $52",
+    s5_name: "Back & Neck Recovery Therapy",
+    s5_price: "45 min / $33",
+    s6_name: "Facial & Decollete Sculpting Lift",
+    s6_price: "50 min / $40",
+    s7_name: "Signature TOCH_KA Ritual",
+    s7_price: "90 min / $70",
+    s8_name: "4 Hands Synchronized Symphony",
+    s8_price: "60 min / $93",
     masters_title: "MASTERS",
-    masters_subtitle: "Meet our professional estheticians and therapists",
-    m1_role: "Our BOSS",
-    m2_role: "Our esthetician",
-    m3_role: "Our therapist",
-    m4_role: "Our therapist",
+    masters_subtitle: "Meet our certified therapists in Batumi",
+    m1_role: "Founder & Lead Therapist",
+    m2_role: "Sports & Recovery Therapist",
     reels_title: "ATMOSPHERE & REELS",
     reels_subtitle: "Follow us on Instagram",
     r1_tag: "★ Ritual Flow",
@@ -55,16 +53,16 @@ const GISO_TRANSLATIONS = {
     temple_title: "BODY'S YOUR TEMPLE, RIGHT?",
     contacts_title: "CONTACTS",
     form_heading: "Send us a request",
-    form_note: "Send us a request and we'll call you back.",
+    form_note: "Send us a request and master Anna Kolosova will confirm within 15 minutes.",
     form_name_ph: "Your Name",
     form_email_ph: "Your E-mail",
-    form_phone_ph: "Your Phone (+1 212...)",
+    form_phone_ph: "Your Phone (+995 591...)",
     form_select_ph: "Select desired treatment...",
     form_send_btn: "Send",
     form_transmitting: "Transmitting...",
     form_success: "✦ Thank you. We have received your request and will contact you shortly.",
     token_title: "Obsidian Palette",
-    footer_copy: "© 2023–2025 TOCHKA MASSAGE & SPA. ALL RIGHTS RESERVED."
+    footer_copy: "© 2023–2026 TOCHKA MASSAGE SANCTUARY. BATUMI, 46 LUKA ASATIANI ST."
   },
   ru: {
     nav_about: "О НАС",
@@ -75,40 +73,34 @@ const GISO_TRANSLATIONS = {
     btn_book_header: "ЗАПИСАТЬСЯ",
     lang_select: "ЯЗЫК:",
     hero_lead: "СДЕЛАЙТЕ ШАГ НАВСТРЕЧУ РЕЛАКСАЦИИ.<br />МЕСТО, ГДЕ ЗАБОТЯТСЯ НЕ ТОЛЬКО О ТЕЛЕ, НО И О ДУШЕ.<br />ВАШЕ ТЕЛО — ВАШ ХРАМ, ВЕРНО?",
-    curator_tag: "ТОЧКА ОТ НОРМЫ КРОУФОРД",
+    curator_tag: "ТОЧКА ОТ АННЫ КОЛОСОВОЙ",
     pin_about: "о нас",
     pin_services: "услуги",
     pin_masters: "мастера",
     about_title: "О НАС",
-    about_p1: "TOCHKA в Нью-Йорке известна своим приветливым персоналом, эстетичной и успокаивающей атмосферой, а также квалифицированными и сертифицированными мастерами и терапевтами. Все спа-процедуры проводятся лицензированными специалистами штата Нью-Йорк с использованием органических премиальных масел, подобранных под индивидуальные потребности каждого гостя.",
-    about_p2: "Ведущие издания Allure, W, Self, TimeOut и Citysearch признали TOCHKA одним из лучших спа за глубокие терапевтические методики, экспертность мастеров и целебную косметику. У нас есть всё для вашего полного обновления: от авторских программ и массажей для двоих до деликатного ухода за телом.",
+    about_p1: "TOCHKA в Батуми известна своей эстетичной и успокаивающей атмосферой, авторской техникой непрерывного контакта и индивидуальным подходом мастера Анны Колосовой. Все сеансы проводятся с использованием натурального кокосового масла или нежного крема под персональный плейлист гостя.",
+    about_p2: "Пространство на ул. Лука Асатиани, 46 создано для того, чтобы вы могли замедлиться, отпустить накопившийся стресс и почувствовать легкость в теле.",
     services_title: "ВАШ ВЫБОР",
-    s1_name: "Глубокий мышечный массаж",
-    s1_price: "1 час / $105 + налог",
-    s2_name: "Спортивный массаж",
-    s2_price: "1 час / $115 + налог",
-    s3_name: "Массаж горячими камнями",
-    s3_price: "1 час / $170 + налог",
-    s4_name: "Массаж горячими маслами",
-    s4_price: "1 час / $175 + налог",
-    s5_name: "60-минутный массаж всего тела",
-    s5_price: "1 час / $185 + налог",
-    s6_name: "90-минутный массаж всего тела",
-    s6_price: "1.5 часа / $195 + налог",
-    s7_name: "Ароматерапия",
-    s7_price: "1 час / $180 + налог",
-    s8_name: "Скраб с морской солью и<br />30 минут массажа",
-    s8_price: "1 час / $180 + налог",
-    s9_name: "Баночная терапия",
-    s9_price: "30 мин / $60 + налог",
-    s10_name: "Рефлексотерапия",
-    s10_price: "1 час / $165 + налог",
+    s1_name: "Классический массаж",
+    s1_price: "60 мин / $45",
+    s2_name: "Расслабляющий массаж<br />(Непрерывный контакт)",
+    s2_price: "60 мин / $45",
+    s3_name: "Лимфодренажный массаж",
+    s3_price: "60 мин / $48",
+    s4_name: "Спортивный и глубокотканный",
+    s4_price: "60 мин / $52",
+    s5_name: "Восстановление спины и шеи",
+    s5_price: "45 мин / $33",
+    s6_name: "Скульптурирующий массаж лица",
+    s6_price: "50 мин / $40",
+    s7_name: "Авторский ритуал TOCH_KA",
+    s7_price: "90 мин / $70",
+    s8_name: "Синхронный массаж в 4 руки",
+    s8_price: "60 мин / $93",
     masters_title: "МАСТЕРА",
-    masters_subtitle: "Познакомьтесь с нашими сертифицированными мастерами и терапевтами",
+    masters_subtitle: "Познакомьтесь с нашими мастерами в Батуми",
     m1_role: "Основатель и ведущий мастер",
-    m2_role: "Наш эстетист",
-    m3_role: "Наш терапевт",
-    m4_role: "Наш терапевт",
+    m2_role: "Мастер спортивного массажа",
     reels_title: "АТМОСФЕРА И РИЛСЫ",
     reels_subtitle: "Подписывайтесь на нас в Instagram",
     r1_tag: "★ Ритуал гармонии",
@@ -118,16 +110,16 @@ const GISO_TRANSLATIONS = {
     temple_title: "ВАШЕ ТЕЛО — ВАШ ХРАМ, ВЕРНО?",
     contacts_title: "КОНТАКТЫ",
     form_heading: "Оставить заявку",
-    form_note: "Отправьте заявку, и мы перезвоним вам в течение 15 минут.",
+    form_note: "Отправьте заявку, и мастер Анна Колосова свяжется с вами в течение 15 минут.",
     form_name_ph: "Ваше имя",
     form_email_ph: "Ваш E-mail",
-    form_phone_ph: "Ваш телефон (+7 / +1 / +995...)",
+    form_phone_ph: "Ваш телефон (+995 591...)",
     form_select_ph: "Выберите желаемую процедуру...",
     form_send_btn: "Отправить",
     form_transmitting: "Отправка заявки...",
     form_success: "✦ Спасибо! Ваша заявка принята, мы свяжемся с вами в ближайшее время.",
     token_title: "Палитра Obsidian",
-    footer_copy: "© 2023–2025 TOCHKA MASSAGE & SPA. ВСЕ ПРАВА ЗАЩИЩЕНЫ."
+    footer_copy: "© 2023–2026 TOCHKA MASSAGE SANCTUARY. БАТУМИ, УЛ. ЛУКА АСАТИАНИ, 46."
   },
   ka: {
     nav_about: "ჩვენს შესახებ",
@@ -138,40 +130,34 @@ const GISO_TRANSLATIONS = {
     btn_book_header: "ჩაწერა",
     lang_select: "ენა:",
     hero_lead: "გადადგით ნაბიჯი რელაქსაციისკენ.<br />ადგილი, სადაც ზრუნავენ არა მხოლოდ სხეულზე, არამედ სულზეც.<br />თქვენი სხეული თქვენი ტაძარია, ასე არ არის?",
-    curator_tag: "TOCHKA ნორმა კროუფორდისგან",
+    curator_tag: "TOCHKA ანა კოლოსოვასგან",
     pin_about: "ჩვენს შესახებ",
     pin_services: "მომსახურება",
     pin_masters: "ოსტატები",
     about_title: "ჩვენს შესახებ",
-    about_p1: "TOCHKA ნიუ-იორკში ცნობილია თავისი მეგობრული პერსონალით, ესთეტიკური და დამამშვიდებელი ატმოსფეროთი, და რაც მთავარია — კვალიფიციური და სერტიფიცირებული თერაპევტებით. ყველა სპა პროცედურა ტარდება ლიცენზირებული პროფესიონალების მიერ, უმაღლესი ხარისხის პრემიუმ პროდუქტებით.",
-    about_p2: "Allure, W, Self და TimeOut-ის საუკეთესო სპა გამოცემებმა აღიარეს TOCHKA თავისი თერაპიული პროცედურებით, გამოცდილი ოსტატებითა და კანის მოვლის უმაღლესი ხარისხის ელიტარული საშუალებებით.",
+    about_p1: "TOCHKA ბათუმში ცნობილია თავისი დამამშვიდებელი ატმოსფეროთი, უწყვეტი კონტაქტის საავტორო ტექნიკითა და ანა კოლოსოვას ინდივიდუალური მიდგომით. ყველა სეანსი ტარდება ქოქოსის ნატურალური ზეთით და პერსონალური მუსიკით.",
+    about_p2: "სივრცე ლუკა ასათიანის 46-ში შექმნილია იმისთვის, რომ მოიშოროთ დაღლილობა და იგრძნოთ სხეულის სიმსუბუქე.",
     services_title: "თქვენი არჩევანი",
-    s1_name: "ღრმა ქსოვილოვანი მასაჟი",
-    s1_price: "1 სთ / $105 + გადასახადი",
-    s2_name: "სპორტული მასაჟი",
-    s2_price: "1 სთ / $115 + გადასახადი",
-    s3_name: "ცხელი ქვების მასაჟი",
-    s3_price: "1 სთ / $170 + გადასახადი",
-    s4_name: "ცხელი ზეთის მასაჟი",
-    s4_price: "1 სთ / $175 + გადასახადი",
-    s5_name: "60-წუთიანი სრული სხეულის მასაჟი",
-    s5_price: "1 სთ / $185 + გადასახადი",
-    s6_name: "90-წუთიანი სრული სხეულის მასაჟი",
-    s6_price: "1.5 სთ / $195 + გადასახადი",
-    s7_name: "არომათერაპია",
-    s7_price: "1 სთ / $180 + გადასახადი",
-    s8_name: "ზღვის მარილის სკრაბი და<br />30 წთ მასაჟი",
-    s8_price: "1 სთ / $180 + გადასახადი",
-    s9_name: "ვაკუუმური თერაპია",
-    s9_price: "30 წთ / $60 + გადასახადი",
-    s10_name: "რეფლექსოლოგია",
-    s10_price: "1 სთ / $165 + გადასახადი",
+    s1_name: "კლასიკური მასაჟი",
+    s1_price: "60 წთ / 120 ₾",
+    s2_name: "რელაქს მასაჟი<br />(უწყვეტი კონტაქტი)",
+    s2_price: "60 წთ / 120 ₾",
+    s3_name: "ლიმფოდრენაჟული თერაპია",
+    s3_price: "60 წთ / 130 ₾",
+    s4_name: "სპორტული და ღრმა მასაჟი",
+    s4_price: "60 წთ / 140 ₾",
+    s5_name: "ზურგისა და კისრის თერაპია",
+    s5_price: "45 წთ / 90 ₾",
+    s6_name: "სახის სკულპტურული ლიფტინგი",
+    s6_price: "50 წთ / 110 ₾",
+    s7_name: "საავტორო რიტუალი TOCH_KA",
+    s7_price: "90 წთ / 190 ₾",
+    s8_name: "სინქრონული მასაჟი 4 ხელში",
+    s8_price: "60 წთ / 250 ₾",
     masters_title: "ოსტატები",
-    masters_subtitle: "გაიცანით ჩვენი პროფესიონალი ესთეტიკოსები და თერაპევტები",
+    masters_subtitle: "გაიცანით ჩვენი სერტიფიცირებული ოსტატები ბათუმში",
     m1_role: "დამფუძნებელი და მთავარი ოსტატი",
-    m2_role: "ჩვენი ესთეტიკოსი",
-    m3_role: "ჩვენი თერაპევტი",
-    m4_role: "ჩვენი თერაპევტი",
+    m2_role: "სპორტული მასაჟის ოსტატი",
     reels_title: "ატმოსფერო და ვიდეოები",
     reels_subtitle: "გამოგვყევით Instagram-ზე",
     r1_tag: "★ რიტუალის ჰარმონია",
@@ -180,18 +166,54 @@ const GISO_TRANSLATIONS = {
     r4_tag: "★ ღრმა რელაქსაცია",
     temple_title: "თქვენი სხეული თქვენი ტაძარია, ასე არ არის?",
     contacts_title: "კონტაქტები",
-    form_heading: "გამოგვიგზავნეთ მოთხოვნა",
-    form_note: "გამოგვიგზავნეთ მოთხოვნა და ჩვენ დაგიკავშირდებით.",
+    form_heading: "განაცხადის დატოვება",
+    form_note: "დატოვეთ განაცხადი და ოსტატი ანა კოლოსოვა დაგიკავშირდებათ 15 წუთში.",
     form_name_ph: "თქვენი სახელი",
     form_email_ph: "თქვენი ელ-ფოსტა",
-    form_phone_ph: "თქვენი ტელეფონი (+995 / +1...)",
+    form_phone_ph: "თქვენი ტელეფონი (+995 591...)",
     form_select_ph: "აირჩიეთ სასურველი პროცედურა...",
     form_send_btn: "გაგზავნა",
     form_transmitting: "იგზავნება...",
-    form_success: "✦ გმადლობთ! თქვენი მოთხოვნა მიღებულია, მალე დაგიკავშირდებით.",
+    form_success: "✦ მადლობა! თქვენი განაცხადი მიღებულია, მალე დაგიკავშირდებით.",
     token_title: "Obsidian პალიტრა",
-    footer_copy: "© 2023–2025 TOCHKA MASSAGE & SPA. ყველა უფლება დაცულია."
+    footer_copy: "© 2023–2026 TOCHKA MASSAGE SANCTUARY. ბათუმი, ლუკა ასათიანის 46."
   }
+};
+
+const GISO_SELECT_OPTIONS = {
+  en: [
+    { value: "", text: "Select desired treatment...", disabled: true },
+    { value: "Classic Massage", text: "Classic Massage (60 min / $45)" },
+    { value: "Relaxing Continuous-Contact Massage", text: "Relaxing Continuous-Contact (60 min / $45)" },
+    { value: "Lymphatic Drainage Therapy", text: "Lymphatic Drainage Therapy (60 min / $48)" },
+    { value: "Sports & Deep Tissue Massage", text: "Sports & Deep Tissue Massage (60 min / $52)" },
+    { value: "Back & Neck Recovery Therapy", text: "Back & Neck Recovery Therapy (45 min / $33)" },
+    { value: "Facial & Decollete Sculpting Lift", text: "Facial & Decollete Sculpting Lift (50 min / $40)" },
+    { value: "Signature TOCH_KA Sanctuary Ritual", text: "Signature TOCH_KA Ritual (90 min / $70)" },
+    { value: "4 Hands Synchronized Symphony", text: "4 Hands Synchronized Symphony (60 min / $93)" }
+  ],
+  ka: [
+    { value: "", text: "აირჩიეთ სასურველი პროცედურა...", disabled: true },
+    { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ / 120 ₾)" },
+    { value: "Relaxing Continuous-Contact Massage", text: "რელაქს მასაჟი უწყვეტი კონტაქტით (60 წთ / 120 ₾)" },
+    { value: "Lymphatic Drainage Therapy", text: "ლიმფოდრენაჟული თერაპია (60 წთ / 130 ₾)" },
+    { value: "Sports & Deep Tissue Massage", text: "სპორტული და ღრმა მასაჟი (60 წთ / 140 ₾)" },
+    { value: "Back & Neck Recovery Therapy", text: "ზურგისა და კისრის თერაპია (45 წთ / 90 ₾)" },
+    { value: "Facial & Decollete Sculpting Lift", text: "სახისა და დეკოლტეს სკულპტურული ლიფტინგი (50 წთ / 110 ₾)" },
+    { value: "Signature TOCH_KA Sanctuary Ritual", text: "საავტორო რიტუალი TOCH_KA (90 წთ / 190 ₾)" },
+    { value: "4 Hands Synchronized Symphony", text: "4-ხელიანი სინქრონული სიმფონია (60 წთ / 250 ₾)" }
+  ],
+  ru: [
+    { value: "", text: "Выберите желаемую процедуру...", disabled: true },
+    { value: "Classic Massage", text: "Классический массаж (60 мин / $45)" },
+    { value: "Relaxing Continuous-Contact Massage", text: "Расслабляющий массаж (60 мин / $45)" },
+    { value: "Lymphatic Drainage Therapy", text: "Лимфодренажный массаж (60 мин / $48)" },
+    { value: "Sports & Deep Tissue Massage", text: "Спортивный и глубокотканный (60 мин / $52)" },
+    { value: "Back & Neck Recovery Therapy", text: "Восстановление спины и шеи (45 мин / $33)" },
+    { value: "Facial & Decollete Sculpting Lift", text: "Скульптурирующий массаж лица (50 мин / $40)" },
+    { value: "Signature TOCH_KA Sanctuary Ritual", text: "Авторский ритуал TOCH_KA (90 мин / $70)" },
+    { value: "4 Hands Synchronized Symphony", text: "Синхронный массаж в 4 руки (60 мин / $93)" }
+  ]
 };
 
 let currentGisoLang = localStorage.getItem('tochka_giso_lang') || 'en';
@@ -204,7 +226,7 @@ function applyGisoLanguage(lang) {
 
   const t = GISO_TRANSLATIONS[lang];
 
-  // Update language buttons active state
+  // Update language switcher active states
   document.querySelectorAll('.lang-btn').forEach(btn => {
     if (btn.getAttribute('data-lang') === lang) {
       btn.classList.add('active');
@@ -213,7 +235,7 @@ function applyGisoLanguage(lang) {
     }
   });
 
-  // 1. Navigation
+  // 1. Navigation & Header
   document.querySelectorAll('[data-i18n="nav_about"]').forEach(el => el.textContent = t.nav_about);
   document.querySelectorAll('[data-i18n="nav_services"]').forEach(el => el.textContent = t.nav_services);
   document.querySelectorAll('[data-i18n="nav_masters"]').forEach(el => el.textContent = t.nav_masters);
@@ -222,29 +244,33 @@ function applyGisoLanguage(lang) {
   document.querySelectorAll('[data-i18n="btn_book_header"]').forEach(el => el.textContent = t.btn_book_header);
   document.querySelectorAll('[data-i18n="lang_select"]').forEach(el => el.textContent = t.lang_select);
 
-  // 2. Hero Manifesto
-  const leadEl = document.querySelector('.manifesto-lead');
-  if (leadEl) leadEl.innerHTML = t.hero_lead;
+  // 2. Hero Section
+  const heroLead = document.querySelector('.hero-lead');
+  if (heroLead) heroLead.innerHTML = t.hero_lead;
 
-  const curatorEl = document.querySelector('.curator-tag');
-  if (curatorEl) curatorEl.textContent = t.curator_tag;
+  const curatorTag = document.querySelector('.curator-tag');
+  if (curatorTag) curatorTag.textContent = t.curator_tag;
 
-  // 3. Hotspots
-  const pinAbout = document.querySelector('.pin-about .pin-text');
+  const pinAbout = document.querySelector('.pin-about');
   if (pinAbout) pinAbout.textContent = t.pin_about;
-  const pinServices = document.querySelector('.pin-services .pin-text');
+  const pinServices = document.querySelector('.pin-services');
   if (pinServices) pinServices.textContent = t.pin_services;
-  const pinMasters = document.querySelector('.pin-masters .pin-text');
+  const pinMasters = document.querySelector('.pin-masters');
   if (pinMasters) pinMasters.textContent = t.pin_masters;
+
+  // 3. Editorial Hero Quote
+  const templeTitle = document.querySelector('.hero-quote-serif');
+  if (templeTitle) templeTitle.textContent = t.temple_title;
 
   // 4. About Section
   const aboutSec = document.getElementById('about');
   if (aboutSec) {
     const title = aboutSec.querySelector('.section-title');
     if (title) title.textContent = t.about_title;
-    const paras = aboutSec.querySelectorAll('.about-para');
-    if (paras[0]) paras[0].textContent = t.about_p1;
-    if (paras[1]) paras[1].textContent = t.about_p2;
+    const p1 = aboutSec.querySelector('.about-p1');
+    if (p1) p1.textContent = t.about_p1;
+    const p2 = aboutSec.querySelector('.about-p2');
+    if (p2) p2.textContent = t.about_p2;
   }
 
   // 5. Services Section
@@ -263,8 +289,6 @@ function applyGisoLanguage(lang) {
       { name: t.s6_name, price: t.s6_price },
       { name: t.s7_name, price: t.s7_price },
       { name: t.s8_name, price: t.s8_price },
-      { name: t.s9_name, price: t.s9_price },
-      { name: t.s10_name, price: t.s10_price },
     ];
 
     cards.forEach((card, idx) => {
@@ -288,8 +312,6 @@ function applyGisoLanguage(lang) {
     const roles = mastersSec.querySelectorAll('.master-role');
     if (roles[0]) roles[0].textContent = t.m1_role;
     if (roles[1]) roles[1].textContent = t.m2_role;
-    if (roles[2]) roles[2].textContent = t.m3_role;
-    if (roles[3]) roles[3].textContent = t.m4_role;
   }
 
   // 7. Reels Section
@@ -298,9 +320,8 @@ function applyGisoLanguage(lang) {
     const title = reelsSec.querySelector('.section-title');
     if (title) title.textContent = t.reels_title;
     const sub = reelsSec.querySelector('.section-subtitle');
-    if (sub) {
-      sub.innerHTML = `${t.reels_subtitle} <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: var(--c-gold-champagne); text-decoration: none;">@toch._ka</a>`;
-    }
+    if (sub) sub.innerHTML = `${t.reels_subtitle} <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: none;">@toch._ka</a>`;
+
     const tags = reelsSec.querySelectorAll('.reel-tag');
     if (tags[0]) tags[0].textContent = t.r1_tag;
     if (tags[1]) tags[1].textContent = t.r2_tag;
@@ -308,44 +329,56 @@ function applyGisoLanguage(lang) {
     if (tags[3]) tags[3].textContent = t.r4_tag;
   }
 
-  // 8. Temple Banner
-  const templeTitle = document.querySelector('.temple-title');
-  if (templeTitle) templeTitle.textContent = t.temple_title;
-
-  // 9. Contacts & Form
+  // 8. Contacts Section
   const contactsSec = document.getElementById('contacts');
   if (contactsSec) {
     const title = contactsSec.querySelector('.section-title');
     if (title) title.textContent = t.contacts_title;
-    const head = contactsSec.querySelector('.form-heading');
-    if (head) head.textContent = t.form_heading;
-    const note = contactsSec.querySelector('.form-note');
-    if (note) note.textContent = t.form_note;
+    const formHeading = contactsSec.querySelector('.form-heading');
+    if (formHeading) formHeading.textContent = t.form_heading;
+    const formNote = contactsSec.querySelector('.form-note');
+    if (formNote) formNote.textContent = t.form_note;
 
-    const nameInp = document.getElementById('clientName');
-    if (nameInp) nameInp.placeholder = t.form_name_ph;
-    const emailInp = document.getElementById('clientEmail');
-    if (emailInp) emailInp.placeholder = t.form_email_ph;
-    const phoneInp = document.getElementById('clientPhone');
-    if (phoneInp) phoneInp.placeholder = t.form_phone_ph;
+    const nameInput = document.getElementById('clientName');
+    if (nameInput) nameInput.placeholder = t.form_name_ph;
+    const emailInput = document.getElementById('clientEmail');
+    if (emailInput) emailInput.placeholder = t.form_email_ph;
+    const phoneInput = document.getElementById('clientPhone');
+    if (phoneInput) phoneInput.placeholder = t.form_phone_ph;
 
-    const sel = document.getElementById('selectedService');
-    if (sel && sel.options[0]) sel.options[0].textContent = t.form_select_ph;
+    const submitBtn = contactsSec.querySelector('.giso-send-btn span');
+    if (submitBtn) submitBtn.textContent = t.form_send_btn;
 
-    const sendBtn = contactsSec.querySelector('.giso-send-btn span');
-    if (sendBtn) sendBtn.textContent = t.form_send_btn;
+    // Update select dropdown options
+    const selectEl = document.getElementById('selectedService');
+    const opts = GISO_SELECT_OPTIONS[lang] || GISO_SELECT_OPTIONS.en;
+    if (selectEl && opts) {
+      const selectedIndex = selectEl.selectedIndex >= 0 ? selectEl.selectedIndex : 0;
+      selectEl.innerHTML = '';
+      opts.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt.value;
+        o.textContent = opt.text;
+        if (opt.disabled) o.disabled = true;
+        selectEl.appendChild(o);
+      });
+      if (selectedIndex < selectEl.options.length) {
+        selectEl.selectedIndex = selectedIndex;
+      }
+    }
   }
 
-  // 10. Tokens & Footer
-  const tokenHead = document.querySelector('.token-title-col .t-head:first-child');
-  if (tokenHead) tokenHead.textContent = t.token_title;
+  // 9. Palette Tokens
+  const tokenTitle = document.querySelector('.palette-section-title');
+  if (tokenTitle) tokenTitle.textContent = t.token_title;
 
+  // 10. Footer
   const footerCopy = document.querySelector('.footer-copy');
   if (footerCopy) footerCopy.textContent = t.footer_copy;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize language
+  // Initialize Language
   applyGisoLanguage(currentGisoLang);
 
   // Language button event listeners
@@ -358,14 +391,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 1. Mobile Menu Toggle
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileDrawer = document.getElementById('mobileDrawer');
-  const mobileLinks = document.querySelectorAll('.m-nav-link, .m-btn-book');
+  const menuToggle = document.getElementById('gisoMenuToggle');
+  const mobileDrawer = document.getElementById('gisoMobileDrawer');
+  const mobileLinks = document.querySelectorAll('.m-link, .m-btn-primary');
 
-  if (mobileMenuBtn && mobileDrawer) {
-    mobileMenuBtn.addEventListener('click', () => {
+  if (menuToggle && mobileDrawer) {
+    menuToggle.addEventListener('click', () => {
       mobileDrawer.classList.toggle('open');
-      const spans = mobileMenuBtn.querySelectorAll('span');
+      const spans = menuToggle.querySelectorAll('span');
       if (mobileDrawer.classList.contains('open')) {
         spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
         spans[1].style.transform = 'rotate(-45deg) translate(4px, -4px)';
@@ -378,70 +411,55 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileDrawer.classList.remove('open');
-        const spans = mobileMenuBtn.querySelectorAll('span');
+        const spans = menuToggle.querySelectorAll('span');
         spans[0].style.transform = 'none';
         spans[1].style.transform = 'none';
       });
     });
   }
 
-  // 2. Service Card Click to Auto-Select Treatment & Scroll to Booking
+  // 2. Service Card Click -> Scroll to Contacts Form
   const serviceCards = document.querySelectorAll('.service-card');
-  const serviceSelect = document.getElementById('selectedService');
+  const selectElement = document.getElementById('selectedService');
+  const contactsSection = document.getElementById('contacts');
 
   serviceCards.forEach(card => {
     card.addEventListener('click', () => {
       const serviceName = card.getAttribute('data-service');
-      if (serviceSelect && serviceName) {
-        for (let i = 0; i < serviceSelect.options.length; i++) {
-          if (serviceSelect.options[i].value.includes(serviceName) || serviceName.includes(serviceSelect.options[i].value)) {
-            serviceSelect.selectedIndex = i;
+      if (selectElement && serviceName) {
+        for (let i = 0; i < selectElement.options.length; i++) {
+          if (selectElement.options[i].value.includes(serviceName) || serviceName.includes(selectElement.options[i].value)) {
+            selectElement.selectedIndex = i;
             break;
           }
         }
-        
-        const contactsSection = document.getElementById('contacts');
-        if (contactsSection) {
-          contactsSection.scrollIntoView({ behavior: 'smooth' });
-          serviceSelect.focus();
-          serviceSelect.style.borderColor = '#D4AF77';
-          setTimeout(() => {
-            serviceSelect.style.borderColor = '';
-          }, 2000);
-        }
+      }
+      if (contactsSection) {
+        contactsSection.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
 
-  // 3. Contact & Booking Form Handler
-  const form = document.getElementById('bookingForm');
-  const feedback = document.getElementById('gisoFeedback');
+  // 3. Booking Form Submission
+  const bookingForm = document.getElementById('bookingForm');
+  const gisoFeedback = document.getElementById('gisoFeedback');
 
-  if (form && feedback) {
-    form.addEventListener('submit', (e) => {
+  if (bookingForm && gisoFeedback) {
+    bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const t = GISO_TRANSLATIONS[currentGisoLang] || GISO_TRANSLATIONS.en;
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
+      const submitBtn = bookingForm.querySelector('button[type="submit"]');
+
       submitBtn.disabled = true;
       submitBtn.innerHTML = `<span>${t.form_transmitting}</span>`;
 
       setTimeout(() => {
-        feedback.innerHTML = t.form_success;
-        form.reset();
+        gisoFeedback.textContent = t.form_success;
+        gisoFeedback.style.display = 'block';
+        bookingForm.reset();
         submitBtn.disabled = false;
         submitBtn.innerHTML = `<span>${t.form_send_btn}</span>`;
       }, 1000);
     });
   }
-
-  // 4. Header Shadow on Scroll
-  const header = document.getElementById('mainHeader');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
 });

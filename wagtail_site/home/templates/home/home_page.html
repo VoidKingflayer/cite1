@@ -1,0 +1,1007 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <!-- Fixed Top Zone: Announcement Bar with Top-Corner Language Switcher + Navigation Header -->
+  <div class="fixed-top-zone">
+    <!-- Top Announcement Bar with Dedicated Language Switcher -->
+    <div class="top-announcement-bar">
+      <div class="announcement-left">
+        <div class="announcement-track">
+          <span>{{ page.announcement_ticker|default:"TOCHKA • YOUR SPACE TO BREATHE • WE PRESS PAUSE FOR YOU • 30% OFF YOUR 5TH MASSAGE • 46 LUKA ASATIANI ST, BATUMI" }}</span>
+          <span class="dot-sep">•</span>
+          <span>{{ page.announcement_ticker|default:"TOCHKA • YOUR SPACE TO BREATHE • WE PRESS PAUSE FOR YOU • 30% OFF YOUR 5TH MASSAGE • 46 LUKA ASATIANI ST, BATUMI" }}</span>
+        </div>
+      </div>
+      <div class="top-lang-wrap">
+        <div class="omra-top-lang-switcher" id="topLangSwitcher">
+          <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru" title="Русский">RU</button>
+          <button type="button" class="lang-btn" data-lang="ka" title="ქართული">GE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Luxury Architectural Header -->
+    <header class="omra-header" id="omraHeader">
+      <div class="header-inner">
+        <a href="#hero" class="brand-link">
+          <div class="omra-logo-wrap">
+            <span class="omra-logo-text">{{ page.brand_logo_text|default:"tochka" }}</span>
+          </div>
+        </a>
+
+        <nav class="omra-nav" id="omraNav">
+          <a href="#concept" class="nav-item" data-i18n="nav_concept">CONCEPT</a>
+          <a href="#rituals" class="nav-item" data-i18n="nav_rituals">RITUALS & PRICES</a>
+          <a href="#loyalty" class="nav-item" data-i18n="nav_loyalty">LOYALTY</a>
+          <a href="#giftcards" class="nav-item" data-i18n="nav_giftcards">GIFT CARDS</a>
+          <a href="#atmosphere" class="nav-item" data-i18n="nav_atmosphere">ATMOSPHERE</a>
+          <a href="#palette" class="nav-item" data-i18n="nav_palette">IDENTITY</a>
+          <a href="#booking" class="nav-item" data-i18n="nav_booking">CONTACTS</a>
+        </nav>
+
+        <div class="header-right">
+          <a href="#booking" class="btn-book-header" data-i18n="btn_book_header">{{ page.btn_book_header_text|default:"BOOK A SESSION" }}</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="m-omra-lang-row">
+      <span class="m-omra-lang-title" data-i18n="lang_select">LANGUAGE:</span>
+      <div class="m-omra-lang-switcher" id="mOmraLangSwitcher">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="ka">GE</button>
+      </div>
+    </div>
+    <nav class="m-nav-list">
+      <a href="#concept" class="m-link" data-i18n="nav_concept">CONCEPT</a>
+      <a href="#rituals" class="m-link" data-i18n="nav_rituals">RITUALS & PRICES</a>
+      <a href="#loyalty" class="m-link" data-i18n="nav_loyalty">LOYALTY PROGRAM</a>
+      <a href="#giftcards" class="m-link" data-i18n="nav_giftcards">GIFT CARDS</a>
+      <a href="#atmosphere" class="m-link" data-i18n="nav_atmosphere">ATMOSPHERE & REELS</a>
+      <a href="#palette" class="m-link" data-i18n="nav_palette">COLOR & IDENTITY</a>
+      <a href="#booking" class="m-link" data-i18n="nav_booking">CONTACTS</a>
+      <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" class="m-gmaps-link">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <span>{{ page.loc_address|default:"46 Luka Asatiani St, Batumi (Google Maps)" }}</span>
+      </a>
+      <a href="#booking" class="m-btn-primary" data-i18n="btn_book_header">{{ page.btn_book_header_text|default:"RESERVE APPOINTMENT" }}</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="omra-hero" id="hero">
+    <div class="hero-backdrop-container">
+      <div class="hero-split-grid">
+        <!-- Left: Branding & Manifesto -->
+        <div class="hero-content-col">
+          <div class="hero-brand-badge">
+            <span class="badge-tag" data-i18n="hero_badge">{{ page.hero_badge_tag|default:"WELLNESS SANCTUARY" }}</span>
+            <span class="badge-line"></span>
+          </div>
+
+          <h1 class="hero-main-title">
+            {{ page.hero_main_title|default:"Your space to breathe."|safe }}
+          </h1>
+
+          <p class="hero-description" data-i18n="hero_desc">
+            {{ page.hero_description|default:"TOCHKA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. It is a place where the noise of the city can be left behind, and one can hear themselves again." }}
+          </p>
+
+          <div class="hero-action-buttons">
+            <a href="#rituals" class="btn-espresso">
+              <span data-i18n="hero_btn_explore">{{ page.hero_btn_explore_text|default:"EXPLORE RITUALS" }}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#booking" class="btn-sand-outline">
+              <span data-i18n="hero_btn_book">{{ page.hero_btn_book_text|default:"BOOK APPOINTMENT" }}</span>
+            </a>
+          </div>
+
+          <div class="hero-features-strip">
+            <div class="h-feat-item">
+              <span class="h-feat-num">{{ page.hero_feat_1_num|default:"01" }}</span>
+              <span class="h-feat-txt" data-i18n="h_feat_1">{{ page.hero_feat_1_text|default:"Continuous-Contact Technique" }}</span>
+            </div>
+            <div class="h-feat-item">
+              <span class="h-feat-num">{{ page.hero_feat_2_num|default:"02" }}</span>
+              <span class="h-feat-txt" data-i18n="h_feat_2">{{ page.hero_feat_2_text|default:"Natural Coconut Oil & Care" }}</span>
+            </div>
+            <div class="h-feat-item">
+              <span class="h-feat-num">{{ page.hero_feat_3_num|default:"03" }}</span>
+              <span class="h-feat-txt" data-i18n="h_feat_3">{{ page.hero_feat_3_text|default:"10% Off 1st Visit • 30% Off 5th" }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Dewy Skin & Tactile Visual -->
+        <div class="hero-visual-col">
+          <div class="hero-image-card">
+            {% if page.hero_image %}
+              {% image page.hero_image fill-800x1000 class="hero-art-img" alt="TOCHKA Sensual Aesthetics & Dewy Skin" %}
+            {% else %}
+              <img src="{% static 'home/images/3903587528438016601.jpg' %}" alt="TOCHKA Sensual Aesthetics & Dewy Skin" class="hero-art-img" />
+            {% endif %}
+            <div class="hero-card-tag">
+              <span class="tag-title" data-i18n="hero_tag_title">{{ page.hero_card_tag_title|default:"TOCHKA RITUAL" }}</span>
+              <span class="tag-loc">{{ page.hero_card_tag_loc|default:"BATUMI • 46 LUKA ASATIANI ST" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 / Concept & Philosophy Section -->
+  <section class="omra-concept-section" id="concept">
+    <div class="omra-container">
+      <div class="section-badge-header">
+        <span class="section-serial">{{ page.concept_serial|default:"01" }}</span>
+        <h2 class="section-heading" data-i18n="concept_heading">{{ page.concept_heading|default:"CONCEPT & PHILOSOPHY" }}</h2>
+      </div>
+
+      <div class="concept-content-grid">
+        <div class="concept-quote-box">
+          <blockquote class="concept-quote" data-i18n="concept_quote">
+            {{ page.concept_quote|default:'"TOCHKA sounds confident and clear here, like a deep breath and a slow exhale. The strictness of the lines creates a sense of stability and support — the foundation on which recovery is built."' }}
+          </blockquote>
+          <span class="quote-author" data-i18n="concept_author">{{ page.concept_author|default:"— Anna Kolosova • TOCHKA Founder & Therapist" }}</span>
+        </div>
+
+        <div class="concept-cards-duo">
+          <div class="c-card card-sand">
+            <h3 class="c-card-title" data-i18n="c_card_1_title">{{ page.concept_card_1_title|default:"Continuous-Contact Touch" }}</h3>
+            <p class="c-card-text" data-i18n="c_card_1_text">
+              {{ page.concept_card_1_text|default:"Our signature continuous-contact technique: the therapist's hands barely leave the body, moving in a smooth meditative flow. This rhythm signals safety to the nervous system, releasing chronic tension without sudden changes in pace." }}
+            </p>
+          </div>
+
+          <div class="c-card card-espresso">
+            <h3 class="c-card-title" data-i18n="c_card_2_title">{{ page.concept_card_2_title|default:"Atmosphere of Gentle Care" }}</h3>
+            <p class="c-card-text" data-i18n="c_card_2_text">
+              {{ page.concept_card_2_text|default:"Natural coconut oil or delicate cream, fresh soft white towels, personalized guest playlist instead of generic sounds, and a relaxed cup of coffee or herbal tea after your session." }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / Therapies & Rituals (Authentic Instagram Price Menu) -->
+  <section class="omra-rituals-section" id="rituals">
+    <div class="omra-container">
+      <div class="section-badge-header between-header">
+        <div>
+          <span class="section-serial">{{ page.rituals_serial|default:"02" }}</span>
+          <h2 class="section-heading" data-i18n="rituals_heading">{{ page.rituals_heading|default:"THERAPIES & RITUALS" }}</h2>
+          <p class="section-subtext" data-i18n="rituals_subtext">{{ page.rituals_subtext|default:"Authentic treatments, precise myofascial techniques, and deep restorative care in Batumi." }}</p>
+        </div>
+        <div class="menu-filter-pills">
+          <button class="filter-pill active" data-filter="all" data-i18n="f_all">All Rituals</button>
+          <button class="filter-pill" data-filter="body" data-i18n="f_body">Body Therapy</button>
+          <button class="filter-pill" data-filter="focused" data-i18n="f_focused">Face & Focused</button>
+          <button class="filter-pill" data-filter="signature" data-i18n="f_signature">Signature & 4-Hands</button>
+        </div>
+      </div>
+
+      <!-- Welcome Privilege Banner (10% Off from @toch._ka) -->
+      <div class="special-promo-strip">
+        <div class="promo-badge-tag">{{ page.promo_badge|default:"FIRST VISIT WELCOME" }}</div>
+        <div class="promo-text-wrap">
+          <h3 class="promo-title" data-i18n="promo_title">{{ page.promo_title|default:"10% Privilege on Your First Session" }}</h3>
+          <p class="promo-subtitle" data-i18n="promo_subtitle">{{ page.promo_subtitle|default:"Experience our signature continuous-contact massage with master. Includes organic coconut oil and complimentary post-session tea or coffee." }}</p>
+        </div>
+        <a href="#booking" class="btn-promo-action" data-i18n="promo_btn">{{ page.promo_btn_text|default:"CLAIM 10% DISCOUNT" }}</a>
+      </div>
+
+      <div class="rituals-table-wrapper">
+        {% if rituals %}
+          {% for r in rituals %}
+          <div class="ritual-row {% if r.is_highlighted %}highlight-row{% endif %}" data-category="{{ r.category }}" data-name="{{ r.name }}" data-price="{{ r.price_1 }}">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name">{{ r.name }}</h3>
+                {% if r.tag %}
+                <span class="r-tag {% if r.tag_is_luxury %}tag-luxury{% endif %}">{{ r.tag }}</span>
+                {% endif %}
+              </div>
+              <p class="r-desc">{{ r.description }}</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">{{ r.duration_1 }}</span>
+                <span class="tier-cost">{{ r.price_1 }}</span>
+              </div>
+              {% if r.price_2 %}
+              <div class="r-tier">
+                <span class="tier-time">{{ r.duration_2 }}</span>
+                <span class="tier-cost">{{ r.price_2 }}</span>
+              </div>
+              {% endif %}
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select {{ r.name }}" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <!-- Default Authentic Rituals -->
+          <!-- Ritual 01: Classic Massage -->
+          <div class="ritual-row" data-category="body" data-name="Classic Massage" data-price="$45">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r1_name">Classic Massage</h3>
+                <span class="r-tag">Popular</span>
+              </div>
+              <p class="r-desc" data-i18n="r1_desc">Deep and structured treatment tailored to relieve muscle tension and improve overall comfort. Steady pace with controlled pressure and trigger point release.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">60 min</span>
+                <span class="tier-cost">$45</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">90 min</span>
+                <span class="tier-cost">$60</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Classic Massage" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 02: Relaxing Continuous-Contact Massage -->
+          <div class="ritual-row highlight-row" data-category="body" data-name="Relaxing Massage (Continuous Contact)" data-price="$45">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r2_name">Relaxing Massage (Continuous Contact)</h3>
+                <span class="r-tag tag-luxury">Signature Technique</span>
+              </div>
+              <p class="r-desc" data-i18n="r2_desc">Signature continuous-contact technique creating a seamless, flowing rhythm without breaks. Allows the nervous system to switch off, releasing fatigue and bringing deep inner calm.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">60 min</span>
+                <span class="tier-cost">$45</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">90 min</span>
+                <span class="tier-cost">$60</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Relaxing Massage" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 03: Lymphatic Drainage Therapy -->
+          <div class="ritual-row" data-category="body" data-name="Lymphatic Drainage Therapy" data-price="$48">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r3_name">Lymphatic Drainage Therapy</h3>
+                <span class="r-tag">Detox & Lightness</span>
+              </div>
+              <p class="r-desc" data-i18n="r3_desc">Stimulates lymph circulation, reduces swelling, relieves heaviness in the legs, and brings overall body lightness and detoxification through soft flowing strokes.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">60 min</span>
+                <span class="tier-cost">$48</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">90 min</span>
+                <span class="tier-cost">$63</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Lymphatic Drainage" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 04: Sports & Deep Tissue Massage -->
+          <div class="ritual-row" data-category="body" data-name="Sports & Deep Tissue Massage" data-price="$52">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r4_name">Sports & Deep Tissue Massage</h3>
+                <span class="r-tag">Deep Recovery</span>
+              </div>
+              <p class="r-desc" data-i18n="r4_desc">Intensive mechanical therapy on muscles, fascia, and connective tissues. Normalizes muscle tone, eases stiffness, and accelerates post-workout recovery.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">60 min</span>
+                <span class="tier-cost">$52</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">90 min</span>
+                <span class="tier-cost">$67</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Sports Massage" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 05: Back, Neck & Shoulders Recovery -->
+          <div class="ritual-row" data-category="focused" data-name="Back & Neck Recovery Therapy" data-price="$33">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r5_name">Back & Neck Recovery Therapy</h3>
+                <span class="r-tag">Targeted Therapy</span>
+              </div>
+              <p class="r-desc" data-i18n="r5_desc">Targeted axial therapy. Releases neck and shoulder knots, relieves desk-posture stiffness, and alleviates tension headaches through focused trigger therapy.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">45 min</span>
+                <span class="tier-cost">$33</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">60 min</span>
+                <span class="tier-cost">$45</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Back & Neck Therapy" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 06: Facial & Decollete Sculpting Lift -->
+          <div class="ritual-row" data-category="focused" data-name="Facial & Decollete Sculpting Lift" data-price="$40">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r6_name">Facial & Decollete Sculpting Lift</h3>
+                <span class="r-tag">Myofascial Lift</span>
+              </div>
+              <p class="r-desc" data-i18n="r6_desc">Myofascial lifting and sculpting technique for face, neck, and decollete. Enhances contours, boosts microcirculation, and relieves facial muscle tension.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">50 min</span>
+                <span class="tier-cost">$40</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Facial Sculpting" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 07: Signature TOCH_KA Ritual -->
+          <div class="ritual-row highlight-row" data-category="signature" data-name="Signature TOCH_KA Sanctuary Ritual" data-price="$70">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r7_name">Signature TOCH_KA Sanctuary Ritual</h3>
+                <span class="r-tag tag-luxury">Full Immersion</span>
+              </div>
+              <p class="r-desc" data-i18n="r7_desc">The ultimate sanctuary experience by therapist Anna Kolosova: seamless continuous contact, deep muscle release, organic coconut oil, custom playlist, and relaxing tea/coffee aftercare.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">90 min</span>
+                <span class="tier-cost">$70</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">120 min</span>
+                <span class="tier-cost">$90</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select Signature Ritual" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+
+          <!-- Ritual 08: 4 Hands Synchronized Symphony -->
+          <div class="ritual-row" data-category="signature" data-name="4 Hands Synchronized Symphony" data-price="$93">
+            <div class="r-info-col">
+              <div class="r-title-wrap">
+                <h3 class="r-name" data-i18n="r8_name">4 Hands Synchronized Symphony</h3>
+                <span class="r-tag tag-luxury">Ultimate Experience</span>
+              </div>
+              <p class="r-desc" data-i18n="r8_desc">Two therapists perform synchronized movements in seamless harmony. The mirrored rhythm creates an effortless flow, overwhelming daily stress and inducing pure weightlessness.</p>
+            </div>
+            <div class="r-pricing-col">
+              <div class="r-tier">
+                <span class="tier-time">60 min</span>
+                <span class="tier-cost">$93</span>
+              </div>
+              <div class="r-tier">
+                <span class="tier-time">90 min</span>
+                <span class="tier-cost">$125</span>
+              </div>
+            </div>
+            <div class="r-action-col">
+              <button class="btn-select-ritual" aria-label="Select 4 Hands Massage" data-i18n="r_select_btn">Select</button>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 / Loyalty Card Section -->
+  <section class="omra-loyalty-section" id="loyalty">
+    <div class="omra-container">
+      <div class="loyalty-card-wrapper">
+        <div class="loyalty-grid">
+          <div class="loyalty-text-col">
+            <span class="section-serial">{{ page.loyalty_serial|default:"03" }}</span>
+            <h2 class="section-heading" data-i18n="loyalty_heading">{{ page.loyalty_heading|default:"THE RITUAL OF GRATITUDE" }}</h2>
+            <h3 class="loyalty-subtitle" data-i18n="loyalty_subtitle">{{ page.loyalty_subtitle|default:"30% Privilege on Your 5th Massage" }}</h3>
+            
+            <p class="loyalty-desc" data-i18n="loyalty_desc">
+              {{ page.loyalty_desc|default:"Receive more pleasure and care for yourself. Enjoy 30% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session." }}
+            </p>
+
+            <div class="stamp-interactive-box">
+              <span class="stamp-prompt" data-i18n="stamp_prompt">{{ page.loyalty_stamp_prompt|default:"CLICK TO TEST STAMP COLLECTION:" }}</span>
+              <div class="stamps-row" id="stampsRow">
+                <div class="stamp-slot active" title="1st Session Completed">
+                  <span class="stamp-icon">✋</span>
+                  <span class="stamp-num">1</span>
+                </div>
+                <div class="stamp-slot active" title="2nd Session Completed">
+                  <span class="stamp-icon">✋</span>
+                  <span class="stamp-num">2</span>
+                </div>
+                <div class="stamp-slot active" title="3rd Session Completed">
+                  <span class="stamp-icon">✋</span>
+                  <span class="stamp-num">3</span>
+                </div>
+                <div class="stamp-slot" title="Click to stamp">
+                  <span class="stamp-icon">◯</span>
+                  <span class="stamp-num">4</span>
+                </div>
+                <div class="stamp-slot free-slot" title="5th Session 30% Discount Reward!">
+                  <span class="stamp-icon">★</span>
+                  <span class="stamp-num">-30%</span>
+                </div>
+              </div>
+              <p class="stamp-counter-text" id="stampCounterText">3 of 4 stamps collected. 1 more until your 30% discount on the 5th session!</p>
+            </div>
+          </div>
+
+          <div class="loyalty-visual-col">
+            <div class="loyalty-mockup-card">
+              {% if page.loyalty_image %}
+                {% image page.loyalty_image fill-600x600 class="loyalty-img" alt="TOCHKA Loyalty Card" %}
+              {% else %}
+                <img src="{% static 'home/images/3903611317898741075_3903611114787886062.jpg' %}" alt="TOCHKA Loyalty Card on Natural Stone" class="loyalty-img" />
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 / Gift Cards & Certificates -->
+  <section class="omra-giftcards-section" id="giftcards">
+    <div class="omra-container">
+      <div class="section-badge-header">
+        <span class="section-serial">{{ page.giftcards_serial|default:"04" }}</span>
+        <h2 class="section-heading" data-i18n="gift_heading">{{ page.giftcards_heading|default:"GIFT CARDS & CERTIFICATES" }}</h2>
+        <p class="section-subtext" data-i18n="gift_subtext">{{ page.giftcards_subtext|default:"Give the gift of presence, tranquility, and restorative self-care." }}</p>
+      </div>
+
+      <div class="giftcards-showcase-grid">
+        <div class="gift-preview-col">
+          <div class="gift-card-visual" id="giftCardVisual">
+            <div class="gc-header">
+              <span class="gc-brand">{{ page.brand_logo_text|default:"tochka" }}</span>
+              <span class="gc-type">GIFT CERTIFICATE</span>
+            </div>
+            <div class="gc-body">
+              <div class="gc-amount" id="gcDisplayAmount">$45</div>
+              <div class="gc-motto">YOUR SPACE TO BREATHE</div>
+            </div>
+            <div class="gc-footer">
+              <span>VALID FOR 3 MONTHS FROM ISSUANCE</span>
+              <span>BATUMI • 46 LUKA ASATIANI ST</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-control-col">
+          <h3 class="gc-title" data-i18n="gc_title">{{ page.giftcards_picker_title|default:"Select Certificate Value" }}</h3>
+          <p class="gc-note" data-i18n="gc_note">{{ page.giftcards_picker_note|default:"Delivered instantly in digital form or as an embossed tactile sand-finish physical card." }}</p>
+
+          <div class="amount-picker-grid">
+            <button class="amount-btn active" data-amount="$45">
+              <span class="ab-val">$45</span>
+              <span class="ab-sub" data-i18n="gc_sub_1">Classic / Relaxing Massage (60m)</span>
+            </button>
+            <button class="amount-btn" data-amount="$60">
+              <span class="ab-val">$60</span>
+              <span class="ab-sub" data-i18n="gc_sub_2">Extended 90m Deep Recovery</span>
+            </button>
+            <button class="amount-btn" data-amount="$70">
+              <span class="ab-val">$70</span>
+              <span class="ab-sub" data-i18n="gc_sub_3">Signature TOCH_KA Ritual (90m)</span>
+            </button>
+            <button class="amount-btn" data-amount="$93">
+              <span class="ab-val">$93</span>
+              <span class="ab-sub" data-i18n="gc_sub_4">4 Hands Synchronized Symphony (60m)</span>
+            </button>
+          </div>
+
+          <a href="#booking" class="btn-espresso full-width" data-i18n="gc_btn_buy">{{ page.giftcards_btn_text|default:"PURCHASE GIFT CERTIFICATE" }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Atmosphere & Video Reels Section -->
+  <section class="omra-reels-section" id="atmosphere">
+    <div class="omra-container">
+      <div class="section-badge-header">
+        <span class="section-serial">{{ page.reels_serial|default:"05" }}</span>
+        <h2 class="section-heading" data-i18n="reels_heading">{{ page.reels_heading|default:"ATMOSPHERE & INSTAGRAM REELS" }}</h2>
+        <p class="section-subtext" data-i18n="reels_subtext">Moments of deep breath, flowing oils and restorative touch at <a href="{{ page.loc_instagram_url|default:'https://www.instagram.com/toch._ka/' }}" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">@toch._ka</a></p>
+      </div>
+
+      <div class="omra-reels-grid">
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="{% if page.reel_1_poster %}{{ page.reel_1_poster.file.url }}{% else %}{% static 'home/images/tochka_poster_1.jpg' %}{% endif %}">
+              <source src="{{ page.reel_1_video|default:'/static/home/images/3903588512237354348.mp4' }}" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="{% if page.reel_2_poster %}{{ page.reel_2_poster.file.url }}{% else %}{% static 'home/images/tochka_poster_2.jpg' %}{% endif %}">
+              <source src="{{ page.reel_2_video|default:'/static/home/images/3937630035152798052.mp4' }}" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="{% if page.reel_3_poster %}{{ page.reel_3_poster.file.url }}{% else %}{% static 'home/images/tochka_poster_3.jpg' %}{% endif %}">
+              <source src="{{ page.reel_3_video|default:'/static/home/images/tochka_reel_3.mp4' }}" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="omra-reel-card">
+          <div class="omra-reel-video-box">
+            <video autoplay muted loop playsinline poster="{% if page.reel_4_poster %}{{ page.reel_4_poster.file.url }}{% else %}{% static 'home/images/tochka_poster_4.jpg' %}{% endif %}">
+              <source src="{{ page.reel_4_video|default:'/static/home/images/3959919174497769469.mp4' }}" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 / Full-Width Manifesto Banner ("ALL YOU KNEAD IS CARE") -->
+  <section class="omra-manifesto-banner">
+    <div class="banner-photo-wrapper">
+      {% if page.manifesto_image %}
+        {% image page.manifesto_image fill-1600x800 class="banner-img" alt="Tactile Wooden Branch & Spa Rituals" %}
+      {% else %}
+        <img src="{% static 'home/images/3941719025657177039_clean.jpg' %}" alt="Tactile Wooden Branch & Spa Rituals" class="banner-img" />
+      {% endif %}
+      <div class="banner-tint-overlay">
+        <h2 class="banner-huge-text" data-i18n="banner_text">{{ page.manifesto_huge_text|default:"ALL YOU KNEAD IS CARE" }}</h2>
+        <span class="banner-small-text">{{ page.manifesto_small_text|default:"TOCHKA • 46 LUKA ASATIANI ST, BATUMI" }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 / Color Palette & Visual Identity (From Module 9) -->
+  <section class="omra-palette-section" id="palette">
+    <div class="omra-container">
+      <div class="section-badge-header">
+        <span class="section-serial">{{ page.palette_serial|default:"05" }}</span>
+        <h2 class="section-heading">{{ page.palette_heading|default:"COLOUR PALETTE & IDENTITY" }}</h2>
+        <p class="section-subtext">{{ page.palette_subtext|default:"Iron metallic black, brushed titanium steel, platinum sand, and raw forged charcoal." }}</p>
+      </div>
+
+      <div class="palette-swatches-grid">
+        <!-- Swatch 1: Pure White -->
+        <div class="swatch-card" style="--swatch-bg: #FFFFFF;">
+          <div class="swatch-color-box border-box">
+            <span class="swatch-sample-logo color-dark">tochka</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="swatch-name">Pure Light</span>
+            <span class="swatch-hex">#FFFFFF</span>
+            <span class="swatch-rgb">R:255 G:255 B:255</span>
+          </div>
+        </div>
+
+        <!-- Swatch 2: Soft Sand #E8ECEF -->
+        <div class="swatch-card" style="--swatch-bg: #E8ECEF;">
+          <div class="swatch-color-box">
+            <span class="swatch-sample-logo color-dark">tochka</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="swatch-name">Platinum Steel</span>
+            <span class="swatch-hex">#E8ECEF</span>
+            <span class="swatch-rgb">R:232 G:236 B:239</span>
+          </div>
+        </div>
+
+        <!-- Swatch 3: Raw Clay #9BA4B0 -->
+        <div class="swatch-card" style="--swatch-bg: #9BA4B0;">
+          <div class="swatch-color-box">
+            <span class="swatch-sample-logo color-light">tochka</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="swatch-name">Titanium Slate</span>
+            <span class="swatch-hex">#9BA4B0</span>
+            <span class="swatch-rgb">R:155 G:164 B:176</span>
+          </div>
+        </div>
+
+        <!-- Swatch 4: Warm Bark #4D535E -->
+        <div class="swatch-card" style="--swatch-bg: #4D535E;">
+          <div class="swatch-color-box">
+            <span class="swatch-sample-logo color-light">tochka</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="swatch-name">Brushed Gunmetal</span>
+            <span class="swatch-hex">#4D535E</span>
+            <span class="swatch-rgb">R:77 G:83 B:94</span>
+          </div>
+        </div>
+
+        <!-- Swatch 5: Iron Metallic Black #16181B -->
+        <div class="swatch-card" style="--swatch-bg: #16181B;">
+          <div class="swatch-color-box">
+            <span class="swatch-sample-logo color-light">tochka</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="swatch-name">Iron Metallic Black</span>
+            <span class="swatch-hex">#16181B</span>
+            <span class="swatch-rgb">R:22 G:24 B:27</span>
+          </div>
+        </div>
+
+        <!-- Swatch 6: Noir #08090A -->
+        <div class="swatch-card" style="--swatch-bg: #08090A;">
+          <div class="swatch-color-box">
+            <span class="swatch-sample-logo color-light">tochka</span>
+          </div>
+          <div class="swatch-meta">
+            <span class="swatch-name">Obsidian Carbon</span>
+            <span class="swatch-hex">#08090A</span>
+            <span class="swatch-rgb">R:8 G:9 B:10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 / Booking & Concierge Section -->
+  <section class="omra-booking-section" id="booking">
+    <div class="omra-container">
+      <div class="booking-wrapper">
+        <div class="booking-form-col">
+          <span class="section-serial">{{ page.booking_serial|default:"07" }}</span>
+          <h2 class="section-heading" data-i18n="booking_heading">{{ page.booking_heading|default:"RESERVE YOUR SANCTUARY" }}</h2>
+          <p class="booking-lead" data-i18n="booking_lead">
+            {{ page.booking_lead|default:"Select your ritual and preferred time. Master Anna Kolosova will confirm your appointment within 15 minutes." }}
+          </p>
+
+          <form class="omra-form" id="omraBookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guestName" data-i18n="form_name_lbl">FULL NAME *</label>
+                <input type="text" id="guestName" name="name" placeholder="Anna" required class="omra-input" />
+              </div>
+              <div class="form-group">
+                <label for="guestPhone" data-i18n="form_phone_lbl">PHONE / WHATSAPP *</label>
+                <input type="tel" id="guestPhone" name="phone" placeholder="+995 591 22 61 45" required class="omra-input" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="guestEmail" data-i18n="form_email_lbl">E-MAIL ADDRESS *</label>
+              <input type="email" id="guestEmail" name="email" placeholder="guest@tochka.ge" required class="omra-input" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ritualSelect" data-i18n="form_ritual_lbl">DESIRED RITUAL *</label>
+                <select id="ritualSelect" name="ritual" required class="omra-input omra-select">
+                  <option value="" disabled selected>Select a treatment or certificate...</option>
+                  {% if rituals %}
+                    {% for r in rituals %}
+                    <option value="{{ r.name }}">{{ r.name }} ({{ r.duration_1 }} — {{ r.price_1 }}{% if r.price_2 %} / {{ r.duration_2 }} — {{ r.price_2 }}{% endif %})</option>
+                    {% endfor %}
+                  {% else %}
+                    <option value="Classic Massage">Classic Massage (60 min — $45 / 90 min — $60)</option>
+                    <option value="Relaxing Continuous-Contact Massage">Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)</option>
+                    <option value="Lymphatic Drainage Therapy">Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)</option>
+                    <option value="Sports & Deep Tissue Massage">Sports & Deep Tissue Massage (60 min — $52 / 90 min — $67)</option>
+                    <option value="Back & Neck Recovery Therapy">Back & Neck Recovery (45 min — $33 / 60 min — $45)</option>
+                    <option value="Facial & Decollete Sculpting Lift">Facial & Decollete Sculpting Lift (50 min — $40)</option>
+                    <option value="Signature TOCH_KA Sanctuary Ritual">Signature TOCH_KA Ritual (90 min — $70 / 120 min — $90)</option>
+                    <option value="4 Hands Synchronized Symphony">4 Hands Synchronized Symphony (60 min — $93 / 90 min — $125)</option>
+                  {% endif %}
+                  <option value="Gift Certificate $45">Gift Certificate — $45 (60 min Session)</option>
+                  <option value="Gift Certificate $60">Gift Certificate — $60 (90 min Session)</option>
+                  <option value="Gift Certificate $70">Gift Certificate — $70 (Signature Ritual)</option>
+                  <option value="Gift Certificate $93">Gift Certificate — $93 (4 Hands Session)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bookingDate" data-i18n="form_date_lbl">PREFERRED DATE *</label>
+                <input type="date" id="bookingDate" name="date" class="omra-input" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="specialRequests" data-i18n="form_notes_lbl">SPECIAL REQUESTS / MASSAGE FOCUS</label>
+              <textarea id="specialRequests" name="notes" rows="3" placeholder="Lower back focus, music playlist preference, pressure level..." class="omra-input"></textarea>
+            </div>
+
+            <button type="submit" class="btn-espresso full-width btn-submit">
+              <span data-i18n="form_submit_btn">{{ page.booking_btn_text|default:"CONFIRM RESERVATION" }}</span>
+            </button>
+
+            <div class="omra-form-feedback" id="omraFeedback"></div>
+          </form>
+        </div>
+
+        <div class="booking-location-col">
+          <div class="location-card">
+            <h3 class="loc-heading" data-i18n="loc_heading">{{ page.loc_heading|default:"SANCTUARY LOCATION" }}</h3>
+            
+            <div class="loc-item">
+              <span class="loc-city" data-i18n="loc_city_batumi">{{ page.loc_city|default:"BATUMI SANCTUARY" }}</span>
+              <p class="loc-address">{{ page.loc_address|default:"46 Luka Asatiani St, Batumi 6000, Georgia" }}</p>
+              <span class="loc-hours" data-i18n="loc_hours_batumi">{{ page.loc_hours|default:"Daily: 09:00 — 23:00" }}</span>
+
+              <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" class="btn-gmaps-card" title="Open 46 Luka Asatiani St on Google Maps">
+                <div class="btn-gmaps-left">
+                  <svg class="gmaps-pin-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span data-i18n="btn_gmaps">Open in Google Maps</span>
+                </div>
+                <svg class="gmaps-arrow-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+
+            <div class="loc-contacts">
+              <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" class="loc-contact-link" title="Open Google Maps">
+                <svg class="loc-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>{{ page.loc_address|default:"46 Luka Asatiani St, Batumi" }}</span>
+              </a>
+              <a href="{{ page.loc_whatsapp_url|default:'https://wa.me/message/vopznnayguwab1' }}" target="_blank" rel="noopener" class="loc-contact-link" title="Contact on WhatsApp">
+                <svg class="loc-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>WhatsApp: {{ page.loc_phone|default:"+995 591 22 61 45" }}</span>
+              </a>
+              <a href="mailto:{{ page.loc_email|default:'concierge@tochka.ge' }}" class="loc-contact-link" title="Email concierge">
+                <svg class="loc-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>{{ page.loc_email|default:"concierge@tochka.ge" }}</span>
+              </a>
+              <a href="{{ page.loc_instagram_url|default:'https://www.instagram.com/toch._ka/' }}" target="_blank" rel="noopener" class="loc-contact-link" title="Instagram @toch._ka">
+                <svg class="loc-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>Instagram: @toch._ka</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Architectural Footer -->
+  <footer class="omra-footer">
+    <div class="omra-container">
+      <div class="footer-top-grid">
+        <div class="f-brand-col">
+          <div class="f-logo">{{ page.brand_logo_text|default:"tochka" }}</div>
+          <p class="f-motto" data-i18n="footer_motto">{{ page.footer_motto|default:"Your space to breathe. Aesthetics & comfort as part of the healing process." }}</p>
+          
+          <div class="f-social-icons">
+            <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" class="f-social-btn" title="Google Maps (46 Luka Asatiani St, Batumi)">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </a>
+            <a href="{{ page.loc_instagram_url|default:'https://www.instagram.com/toch._ka/' }}" target="_blank" rel="noopener" class="f-social-btn" title="Instagram @toch._ka">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="{{ page.loc_whatsapp_url|default:'https://wa.me/message/vopznnayguwab1' }}" target="_blank" rel="noopener" class="f-social-btn" title="WhatsApp +995 591 22 61 45">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </a>
+            <a href="mailto:{{ page.loc_email|default:'concierge@tochka.ge' }}" class="f-social-btn" title="Email concierge@tochka.ge">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="f-links-col">
+          <span class="f-title" data-i18n="f_title_nav">NAVIGATION</span>
+          <a href="#concept" data-i18n="nav_concept">Concept</a>
+          <a href="#rituals" data-i18n="nav_rituals">Rituals & Prices</a>
+          <a href="#loyalty" data-i18n="nav_loyalty">Loyalty Program</a>
+          <a href="#giftcards" data-i18n="nav_giftcards">Gift Certificates</a>
+        </div>
+
+        <div class="f-links-col">
+          <span class="f-title" data-i18n="f_title_rituals">RITUALS</span>
+          <a href="#rituals">Classic Massage</a>
+          <a href="#rituals">Relaxing Continuous-Contact</a>
+          <a href="#rituals">Lymphatic Drainage</a>
+          <a href="#rituals">Signature TOCH_KA Ritual</a>
+        </div>
+
+        <div class="f-links-col">
+          <span class="f-title" data-i18n="f_title_connect">LOCATION & CONNECT</span>
+          <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" class="f-icon-link" title="Open 46 Luka Asatiani St on Google Maps">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>{{ page.loc_address|default:"46 Luka Asatiani St, Batumi" }}</span>
+          </a>
+          <a href="{{ page.loc_instagram_url|default:'https://www.instagram.com/toch._ka/' }}" target="_blank" rel="noopener" class="f-icon-link">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Instagram (@toch._ka)</span>
+          </a>
+          <a href="mailto:{{ page.loc_email|default:'concierge@tochka.ge' }}" class="f-icon-link">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>{{ page.loc_email|default:"concierge@tochka.ge" }}</span>
+          </a>
+          <a href="tel:{{ page.loc_phone|default:'+995591226145' }}" class="f-icon-link">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>{{ page.loc_phone|default:"+995 591 22 61 45" }}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="f-copyright" data-i18n="footer_copy">{{ page.footer_copyright|default:"© 2023–2026 TOCHKA. Anna Kolosova Massage Sanctuary, Batumi." }}</p>
+        <div class="f-legal">
+          <a href="/admin/" style="color: inherit;">Wagtail CMS Admin</a>
+  <!-- Wagtail Dynamic Multilingual JSON Injection -->
+  <script id="wagtailTranslations" type="application/json">
+  {
+    "en": {
+      "announcement_ticker": "{{ page.announcement_ticker|escapejs }}",
+      "btn_book_header": "{{ page.btn_book_header_text|escapejs }}",
+      "hero_badge": "{{ page.hero_badge_tag|escapejs }}",
+      "hero_title": "{{ page.hero_main_title|escapejs }}",
+      "hero_desc": "{{ page.hero_description|escapejs }}",
+      "hero_btn_explore": "{{ page.hero_btn_explore_text|escapejs }}",
+      "hero_btn_book": "{{ page.hero_btn_book_text|escapejs }}",
+      "h_feat_1": "{{ page.hero_feat_1_text|escapejs }}",
+      "h_feat_2": "{{ page.hero_feat_2_text|escapejs }}",
+      "h_feat_3": "{{ page.hero_feat_3_text|escapejs }}",
+      "hero_tag_title": "{{ page.hero_card_tag_title|escapejs }}",
+      "concept_heading": "{{ page.concept_heading|escapejs }}",
+      "concept_quote": "{{ page.concept_quote|escapejs }}",
+      "concept_author": "{{ page.concept_author|escapejs }}",
+      "c_card_1_title": "{{ page.concept_card_1_title|escapejs }}",
+      "c_card_1_text": "{{ page.concept_card_1_text|escapejs }}",
+      "c_card_2_title": "{{ page.concept_card_2_title|escapejs }}",
+      "c_card_2_text": "{{ page.concept_card_2_text|escapejs }}",
+      "rituals_heading": "{{ page.rituals_heading|escapejs }}",
+      "rituals_subtext": "{{ page.rituals_subtext|escapejs }}",
+      "promo_badge": "{{ page.promo_badge|escapejs }}",
+      "promo_title": "{{ page.promo_title|escapejs }}",
+      "promo_subtitle": "{{ page.promo_subtitle|escapejs }}",
+      "promo_btn": "{{ page.promo_btn_text|escapejs }}",
+      "loyalty_heading": "{{ page.loyalty_heading|escapejs }}",
+      "loyalty_subtitle": "{{ page.loyalty_subtitle|escapejs }}",
+      "loyalty_desc": "{{ page.loyalty_desc|escapejs }}",
+      "gift_heading": "{{ page.giftcards_heading|escapejs }}",
+      "gift_subtext": "{{ page.giftcards_subtext|escapejs }}",
+      "gc_btn_buy": "{{ page.giftcards_btn_text|escapejs }}",
+      "reels_heading": "{{ page.reels_heading|escapejs }}",
+      "reels_subtext": "{{ page.reels_subtext|escapejs }}",
+      "banner_text": "{{ page.manifesto_huge_text|escapejs }}",
+      "palette_heading": "{{ page.palette_heading|escapejs }}",
+      "booking_heading": "{{ page.booking_heading|escapejs }}",
+      "booking_lead": "{{ page.booking_lead|escapejs }}",
+      "form_submit_btn": "{{ page.booking_btn_text|escapejs }}",
+      "footer_motto": "{{ page.footer_motto|escapejs }}"
+    },
+    "ru": {
+      "announcement_ticker": "{{ page.announcement_ticker_ru|default:page.announcement_ticker|escapejs }}",
+      "btn_book_header": "{{ page.btn_book_header_text_ru|default:page.btn_book_header_text|escapejs }}",
+      "hero_badge": "{{ page.hero_badge_tag_ru|default:page.hero_badge_tag|escapejs }}",
+      "hero_title": "{{ page.hero_main_title_ru|default:page.hero_main_title|escapejs }}",
+      "hero_desc": "{{ page.hero_description_ru|default:page.hero_description|escapejs }}",
+      "hero_btn_explore": "{{ page.hero_btn_explore_text_ru|default:page.hero_btn_explore_text|escapejs }}",
+      "hero_btn_book": "{{ page.hero_btn_book_text_ru|default:page.hero_btn_book_text|escapejs }}",
+      "h_feat_1": "{{ page.hero_feat_1_text_ru|default:page.hero_feat_1_text|escapejs }}",
+      "h_feat_2": "{{ page.hero_feat_2_text_ru|default:page.hero_feat_2_text|escapejs }}",
+      "h_feat_3": "{{ page.hero_feat_3_text_ru|default:page.hero_feat_3_text|escapejs }}",
+      "hero_tag_title": "{{ page.hero_card_tag_title_ru|default:page.hero_card_tag_title|escapejs }}",
+      "concept_heading": "{{ page.concept_heading_ru|default:page.concept_heading|escapejs }}",
+      "concept_quote": "{{ page.concept_quote_ru|default:page.concept_quote|escapejs }}",
+      "concept_author": "{{ page.concept_author_ru|default:page.concept_author|escapejs }}",
+      "c_card_1_title": "{{ page.concept_card_1_title_ru|default:page.concept_card_1_title|escapejs }}",
+      "c_card_1_text": "{{ page.concept_card_1_text_ru|default:page.concept_card_1_text|escapejs }}",
+      "c_card_2_title": "{{ page.concept_card_2_title_ru|default:page.concept_card_2_title|escapejs }}",
+      "c_card_2_text": "{{ page.concept_card_2_text_ru|default:page.concept_card_2_text|escapejs }}",
+      "rituals_heading": "{{ page.rituals_heading_ru|default:page.rituals_heading|escapejs }}",
+      "rituals_subtext": "{{ page.rituals_subtext_ru|default:page.rituals_subtext|escapejs }}",
+      "promo_badge": "{{ page.promo_badge_ru|default:page.promo_badge|escapejs }}",
+      "promo_title": "{{ page.promo_title_ru|default:page.promo_title|escapejs }}",
+      "promo_subtitle": "{{ page.promo_subtitle_ru|default:page.promo_subtitle|escapejs }}",
+      "promo_btn": "{{ page.promo_btn_text_ru|default:page.promo_btn_text|escapejs }}",
+      "loyalty_heading": "{{ page.loyalty_heading_ru|default:page.loyalty_heading|escapejs }}",
+      "loyalty_subtitle": "{{ page.loyalty_subtitle_ru|default:page.loyalty_subtitle|escapejs }}",
+      "loyalty_desc": "{{ page.loyalty_desc_ru|default:page.loyalty_desc|escapejs }}",
+      "gift_heading": "{{ page.giftcards_heading_ru|default:page.giftcards_heading|escapejs }}",
+      "gift_subtext": "{{ page.giftcards_subtext_ru|default:page.giftcards_subtext|escapejs }}",
+      "gc_btn_buy": "{{ page.giftcards_btn_text_ru|default:page.giftcards_btn_text|escapejs }}",
+      "reels_heading": "{{ page.reels_heading_ru|default:page.reels_heading|escapejs }}",
+      "reels_subtext": "{{ page.reels_subtext_ru|default:page.reels_subtext|escapejs }}",
+      "banner_text": "{{ page.manifesto_huge_text_ru|default:page.manifesto_huge_text|escapejs }}",
+      "palette_heading": "{{ page.palette_heading_ru|default:page.palette_heading|escapejs }}",
+      "booking_heading": "{{ page.booking_heading_ru|default:page.booking_heading|escapejs }}",
+      "booking_lead": "{{ page.booking_lead_ru|default:page.booking_lead|escapejs }}",
+      "form_submit_btn": "{{ page.booking_btn_text_ru|default:page.booking_btn_text|escapejs }}",
+      "footer_motto": "{{ page.footer_motto_ru|default:page.footer_motto|escapejs }}"
+    },
+    "ka": {
+      "announcement_ticker": "{{ page.announcement_ticker_ka|default:page.announcement_ticker|escapejs }}",
+      "btn_book_header": "{{ page.btn_book_header_text_ka|default:page.btn_book_header_text|escapejs }}",
+      "hero_badge": "{{ page.hero_badge_tag_ka|default:page.hero_badge_tag|escapejs }}",
+      "hero_title": "{{ page.hero_main_title_ka|default:page.hero_main_title|escapejs }}",
+      "hero_desc": "{{ page.hero_description_ka|default:page.hero_description|escapejs }}",
+      "hero_btn_explore": "{{ page.hero_btn_explore_text_ka|default:page.hero_btn_explore_text|escapejs }}",
+      "hero_btn_book": "{{ page.hero_btn_book_text_ka|default:page.hero_btn_book_text|escapejs }}",
+      "h_feat_1": "{{ page.hero_feat_1_text_ka|default:page.hero_feat_1_text|escapejs }}",
+      "h_feat_2": "{{ page.hero_feat_2_text_ka|default:page.hero_feat_2_text|escapejs }}",
+      "h_feat_3": "{{ page.hero_feat_3_text_ka|default:page.hero_feat_3_text|escapejs }}",
+      "hero_tag_title": "{{ page.hero_card_tag_title_ka|default:page.hero_card_tag_title|escapejs }}",
+      "concept_heading": "{{ page.concept_heading_ka|default:page.concept_heading|escapejs }}",
+      "concept_quote": "{{ page.concept_quote_ka|default:page.concept_quote|escapejs }}",
+      "concept_author": "{{ page.concept_author_ka|default:page.concept_author|escapejs }}",
+      "c_card_1_title": "{{ page.concept_card_1_title_ka|default:page.concept_card_1_title|escapejs }}",
+      "c_card_1_text": "{{ page.concept_card_1_text_ka|default:page.concept_card_1_text|escapejs }}",
+      "c_card_2_title": "{{ page.concept_card_2_title_ka|default:page.concept_card_2_title|escapejs }}",
+      "c_card_2_text": "{{ page.concept_card_2_text_ka|default:page.concept_card_2_text|escapejs }}",
+      "rituals_heading": "{{ page.rituals_heading_ka|default:page.rituals_heading|escapejs }}",
+      "rituals_subtext": "{{ page.rituals_subtext_ka|default:page.rituals_subtext|escapejs }}",
+      "promo_badge": "{{ page.promo_badge_ka|default:page.promo_badge|escapejs }}",
+      "promo_title": "{{ page.promo_title_ka|default:page.promo_title|escapejs }}",
+      "promo_subtitle": "{{ page.promo_subtitle_ka|default:page.promo_subtitle|escapejs }}",
+      "promo_btn": "{{ page.promo_btn_text_ka|default:page.promo_btn_text|escapejs }}",
+      "loyalty_heading": "{{ page.loyalty_heading_ka|default:page.loyalty_heading|escapejs }}",
+      "loyalty_subtitle": "{{ page.loyalty_subtitle_ka|default:page.loyalty_subtitle|escapejs }}",
+      "loyalty_desc": "{{ page.loyalty_desc_ka|default:page.loyalty_desc|escapejs }}",
+      "gift_heading": "{{ page.giftcards_heading_ka|default:page.giftcards_heading|escapejs }}",
+      "gift_subtext": "{{ page.giftcards_subtext_ka|default:page.giftcards_subtext|escapejs }}",
+      "gc_btn_buy": "{{ page.giftcards_btn_text_ka|default:page.giftcards_btn_text|escapejs }}",
+      "reels_heading": "{{ page.reels_heading_ka|default:page.reels_heading|escapejs }}",
+      "reels_subtext": "{{ page.reels_subtext_ka|default:page.reels_subtext|escapejs }}",
+      "banner_text": "{{ page.manifesto_huge_text_ka|default:page.manifesto_huge_text|escapejs }}",
+      "palette_heading": "{{ page.palette_heading_ka|default:page.palette_heading|escapejs }}",
+      "booking_heading": "{{ page.booking_heading_ka|default:page.booking_heading|escapejs }}",
+      "booking_lead": "{{ page.booking_lead_ka|default:page.booking_lead|escapejs }}",
+      "form_submit_btn": "{{ page.booking_btn_text_ka|default:page.booking_btn_text|escapejs }}",
+      "footer_motto": "{{ page.footer_motto_ka|default:page.footer_motto|escapejs }}"
+    }
+  }
+  </script>
+
+  <script id="wagtailRituals" type="application/json">
+  [
+    {% for r in rituals %}
+    {
+      "en": {"name": "{{ r.name|escapejs }}", "desc": "{{ r.description|escapejs }}", "tag": "{{ r.tag|escapejs }}"},
+      "ru": {"name": "{{ r.name_ru|default:r.name|escapejs }}", "desc": "{{ r.description_ru|default:r.description|escapejs }}", "tag": "{{ r.tag_ru|default:r.tag|escapejs }}"},
+      "ka": {"name": "{{ r.name_ka|default:r.name|escapejs }}", "desc": "{{ r.description_ka|default:r.description|escapejs }}", "tag": "{{ r.tag_ka|default:r.tag|escapejs }}"}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+  </script>
+{% endblock %}
