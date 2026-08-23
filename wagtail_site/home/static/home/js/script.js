@@ -73,7 +73,7 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "Extended 90m Deep Recovery",
     gc_sub_3: "Signature TOCH_KA Ritual (90m)",
     gc_sub_4: "4 Hands Synchronized Symphony (60m)",
-    gc_btn_buy: "PURCHASE IN SANCTUARY (IN PERSON ONLY)",
+    gc_btn_buy: "PURCHASE IN SANCTUARY IN PERSON",
     gc_in_person_note: "✦ Gift certificates are issued exclusively in person upon visiting our sanctuary (46 Luka Asatiani St).",
     cert_del_digital: "In Person at Batumi Sanctuary",
     cert_del_envelope: "Physical Signature Envelope (46 Luka Asatiani St)",
@@ -196,7 +196,7 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "Глубокая проработка тела (90 мин)",
     gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
     gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
-    gc_btn_buy: "ОФОРМИТЬ В САЛОНЕ (ТОЛЬКО ЛИЧНО)",
+    gc_btn_buy: "ОФОРМИТЬ В САЛОНЕ ЛИЧНО",
     gc_in_person_note: "✦ Подарочные сертификаты оформляются исключительно лично при посещении салона (Батуми, ул. Лука Асатиани, 46)",
     cert_del_digital: "Лично в салоне в Батуми",
     cert_del_envelope: "Фирменный конверт в салоне (ул. Лука Асатиани, 46)",
@@ -319,7 +319,7 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "გაფართოებული ღრმა თერაპია (90 წთ)",
     gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
     gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
-    gc_btn_buy: "შეძენა სალონში (მხოლოდ პირადად)",
+    gc_btn_buy: "შეძენა სალონში პირადად",
     gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატების შეძენა შესაძლებელია მხოლოდ პირადად სალონში ვიზიტისას (ბათუმი, ლუკა ასათიანის ქ. 46).",
     cert_del_digital: "პირადად ბათუმის სალონში",
     cert_del_envelope: "სასაчуქრე კონვერტი სალონში (ლუკა ასათიანის ქ. 46)",
@@ -620,8 +620,12 @@ function applyOmraLanguage(lang) {
     if (title) title.textContent = t.gc_title;
     const note = giftSec.querySelector('.gc-note');
     if (note) note.textContent = t.gc_note;
-    // Update in-person note
+    // Update in-person note & buy button
     document.querySelectorAll('[data-i18n="gc_in_person_note"]').forEach(el => el.textContent = t.gc_in_person_note);
+    document.querySelectorAll('[data-i18n="gc_btn_buy"]').forEach(el => el.textContent = t.gc_btn_buy);
+    const btnBuyEl = document.getElementById('btnBuyGiftCard');
+    if (btnBuyEl && t.gc_btn_buy) btnBuyEl.textContent = t.gc_btn_buy;
+
     if (typeof updateGiftCardBuyLink === 'function') {
       updateGiftCardBuyLink();
     }
