@@ -1258,14 +1258,22 @@ img, video {
   font-weight: 600;
 }
 
+.gc-body {
+  margin: 1.5rem 0 1.2rem 0;
+}
+
 .gc-amount {
-  font-family: var(--font-title);
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  font-weight: 500;
+  font-family: 'Cormorant Garamond', 'Forum', 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 3.6vw, 3.2rem);
+  font-weight: 400;
   color: var(--c-espresso);
   line-height: 1.1;
-  margin: 1.5rem 0 0.5rem 0;
-  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: 0.01em;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-feature-settings: "lnum" 1, "pnum" 1;
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .gc-motto {
@@ -1273,6 +1281,7 @@ img, video {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--c-text-muted);
+  letter-spacing: 0.04em;
 }
 
 .gc-footer {
