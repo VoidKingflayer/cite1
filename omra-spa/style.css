@@ -1366,6 +1366,21 @@ img, video {
   font-weight: 600;
 }
 
+.gc-in-person-note {
+  margin-top: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(22, 24, 27, 0.04);
+  border: 1px dashed rgba(77, 83, 94, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--c-bark);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: left;
+}
+
 /* Dedicated Certificate Order Form */
 .certificate-order-form {
   display: flex;

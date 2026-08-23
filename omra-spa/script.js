@@ -73,7 +73,8 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "Extended 90m Deep Recovery",
     gc_sub_3: "Signature TOCH_KA Ritual (90m)",
     gc_sub_4: "4 Hands Synchronized Symphony (60m)",
-    gc_btn_buy: "PURCHASE GIFT CERTIFICATE",
+    gc_btn_buy: "ORDER CERTIFICATE (OR IN PERSON)",
+    gc_in_person_note: "✦ Available online (WhatsApp / Telegram) or in person at our sanctuary (46 Luka Asatiani St)",
     cert_del_digital: "Digital (WhatsApp / Telegram)",
     cert_del_envelope: "Physical Envelope (Batumi Salon)",
     cert_buyer_lbl: "YOUR NAME (BUYER) *",
@@ -195,7 +196,8 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "Глубокая проработка тела (90 мин)",
     gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
     gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
-    gc_btn_buy: "ПРИОБРЕСТИ ПОДАРОЧНЫЙ СЕРТИФИКАТ",
+    gc_btn_buy: "ОФОРМИТЬ СЕРТИФИКАТ (МОЖНО ЛИЧНО)",
+    gc_in_person_note: "✦ Можно оформить онлайн (WhatsApp / Telegram) или приобрести лично в салоне (ул. Лука Асатиани, 46)",
     cert_del_digital: "Электронный (WhatsApp / Telegram)",
     cert_del_envelope: "Фирменный конверт в салоне",
     cert_buyer_lbl: "ВАШЕ ИМЯ (ПОКУПАТЕЛЬ) *",
@@ -317,7 +319,8 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "გაფართოებული ღრმა თერაპია (90 წთ)",
     gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
     gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
-    gc_btn_buy: "სერტიფიკატის შეძენა",
+    gc_btn_buy: "სერტიფიკატის შეძენა (ან პირადად)",
+    gc_in_person_note: "✦ ხელმისაწვდომია ონლაინ (WhatsApp / Telegram) ან პირადად სალონში (ლუკა ასათიანის ქ. 46)",
     cert_del_digital: "ელექტრონული (WhatsApp / Telegram)",
     cert_del_envelope: "სასაჩუქრე კონვერტი სალონში",
     cert_buyer_lbl: "თქვენი სახელი (მყიდველი) *",
@@ -391,26 +394,12 @@ const OMRA_PRICE_DATA = {
       "Signature TOCH_KA Ritual (90m)",
       "4 Hands Synchronized Symphony (60m)"
     ],
-    selectPlaceholder: "Select a treatment or certificate...",
-    selectGroups: [
-      {
-        label: "── MASSAGE RITUALS ──",
-        options: [
-          { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)" },
-          { value: "Classic Massage", text: "Classic Massage (60 min — $45 / 90 min — $60)" },
-          { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — $52 / 90 min — $67)" },
-          { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)" }
-        ]
-      },
-      {
-        label: "── GIFT CERTIFICATES ──",
-        options: [
-          { value: "Gift Certificate $45", text: "Gift Certificate — $45 (60 min Session)" },
-          { value: "Gift Certificate $60", text: "Gift Certificate — $60 (90 min Session)" },
-          { value: "Gift Certificate $70", text: "Gift Certificate — $70 (Signature Ritual)" },
-          { value: "Gift Certificate $93", text: "Gift Certificate — $93 (4 Hands Session)" }
-        ]
-      }
+    selectPlaceholder: "Select a massage ritual...",
+    selectOptions: [
+      { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)" },
+      { value: "Classic Massage", text: "Classic Massage (60 min — $45 / 90 min — $60)" },
+      { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — $52 / 90 min — $67)" },
+      { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)" }
     ]
   },
   ka: {
@@ -421,26 +410,12 @@ const OMRA_PRICE_DATA = {
       [ { time: "60 წთ", cost: "130 ₾" }, { time: "90 წთ", cost: "170 ₾" } ]
     ],
     certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
-    selectPlaceholder: "აირჩიეთ პროცედურა ან სერტიფიკატი...",
-    selectGroups: [
-      {
-        label: "── მასაჟის რიტუალები ──",
-        options: [
-          { value: "Relaxing Massage", text: "რელაქსაციის მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
-          { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
-          { value: "Sports Massage", text: "სპორტული მასაჟი (60 წთ — 140 ₾ / 90 წთ — 180 ₾)" },
-          { value: "Lymphatic Drainage Massage", text: "ლიმფოდრენაჟული მასაჟი (60 წთ — 130 ₾ / 90 წთ — 170 ₾)" }
-        ]
-      },
-      {
-        label: "── სასაჩუქრე სერტიფიკატები ──",
-        options: [
-          { value: "Gift Certificate 120 GEL", text: "სასაჩუქრე სერტიფიკატი — 120 ₾ (60 წთ სეანსი)" },
-          { value: "Gift Certificate 160 GEL", text: "სასაჩუქრე სერტიფიკატი — 160 ₾ (90 წთ სეანსი)" },
-          { value: "Gift Certificate 190 GEL", text: "სასაჩუქრე სერტიფიკატი — 190 ₾ (საავტორო რიტუალი)" },
-          { value: "Gift Certificate 250 GEL", text: "სასაჩუქრე სერტიფიკატი — 250 ₾ (4 ხელში)" }
-        ]
-      }
+    selectPlaceholder: "აირჩიეთ მასაჟის რიტუალი...",
+    selectOptions: [
+      { value: "Relaxing Massage", text: "რელაქსაციის მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
+      { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
+      { value: "Sports Massage", text: "სპორტული მასაჟი (60 წთ — 140 ₾ / 90 წთ — 180 ₾)" },
+      { value: "Lymphatic Drainage Massage", text: "ლიმფოდრენაჟული მასაჟი (60 წთ — 130 ₾ / 90 წთ — 170 ₾)" }
     ]
   },
   ru: {
@@ -451,26 +426,12 @@ const OMRA_PRICE_DATA = {
       [ { time: "60 мин", cost: "$48" }, { time: "90 мин", cost: "$63" } ]
     ],
     certificates: [ "$45", "$60", "$70", "$93" ],
-    selectPlaceholder: "Выберите процедуру или сертификат...",
-    selectGroups: [
-      {
-        label: "── ОСНОВНЫЕ ВИДЫ МАССАЖА ──",
-        options: [
-          { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — $45 / 90 мин — $60)" },
-          { value: "Classic Massage", text: "Классический массаж (60 мин — $45 / 90 мин — $60)" },
-          { value: "Sports Massage", text: "Спортивный массаж (60 мин — $52 / 90 мин — $67)" },
-          { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — $48 / 90 мин — $63)" }
-        ]
-      },
-      {
-        label: "── ПОДАРОЧНЫЕ СЕРТИФИКАТЫ ──",
-        options: [
-          { value: "Gift Certificate $45", text: "Подарочный сертификат — $45 (60 мин)" },
-          { value: "Gift Certificate $60", text: "Подарочный сертификат — $60 (90 мин)" },
-          { value: "Gift Certificate $70", text: "Подарочный сертификат — $70 (Авторский ритуал)" },
-          { value: "Gift Certificate $93", text: "Подарочный сертификат — $93 (В 4 руки)" }
-        ]
-      }
+    selectPlaceholder: "Выберите вид массажа...",
+    selectOptions: [
+      { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — $45 / 90 мин — $60)" },
+      { value: "Classic Massage", text: "Классический массаж (60 мин — $45 / 90 мин — $60)" },
+      { value: "Sports Massage", text: "Спортивный массаж (60 мин — $52 / 90 мин — $67)" },
+      { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — $48 / 90 мин — $63)" }
     ]
   }
 };
@@ -656,11 +617,11 @@ function applyOmraLanguage(lang) {
     const sub = giftSec.querySelector('.section-subtext');
     if (sub) sub.textContent = t.gift_subtext;
     const title = giftSec.querySelector('.gc-title');
-    if (title) title.textContent = t.gc_title;
-    const note = giftSec.querySelector('.gc-note');
-    if (note) note.textContent = t.gc_note;
-    const btnBuy = giftSec.querySelector('.btn-espresso.full-width');
-    if (btnBuy) btnBuy.textContent = t.gc_btn_buy;
+    // Update in-person note
+    document.querySelectorAll('[data-i18n="gc_in_person_note"]').forEach(el => el.textContent = t.gc_in_person_note);
+    if (typeof updateGiftCardBuyLink === 'function') {
+      updateGiftCardBuyLink();
+    }
 
     // Update Certificate Values & Subtitles
     const amountBtns = giftSec.querySelectorAll('.amount-btn');
@@ -748,30 +709,25 @@ function applyOmraLanguage(lang) {
     const submitBtn = bookSec.querySelector('.btn-submit span');
     if (submitBtn) submitBtn.textContent = t.form_submit_btn;
 
-    // Populate select options dynamically according to active language and currency rule
+    // Populate select options dynamically according to active language and currency rule (massages only)
     const selectEl = document.getElementById('ritualSelect');
-    if (selectEl && pData.selectGroups) {
+    if (selectEl && pData.selectOptions) {
       const prevVal = selectEl.value;
       selectEl.innerHTML = '';
       
       const placeholderOpt = document.createElement('option');
       placeholderOpt.value = '';
-      placeholderOpt.textContent = pData.selectPlaceholder || (t.form_ritual_lbl || 'Select a treatment or certificate...');
+      placeholderOpt.textContent = pData.selectPlaceholder || (t.form_ritual_select || 'Выберите вид массажа...');
       placeholderOpt.disabled = true;
       if (!prevVal) placeholderOpt.selected = true;
       selectEl.appendChild(placeholderOpt);
 
-      pData.selectGroups.forEach(group => {
-        const optgroup = document.createElement('optgroup');
-        optgroup.label = group.label;
-        group.options.forEach(opt => {
-          const o = document.createElement('option');
-          o.value = opt.value;
-          o.textContent = opt.text;
-          if (opt.value === prevVal) o.selected = true;
-          optgroup.appendChild(o);
-        });
-        selectEl.appendChild(optgroup);
+      pData.selectOptions.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt.value;
+        o.textContent = opt.text;
+        if (opt.value === prevVal) o.selected = true;
+        selectEl.appendChild(o);
       });
     }
 
@@ -921,9 +877,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Gift Card Amount Switcher
+  // 5. Gift Card Amount Switcher & Direct In-Person / Messenger Link
   const amountBtns = document.querySelectorAll('.amount-btn');
   const gcDisplayAmount = document.getElementById('gcDisplayAmount');
+
+  window.updateGiftCardBuyLink = function(amount) {
+    const btnBuy = document.getElementById('btnBuyGiftCard');
+    if (!btnBuy) return;
+    const currentAmt = amount || (gcDisplayAmount ? gcDisplayAmount.innerText.trim() : '$45');
+    
+    let msg = '';
+    if (currentOmraLang === 'ru') {
+      msg = `Здравствуйте! Я хочу оформить подарочный сертификат TOCHKA на ${currentAmt} (или приобрести лично в салоне).`;
+    } else if (currentOmraLang === 'ka') {
+      msg = `გამარჯობა! მსურს შევიძინო TOCHKA-ს სასაჩუქრე სერტიფიკატი ${currentAmt}-ზე (ან პირადად სალონში).`;
+    } else {
+      msg = `Hello! I would like to purchase a TOCHKA Gift Certificate for ${currentAmt} (or get it in person at your sanctuary).`;
+    }
+    btnBuy.href = `https://wa.me/message/vopznnayguwab1?text=${encodeURIComponent(msg)}`;
+  };
 
   amountBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -939,17 +911,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
       }
 
-      // Pre-select gift certificate in booking form if matching
-      if (ritualSelect && amount) {
-        for (let i = 0; i < ritualSelect.options.length; i++) {
-          if (ritualSelect.options[i].text.includes(amount) || ritualSelect.options[i].value.includes(amount)) {
-            ritualSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
+      window.updateGiftCardBuyLink(amount);
     });
   });
+
+  // Initial setup of gift card buy link
+  window.updateGiftCardBuyLink();
 
   // 6. Dynamic Available Time Slots Loader (Live API sync with Bookings & Blocked Slots)
   window.loadAvailableTimeSlots = async function(selectedDate) {

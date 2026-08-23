@@ -498,7 +498,10 @@
             </button>
           </div>
 
-          <a href="#booking" class="btn-espresso full-width" data-i18n="gc_btn_buy">PURCHASE GIFT CERTIFICATE</a>
+          <a href="https://wa.me/message/vopznnayguwab1" target="_blank" rel="noopener" id="btnBuyGiftCard" class="btn-espresso full-width" data-i18n="gc_btn_buy">ORDER CERTIFICATE (OR IN PERSON)</a>
+          <div class="gc-in-person-note" data-i18n="gc_in_person_note">
+            ✦ Available online (WhatsApp / Telegram) or in person at our sanctuary (46 Luka Asatiani St)
+          </div>
         </div>
       </div>
     </div>
@@ -671,19 +674,11 @@
             <div class="form-group">
               <label for="ritualSelect" data-i18n="form_ritual_lbl">ВЫБОР ТИПА МАССАЖА *</label>
               <select id="ritualSelect" name="ritual" required class="omra-input omra-select">
-                <option value="" disabled selected>Select a treatment or certificate...</option>
-                <optgroup label="── MASSAGE RITUALS ──">
-                  <option value="Relaxing Massage">Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)</option>
-                  <option value="Classic Massage">Classic Massage (60 min — $45 / 90 min — $60)</option>
-                  <option value="Sports Massage">Sports & Deep Tissue (60 min — $52 / 90 min — $67)</option>
-                  <option value="Lymphatic Drainage Massage">Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)</option>
-                </optgroup>
-                <optgroup label="── GIFT CERTIFICATES ──">
-                  <option value="Gift Certificate $45">Gift Certificate — $45 (60 min Session)</option>
-                  <option value="Gift Certificate $60">Gift Certificate — $60 (90 min Session)</option>
-                  <option value="Gift Certificate $70">Gift Certificate — $70 (Signature Ritual)</option>
-                  <option value="Gift Certificate $93">Gift Certificate — $93 (4 Hands Session)</option>
-                </optgroup>
+                <option value="" disabled selected data-i18n="form_ritual_select">Select a massage ritual...</option>
+                <option value="Relaxing Massage">Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)</option>
+                <option value="Classic Massage">Classic Massage (60 min — $45 / 90 min — $60)</option>
+                <option value="Sports Massage">Sports & Deep Tissue (60 min — $52 / 90 min — $67)</option>
+                <option value="Lymphatic Drainage Massage">Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)</option>
               </select>
             </div>
 
