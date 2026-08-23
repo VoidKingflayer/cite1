@@ -114,66 +114,7 @@
 
   {% block content %}{% endblock %}
 
-  <script src="{% static 'home/js/script.js' %}?v=2026_v107"></script>
-  
-  <script>
-  // Integrated AJAX Booking to Wagtail CMS API
-  document.addEventListener('DOMContentLoaded', function() {
-    const bookingForm = document.getElementById('omraBookingForm');
-    const feedback = document.getElementById('omraFeedback');
-
-    if (bookingForm) {
-      bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const submitBtn = bookingForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>TRANSMITTING APPOINTMENT...</span>';
-        if (feedback) feedback.innerHTML = '';
-
-        const formData = {
-          client_name: document.getElementById('guestName')?.value || '',
-          client_phone: document.getElementById('guestPhone')?.value || '',
-          service: document.getElementById('ritualSelect')?.value || '',
-          booking_date: document.getElementById('bookingDate')?.value || '',
-          booking_time: document.getElementById('bookingTime')?.value || '',
-          notes: document.getElementById('specialRequests')?.value || ''
-        };
-
-        fetch('/api/bookings/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(data => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          if (data.success) {
-            if (feedback) {
-              feedback.innerHTML = `<div style="background: rgba(232, 236, 239, 0.08); border: 1px solid rgba(255, 255, 255, 0.4); color: #E8ECEF; padding: 1.25rem; border-radius: 2px; font-weight: 500; font-size: 0.9rem; line-height: 1.6; margin-top: 1.5rem; text-align: center;">${data.message}</div>`;
-            }
-            bookingForm.reset();
-          } else {
-            if (feedback) {
-              feedback.innerHTML = `<div style="background: rgba(220, 38, 38, 0.15); border: 1px solid #dc2626; color: #f87171; padding: 1rem; border-radius: 2px; font-weight: 500; margin-top: 1.5rem;">${data.error || 'Failed to submit booking.'}</div>`;
-            }
-          }
-        })
-        .catch(err => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          if (feedback) {
-            feedback.innerHTML = `<div style="background: rgba(220, 38, 38, 0.15); border: 1px solid #dc2626; color: #f87171; padding: 1rem; border-radius: 2px; font-weight: 500; margin-top: 1.5rem;">Network error. Please try again or contact via WhatsApp.</div>`;
-          }
-        });
-      });
-    }
-  });
-  </script>
+  <script src="{% static 'home/js/script.js' %}?v=2026_v108"></script>
 
   {% block extra_js %}{% endblock %}
 </body>
