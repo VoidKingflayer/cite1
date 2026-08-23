@@ -93,17 +93,17 @@ class HomePage(Page):
     brand_logo_text = models.CharField("Логотип (текст)", max_length=50, default="tochka")
     announcement_ticker = models.TextField(
         "Бегущая строка (EN)",
-        default="TOCHKA • YOUR SPACE TO BREATHE • WE PRESS PAUSE FOR YOU • 30% OFF YOUR 5TH MASSAGE • 46 LUKA ASATIANI ST, BATUMI",
+        default="TOCHKA • YOUR SPACE TO BREATHE • WE PRESS PAUSE FOR YOU • 20% OFF YOUR 5TH MASSAGE • 46 LUKA ASATIANI ST, BATUMI",
     )
     announcement_ticker_ru = models.TextField(
         "Бегущая строка (RU)",
         blank=True,
-        default="ТОЧКА • ВАШЕ ПРОСТРАНСТВО ДЛЯ ДЫХАНИЯ • СКИДКА 30% НА 5-Й СЕАНС • БАТУМИ, УЛ. ЛУКИ АСАТИАНИ, 46",
+        default="ТОЧКА • ВАШЕ ПРОСТРАНСТВО ДЛЯ ДЫХАНИЯ • СКИДКА 20% НА 5-Й СЕАНС • БАТУМИ, УЛ. ЛУКИ АСАТИАНИ, 46",
     )
     announcement_ticker_ka = models.TextField(
         "Бегущая строка (GE)",
         blank=True,
-        default="წერტილი • თქვენი სივრცე სუნთქვისთვის • 30% ფასდაკლება მე-5 მასაჟზე • ბათუმი, ლუკა ასათიანის 46",
+        default="წერტილი • თქვენი სივრცე სუნთქვისთვის • 20% ფასდაკლება მე-5 მასაჟზე • ბათუმი, ლუკა ასათიანის 46",
     )
     btn_book_header_text = models.CharField("Кнопка в шапке (EN)", max_length=50, default="BOOK A SESSION")
     btn_book_header_text_ru = models.CharField("Кнопка в шапке (RU)", max_length=50, blank=True, default="ЗАБРОНИРОВАТЬ")
@@ -111,26 +111,26 @@ class HomePage(Page):
 
     # 2. Hero Section
     hero_badge_tag = models.CharField("Hero: Бейдж (EN)", max_length=100, default="WELLNESS SANCTUARY")
-    hero_badge_tag_ru = models.CharField("Hero: Бейдж (RU)", max_length=100, blank=True, default="SANCTUARY ПРОСТРАНСТВО")
-    hero_badge_tag_ka = models.CharField("Hero: Бейдж (GE)", max_length=100, blank=True, default="სანქტუარი სივრცე")
+    hero_badge_tag_ru = models.CharField("Hero: Бейдж (RU)", max_length=100, blank=True, default="WELLNESS SANCTUARY")
+    hero_badge_tag_ka = models.CharField("Hero: Бейдж (GE)", max_length=100, blank=True, default="WELLNESS SANCTUARY")
 
-    hero_main_title = models.CharField("Hero: Заголовок (EN)", max_length=200, default="Your space to breathe.")
-    hero_main_title_ru = models.CharField("Hero: Заголовок (RU)", max_length=200, blank=True, default="Ваше пространство для дыхания.")
-    hero_main_title_ka = models.CharField("Hero: Заголовок (GE)", max_length=200, blank=True, default="თქვენი სივრცე სუნთქვისთვის.")
+    hero_main_title = models.CharField("Hero: Заголовок (EN)", max_length=200, default='A space<br /><span class="italic-serif">where you can slow down</span>')
+    hero_main_title_ru = models.CharField("Hero: Заголовок (RU)", max_length=200, blank=True, default='Пространство,<br /><span class="italic-serif">где можно замедлиться</span>')
+    hero_main_title_ka = models.CharField("Hero: Заголовок (GE)", max_length=200, blank=True, default='სივრცე,<br /><span class="italic-serif">სადაც შეგიძლიათ შენელდეთ</span>')
 
     hero_description = models.TextField(
         "Hero: Описание (EN)",
-        default="TOCHKA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. It is a place where the noise of the city can be left behind, and one can hear themselves again.",
+        default="TOCHKA is born at the meeting point of body and soul — a space to slow down, release tension, and restore your inner calm in gentle care.",
     )
     hero_description_ru = models.TextField(
         "Hero: Описание (RU)",
         blank=True,
-        default="ТОЧКА рождается на стыке тела и души — там, где прикосновение становится языком заботы, а само пространство дышит спокойствием. Это место, где можно оставить за порогом шум города и снова услышать себя.",
+        default="ТОЧКА рождается на стыке тела и души — пространство, где можно замедлиться, отпустить напряжение и восстановить внутреннее спокойствие в бережной заботе.",
     )
     hero_description_ka = models.TextField(
         "Hero: Описание (GE)",
         blank=True,
-        default="წერტილი იბადება სხეულისა და სულის შეხვედრის ადგილზე — სადაც შეხება ხდება ზრუნვის ენა, ხოლო თავად სივრცე სიმშვიდით სუნთქავს.",
+        default="TOCHKA იბადება სხეულისა და სულის შეხვედრის ადგილზე — სივრცე, სადაც შეგიძლიათ შეანელოთ ტემპი, მოიხსნათ დაძაბულობა და აღიდგინოთ შინაგანი სიმშვიდე.",
     )
 
     hero_btn_explore_text = models.CharField("Hero: Кнопка 1 (EN)", max_length=50, default="EXPLORE RITUALS")
@@ -152,9 +152,9 @@ class HomePage(Page):
     hero_feat_2_text_ka = models.CharField("Hero: Преимущество 2 (GE)", max_length=100, blank=True, default="ნატურალური ქოქოსის ზეთი")
 
     hero_feat_3_num = models.CharField("Hero: Преимущество 3 Номер", max_length=10, default="03")
-    hero_feat_3_text = models.CharField("Hero: Преимущество 3 (EN)", max_length=100, default="10% Off 1st Visit • 30% Off 5th")
-    hero_feat_3_text_ru = models.CharField("Hero: Преимущество 3 (RU)", max_length=100, blank=True, default="Скидка 10% на 1-й сеанс • 30% на 5-й")
-    hero_feat_3_text_ka = models.CharField("Hero: Преимущество 3 (GE)", max_length=100, blank=True, default="10% ფასდაკლება 1-ლ სეანსზე • 30% მე-5-ზე")
+    hero_feat_3_text = models.CharField("Hero: Преимущество 3 (EN)", max_length=100, default="10% Off 1st Visit • 20% Off 5th")
+    hero_feat_3_text_ru = models.CharField("Hero: Преимущество 3 (RU)", max_length=100, blank=True, default="Скидка 10% на 1-й сеанс • 20% на 5-й")
+    hero_feat_3_text_ka = models.CharField("Hero: Преимущество 3 (GE)", max_length=100, blank=True, default="10% ფასდაკლება 1-ლ სეანსზე • 20% მე-5-ზე")
 
     hero_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -177,17 +177,17 @@ class HomePage(Page):
 
     concept_quote = models.TextField(
         "01 Цитата (EN)",
-        default='"TOCHKA sounds confident and clear here, like a deep breath and a slow exhale. The strictness of the lines creates a sense of stability and support — the foundation on which recovery is built."',
+        default='“I wanted to create a place where you can feel tranquility from the very first moments: soft light, quiet, pleasant interior details, and a feeling of warmth. It is important to me that here you can not only relax your body, but also slow down, escape the everyday rush, and simply be in a comfortable, peaceful atmosphere.”',
     )
     concept_quote_ru = models.TextField(
         "01 Цитата (RU)",
         blank=True,
-        default='«ТОЧКА звучит уверенно и чисто, как глубокий вдох и медленный выдох. Строгость линий создает ощущение стабильности и опоры — фундамент, на котором строится восстановление».',
+        default='«Мне хотелось создать место, в котором можно почувствовать спокойствие уже с первых минут: мягкий свет, тишина, приятные детали интерьера и ощущение уюта. Для меня важно, чтобы здесь вы могли не только расслабить тело, но и немного замедлиться, отвлечься от суеты и побыть в комфортной, спокойной обстановке».',
     )
     concept_quote_ka = models.TextField(
         "01 Цитата (GE)",
         blank=True,
-        default='„წერტილი ჟღერს თავდაჯერებულად და სუფთად, როგორც ღრმა ჩასუნთქვა და ნელი ამოსუნთქვა. ხაზების სიმკაცრე ქმნის სტაბილურობისა და საყრდენის შეგრძნებას“.',
+        default='„მინდოდა შემექმნა ადგილი, სადაც პირველივე წუთებიდან იგრძნობთ სიმშვიდეს: რბილი სინათლე, სიჩუმე, ინტერიერის სასიამოვნო დეტალები და სიმყუდროვე. ჩემთვის მნიშვნელოვანია, რომ აქ შეძლოთ არა მხოლოდ სხეულის მოდუნება, არამედ ცოტათი შეჩერება, ყოველდღიური აურზაურისგან განტვირთვა და კომფორტულ, მშვიდ გარემოში ყოფნა“.',
     )
 
     concept_author = models.CharField("01 Автор цитаты (EN)", max_length=100, default="— Anna Kolosova • TOCHKA Founder & Therapist")
@@ -275,23 +275,23 @@ class HomePage(Page):
     loyalty_heading_ru = models.CharField("03 Заголовок (RU)", max_length=100, blank=True, default="РИТУАЛ БЛАГОДАРНОСТИ")
     loyalty_heading_ka = models.CharField("03 Заголовок (GE)", max_length=100, blank=True, default="მადლიერების რიტუალი")
 
-    loyalty_subtitle = models.CharField("03 Подзаголовок (EN)", max_length=150, default="30% Privilege on Your 5th Massage")
-    loyalty_subtitle_ru = models.CharField("03 Подзаголовок (RU)", max_length=150, blank=True, default="Привилегия 30% на каждый 5-й массаж")
-    loyalty_subtitle_ka = models.CharField("03 Подзаголовок (GE)", max_length=150, blank=True, default="30% ფასდაკლება ყოველ მე-5 მასაჟზე")
+    loyalty_subtitle = models.CharField("03 Подзаголовок (EN)", max_length=150, default="20% Privilege on Your 5th Massage")
+    loyalty_subtitle_ru = models.CharField("03 Подзаголовок (RU)", max_length=150, blank=True, default="Привилегия 20% на каждый 5-й массаж")
+    loyalty_subtitle_ka = models.CharField("03 Подзаголовок (GE)", max_length=150, blank=True, default="20% ფასდაკლება ყოველ მე-5 მასაჟზე")
 
     loyalty_desc = models.TextField(
         "03 Описание (EN)",
-        default="Receive more pleasure and care for yourself. Enjoy 30% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session.",
+        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session.",
     )
     loyalty_desc_ru = models.TextField(
         "03 Описание (RU)",
         blank=True,
-        default="Больше удовольствия и заботы о себе. Скидка 30% на каждый 5-й массаж — наш маленький ритуал благодарности за ваше доверие.",
+        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — наш маленький ритуал благодарности за ваше доверие. Соберите 4 отметки и получите скидку 20% на 5-й сеанс.",
     )
     loyalty_desc_ka = models.TextField(
         "03 Описание (GE)",
         blank=True,
-        default="მეტი სიამოვნება და ზრუნვა საკუთარ თავზე. 30%-იანი ფასდაკლება მე-5 მასაჟზე — ჩვენი მადლიერების რიტუალი.",
+        default="მეტი სიამოვნება და ზრუნვა საკუთარ თავზე. 20%-იანი ფასდაკლება მე-5 მასაჟზე — ჩვენი მადლიერების რიტუალი.",
     )
 
     loyalty_image = models.ForeignKey(
@@ -391,8 +391,25 @@ class HomePage(Page):
     loc_gmaps_url = models.URLField("Google Maps Ссылка", default="https://maps.app.goo.gl/xjAE2yyKdikHBroi9")
     loc_phone = models.CharField("Телефон", max_length=50, default="+995 591 22 61 45")
     loc_whatsapp_url = models.URLField("WhatsApp Ссылка", default="https://wa.me/message/vopznnayguwab1")
-    loc_email = models.EmailField("E-mail", default="concierge@tochka.ge")
+    loc_telegram_url = models.URLField("Telegram Ссылка", default="https://t.me/tochka_batumi")
     loc_instagram_url = models.URLField("Instagram Ссылка", default="https://www.instagram.com/toch._ka/")
+    loc_email = models.EmailField("E-mail", blank=True, default="")
+
+    # WhatsApp Notifications Settings (CallMeBot)
+    whatsapp_notify_phone = models.CharField(
+        "WhatsApp для уведомлений о записях",
+        max_length=30,
+        blank=True,
+        default="",
+        help_text="Номер телефона мастера/администратора с кодом страны (например +995591226145), куда CallMeBot будет отправлять уведомления",
+    )
+    whatsapp_notify_apikey = models.CharField(
+        "CallMeBot WhatsApp API Key",
+        max_length=50,
+        blank=True,
+        default="",
+        help_text="Бесплатный API-ключ от CallMeBot (получите, отправив 'I allow callmebot to send me messages' на номер +34 911 06 73 98 в WhatsApp)",
+    )
 
     # 12. Footer
     footer_motto = models.TextField("Подвал: Слоган (EN)", default="Your space to breathe. Aesthetics & comfort as part of the healing process.")
@@ -596,10 +613,13 @@ class HomePage(Page):
                 FieldPanel("loc_gmaps_url"),
                 FieldPanel("loc_phone"),
                 FieldPanel("loc_whatsapp_url"),
-                FieldPanel("loc_email"),
+                FieldPanel("loc_telegram_url"),
                 FieldPanel("loc_instagram_url"),
+                FieldPanel("loc_email"),
+                FieldPanel("whatsapp_notify_phone"),
+                FieldPanel("whatsapp_notify_apikey"),
             ],
-            heading="09. Локация и Контакты (Location & Contacts)",
+            heading="09. Локация, Контакты и WhatsApp-уведомления (Location & WhatsApp Bot)",
         ),
         MultiFieldPanel(
             [
@@ -612,5 +632,11 @@ class HomePage(Page):
         ),
     ]
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["rituals"] = Ritual.objects.all().order_by("order", "id")
+        return context
+
     class Meta:
         verbose_name = "Главная страница"
+

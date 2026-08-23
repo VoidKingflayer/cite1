@@ -16,19 +16,18 @@ const OMRA_TRANSLATIONS = {
     nav_palette: "IDENTITY",
     nav_booking: "CONTACTS",
     btn_book_header: "BOOK A SESSION",
-    lang_select: "LANGUAGE:",
     hero_badge: "WELLNESS SANCTUARY",
-    hero_title: 'Your space<br /><span class="italic-serif">to breathe.</span>',
-    hero_desc: "TOCHKA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. It is a place where the noise of the city can be left behind, and one can hear themselves again.",
+    hero_title: 'A space<br /><span class="italic-serif">where you can slow down</span>',
+    hero_desc: "TOCHKA is born at the meeting point of body and soul — a space to slow down, release tension, and restore your inner calm in gentle care.",
     hero_btn_explore: "EXPLORE RITUALS",
     hero_btn_book: "BOOK APPOINTMENT",
     h_feat_1: "Continuous-Contact Technique",
     h_feat_2: "Natural Coconut Oil & Care",
-    h_feat_3: "10% Off 1st Visit • 30% Off 5th",
+    h_feat_3: "10% Off 1st Visit • 20% Off 5th",
     hero_tag_title: "WE PRESS PAUSE FOR YOU",
     concept_serial: "01",
     concept_heading: "CONCEPT & PHILOSOPHY",
-    concept_quote: '"TOCHKA sounds confident and clear here, like a deep breath and a slow exhale. The strictness of the lines creates a sense of stability and support — the foundation on which recovery is built."',
+    concept_quote: "“I wanted to create a place where you can feel tranquility from the very first moments: soft light, quiet, pleasant interior details, and a feeling of warmth. It is important to me that here you can not only relax your body, but also slow down, escape the everyday rush, and simply be in a comfortable, peaceful atmosphere.”",
     concept_author: "— Anna Kolosova • TOCHKA Founder & Therapist",
     c_card_1_title: "Continuous-Contact Touch",
     c_card_1_text: "Our signature continuous-contact technique: the therapist's hands barely leave the body, moving in a smooth meditative flow. This rhythm signals safety to the nervous system, releasing chronic tension without sudden changes in pace.",
@@ -46,37 +45,25 @@ const OMRA_TRANSLATIONS = {
     promo_btn: "CLAIM 10% DISCOUNT",
     r_select_btn: "Select",
     
-    r1_name: "Classic Massage",
-    r1_desc: "Deep and structured treatment tailored to relieve muscle tension and improve overall comfort. Steady pace with controlled pressure and trigger point release.",
+    r1_name: "Relaxing Massage",
+    r1_desc: "Smooth, soft movements, light muscle release.",
     
-    r2_name: "Relaxing Massage (Continuous Contact)",
-    r2_desc: "Signature continuous-contact technique creating a seamless, flowing rhythm without breaks. Allows the nervous system to switch off, releasing fatigue and bringing deep inner calm.",
+    r2_name: "Classic Massage",
+    r2_desc: "Moderate rhythm, deep muscle relief.",
     
-    r3_name: "Lymphatic Drainage Therapy",
-    r3_desc: "Stimulates lymph circulation, reduces swelling, relieves heaviness in the legs, and brings overall body lightness and detoxification through soft flowing strokes.",
+    r3_name: "Sports Massage",
+    r3_desc: "Intensive therapy on muscles, fascia, and trigger points.",
     
-    r4_name: "Sports & Deep Tissue Massage",
-    r4_desc: "Intensive mechanical therapy on muscles, fascia, and connective tissues. Normalizes muscle tone, eases stiffness, and accelerates post-workout recovery.",
-    
-    r5_name: "Back & Neck Recovery Therapy",
-    r5_desc: "Targeted axial therapy. Releases neck and shoulder knots, relieves desk-posture stiffness, and alleviates tension headaches through focused trigger therapy.",
-    
-    r6_name: "Facial & Decollete Sculpting Lift",
-    r6_desc: "Myofascial lifting and sculpting technique for face, neck, and decollete. Enhances contours, boosts microcirculation, and relieves facial muscle tension.",
-    
-    r7_name: "Signature TOCH_KA Sanctuary Ritual",
-    r7_desc: "The ultimate sanctuary experience by therapist Anna Kolosova: seamless continuous contact, deep muscle release, organic coconut oil, custom playlist, and relaxing tea/coffee aftercare.",
-    
-    r8_name: "4 Hands Synchronized Symphony",
-    r8_desc: "Two therapists perform synchronized movements in seamless harmony. The mirrored rhythm creates an effortless flow, overwhelming daily stress and inducing pure weightlessness.",
+    r4_name: "Lymphatic Drainage Massage",
+    r4_desc: "Soft, flowing technique along lymph flow and lymphatic nodes.",
     
     loyalty_serial: "03",
     loyalty_heading: "THE RITUAL OF GRATITUDE",
-    loyalty_subtitle: "30% Privilege on Your 5th Massage",
-    loyalty_desc: "Receive more pleasure and care for yourself. Enjoy 30% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session.",
+    loyalty_subtitle: "20% Privilege on Your 5th Massage",
+    loyalty_desc: "Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session.",
     stamp_prompt: "CLICK TO TEST STAMP COLLECTION:",
-    stamp_counter_3: "3 of 4 stamps collected. 1 more until your 30% discount on the 5th session!",
-    stamp_counter_win: "🎉 <strong>Congratulations!</strong> All 4 stamps collected. Your 5th session is now 30% OFF at TOCHKA!",
+    stamp_counter_3: "3 of 4 stamps collected. 1 more until your 20% discount on the 5th session!",
+    stamp_counter_win: "🎉 <strong>Congratulations!</strong> All 4 stamps collected. Your 5th session is now 20% OFF at TOCHKA!",
     gift_serial: "04",
     gift_heading: "GIFT CARDS & CERTIFICATES",
     gift_subtext: "Give the gift of presence, tranquility, and restorative self-care.",
@@ -87,6 +74,22 @@ const OMRA_TRANSLATIONS = {
     gc_sub_3: "Signature TOCH_KA Ritual (90m)",
     gc_sub_4: "4 Hands Synchronized Symphony (60m)",
     gc_btn_buy: "PURCHASE GIFT CERTIFICATE",
+    cert_del_digital: "Digital (WhatsApp / Telegram)",
+    cert_del_envelope: "Physical Envelope (Batumi Salon)",
+    cert_buyer_lbl: "YOUR NAME (BUYER) *",
+    cert_phone_lbl: "PHONE / WHATSAPP *",
+    cert_recipient_lbl: "RECIPIENT NAME (FOR WHOM) *",
+    cert_wishes_lbl: "GREETING MESSAGE / WISHES",
+    cert_btn_submit: "PURCHASE GIFT CERTIFICATE",
+    cert_transmitting: "PROCESSING CERTIFICATE ORDER...",
+    cert_success: "✦ Certificate order received! We will contact you via WhatsApp / Phone within 15 minutes to send the certificate.",
+    gc_card_type_tag: "EXCLUSIVE GIFT CERTIFICATE",
+    gc_card_motto: "YOUR SPACE TO BREATHE",
+    gc_for_label: "FOR:",
+    gc_default_guest: "VALUED GUEST",
+    gc_validity_note: "VALID FOR 3 MONTHS FROM ISSUANCE",
+    booking_cert_hint_text: "Want to give massage as a gift?",
+    booking_cert_hint_link: "Order a Gift Certificate →",
     reels_serial: "05",
     reels_heading: "ATMOSPHERE & INSTAGRAM REELS",
     reels_subtext: 'Moments of deep breath, flowing oils and restorative touch at <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">@toch._ka</a>',
@@ -107,9 +110,10 @@ const OMRA_TRANSLATIONS = {
     booking_lead: "Select your ritual and preferred time. Master Anna Kolosova will confirm your appointment within 15 minutes.",
     form_name_lbl: "FULL NAME *",
     form_phone_lbl: "PHONE / WHATSAPP *",
-    form_email_lbl: "E-MAIL ADDRESS *",
-    form_ritual_lbl: "DESIRED RITUAL *",
+    form_ritual_lbl: "CHOICE OF MASSAGE TYPE *",
     form_date_lbl: "PREFERRED DATE *",
+    form_time_lbl: "PREFERRED TIME *",
+    form_time_select: "Select time slot...",
     form_notes_lbl: "SPECIAL REQUESTS / MASSAGE FOCUS",
     form_notes_ph: "Lower back focus, music playlist preference, pressure level...",
     form_submit_btn: "CONFIRM RESERVATION",
@@ -134,19 +138,18 @@ const OMRA_TRANSLATIONS = {
     nav_palette: "АЙДЕНТИКА",
     nav_booking: "КОНТАКТЫ",
     btn_book_header: "ЗАБРОНИРОВАТЬ",
-    lang_select: "ЯЗЫК:",
-    hero_badge: "SANCTUARY ПРОСТРАНСТВО",
-    hero_title: 'Ваше пространство<br /><span class="italic-serif">для дыхания.</span>',
-    hero_desc: "ТОЧКА рождается на стыке тела и души — там, где прикосновение становится языком заботы, а само пространство дышит спокойствием. Это место, где можно оставить за порогом шум города и снова услышать себя.",
+    hero_badge: "WELLNESS SANCTUARY",
+    hero_title: 'Пространство,<br /><span class="italic-serif">где можно замедлиться</span>',
+    hero_desc: "ТОЧКА рождается на стыке тела и души — пространство, где можно замедлиться, отпустить напряжение и восстановить внутреннее спокойствие в бережной заботе.",
     hero_btn_explore: "ВЫБРАТЬ РИТУАЛ",
     hero_btn_book: "ЗАПИСАТЬСЯ НА СЕАНС",
     h_feat_1: "Техника непрерывного контакта",
     h_feat_2: "Натуральное кокосовое масло",
-    h_feat_3: "Скидка 10% на 1-й сеанс • 30% на 5-й",
+    h_feat_3: "Скидка 10% на 1-й сеанс • 20% на 5-й",
     hero_tag_title: "МЫ СТАВИМ СУЕТУ НА ПАУЗУ",
     concept_serial: "01",
     concept_heading: "КОНЦЕПЦИЯ И ФИЛОСОФИЯ",
-    concept_quote: '«ТОЧКА звучит уверенно и чисто, как глубокий вдох и медленный выдох. Строгость линий создает ощущение стабильности и опоры — фундамент, на котором строится восстановление».',
+    concept_quote: '«Мне хотелось создать место, в котором можно почувствовать спокойствие уже с первых минут: мягкий свет, тишина, приятные детали интерьера и ощущение уюта. Для меня важно, чтобы здесь вы могли не только расслабить тело, но и немного замедлиться, отвлечься от суеты и побыть в комфортной, спокойной обстановке».',
     concept_author: "— Анна Колосова • Основатель и мастер студии ТОЧКА",
     c_card_1_title: "Непрерывный контакт",
     c_card_1_text: "Авторская техника непрерывного контакта: руки мастера практически не отрываются от тела, переходя из одного движения в другое. Такой ритм дает нервной системе сигнал безопасности и глубоко снимает накопившийся стресс.",
@@ -164,37 +167,25 @@ const OMRA_TRANSLATIONS = {
     promo_btn: "ПОЛУЧИТЬ СКИДКУ 10%",
     r_select_btn: "Выбрать",
     
-    r1_name: "Классический массаж",
-    r1_desc: "Глубокая и последовательная работа с мышцами в среднем темпе с уверенной силой воздействия. Снятие напряжения, точечная проработка триггерных зон и восстановление легкого движения тела.",
+    r1_name: "Расслабляющий массаж",
+    r1_desc: "плавные, мягкие движения, лёгкая проработка мышц",
     
-    r2_name: "Расслабляющий массаж (Авторская техника)",
-    r2_desc: "Фирменная авторская техника непрерывного контакта: руки практически не отрываются от тела, создавая медитативный поток. Позволяет нервной системе полностью расслабиться и восстановить внутреннее спокойствие.",
+    r2_name: "Классический массаж",
+    r2_desc: "средний ритм, глубокая проработка мышц",
     
-    r3_name: "Лимфодренажный детокс-массаж",
-    r3_desc: "Стимуляция лимфотока, уменьшение отечности, снятие тяжести в ногах и ощущение легкости во всем теле. Мягкие дренажные приемы в сочетании с бережной мышечной проработкой.",
+    r3_name: "Спортивный массаж",
+    r3_desc: "интенсивная работа с мышцами, фасциями, триггерными точками",
     
-    r4_name: "Спортивный и глубокотканный массаж",
-    r4_desc: "Интенсивное механическое воздействие на мышцы, фасции и соединительные ткани. Улучшает кровообращение, снимает спазмы и гипертонус, ускоряет восстановление после тренировок.",
-    
-    r5_name: "Восстановление спины и шеи",
-    r5_desc: "Прицельная терапия осевого скелета. Снимает зажимы трапеций, синдром офисной шеи, улучшает кровообращение и избавляет от головных болей напряжения.",
-    
-    r6_name: "Скульптурирующий массаж лица и декольте",
-    r6_desc: "Глубокая миофасциальная проработка мышц лица, шеи и зоны декольте. Моделирует четкий овал, снимает зажимы мимической мускулатуры и возвращает коже свежесть.",
-    
-    r7_name: "Авторский ритуал TOCH_KA",
-    r7_desc: "Флагманский ритуал полного погружения от мастера Анны Колосовой: непрерывный контакт, глубокая проработка зажимов, органическое кокосовое масло, персональный плейлист и чаепитие.",
-    
-    r8_name: "Синхронный ритуал в 4 руки",
-    r8_desc: "Синхронная работа двух мастеров в едином медитативном потоке. Зеркальные движения дарят ощущение невесомости и тотального ментального перезапуска.",
+    r4_name: "Лимфодренажный массаж",
+    r4_desc: "мягкая работа по ходу лимфотока и лимфатических точек",
     
     loyalty_serial: "03",
     loyalty_heading: "РИТУАЛ БЛАГОДАРНОСТИ",
-    loyalty_subtitle: "Скидка 30% на ваш 5-й массаж",
-    loyalty_desc: "Дарите себе больше заботы и наслаждения. Скидка 30% на ваш 5-й массаж — наш знак признательности за ваше доверие. Соберите 4 отметки и получите скидку 30% на 5-й сеанс.",
+    loyalty_subtitle: "Скидка 20% на ваш 5-й массаж",
+    loyalty_desc: "Дарите себе больше заботы и наслаждения. Скидка 20% на ваш 5-й массаж — наш знак признательности за ваше доверие. Соберите 4 отметки и получите скидку 20% на 5-й сеанс.",
     stamp_prompt: "НАЖМИТЕ, ЧТОБЫ ПРОТЕСТИРОВАТЬ ШТАМПЫ:",
-    stamp_counter_3: "Собрано 3 из 4 отметок. Еще 1 до скидки 30% на 5-й сеанс!",
-    stamp_counter_win: "🎉 <strong>Поздравляем!</strong> Все 4 отметки собраны. Скидка 30% на ваш 5-й сеанс в ТОЧКА активирована!",
+    stamp_counter_3: "Собрано 3 из 4 отметок. Еще 1 до скидки 20% на 5-й сеанс!",
+    stamp_counter_win: "🎉 <strong>Поздравляем!</strong> Все 4 отметки собраны. Скидка 20% на ваш 5-й сеанс в ТОЧКА активирована!",
     gift_serial: "04",
     gift_heading: "ПОДАРОЧНЫЕ СЕРТИФИКАТЫ",
     gift_subtext: "Подарите близким моменты тишины, заботы и глубокого расслабления.",
@@ -205,6 +196,22 @@ const OMRA_TRANSLATIONS = {
     gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
     gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
     gc_btn_buy: "ПРИОБРЕСТИ ПОДАРОЧНЫЙ СЕРТИФИКАТ",
+    cert_del_digital: "Электронный (WhatsApp / Telegram)",
+    cert_del_envelope: "Фирменный конверт в салоне",
+    cert_buyer_lbl: "ВАШЕ ИМЯ (ПОКУПАТЕЛЬ) *",
+    cert_phone_lbl: "ТЕЛЕФОН / WHATSAPP *",
+    cert_recipient_lbl: "ИМЯ ПОЛУЧАТЕЛЯ (ДЛЯ КОГО) *",
+    cert_wishes_lbl: "ТЕКСТ ПОЗДРАВЛЕНИЯ / ПОЖЕЛАНИЯ",
+    cert_btn_submit: "ОФОРМИТЬ ПОДАРОЧНЫЙ СЕРТИФИКАТ",
+    cert_transmitting: "ОФОРМЛЕНИЕ СЕРТИФИКАТА...",
+    cert_success: "✦ Заказ на сертификат оформлен! Мастер свяжется с вами в течение 15 минут для отправки/передачи сертификата.",
+    gc_card_type_tag: "ПОДАРОЧНЫЙ СЕРТИФИКАТ",
+    gc_card_motto: "ВАШЕ ПРОСТРАНСТВО ДЛЯ ДЫХАНИЯ",
+    gc_for_label: "ДЛЯ:",
+    gc_default_guest: "ДОРОГОМУ ГОСТЮ",
+    gc_validity_note: "ДЕЙСТВИТЕЛЕН 3 МЕСЯЦА С МОМЕНТА ВЫДАЧИ",
+    booking_cert_hint_text: "Хотите подарить массаж близкому человеку?",
+    booking_cert_hint_link: "Оформить подарочный сертификат →",
     reels_serial: "05",
     reels_heading: "АТМОСФЕРА И РИЛСЫ В INSTAGRAM",
     reels_subtext: 'Кадры спокойствия, ароматных масел и целебного прикосновения в <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">@toch._ka</a>',
@@ -225,9 +232,10 @@ const OMRA_TRANSLATIONS = {
     booking_lead: "Выберите желаемый ритуал и удобное время. Мастер Анна Колосова свяжется с вами в течение 15 минут для подтверждения записи.",
     form_name_lbl: "ВАШЕ ПОЛНОЕ ИМЯ *",
     form_phone_lbl: "ТЕЛЕФОН / WHATSAPP *",
-    form_email_lbl: "E-MAIL АДРЕС *",
-    form_ritual_lbl: "ЖЕЛАЕМЫЙ РИТУАЛ *",
+    form_ritual_lbl: "ВЫБОР ТИПА МАССАЖА *",
     form_date_lbl: "ЖЕЛАЕМАЯ ДАТА *",
+    form_time_lbl: "УДОБНОЕ ВРЕМЯ *",
+    form_time_select: "Выберите время...",
     form_notes_lbl: "ПОЖЕЛАНИЯ / ЗОНЫ ОСОБОГО ВНИМАНИЯ",
     form_notes_ph: "Акцент на поясницу, пожелания по музыке, желаемая сила нажима...",
     form_submit_btn: "ПОДТВЕРДИТЬ БРОНИРОВАНИЕ",
@@ -252,19 +260,18 @@ const OMRA_TRANSLATIONS = {
     nav_palette: "იდენტობა",
     nav_booking: "კონტაქტები",
     btn_book_header: "დაჯავშნა",
-    lang_select: "ენა:",
-    hero_badge: "SANCTUARY სივრცე",
-    hero_title: 'თქვენი სივრცე<br /><span class="italic-serif">სუნთქვისთვის.</span>',
-    hero_desc: "TOCHKA იბადება სხეულისა და სულის შეხვედრის ადგილას — სადაც შეხება ხდება მზრუნველობის ენა, ხოლო თავად სივრცე სუნთქავს სიმშვიდით. ეს არის ადგილი, სადაც შეგიძლიათ დაივიწყოთ ქალაქის ხმაური და კვლავ მოუსმინოთ საკუთარ თავს.",
+    hero_badge: "WELLNESS SANCTUARY",
+    hero_title: 'სივრცე,<br /><span class="italic-serif">სადაც შეგიძლიათ შენელდეთ</span>',
+    hero_desc: "TOCHKA იბადება სხეულისა და სულის შეხვედრის ადგილზე — სივრცე, სადაც შეგიძლიათ შეანელოთ ტემპი, მოიხსნათ დაძაბულობა და აღიდგინოთ შინაგანი სიმშვიდე.",
     hero_btn_explore: "რიტუალების ნახვა",
     hero_btn_book: "სეანსზე ჩაწერა",
     h_feat_1: "უწყვეტი კონტაქტის ტექნიკა",
     h_feat_2: "ნატურალური ქოქოსის ზეთი",
-    h_feat_3: "10% ფასდაკლება 1-ლ ვიზიტზე • 30% მე-5-ზე",
+    h_feat_3: "10% ფასდაკლება 1-ლ ვიზიტზე • 20% მე-5-ზე",
     hero_tag_title: "ჩვენ ვაჩერებთ დროს თქვენთვის",
     concept_serial: "01",
     concept_heading: "კონცეფცია და ფილოსოფია",
-    concept_quote: '„TOCHKA ჟღერს თავდაჯერებულად და სუფთად, როგორც ღრმა ჩასუნთქვა და ნელი ამოსუნთქვა. ხაზების სიმკაცრე ქმნის სტაბილურობისა და საყრდენის შეგრძნებას — საძირკველს, რომელზეც შენდება აღდგენა.“',
+    concept_quote: '„მინდოდა შემექმნა ადგილი, სადაც პირველივე წუთებიდან იგრძნობთ სიმშვიდეს: რბილი სინათლე, სიჩუმე, ინტერიერის სასიამოვნო დეტალები და სიმყუდროვე. ჩემთვის მნიშვნელოვანია, რომ აქ შეძლოთ არა მხოლოდ სხეულის მოდუნება, არამედ ცოტათი შეჩერება, ყოველდღიური აურზაურისგან განტვირთვა და კომფორტულ, მშვიდ გარემოში ყოფნა“.',
     concept_author: "— ანა კოლოსოვა • TOCHKA-ს დამფუძნებელი და თერაპევტი",
     c_card_1_title: "უწყვეტი კონტაქტი",
     c_card_1_text: "საავტორო უწყვეტი კონტაქტის ტექნიკა: ოსტატის ხელები სხეულს არ შორდება, რაც ქმნის მედიტაციურ ნაკადს და ნერვულ სისტემას აძლევს სრული უსაფრთხოებისა და რელაქსაციის სიგნალს.",
@@ -282,37 +289,25 @@ const OMRA_TRANSLATIONS = {
     promo_btn: "10% ფასდაკლების მიღება",
     r_select_btn: "არჩევა",
     
-    r1_name: "კლასიკური მასაჟი",
-    r1_desc: "კუნთების ღრმა და თანმიმდევრული დამუშავება დაძაბულობის მოსახსნელად, ტრიგერული წერტილების განტვირთვა და სხეულის სიმსუბუქე.",
+    r1_name: "რელაქსაციის მასაჟი",
+    r1_desc: "მდორე, რბილი მოძრაობები, კუნთების მსუბუქი დამუშავება.",
     
-    r2_name: "რელაქს მასაჟი (უწყვეტი კონტაქტი)",
-    r2_desc: "უწყვეტი კონტაქტის საავტორო ტექნიკა: ნელი, მდორე მოძრაობები ნერვული სისტემის სრული რელაქსაციისა და შინაგანი სიმშვიდისთვის.",
+    r2_name: "კლასიკური მასაჟი",
+    r2_desc: "საშუალო რიტმი, კუნთების ღრმა დამუშავება.",
     
-    r3_name: "ლიმფოდრენაჟული თერაპია",
-    r3_desc: "ლიმფის დინების სტიმულირება, შეშუპების მოხსნა, ფეხებში სიმძიმის გაქრობა და სხეულის სრული დეტოქსიკაცია.",
+    r3_name: "სპორტული მასაჟი",
+    r3_desc: "ინტენსიური მუშაობა კუნთებზე, ფასციებზე, ტრიგერულ წერტილებზე.",
     
-    r4_name: "სპორტული და ღრმა მასაჟი",
-    r4_desc: "ინტენსიური ზემოქმედება ღრმა კუნთებსა და ფასციებზე. აუმჯობესებს სისხლის მიმოქცევას და აჩქარებს აღდგენას ვარჯიშის შემდეგ.",
-    
-    r5_name: "ზურგისა და კისრის თერაპია",
-    r5_desc: "ზურგისა და კისერ-საყელოს ზონის მიზნობრივი თერაპია. ხსნის დაჭიმულობას, ოფისის დაღლილობას და თავის ტკივილს.",
-    
-    r6_name: "სახისა და დეკოლტეს სკულპტურული ლიფტინგი",
-    r6_desc: "სახის, კისრისა და დეკოლტეს მიოფასციალური სკულპტურული ლიფტინგ-მასაჟი. აუმჯობესებს ოვალს და კანის ტონუსს.",
-    
-    r7_name: "საავტორო რიტუალი TOCH_KA",
-    r7_desc: "სრული ჩაძირვის საავტორო რიტუალი ანა კოლოსოვასგან: უწყვეტი კონტაქტი, ქოქოსის ზეთი, პერსონალური მუსიკა და ჩაი სეანსის შემდეგ.",
-    
-    r8_name: "4-ხელიანი სინქრონული სიმფონია",
-    r8_desc: "ორი ოსტატის სინქრონული მუშაობა ერთიან ნაკადში სრული განტვირთვისა და უწონადობის შეგრძნებისთვის.",
+    r4_name: "ლიმფოდრენაჟული მასაჟი",
+    r4_desc: "რბილი მუშაობა ლიმფის დინებისა და ლიმფური წერტილების გასწვრივ.",
     
     loyalty_serial: "03",
     loyalty_heading: "მადლიერების რიტუალი",
-    loyalty_subtitle: "30%-იანი ფასდაკლება თქვენს მე-5 მასაჟზე",
-    loyalty_desc: "აჩუქეთ საკუთარ თავს მეტი სიამოვნება. 30%-იანი ფასდაკლება მე-5 მასაჟზე — ჩვენი მადლიერების ნიშნად. შეაგროვეთ 4 შტამპი და მიიღეთ 30%-იანი პრივილეგია მე-5 სეანსზე.",
+    loyalty_subtitle: "20%-იანი ფასდაკლება თქვენს მე-5 მასაჟზე",
+    loyalty_desc: "აჩუქეთ საკუთარ თავს მეტი სიამოვნება. 20%-იანი ფასდაკლება მე-5 მასაჟზე — ჩვენი მადლიერების ნიშნად. შეაგროვეთ 4 შტამპი და მიიღეთ 20%-იანი პრივილეგია მე-5 სეანსზე.",
     stamp_prompt: "დააჭირეთ შტამპების გასატესტად:",
-    stamp_counter_3: "შეგროვებულია 3 შტამპი 4-დან. კიდევ 1 მე-5 სეანსზე 30%-იან ფასდაკლებამდე!",
-    stamp_counter_win: "🎉 <strong>გილოცავთ!</strong> 4-ვე შტამპი შეგროვებულია. თქვენი 30%-იანი ფასდაკლება მე-5 სეანსზე გააქტიურებულია!",
+    stamp_counter_3: "შეგროვებულია 3 შტამპი 4-დან. კიდევ 1 მე-5 სეანსზე 20%-იან ფასდაკლებამდე!",
+    stamp_counter_win: "🎉 <strong>გილოცავთ!</strong> 4-ვე შტამპი შეგროვებულია. თქვენი 20%-იანი ფასდაკლება მე-5 სეანსზე გააქტიურებულია!",
     gift_serial: "04",
     gift_heading: "სასაჩუქრე სერტიფიკატები",
     gift_subtext: "აჩუქეთ საყვარელ ადამიანებს სიმშვიდისა და ღრმა განტვირთვის წუთები.",
@@ -323,6 +318,22 @@ const OMRA_TRANSLATIONS = {
     gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
     gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
     gc_btn_buy: "სერტიფიკატის შეძენა",
+    cert_del_digital: "ელექტრონული (WhatsApp / Telegram)",
+    cert_del_envelope: "სასაჩუქრე კონვერტი სალონში",
+    cert_buyer_lbl: "თქვენი სახელი (მყიდველი) *",
+    cert_phone_lbl: "ტელეფონი / WHATSAPP *",
+    cert_recipient_lbl: "მიმღების სახელი (ვისთვის) *",
+    cert_wishes_lbl: "მილოცვის ტექსტი / სურვილები",
+    cert_btn_submit: "სასაჩუქრე სერტიფიკატის შეძენა",
+    cert_transmitting: "სერტიფიკატის დამუშავება...",
+    cert_success: "✦ სერტიფიკატის შეკვეთა მიღებულია! ოსტატი დაგიკავშირდებათ 15 წუთში.",
+    gc_card_type_tag: "სასაჩუქრე სერტიფიკატი",
+    gc_card_motto: "თქვენი სივრცე სუნთქვისთვის",
+    gc_for_label: "ვისთვის:",
+    gc_default_guest: "ძვირფას სტუმარს",
+    gc_validity_note: "მოქმედებს 3 თვე გაცემის დღიდან",
+    booking_cert_hint_text: "გსურთ მასაჟის ჩუქება საყვარელ ადამიანს?",
+    booking_cert_hint_link: "სასაჩუქრე სერტიფიკატის შეძენა →",
     reels_serial: "05",
     reels_heading: "ატმოსფერო და INSTAGRAM ვიდეოები",
     reels_subtext: 'სიმშვიდის, არომატული ზეთებისა და სამკურნალო შეხების კადრები <a href="https://www.instagram.com/toch._ka/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">@toch._ka</a>-ზე',
@@ -343,9 +354,10 @@ const OMRA_TRANSLATIONS = {
     booking_lead: "აირჩიეთ სასურველი რიტუალი და დრო. ოსტატი ანა კოლოსოვა დაგიკავშირდებათ 15 წუთში.",
     form_name_lbl: "სრული სახელი *",
     form_phone_lbl: "ტელეფონი / WHATSAPP *",
-    form_email_lbl: "ელ-ფოსტა *",
-    form_ritual_lbl: "სასურველი რიტუალი *",
+    form_ritual_lbl: "მასაჟის ტიპის არჩევა *",
     form_date_lbl: "სასურველი თარიღი *",
+    form_time_lbl: "სასურველი დრო *",
+    form_time_select: "აირჩიეთ დრო...",
     form_notes_lbl: "სპეციალური სურვილები / აქცენტები",
     form_notes_ph: "ზურგზე აქცენტი, მუსიკალური პრეფერენციები, წნევის დონე...",
     form_submit_btn: "ჯავშნის დადასტურება",
@@ -369,84 +381,96 @@ const OMRA_PRICE_DATA = {
     rituals: [
       [ { time: "60 min", cost: "$45" }, { time: "90 min", cost: "$60" } ],
       [ { time: "60 min", cost: "$45" }, { time: "90 min", cost: "$60" } ],
-      [ { time: "60 min", cost: "$48" }, { time: "90 min", cost: "$63" } ],
       [ { time: "60 min", cost: "$52" }, { time: "90 min", cost: "$67" } ],
-      [ { time: "45 min", cost: "$33" }, { time: "60 min", cost: "$45" } ],
-      [ { time: "50 min", cost: "$40" } ],
-      [ { time: "90 min", cost: "$70" }, { time: "120 min", cost: "$90" } ],
-      [ { time: "60 min", cost: "$93" }, { time: "90 min", cost: "$125" } ]
+      [ { time: "60 min", cost: "$48" }, { time: "90 min", cost: "$63" } ]
     ],
     certificates: [ "$45", "$60", "$70", "$93" ],
-    selectOptions: [
-      { value: "", text: "Select a treatment or certificate...", disabled: true },
-      { value: "Classic Massage", text: "Classic Massage (60 min — $45 / 90 min — $60)" },
-      { value: "Relaxing Continuous-Contact Massage", text: "Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)" },
-      { value: "Lymphatic Drainage Therapy", text: "Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)" },
-      { value: "Sports & Deep Tissue Massage", text: "Sports & Deep Tissue Massage (60 min — $52 / 90 min — $67)" },
-      { value: "Back & Neck Recovery Therapy", text: "Back & Neck Recovery (45 min — $33 / 60 min — $45)" },
-      { value: "Facial & Decollete Sculpting Lift", text: "Facial & Decollete Sculpting Lift (50 min — $40)" },
-      { value: "Signature TOCH_KA Sanctuary Ritual", text: "Signature TOCH_KA Ritual (90 min — $70 / 120 min — $90)" },
-      { value: "4 Hands Synchronized Symphony", text: "4 Hands Synchronized Symphony (60 min — $93 / 90 min — $125)" },
-      { value: "Gift Certificate $45", text: "Gift Certificate — $45 (60 min Session)" },
-      { value: "Gift Certificate $60", text: "Gift Certificate — $60 (90 min Session)" },
-      { value: "Gift Certificate $70", text: "Gift Certificate — $70 (Signature Ritual)" },
-      { value: "Gift Certificate $93", text: "Gift Certificate — $93 (4 Hands Session)" }
+    certSubs: [
+      "Classic / Relaxing Massage (60m)",
+      "Extended 90m Deep Recovery",
+      "Signature TOCH_KA Ritual (90m)",
+      "4 Hands Synchronized Symphony (60m)"
+    ],
+    selectPlaceholder: "Select a treatment or certificate...",
+    selectGroups: [
+      {
+        label: "── MASSAGE RITUALS ──",
+        options: [
+          { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)" },
+          { value: "Classic Massage", text: "Classic Massage (60 min — $45 / 90 min — $60)" },
+          { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — $52 / 90 min — $67)" },
+          { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)" }
+        ]
+      },
+      {
+        label: "── GIFT CERTIFICATES ──",
+        options: [
+          { value: "Gift Certificate $45", text: "Gift Certificate — $45 (60 min Session)" },
+          { value: "Gift Certificate $60", text: "Gift Certificate — $60 (90 min Session)" },
+          { value: "Gift Certificate $70", text: "Gift Certificate — $70 (Signature Ritual)" },
+          { value: "Gift Certificate $93", text: "Gift Certificate — $93 (4 Hands Session)" }
+        ]
+      }
     ]
   },
   ka: {
     rituals: [
       [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "160 ₾" } ],
       [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "160 ₾" } ],
-      [ { time: "60 წთ", cost: "130 ₾" }, { time: "90 წთ", cost: "170 ₾" } ],
       [ { time: "60 წთ", cost: "140 ₾" }, { time: "90 წთ", cost: "180 ₾" } ],
-      [ { time: "45 წთ", cost: "90 ₾" }, { time: "60 წთ", cost: "120 ₾" } ],
-      [ { time: "50 წთ", cost: "110 ₾" } ],
-      [ { time: "90 წთ", cost: "190 ₾" }, { time: "120 წთ", cost: "240 ₾" } ],
-      [ { time: "60 წთ", cost: "250 ₾" }, { time: "90 წთ", cost: "340 ₾" } ]
+      [ { time: "60 წთ", cost: "130 ₾" }, { time: "90 წთ", cost: "170 ₾" } ]
     ],
     certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
-    selectOptions: [
-      { value: "", text: "აირჩიეთ პროცედურა ან სერტიფიკატი...", disabled: true },
-      { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
-      { value: "Relaxing Continuous-Contact Massage", text: "რელაქს მასაჟი უწყვეტი კონტაქტით (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
-      { value: "Lymphatic Drainage Therapy", text: "ლიმფოდრენაჟული თერაპია (60 წთ — 130 ₾ / 90 წთ — 170 ₾)" },
-      { value: "Sports & Deep Tissue Massage", text: "სპორტული და ღრმა მასაჟი (60 წთ — 140 ₾ / 90 წთ — 180 ₾)" },
-      { value: "Back & Neck Recovery Therapy", text: "ზურგისა და კისრის თერაპია (45 წთ — 90 ₾ / 60 წთ — 120 ₾)" },
-      { value: "Facial & Decollete Sculpting Lift", text: "სახისა და დეკოლტეს სკულპტურული ლიფტინგი (50 წთ — 110 ₾)" },
-      { value: "Signature TOCH_KA Sanctuary Ritual", text: "საავტორო რიტუალი TOCH_KA (90 წთ — 190 ₾ / 120 წთ — 240 ₾)" },
-      { value: "4 Hands Synchronized Symphony", text: "4-ხელიანი სინქრონული სიმფონია (60 წთ — 250 ₾ / 90 წთ — 340 ₾)" },
-      { value: "Gift Certificate 120 GEL", text: "სასაჩუქრე სერტიფიკატი — 120 ₾ (60 წთ სეანსი)" },
-      { value: "Gift Certificate 160 GEL", text: "სასაჩუქრე სერტიფიკატი — 160 ₾ (90 წთ სეანსი)" },
-      { value: "Gift Certificate 190 GEL", text: "სასაჩუქრე სერტიფიკატი — 190 ₾ (საავტორო რიტუალი)" },
-      { value: "Gift Certificate 250 GEL", text: "სასაჩუქრე სერტიფიკატი — 250 ₾ (4 ხელში)" }
+    selectPlaceholder: "აირჩიეთ პროცედურა ან სერტიფიკატი...",
+    selectGroups: [
+      {
+        label: "── მასაჟის რიტუალები ──",
+        options: [
+          { value: "Relaxing Massage", text: "რელაქსაციის მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
+          { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
+          { value: "Sports Massage", text: "სპორტული მასაჟი (60 წთ — 140 ₾ / 90 წთ — 180 ₾)" },
+          { value: "Lymphatic Drainage Massage", text: "ლიმფოდრენაჟული მასაჟი (60 წთ — 130 ₾ / 90 წთ — 170 ₾)" }
+        ]
+      },
+      {
+        label: "── სასაჩუქრე სერტიფიკატები ──",
+        options: [
+          { value: "Gift Certificate 120 GEL", text: "სასაჩუქრე სერტიფიკატი — 120 ₾ (60 წთ სეანსი)" },
+          { value: "Gift Certificate 160 GEL", text: "სასაჩუქრე სერტიფიკატი — 160 ₾ (90 წთ სეანსი)" },
+          { value: "Gift Certificate 190 GEL", text: "სასაჩუქრე სერტიფიკატი — 190 ₾ (საავტორო რიტუალი)" },
+          { value: "Gift Certificate 250 GEL", text: "სასაჩუქრე სერტიფიკატი — 250 ₾ (4 ხელში)" }
+        ]
+      }
     ]
   },
   ru: {
     rituals: [
       [ { time: "60 мин", cost: "$45" }, { time: "90 мин", cost: "$60" } ],
       [ { time: "60 мин", cost: "$45" }, { time: "90 мин", cost: "$60" } ],
-      [ { time: "60 мин", cost: "$48" }, { time: "90 мин", cost: "$63" } ],
       [ { time: "60 мин", cost: "$52" }, { time: "90 мин", cost: "$67" } ],
-      [ { time: "45 мин", cost: "$33" }, { time: "60 мин", cost: "$45" } ],
-      [ { time: "50 мин", cost: "$40" } ],
-      [ { time: "90 мин", cost: "$70" }, { time: "120 мин", cost: "$90" } ],
-      [ { time: "60 мин", cost: "$93" }, { time: "90 мин", cost: "$125" } ]
+      [ { time: "60 мин", cost: "$48" }, { time: "90 мин", cost: "$63" } ]
     ],
     certificates: [ "$45", "$60", "$70", "$93" ],
-    selectOptions: [
-      { value: "", text: "Выберите процедуру или сертификат...", disabled: true },
-      { value: "Classic Massage", text: "Классический массаж (60 мин — $45 / 90 мин — $60)" },
-      { value: "Relaxing Continuous-Contact Massage", text: "Расслабляющий массаж (60 мин — $45 / 90 мин — $60)" },
-      { value: "Lymphatic Drainage Therapy", text: "Лимфодренажный детокс (60 мин — $48 / 90 мин — $63)" },
-      { value: "Sports & Deep Tissue Massage", text: "Спортивный и глубокотканный (60 мин — $52 / 90 мин — $67)" },
-      { value: "Back & Neck Recovery Therapy", text: "Восстановление спины и шеи (45 мин — $33 / 60 мин — $45)" },
-      { value: "Facial & Decollete Sculpting Lift", text: "Скульптурирующий массаж лица (50 мин — $40)" },
-      { value: "Signature TOCH_KA Sanctuary Ritual", text: "Авторский ритуал TOCH_KA (90 мин — $70 / 120 мин — $90)" },
-      { value: "4 Hands Synchronized Symphony", text: "Синхронный массаж в 4 руки (60 мин — $93 / 90 мин — $125)" },
-      { value: "Gift Certificate $45", text: "Подарочный сертификат — $45 (60 мин)" },
-      { value: "Gift Certificate $60", text: "Подарочный сертификат — $60 (90 мин)" },
-      { value: "Gift Certificate $70", text: "Подарочный сертификат — $70 (Авторский ритуал)" },
-      { value: "Gift Certificate $93", text: "Подарочный сертификат — $93 (В 4 руки)" }
+    selectPlaceholder: "Выберите процедуру или сертификат...",
+    selectGroups: [
+      {
+        label: "── ОСНОВНЫЕ ВИДЫ МАССАЖА ──",
+        options: [
+          { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — $45 / 90 мин — $60)" },
+          { value: "Classic Massage", text: "Классический массаж (60 мин — $45 / 90 мин — $60)" },
+          { value: "Sports Massage", text: "Спортивный массаж (60 мин — $52 / 90 мин — $67)" },
+          { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — $48 / 90 мин — $63)" }
+        ]
+      },
+      {
+        label: "── ПОДАРОЧНЫЕ СЕРТИФИКАТЫ ──",
+        options: [
+          { value: "Gift Certificate $45", text: "Подарочный сертификат — $45 (60 мин)" },
+          { value: "Gift Certificate $60", text: "Подарочный сертификат — $60 (90 мин)" },
+          { value: "Gift Certificate $70", text: "Подарочный сертификат — $70 (Авторский ритуал)" },
+          { value: "Gift Certificate $93", text: "Подарочный сертификат — $93 (В 4 руки)" }
+        ]
+      }
     ]
   }
 };
@@ -560,12 +584,6 @@ function applyOmraLanguage(lang) {
   const promoBtn = document.querySelector('.btn-promo-action');
   if (promoBtn) promoBtn.textContent = t.promo_btn;
 
-  const filterBtns = document.querySelectorAll('.menu-filter-pills .filter-pill');
-  if (filterBtns[0]) filterBtns[0].textContent = t.f_all;
-  if (filterBtns[1]) filterBtns[1].textContent = t.f_body;
-  if (filterBtns[2]) filterBtns[2].textContent = t.f_focused;
-  if (filterBtns[3]) filterBtns[3].textContent = t.f_signature;
-
   let wagtailRituals = null;
   try {
     const rEl = document.getElementById('wagtailRituals');
@@ -577,10 +595,6 @@ function applyOmraLanguage(lang) {
     { name: t.r2_name, desc: t.r2_desc },
     { name: t.r3_name, desc: t.r3_desc },
     { name: t.r4_name, desc: t.r4_desc },
-    { name: t.r5_name, desc: t.r5_desc },
-    { name: t.r6_name, desc: t.r6_desc },
-    { name: t.r7_name, desc: t.r7_desc },
-    { name: t.r8_name, desc: t.r8_desc },
   ];
 
   const rows = document.querySelectorAll('.ritual-row');
@@ -720,13 +734,13 @@ function applyOmraLanguage(lang) {
     const lead = bookSec.querySelector('.booking-lead');
     if (lead) lead.textContent = t.booking_lead;
 
-    const labels = bookSec.querySelectorAll('label');
-    if (labels[0]) labels[0].textContent = t.form_name_lbl;
-    if (labels[1]) labels[1].textContent = t.form_phone_lbl;
-    if (labels[2]) labels[2].textContent = t.form_email_lbl;
-    if (labels[3]) labels[3].textContent = t.form_ritual_lbl;
-    if (labels[4]) labels[4].textContent = t.form_date_lbl;
-    if (labels[5]) labels[5].textContent = t.form_notes_lbl;
+    document.querySelectorAll('[data-i18n="form_name_lbl"]').forEach(el => el.textContent = t.form_name_lbl);
+    document.querySelectorAll('[data-i18n="form_phone_lbl"]').forEach(el => el.textContent = t.form_phone_lbl);
+    document.querySelectorAll('[data-i18n="form_ritual_lbl"]').forEach(el => el.textContent = t.form_ritual_lbl);
+    document.querySelectorAll('[data-i18n="form_date_lbl"]').forEach(el => el.textContent = t.form_date_lbl);
+    document.querySelectorAll('[data-i18n="form_time_lbl"]').forEach(el => el.textContent = t.form_time_lbl);
+    document.querySelectorAll('[data-i18n="form_time_select"]').forEach(el => el.textContent = t.form_time_select);
+    document.querySelectorAll('[data-i18n="form_notes_lbl"]').forEach(el => el.textContent = t.form_notes_lbl);
 
     const notesInp = document.getElementById('specialRequests');
     if (notesInp) notesInp.placeholder = t.form_notes_ph;
@@ -736,19 +750,33 @@ function applyOmraLanguage(lang) {
 
     // Populate select options dynamically according to active language and currency rule
     const selectEl = document.getElementById('ritualSelect');
-    if (selectEl && pData.selectOptions) {
-      const selectedIndex = selectEl.selectedIndex >= 0 ? selectEl.selectedIndex : 0;
+    if (selectEl && pData.selectGroups) {
+      const prevVal = selectEl.value;
       selectEl.innerHTML = '';
-      pData.selectOptions.forEach(opt => {
-        const o = document.createElement('option');
-        o.value = opt.value;
-        o.textContent = opt.text;
-        if (opt.disabled) o.disabled = true;
-        selectEl.appendChild(o);
+      
+      const placeholderOpt = document.createElement('option');
+      placeholderOpt.value = '';
+      placeholderOpt.textContent = pData.selectPlaceholder || (t.form_ritual_lbl || 'Select a treatment or certificate...');
+      placeholderOpt.disabled = true;
+      if (!prevVal) placeholderOpt.selected = true;
+      selectEl.appendChild(placeholderOpt);
+
+      pData.selectGroups.forEach(group => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = group.label;
+        group.options.forEach(opt => {
+          const o = document.createElement('option');
+          o.value = opt.value;
+          o.textContent = opt.text;
+          if (opt.value === prevVal) o.selected = true;
+          optgroup.appendChild(o);
+        });
+        selectEl.appendChild(optgroup);
       });
-      if (selectedIndex < selectEl.options.length) {
-        selectEl.selectedIndex = selectedIndex;
-      }
+    }
+
+    if (typeof window.loadAvailableTimeSlots === 'function') {
+      window.loadAvailableTimeSlots();
     }
   }
 
@@ -870,11 +898,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (freeSlot) freeSlot.classList.remove('active');
       const left = 4 - activeCount;
       if (currentOmraLang === 'ru') {
-        counterText.innerHTML = `Собрано ${activeCount} из 4 отметок. Еще ${left} до скидки 30% на 5-й сеанс!`;
+        counterText.innerHTML = `Собрано ${activeCount} из 4 отметок. Еще ${left} до скидки 20% на 5-й сеанс!`;
       } else if (currentOmraLang === 'ka') {
-        counterText.innerHTML = `შეგროვებულია ${activeCount} შტამპი 4-დან. კიდევ ${left} მე-5 სეანსზე 30%-იან ფასდაკლებამდე!`;
+        counterText.innerHTML = `შეგროვებულია ${activeCount} შტამპი 4-დან. კიდევ ${left} მე-5 სეანსზე 20%-იან ფასდაკლებამდე!`;
       } else {
-        counterText.innerHTML = `${activeCount} of 4 stamps collected. ${left} more until your 30% discount on the 5th session!`;
+        counterText.innerHTML = `${activeCount} of 4 stamps collected. ${left} more until your 20% discount on the 5th session!`;
       }
       counterText.style.color = '';
     }
@@ -923,12 +951,125 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. Booking Form Submission
+  // 6. Dynamic Available Time Slots Loader (Live API sync with Bookings & Blocked Slots)
+  window.loadAvailableTimeSlots = async function(selectedDate) {
+    const timeSelect = document.getElementById('bookingTime');
+    const dateInput = document.getElementById('bookingDate');
+    if (!timeSelect) return;
+
+    if (!selectedDate && dateInput) {
+      selectedDate = dateInput.value;
+    }
+
+    if (!selectedDate) {
+      const today = new Date();
+      const y = today.getFullYear();
+      const m = String(today.getMonth() + 1).padStart(2, '0');
+      const d = String(today.getDate()).padStart(2, '0');
+      selectedDate = `${y}-${m}-${d}`;
+      if (dateInput && !dateInput.value) {
+        dateInput.value = selectedDate;
+      }
+    }
+
+    const t = OMRA_TRANSLATIONS[currentOmraLang] || OMRA_TRANSLATIONS.en;
+    const loadingText = currentOmraLang === 'ru' 
+      ? 'Проверка доступных слотов...' 
+      : currentOmraLang === 'ka' 
+      ? 'დროის შემოწმება...' 
+      : 'Checking available slots...';
+
+    const defaultSelectText = t.form_time_select || (currentOmraLang === 'ru' ? 'Выберите время...' : 'Select time slot...');
+    const busyText = currentOmraLang === 'ru' 
+      ? '(Занято)' 
+      : currentOmraLang === 'ka' 
+      ? '(დაკავებულია)' 
+      : '(Booked)';
+    const dayOffText = currentOmraLang === 'ru'
+      ? '⛔ На эту дату запись закрыта (выходной/занято)'
+      : currentOmraLang === 'ka'
+      ? '⛔ ამ თარიღისთვის ჩაკეტილია'
+      : '⛔ Sanctuary closed / no slots on this date';
+
+    const prevSelectedTime = timeSelect.value;
+    timeSelect.innerHTML = `<option value="" disabled selected>${loadingText}</option>`;
+
+    try {
+      const resp = await fetch(`/api/bookings/available-slots/?date=${encodeURIComponent(selectedDate)}`);
+      const data = await resp.json();
+
+      if (data.success && data.slots && data.slots.length > 0) {
+        timeSelect.innerHTML = `<option value="" disabled selected>${defaultSelectText}</option>`;
+        
+        let hasAvailable = false;
+        data.slots.forEach(slot => {
+          const opt = document.createElement('option');
+          opt.value = slot.time;
+          if (slot.available) {
+            opt.textContent = slot.time;
+            if (slot.time === prevSelectedTime) {
+              opt.selected = true;
+            }
+            hasAvailable = true;
+          } else {
+            opt.disabled = true;
+            opt.classList.add('slot-busy');
+            const reasonLabel = (slot.reason === 'past' && currentOmraLang === 'ru') ? '(Прошло)' : busyText;
+            opt.textContent = `${slot.time} ${reasonLabel}`;
+          }
+          timeSelect.appendChild(opt);
+        });
+
+        if (!hasAvailable) {
+          timeSelect.innerHTML = `<option value="" disabled selected>${dayOffText}</option>`;
+        }
+      } else {
+        // Fallback default slots
+        const defaultSlots = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+        timeSelect.innerHTML = `<option value="" disabled selected>${defaultSelectText}</option>`;
+        defaultSlots.forEach(s => {
+          const opt = document.createElement('option');
+          opt.value = s;
+          opt.textContent = s;
+          timeSelect.appendChild(opt);
+        });
+      }
+    } catch(e) {
+      console.warn("Could not load dynamic slots:", e);
+      const defaultSlots = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+      timeSelect.innerHTML = `<option value="" disabled selected>${defaultSelectText}</option>`;
+      defaultSlots.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        timeSelect.appendChild(opt);
+      });
+    }
+  };
+
+  // Initialize date picker min & dynamic slots listener
+  const bookingDateInput = document.getElementById('bookingDate');
+  if (bookingDateInput) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    bookingDateInput.min = todayStr;
+    if (!bookingDateInput.value) {
+      bookingDateInput.value = todayStr;
+    }
+    bookingDateInput.addEventListener('change', (e) => {
+      window.loadAvailableTimeSlots(e.target.value);
+    });
+    // Initial load
+    window.loadAvailableTimeSlots(bookingDateInput.value);
+  }
+
+
+
+  // 7. Booking Form Submission with real Django API + WhatsApp trigger + 1-click connect buttons
   const bookingForm = document.getElementById('omraBookingForm');
   const feedback = document.getElementById('omraFeedback');
 
   if (bookingForm && feedback) {
-    bookingForm.addEventListener('submit', (e) => {
+    bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const t = OMRA_TRANSLATIONS[currentOmraLang] || OMRA_TRANSLATIONS.en;
       const submitBtn = bookingForm.querySelector('button[type="submit"]');
@@ -936,12 +1077,74 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
       submitBtn.innerHTML = `<span>${t.form_transmitting}</span>`;
 
-      setTimeout(() => {
-        feedback.innerHTML = t.form_success;
+      const formData = new FormData(bookingForm);
+      const payload = {
+        name: formData.get('name') || '',
+        phone: formData.get('phone') || '',
+        ritual: formData.get('ritual') || '',
+        date: formData.get('date') || '',
+        time: formData.get('time') || '',
+        notes: formData.get('notes') || ''
+      };
+
+      try {
+        const response = await fetch('/api/bookings/create/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resData = await response.json();
+
+        if (resData.success) {
+          const directWa = resData.direct_whatsapp_url || 'https://wa.me/message/vopznnayguwab1';
+          const directTg = resData.direct_telegram_url || 'https://t.me/tochka_batumi';
+          const directIg = resData.direct_instagram_url || 'https://www.instagram.com/toch._ka/';
+
+          const chatPromptText = currentOmraLang === 'ru' 
+            ? 'Для быстрого подтверждения или вопроса мастеру:' 
+            : currentOmraLang === 'ka' 
+            ? 'სწრაფი დადასტურებისთვის ან კითხვისთვის:' 
+            : 'For instant confirmation or questions:';
+
+          feedback.innerHTML = `
+            <div style="color: #A3E635; margin-bottom: 0.75rem; font-weight: 500;">
+              ${t.form_success}
+            </div>
+            <div class="feedback-actions-box">
+              <span class="feedback-actions-title">${chatPromptText}</span>
+              <div class="feedback-action-btns">
+                <a href="${directWa}" target="_blank" rel="noopener" class="btn-feedback-chat wa-chat">
+                  💬 WhatsApp
+                </a>
+                <a href="${directTg}" target="_blank" rel="noopener" class="btn-feedback-chat tg-chat">
+                  ✈️ Telegram
+                </a>
+                <a href="${directIg}" target="_blank" rel="noopener" class="btn-feedback-chat ig-chat">
+                  📸 Instagram
+                </a>
+              </div>
+            </div>
+          `;
+          bookingForm.reset();
+          // Reload available slots so newly booked slot is immediately disabled
+          if (bookingDateInput) {
+            const todayStr = new Date().toISOString().split('T')[0];
+            bookingDateInput.value = todayStr;
+            window.loadAvailableTimeSlots(todayStr);
+          }
+        } else {
+          feedback.innerHTML = `<span style="color: #F87171;">⚠️ ${resData.error || 'Ошибка при бронировании'}</span>`;
+        }
+      } catch (err) {
+        feedback.innerHTML = `<span style="color: #A3E635;">${t.form_success}</span>`;
         bookingForm.reset();
+      } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = `<span>${t.form_submit_btn}</span>`;
-      }, 1000);
+      }
     });
   }
 

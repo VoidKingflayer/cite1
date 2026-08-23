@@ -55,9 +55,8 @@ const GISO_TRANSLATIONS = {
     form_heading: "Send us a request",
     form_note: "Send us a request and master Anna Kolosova will confirm within 15 minutes.",
     form_name_ph: "Your Name",
-    form_email_ph: "Your E-mail",
     form_phone_ph: "Your Phone (+995 591...)",
-    form_select_ph: "Select desired treatment...",
+    form_select_ph: "Choice of massage...",
     form_send_btn: "Send",
     form_transmitting: "Transmitting...",
     form_success: "✦ Thank you. We have received your request and will contact you shortly.",
@@ -112,9 +111,8 @@ const GISO_TRANSLATIONS = {
     form_heading: "Оставить заявку",
     form_note: "Отправьте заявку, и мастер Анна Колосова свяжется с вами в течение 15 минут.",
     form_name_ph: "Ваше имя",
-    form_email_ph: "Ваш E-mail",
     form_phone_ph: "Ваш телефон (+995 591...)",
-    form_select_ph: "Выберите желаемую процедуру...",
+    form_select_ph: "Выбор массажа...",
     form_send_btn: "Отправить",
     form_transmitting: "Отправка заявки...",
     form_success: "✦ Спасибо! Ваша заявка принята, мы свяжемся с вами в ближайшее время.",
@@ -169,9 +167,8 @@ const GISO_TRANSLATIONS = {
     form_heading: "განაცხადის დატოვება",
     form_note: "დატოვეთ განაცხადი და ოსტატი ანა კოლოსოვა დაგიკავშირდებათ 15 წუთში.",
     form_name_ph: "თქვენი სახელი",
-    form_email_ph: "თქვენი ელ-ფოსტა",
     form_phone_ph: "თქვენი ტელეფონი (+995 591...)",
-    form_select_ph: "აირჩიეთ სასურველი პროცედურა...",
+    form_select_ph: "მასაჟის არჩევა...",
     form_send_btn: "გაგზავნა",
     form_transmitting: "იგზავნება...",
     form_success: "✦ მადლობა! თქვენი განაცხადი მიღებულია, მალე დაგიკავშირდებით.",
@@ -341,8 +338,6 @@ function applyGisoLanguage(lang) {
 
     const nameInput = document.getElementById('clientName');
     if (nameInput) nameInput.placeholder = t.form_name_ph;
-    const emailInput = document.getElementById('clientEmail');
-    if (emailInput) emailInput.placeholder = t.form_email_ph;
     const phoneInput = document.getElementById('clientPhone');
     if (phoneInput) phoneInput.placeholder = t.form_phone_ph;
 

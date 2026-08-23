@@ -6,7 +6,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from bookings.views import create_booking_api
+from bookings.views import create_booking_api, get_available_slots_api, create_certificate_order_api
 from search import views as search_views
 
 urlpatterns = [
@@ -14,7 +14,11 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
-    path("api/bookings/", create_booking_api, name="api_create_booking"),
+    path("api/bookings/", create_booking_api, name="api_bookings"),
+    path("api/bookings/create/", create_booking_api, name="api_create_booking"),
+    path("api/bookings/available-slots/", get_available_slots_api, name="api_available_slots"),
+    path("api/bookings/slots/", get_available_slots_api, name="api_slots"),
+    path("api/certificates/order/", create_certificate_order_api, name="api_certificate_order"),
 ]
 
 
