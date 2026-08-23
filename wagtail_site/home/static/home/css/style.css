@@ -23,8 +23,8 @@
 
   /* Typography */
   --font-logo: 'Outfit', 'Montserrat', -apple-system, sans-serif;
-  --font-title: 'Tenor Sans', 'Italiana', 'Cormorant Garamond', serif;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-title: 'Cormorant Garamond', 'Forum', 'Playfair Display', 'Tenor Sans', 'Italiana', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-sans: 'Outfit', 'Montserrat', -apple-system, sans-serif;
 
   /* Layout */
@@ -526,28 +526,35 @@ img, video {
 
 .hero-main-title {
   font-family: var(--font-title);
-  font-size: clamp(2.85rem, 4.2vw, 4.3rem);
-  font-weight: 400;
-  line-height: 1.16;
+  font-size: clamp(3.05rem, 4.6vw, 4.65rem);
+  font-weight: 350;
+  line-height: 1.12;
   color: var(--c-espresso);
-  letter-spacing: 0.015em;
+  letter-spacing: -0.012em;
   margin-bottom: 2rem;
   max-width: 100%;
 }
 
 .italic-serif {
+  display: inline-block;
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--c-bark);
+  font-weight: 400;
+  font-size: 1.04em;
+  color: #3D434E;
+  letter-spacing: 0.012em;
+  font-feature-settings: "liga" 1, "dlig" 1;
 }
 
 .hero-description {
-  font-size: clamp(1.18rem, 1.35vw, 1.32rem);
+  font-family: var(--font-sans);
+  font-size: clamp(1.08rem, 1.25vw, 1.22rem);
   color: var(--c-bark);
-  line-height: 1.82;
-  max-width: 680px;
+  line-height: 1.84;
+  max-width: 670px;
   margin-bottom: 2.5rem;
-  font-weight: 350;
+  font-weight: 300;
+  letter-spacing: 0.012em;
 }
 
 .hero-action-buttons {
