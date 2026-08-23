@@ -73,8 +73,8 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "Extended 90m Deep Recovery",
     gc_sub_3: "Signature TOCH_KA Ritual (90m)",
     gc_sub_4: "4 Hands Synchronized Symphony (60m)",
-    gc_btn_buy: "ORDER CERTIFICATE (OR IN PERSON)",
-    gc_in_person_note: "✦ Available online (WhatsApp / Telegram) or in person at our sanctuary (46 Luka Asatiani St)",
+    gc_btn_buy: "ORDER CERTIFICATE (OR IN PERSON UPON VISIT)",
+    gc_in_person_note: "✦ Gift certificates can be issued online or in person upon your visit (46 Luka Asatiani St)",
     cert_del_digital: "Digital (WhatsApp / Telegram)",
     cert_del_envelope: "Physical Envelope (Batumi Salon)",
     cert_buyer_lbl: "YOUR NAME (BUYER) *",
@@ -196,8 +196,8 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "Глубокая проработка тела (90 мин)",
     gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
     gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
-    gc_btn_buy: "ОФОРМИТЬ СЕРТИФИКАТ (МОЖНО ЛИЧНО)",
-    gc_in_person_note: "✦ Можно оформить онлайн (WhatsApp / Telegram) или приобрести лично в салоне (ул. Лука Асатиани, 46)",
+    gc_btn_buy: "ОФОРМИТЬ СЕРТИФИКАТ (МОЖНО ЛИЧНО ПРИ ПОСЕЩЕНИИ)",
+    gc_in_person_note: "✦ Оформить подарочный сертификат можно онлайн или лично при посещении салона (ул. Лука Асатиани, 46)",
     cert_del_digital: "Электронный (WhatsApp / Telegram)",
     cert_del_envelope: "Фирменный конверт в салоне",
     cert_buyer_lbl: "ВАШЕ ИМЯ (ПОКУПАТЕЛЬ) *",
@@ -319,8 +319,8 @@ const OMRA_TRANSLATIONS = {
     gc_sub_2: "გაფართოებული ღრმა თერაპია (90 წთ)",
     gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
     gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
-    gc_btn_buy: "სერტიფიკატის შეძენა (ან პირადად)",
-    gc_in_person_note: "✦ ხელმისაწვდომია ონლაინ (WhatsApp / Telegram) ან პირადად სალონში (ლუკა ასათიანის ქ. 46)",
+    gc_btn_buy: "სერტიფიკატის შეძენა (შესაძლებელია ვიზიტისას)",
+    gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატის შეძენა შესაძლებელია ონლაინ ან პირადად ვიზიტისას (ლუკა ასათიანის ქ. 46)",
     cert_del_digital: "ელექტრონული (WhatsApp / Telegram)",
     cert_del_envelope: "სასაჩუქრე კონვერტი სალონში",
     cert_buyer_lbl: "თქვენი სახელი (მყიდველი) *",
@@ -891,11 +891,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let msg = '';
     if (currentOmraLang === 'ru') {
-      msg = `Здравствуйте! Я хочу оформить подарочный сертификат TOCHKA на ${currentAmt} (или приобрести лично в салоне).`;
+      msg = `Здравствуйте! Я хочу оформить подарочный сертификат TOCHKA на ${currentAmt} (или оформить лично при посещении салона).`;
     } else if (currentOmraLang === 'ka') {
-      msg = `გამარჯობა! მსურს შევიძინო TOCHKA-ს სასაჩუქრე სერტიფიკატი ${currentAmt}-ზე (ან პირადად სალონში).`;
+      msg = `გამარჯობა! მსურს შევიძინო TOCHKA-ს სასაჩუქრე სერტიფიკატი ${currentAmt}-ზე (ან პირადად ვიზიტისას).`;
     } else {
-      msg = `Hello! I would like to purchase a TOCHKA Gift Certificate for ${currentAmt} (or get it in person at your sanctuary).`;
+      msg = `Hello! I would like to purchase a TOCHKA Gift Certificate for ${currentAmt} (or get it in person upon my visit).`;
     }
     btnBuy.href = `https://wa.me/message/vopznnayguwab1?text=${encodeURIComponent(msg)}`;
   };
