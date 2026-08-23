@@ -313,9 +313,9 @@ class HomePage(Page):
     giftcards_subtext_ru = models.TextField("04 Подзаголовок (RU)", blank=True, default="Подарите близким моменты спокойствия, тишины и бережного восстановления.")
     giftcards_subtext_ka = models.TextField("04 Подзаголовок (GE)", blank=True, default="აჩუქეთ სიმშვიდის, დასვენებისა და ზრუნვის დაუვიწყარი წუთები.")
 
-    giftcards_btn_text = models.CharField("04 Кнопка (EN)", max_length=100, default="ORDER CERTIFICATE (OR IN PERSON UPON VISIT)")
-    giftcards_btn_text_ru = models.CharField("04 Кнопка (RU)", max_length=100, blank=True, default="ОФОРМИТЬ СЕРТИФИКАТ (МОЖНО ЛИЧНО ПРИ ПОСЕЩЕНИИ)")
-    giftcards_btn_text_ka = models.CharField("04 Кнопка (GE)", max_length=100, blank=True, default="სერტიფიკატის შეძენა (შესაძლებელია ვიზიტისას)")
+    giftcards_btn_text = models.CharField("04 Кнопка (EN)", max_length=100, default="PURCHASE IN SANCTUARY (IN PERSON ONLY)")
+    giftcards_btn_text_ru = models.CharField("04 Кнопка (RU)", max_length=100, blank=True, default="ОФОРМИТЬ В САЛОНЕ (ТОЛЬКО ЛИЧНО)")
+    giftcards_btn_text_ka = models.CharField("04 Кнопка (GE)", max_length=100, blank=True, default="შეძენა სალონში (მხოლოდ პირადად)")
 
     # 7. Atmosphere & Reels Section
     reels_serial = models.CharField("05 Номер секции", max_length=10, default="05")

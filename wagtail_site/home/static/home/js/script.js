@@ -68,15 +68,15 @@ const OMRA_TRANSLATIONS = {
     gift_heading: "GIFT CARDS & CERTIFICATES",
     gift_subtext: "Give the gift of presence, tranquility, and restorative self-care.",
     gc_title: "Select Certificate Value",
-    gc_note: "Delivered instantly in digital form or as an embossed tactile sand-finish physical card.",
+    gc_note: "Embossed tactile physical card in a signature envelope. Available exclusively in person upon visiting our sanctuary.",
     gc_sub_1: "Classic / Relaxing Massage (60m)",
     gc_sub_2: "Extended 90m Deep Recovery",
     gc_sub_3: "Signature TOCH_KA Ritual (90m)",
     gc_sub_4: "4 Hands Synchronized Symphony (60m)",
-    gc_btn_buy: "ORDER CERTIFICATE (OR IN PERSON UPON VISIT)",
-    gc_in_person_note: "✦ Gift certificates can be issued online or in person upon your visit (46 Luka Asatiani St)",
-    cert_del_digital: "Digital (WhatsApp / Telegram)",
-    cert_del_envelope: "Physical Envelope (Batumi Salon)",
+    gc_btn_buy: "PURCHASE IN SANCTUARY (IN PERSON ONLY)",
+    gc_in_person_note: "✦ Gift certificates are issued exclusively in person upon visiting our sanctuary (46 Luka Asatiani St).",
+    cert_del_digital: "In Person at Batumi Sanctuary",
+    cert_del_envelope: "Physical Signature Envelope (46 Luka Asatiani St)",
     cert_buyer_lbl: "YOUR NAME (BUYER) *",
     cert_phone_lbl: "PHONE / WHATSAPP *",
     cert_recipient_lbl: "RECIPIENT NAME (FOR WHOM) *",
@@ -191,15 +191,15 @@ const OMRA_TRANSLATIONS = {
     gift_heading: "ПОДАРОЧНЫЕ СЕРТИФИКАТЫ",
     gift_subtext: "Подарите близким моменты тишины, заботы и глубокого расслабления.",
     gc_title: "Выберите номинал сертификата",
-    gc_note: "Моментальная доставка в электронном виде или в виде премиальной физической карты с тиснением.",
+    gc_note: "Премиальная физическая карта с тиснением в фирменном конверте. Оформляется исключительно лично в салоне.",
     gc_sub_1: "Классический / Релакс-массаж (60 мин)",
     gc_sub_2: "Глубокая проработка тела (90 мин)",
     gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
     gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
-    gc_btn_buy: "ОФОРМИТЬ СЕРТИФИКАТ (МОЖНО ЛИЧНО ПРИ ПОСЕЩЕНИИ)",
-    gc_in_person_note: "✦ Оформить подарочный сертификат можно онлайн или лично при посещении салона (ул. Лука Асатиани, 46)",
-    cert_del_digital: "Электронный (WhatsApp / Telegram)",
-    cert_del_envelope: "Фирменный конверт в салоне",
+    gc_btn_buy: "ОФОРМИТЬ В САЛОНЕ (ТОЛЬКО ЛИЧНО)",
+    gc_in_person_note: "✦ Подарочные сертификаты оформляются исключительно лично при посещении салона (Батуми, ул. Лука Асатиани, 46)",
+    cert_del_digital: "Лично в салоне в Батуми",
+    cert_del_envelope: "Фирменный конверт в салоне (ул. Лука Асатиани, 46)",
     cert_buyer_lbl: "ВАШЕ ИМЯ (ПОКУПАТЕЛЬ) *",
     cert_phone_lbl: "ТЕЛЕФОН / WHATSAPP *",
     cert_recipient_lbl: "ИМЯ ПОЛУЧАТЕЛЯ (ДЛЯ КОГО) *",
@@ -314,15 +314,15 @@ const OMRA_TRANSLATIONS = {
     gift_heading: "სასაჩუქრე სერტიფიკატები",
     gift_subtext: "აჩუქეთ საყვარელ ადამიანებს სიმშვიდისა და ღრმა განტვირთვის წუთები.",
     gc_title: "აირჩიეთ სერტიფიკატის ნომინალი",
-    gc_note: "მყისიერი მიწოდება ციფრული სახით ან ელიტარული რელიეფური ბარათით.",
+    gc_note: "პრემიალური რელიეფური ფიზიკური ბარათი საფირმო კონვერტში. გაიცემა მხოლოდ პირადად სალონში.",
     gc_sub_1: "კლასიკური / რელაქს მასაჟი (60 წთ)",
     gc_sub_2: "გაფართოებული ღრმა თერაპია (90 წთ)",
     gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
     gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
-    gc_btn_buy: "სერტიფიკატის შეძენა (შესაძლებელია ვიზიტისას)",
-    gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატის შეძენა შესაძლებელია ონლაინ ან პირადად ვიზიტისას (ლუკა ასათიანის ქ. 46)",
-    cert_del_digital: "ელექტრონული (WhatsApp / Telegram)",
-    cert_del_envelope: "სასაჩუქრე კონვერტი სალონში",
+    gc_btn_buy: "შეძენა სალონში (მხოლოდ პირადად)",
+    gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატების შეძენა შესაძლებელია მხოლოდ პირადად სალონში ვიზიტისას (ბათუმი, ლუკა ასათიანის ქ. 46).",
+    cert_del_digital: "პირადად ბათუმის სალონში",
+    cert_del_envelope: "სასაчуქრე კონვერტი სალონში (ლუკა ასათიანის ქ. 46)",
     cert_buyer_lbl: "თქვენი სახელი (მყიდველი) *",
     cert_phone_lbl: "ტელეფონი / WHATSAPP *",
     cert_recipient_lbl: "მიმღების სახელი (ვისთვის) *",
@@ -880,24 +880,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Gift Card Amount Switcher & Direct In-Person / Messenger Link
+  // 5. Gift Card Amount Switcher & Direct Salon Location Link
   const amountBtns = document.querySelectorAll('.amount-btn');
   const gcDisplayAmount = document.getElementById('gcDisplayAmount');
 
-  window.updateGiftCardBuyLink = function(amount) {
+  window.updateGiftCardBuyLink = function() {
     const btnBuy = document.getElementById('btnBuyGiftCard');
     if (!btnBuy) return;
-    const currentAmt = amount || (gcDisplayAmount ? gcDisplayAmount.innerText.trim() : '$45');
-    
-    let msg = '';
-    if (currentOmraLang === 'ru') {
-      msg = `Здравствуйте! Я хочу оформить подарочный сертификат TOCHKA на ${currentAmt} (или оформить лично при посещении салона).`;
-    } else if (currentOmraLang === 'ka') {
-      msg = `გამარჯობა! მსურს შევიძინო TOCHKA-ს სასაჩუქრე სერტიფიკატი ${currentAmt}-ზე (ან პირადად ვიზიტისას).`;
-    } else {
-      msg = `Hello! I would like to purchase a TOCHKA Gift Certificate for ${currentAmt} (or get it in person upon my visit).`;
-    }
-    btnBuy.href = `https://wa.me/message/vopznnayguwab1?text=${encodeURIComponent(msg)}`;
+    btnBuy.href = "https://maps.app.goo.gl/xjAE2yyKdikHBroi9";
+    btnBuy.target = "_blank";
+    btnBuy.rel = "noopener";
   };
 
   amountBtns.forEach(btn => {
@@ -914,7 +906,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
       }
 
-      window.updateGiftCardBuyLink(amount);
+      window.updateGiftCardBuyLink();
     });
   });
 
