@@ -281,12 +281,12 @@ class HomePage(Page):
 
     loyalty_desc = models.TextField(
         "03 Описание (EN)",
-        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session.",
+        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — our little ritual of gratitude.",
     )
     loyalty_desc_ru = models.TextField(
         "03 Описание (RU)",
         blank=True,
-        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — наш маленький ритуал благодарности за ваше доверие. Соберите 4 отметки и получите скидку 20% на 5-й сеанс.",
+        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — наш маленький ритуал благодарности за ваше доверие.",
     )
     loyalty_desc_ka = models.TextField(
         "03 Описание (GE)",
