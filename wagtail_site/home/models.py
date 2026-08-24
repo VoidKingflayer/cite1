@@ -120,17 +120,17 @@ class HomePage(Page):
 
     hero_description = models.TextField(
         "Hero: Описание (EN)",
-        default="TOCHKA is born at the meeting point of body and soul — a space to slow down, release tension, and restore your inner calm in gentle care.",
+        default="TOCHKA is born at the meeting point of body and soul — a space to slow down, release tension, and restore your inner calm in gentle care",
     )
     hero_description_ru = models.TextField(
         "Hero: Описание (RU)",
         blank=True,
-        default="ТОЧКА рождается на стыке тела и души — пространство, где можно замедлиться, отпустить напряжение и восстановить внутреннее спокойствие в бережной заботе.",
+        default="ТОЧКА рождается на стыке тела и души — пространство, где можно замедлиться, отпустить напряжение и восстановить внутреннее спокойствие в бережной заботе",
     )
     hero_description_ka = models.TextField(
         "Hero: Описание (GE)",
         blank=True,
-        default="TOCHKA იბადება სხეულისა და სულის შეხვედრის ადგილზე — სივრცე, სადაც შეგიძლიათ შეანელოთ ტემპი, მოიხსნათ დაძაბულობა და აღიდგინოთ შინაგანი სიმშვიდე.",
+        default="TOCHKA იბადება სხეულისა და სულის შეხვედრის ადგილზე — სივრცე, სადაც შეგიძლიათ შეანელოთ ტემპი, მოიხსნათ დაძაბულობა და აღიდგინოთ შინაგანი სიმშვიდე",
     )
 
     hero_btn_explore_text = models.CharField("Hero: Кнопка 1 (EN)", max_length=50, default="EXPLORE RITUALS")
@@ -177,17 +177,17 @@ class HomePage(Page):
 
     concept_quote = models.TextField(
         "01 Цитата (EN)",
-        default='“I wanted to create a place where you can feel tranquility from the very first moments: soft light, quiet, pleasant interior details, and a feeling of warmth. It is important to me that here you can not only relax your body, but also slow down, escape the everyday rush, and simply be in a comfortable, peaceful atmosphere.”',
+        default='“I wanted to create a place where you can feel tranquility from the very first moments: soft light, quiet, pleasant interior details, and a feeling of warmth. It is important to me that here you can not only relax your body, but also slow down, escape the everyday rush, and simply be in a comfortable, peaceful atmosphere”',
     )
     concept_quote_ru = models.TextField(
         "01 Цитата (RU)",
         blank=True,
-        default='«Мне хотелось создать место, в котором можно почувствовать спокойствие уже с первых минут: мягкий свет, тишина, приятные детали интерьера и ощущение уюта. Для меня важно, чтобы здесь вы могли не только расслабить тело, но и немного замедлиться, отвлечься от суеты и побыть в комфортной, спокойной обстановке».',
+        default='«Мне хотелось создать место, в котором можно почувствовать спокойствие уже с первых минут: мягкий свет, тишина, приятные детали интерьера и ощущение уюта. Для меня важно, чтобы здесь вы могли не только расслабить тело, но и немного замедлиться, отвлечься от суеты и побыть в комфортной, спокойной обстановке»',
     )
     concept_quote_ka = models.TextField(
         "01 Цитата (GE)",
         blank=True,
-        default='„მინდოდა შემექმნა ადგილი, სადაც პირველივე წუთებიდან იგრძნობთ სიმშვიდეს: რბილი სინათლე, სიჩუმე, ინტერიერის სასიამოვნო დეტალები და სიმყუდროვე. ჩემთვის მნიშვნელოვანია, რომ აქ შეძლოთ არა მხოლოდ სხეულის მოდუნება, არამედ ცოტათი შეჩერება, ყოველდღიური აურზაურისგან განტვირთვა და კომფორტულ, მშვიდ გარემოში ყოფნა“.',
+        default='„მინდოდა შემექმნა ადგილი, სადაც პირველივე წუთებიდან იგრძნობთ სიმშვიდეს: რბილი სინათლე, სიჩუმე, ინტერიერის სასიამოვნო დეტალები და სიმყუდროვე. ჩემთვის მნიშვნელოვანია, რომ აქ შეძლოთ არა მხოლოდ სხეულის მოდუნება, არამედ ცოტათი შეჩერება, ყოველდღიური აურზაურისგან განტვირთვა და კომფორტულ, მშვიდ გარემოში ყოფნა“',
     )
 
     concept_author = models.CharField("01 Автор цитаты (EN)", max_length=100, blank=True, default="")
@@ -205,12 +205,12 @@ class HomePage(Page):
     concept_card_1_text_ru = models.TextField(
         "01 Карточка 1 Текст (RU)",
         blank=True,
-        default="Авторская техника непрерывного контакта: руки мастера практически не отрываются от тела, переходя из одного движения в другое. Такой ритм дает нервной системе сигнал безопасности и глубоко снимает накопившийся стресс.",
+        default="Авторская техника непрерывного контакта: руки мастера практически не отрываются от тела, переходя из одного движения в другое. Такой ритм дает нервной системе сигнал безопасности и глубоко снимает накопившийся стресс",
     )
     concept_card_1_text_ka = models.TextField(
         "01 Карточка 1 Текст (GE)",
         blank=True,
-        default="საავტორო უწყვეტი კონტაქტის ტექნიკა: თერაპევტის ხელები პრაქტიკულად არ შორდება სხეულს, მოძრაობს მდორე მედიტაციურ ნაკადში.",
+        default="საავტორო უწყვეტი კონტაქტის ტექნიკა: თერაპევტის ხელები პრაქტიკულად არ შორდება სხეულს, მოძრაობს მდორე მედიტაციურ ნაკადში",
     )
 
     concept_card_2_title = models.CharField("01 Карточка 2 Заголовок (EN)", max_length=100, default="Atmosphere of Gentle Care")
@@ -219,17 +219,17 @@ class HomePage(Page):
 
     concept_card_2_text = models.TextField(
         "01 Карточка 2 Текст (EN)",
-        default="Natural coconut oil or delicate cream, fresh soft white towels, personalized guest playlist instead of generic sounds, and a relaxed cup of coffee or herbal tea after your session.",
+        default="Natural coconut oil or delicate cream, fresh soft white towels, personalized guest playlist instead of generic sounds, and a relaxed cup of coffee or herbal tea after your session",
     )
     concept_card_2_text_ru = models.TextField(
         "01 Карточка 2 Текст (RU)",
         blank=True,
-        default="Натуральное кокосовое масло или нежный питательный крем, белоснежные полотенца, персональный плейлист гостя вместо шаблонных звуков и чашка чая или кофе после сеанса.",
+        default="Натуральное кокосовое масло или нежный питательный крем, белоснежные полотенца, персональный плейлист гостя вместо шаблонных звуков и чашка чая или кофе после сеанса",
     )
     concept_card_2_text_ka = models.TextField(
         "01 Карточка 2 Текст (GE)",
         blank=True,
-        default="ნატურალური ქოქოსის ზეთი, რბილი პირსახოცები, პერსონალური მუსიკა და ყავა ან ჩაი სეანსის შემდეგ.",
+        default="ნატურალური ქოქოსის ზეთი, რბილი პირსახოცები, პერსონალური მუსიკა და ყავა ან ჩაი სეანსის შემდეგ",
     )
 
     # 4. Therapies & Rituals Section
@@ -238,9 +238,9 @@ class HomePage(Page):
     rituals_heading_ru = models.CharField("02 Заголовок (RU)", max_length=100, blank=True, default="ТЕРАПИИ И РИТУАЛЫ")
     rituals_heading_ka = models.CharField("02 Заголовок (GE)", max_length=100, blank=True, default="თერაპიები და რიტუალები")
 
-    rituals_subtext = models.TextField("02 Подзаголовок (EN)", default="Authentic treatments, precise myofascial techniques, and deep restorative care in Batumi.")
-    rituals_subtext_ru = models.TextField("02 Подзаголовок (RU)", blank=True, default="Проверенные методики, прицельная проработка триггерных зон и холистический уход в Батуми.")
-    rituals_subtext_ka = models.TextField("02 Подзаголовок (GE)", blank=True, default="ავთენტური პროცედურები, ზუსტი მიოფასციალური ტექნიკა და ღრმა აღდგენითი ზრუნვა ბათუმში.")
+    rituals_subtext = models.TextField("02 Подзаголовок (EN)", default="Authentic treatments, precise myofascial techniques, and deep restorative care in Batumi")
+    rituals_subtext_ru = models.TextField("02 Подзаголовок (RU)", blank=True, default="Проверенные методики, прицельная проработка триггерных зон и холистический уход в Батуми")
+    rituals_subtext_ka = models.TextField("02 Подзаголовок (GE)", blank=True, default="ავთენტური პროცედურები, ზუსტი მიოფასციალური ტექნიკა და ღრმა აღდგენითი ზრუნვა ბათუმში")
 
     promo_badge = models.CharField("02 Промо: Бейдж (EN)", max_length=50, default="FIRST VISIT WELCOME")
     promo_badge_ru = models.CharField("02 Промо: Бейдж (RU)", max_length=50, blank=True, default="ПЕРВЫЙ ВИЗИТ")
@@ -252,17 +252,17 @@ class HomePage(Page):
 
     promo_subtitle = models.TextField(
         "02 Промо: Описание (EN)",
-        default="Experience our signature continuous-contact massage with master. Includes organic coconut oil and complimentary post-session tea or coffee.",
+        default="Experience our signature continuous-contact massage with master. Includes organic coconut oil and complimentary post-session tea or coffee",
     )
     promo_subtitle_ru = models.TextField(
         "02 Промо: Описание (RU)",
         blank=True,
-        default="Познакомьтесь с авторской техникой непрерывного контакта и ощутите глубокое расслабление. Натуральные масла и чай/кофе включены.",
+        default="Познакомьтесь с авторской техникой непрерывного контакта и ощутите глубокое расслабление. Натуральные масла и чай/кофе включены",
     )
     promo_subtitle_ka = models.TextField(
         "02 Промо: Описание (GE)",
         blank=True,
-        default="გაეცანით ჩვენს საავტორო უწყვეტი კონტაქტის მასაჟს. მოიცავს ორგანულ ქოქოსის ზეთს და ჩაის/ყავას სეანსის შემდეგ.",
+        default="გაეცანით ჩვენს საავტორო უწყვეტი კონტაქტის მასაჟს. მოიცავს ორგანულ ქოქოსის ზეთს და ჩაის/ყავას სეანსის შემდეგ",
     )
 
     promo_btn_text = models.CharField("02 Промо: Кнопка (EN)", max_length=50, default="CLAIM 10% DISCOUNT")
@@ -281,17 +281,17 @@ class HomePage(Page):
 
     loyalty_desc = models.TextField(
         "03 Описание (EN)",
-        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — my little ritual of gratitude.",
+        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — my little ritual of gratitude",
     )
     loyalty_desc_ru = models.TextField(
         "03 Описание (RU)",
         blank=True,
-        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — мой маленький ритуал благодарности за ваше доверие.",
+        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — мой маленький ритуал благодарности за ваше доверие",
     )
     loyalty_desc_ka = models.TextField(
         "03 Описание (GE)",
         blank=True,
-        default="მეტი სიამოვნება და ზრუნვა საკუთარ თავზე. 20%-იანი ფასდაკლება მე-5 მასაჟზე — ჩემი მადლიერების რიტუალი.",
+        default="მეტი სიამოვნება და ზრუნვა საკუთარ თავზე. 20%-იანი ფასდაკლება მე-5 მასაჟზე — ჩემი მადლიერების რიტუალი",
     )
 
     loyalty_image = models.ForeignKey(
@@ -309,9 +309,9 @@ class HomePage(Page):
     giftcards_heading_ru = models.CharField("04 Заголовок (RU)", max_length=100, blank=True, default="ПОДАРОЧНЫЕ СЕРТИФИКАТЫ")
     giftcards_heading_ka = models.CharField("04 Заголовок (GE)", max_length=100, blank=True, default="სასაჩუქრე სერტიფიკატები")
 
-    giftcards_subtext = models.TextField("04 Подзаголовок (EN)", default="Give the gift of presence, tranquility, and restorative self-care.")
-    giftcards_subtext_ru = models.TextField("04 Подзаголовок (RU)", blank=True, default="Подарите близким моменты спокойствия, тишины и бережного восстановления.")
-    giftcards_subtext_ka = models.TextField("04 Подзаголовок (GE)", blank=True, default="აჩუქეთ სიმშვიდის, დასვენებისა და ზრუნვის დაუვიწყარი წუთები.")
+    giftcards_subtext = models.TextField("04 Подзаголовок (EN)", default="Give the gift of presence, tranquility, and restorative self-care")
+    giftcards_subtext_ru = models.TextField("04 Подзаголовок (RU)", blank=True, default="Подарите близким моменты спокойствия, тишины и бережного восстановления")
+    giftcards_subtext_ka = models.TextField("04 Подзаголовок (GE)", blank=True, default="აჩუქეთ სიმშვიდის, დასვენებისა და ზრუნვის დაუვიწყარი წუთები")
 
     giftcards_btn_text = models.CharField("04 Кнопка (EN)", max_length=100, default="PURCHASE IN SANCTUARY IN PERSON")
     giftcards_btn_text_ru = models.CharField("04 Кнопка (RU)", max_length=100, blank=True, default="ОФОРМИТЬ В САЛОНЕ ЛИЧНО")
@@ -356,7 +356,7 @@ class HomePage(Page):
     palette_heading_ru = models.CharField("Палитра: Заголовок (RU)", max_length=100, blank=True, default="ЦВЕТОВАЯ ПАЛИТРА И АЙДЕНТИКА")
     palette_heading_ka = models.CharField("Палитра: Заголовок (GE)", max_length=100, blank=True, default="ფერების პალიტრა და იდენტობა")
 
-    palette_subtext = models.TextField("Палитра: Описание", default="Iron metallic black, brushed titanium steel, platinum sand, and raw forged charcoal.")
+    palette_subtext = models.TextField("Палитра: Описание", default="Iron metallic black, brushed titanium steel, platinum sand, and raw forged charcoal")
 
     # 10. Booking & Concierge Section
     booking_serial = models.CharField("Бронирование: Номер", max_length=10, default="07")
@@ -366,17 +366,17 @@ class HomePage(Page):
 
     booking_lead = models.TextField(
         "Бронирование: Описание (EN)",
-        default="Select your ritual and preferred time. Master Anna will confirm your appointment within 15 minutes.",
+        default="Select your ritual and preferred time. Master Anna will confirm your appointment within 15 minutes",
     )
     booking_lead_ru = models.TextField(
         "Бронирование: Описание (RU)",
         blank=True,
-        default="Выберите желаемый ритуал и удобное время. Мастер Анна подтвердит вашу бронь в течение 15 минут.",
+        default="Выберите желаемый ритуал и удобное время. Мастер Анна подтвердит вашу бронь в течение 15 минут",
     )
     booking_lead_ka = models.TextField(
         "Бронирование: Описание (GE)",
         blank=True,
-        default="აირჩიეთ სასურველი რიტუალი და დრო. მასტერი ანა დაადასტურებს თქვენს ჯავშანს 15 წუთში.",
+        default="აირჩიეთ სასურველი რიტუალი და დრო. მასტერი ანა დაადასტურებს თქვენს ჯავშანს 15 წუთში",
     )
 
     booking_btn_text = models.CharField("Бронирование: Кнопка (EN)", max_length=50, default="CONFIRM RESERVATION")
@@ -412,10 +412,10 @@ class HomePage(Page):
     )
 
     # 12. Footer
-    footer_motto = models.TextField("Подвал: Слоган (EN)", default="Your space to breathe. Aesthetics & comfort as part of the healing process.")
-    footer_motto_ru = models.TextField("Подвал: Слоган (RU)", blank=True, default="Ваше пространство для дыхания. Эстетика и забота как часть процесса восстановления.")
-    footer_motto_ka = models.TextField("Подвал: Слоган (GE)", blank=True, default="თქვენი სივრცე სუნთქვისთვის. ესთეტიკა და კომფორტი, როგორც განკურნების ნაწილი.")
-    footer_copyright = models.CharField("Подвал: Копирайт", max_length=150, default="© 2023–2026 TOCHKA. Anna Kolosova Massage Sanctuary, Batumi.")
+    footer_motto = models.TextField("Подвал: Слоган (EN)", default="Your space to breathe. Aesthetics & comfort as part of the healing process")
+    footer_motto_ru = models.TextField("Подвал: Слоган (RU)", blank=True, default="Ваше пространство для дыхания. Эстетика и забота как часть процесса восстановления")
+    footer_motto_ka = models.TextField("Подвал: Слоган (GE)", blank=True, default="თქვენი სივრცე სუნთქვისთვის. ესთეტიკა და კომფორტი, როგორც განკურნების ნაწილი")
+    footer_copyright = models.CharField("Подвал: Копирайт", max_length=150, default="© 2023–2026 TOCHKA. Anna Kolosova Massage Sanctuary, Batumi")
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
