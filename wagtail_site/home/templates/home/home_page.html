@@ -25,6 +25,13 @@
     <!-- Luxury Architectural Header -->
     <header class="omra-header" id="omraHeader">
       <div class="header-inner">
+        <!-- Mobile Left-Corner Language Switcher (Hidden on Desktop) -->
+        <div class="header-lang-switcher" id="headerLangSwitcher">
+          <button type="button" class="lang-btn active" data-lang="ru" title="Русский">RU</button>
+          <button type="button" class="lang-btn" data-lang="en" title="English">EN</button>
+          <button type="button" class="lang-btn" data-lang="ka" title="ქართული">GE</button>
+        </div>
+
         <a href="#hero" class="brand-link">
           <div class="omra-logo-wrap">
             <span class="omra-logo-text">{{ page.brand_logo_text|default:"tochka" }}</span>
@@ -127,9 +134,9 @@
         <div class="hero-visual-col">
           <div class="hero-image-card">
             {% if page.hero_image %}
-              {% image page.hero_image fill-800x1000 class="hero-art-img" alt="TOCHKA Sensual Aesthetics & Dewy Skin" %}
+              {% image page.hero_image fill-800x1000 class="hero-art-img" alt="Профессиональный массаж в Батуми — салон TOCHKA, ул. Лука Асатиани 46" %}
             {% else %}
-              <img src="{% static 'home/images/3903587528438016601.jpg' %}" alt="TOCHKA Sensual Aesthetics & Dewy Skin" class="hero-art-img" />
+              <img src="{% static 'home/images/3903587528438016601.jpg' %}" alt="Профессиональный массаж в Батуми — салон TOCHKA, ул. Лука Асатиани 46" class="hero-art-img" />
             {% endif %}
             <div class="hero-card-tag">
               <span class="tag-title" data-i18n="hero_tag_title">{{ page.hero_card_tag_title|default:"TOCHKA RITUAL" }}</span>
@@ -230,7 +237,7 @@
         {% else %}
           <!-- Default Authentic Rituals -->
           <!-- Ritual 01: Relaxing Massage -->
-          <div class="ritual-row highlight-row" data-category="body" data-name="Relaxing Massage" data-price="$45">
+          <div class="ritual-row highlight-row" data-category="body" data-name="Relaxing Massage" data-price="120 ₾">
             <div class="r-info-col">
               <div class="r-title-wrap">
                 <h3 class="r-name" data-i18n="r1_name">Relaxing Massage</h3>
@@ -241,11 +248,11 @@
             <div class="r-pricing-col">
               <div class="r-tier">
                 <span class="tier-time">60 min</span>
-                <span class="tier-cost">$45</span>
+                <span class="tier-cost">120 ₾</span>
               </div>
               <div class="r-tier">
                 <span class="tier-time">90 min</span>
-                <span class="tier-cost">$60</span>
+                <span class="tier-cost">160 ₾</span>
               </div>
             </div>
             <div class="r-action-col">
@@ -254,7 +261,7 @@
           </div>
 
           <!-- Ritual 02: Classic Massage -->
-          <div class="ritual-row" data-category="body" data-name="Classic Massage" data-price="$45">
+          <div class="ritual-row" data-category="body" data-name="Classic Massage" data-price="120 ₾">
             <div class="r-info-col">
               <div class="r-title-wrap">
                 <h3 class="r-name" data-i18n="r2_name">Classic Massage</h3>
@@ -265,11 +272,11 @@
             <div class="r-pricing-col">
               <div class="r-tier">
                 <span class="tier-time">60 min</span>
-                <span class="tier-cost">$45</span>
+                <span class="tier-cost">120 ₾</span>
               </div>
               <div class="r-tier">
                 <span class="tier-time">90 min</span>
-                <span class="tier-cost">$60</span>
+                <span class="tier-cost">160 ₾</span>
               </div>
             </div>
             <div class="r-action-col">
@@ -278,7 +285,7 @@
           </div>
 
           <!-- Ritual 03: Sports Massage -->
-          <div class="ritual-row" data-category="body" data-name="Sports Massage" data-price="$52">
+          <div class="ritual-row" data-category="body" data-name="Sports Massage" data-price="140 ₾">
             <div class="r-info-col">
               <div class="r-title-wrap">
                 <h3 class="r-name" data-i18n="r3_name">Sports Massage</h3>
@@ -289,11 +296,11 @@
             <div class="r-pricing-col">
               <div class="r-tier">
                 <span class="tier-time">60 min</span>
-                <span class="tier-cost">$52</span>
+                <span class="tier-cost">140 ₾</span>
               </div>
               <div class="r-tier">
                 <span class="tier-time">90 min</span>
-                <span class="tier-cost">$67</span>
+                <span class="tier-cost">180 ₾</span>
               </div>
             </div>
             <div class="r-action-col">
@@ -302,7 +309,7 @@
           </div>
 
           <!-- Ritual 04: Lymphatic Drainage Massage -->
-          <div class="ritual-row" data-category="body" data-name="Lymphatic Drainage Massage" data-price="$48">
+          <div class="ritual-row" data-category="body" data-name="Lymphatic Drainage Massage" data-price="130 ₾">
             <div class="r-info-col">
               <div class="r-title-wrap">
                 <h3 class="r-name" data-i18n="r4_name">Lymphatic Drainage Massage</h3>
@@ -313,11 +320,11 @@
             <div class="r-pricing-col">
               <div class="r-tier">
                 <span class="tier-time">60 min</span>
-                <span class="tier-cost">$48</span>
+                <span class="tier-cost">130 ₾</span>
               </div>
               <div class="r-tier">
                 <span class="tier-time">90 min</span>
-                <span class="tier-cost">$63</span>
+                <span class="tier-cost">170 ₾</span>
               </div>
             </div>
             <div class="r-action-col">
@@ -374,9 +381,9 @@
           <div class="loyalty-visual-col">
             <div class="loyalty-mockup-card">
               {% if page.loyalty_image %}
-                {% image page.loyalty_image fill-600x600 class="loyalty-img" alt="TOCHKA Loyalty Card" %}
+                {% image page.loyalty_image fill-600x600 class="loyalty-img" alt="Карта лояльности и скидки на массаж в Батуми — студия TOCHKA" %}
               {% else %}
-                <img src="{% static 'home/images/3903611317898741075_3903611114787886062.jpg' %}" alt="TOCHKA Loyalty Card on Natural Stone" class="loyalty-img" />
+                <img src="{% static 'home/images/3903611317898741075_3903611114787886062.jpg' %}" alt="Карта лояльности и скидки на массаж в Батуми — студия TOCHKA" class="loyalty-img" />
               {% endif %}
             </div>
           </div>
@@ -402,7 +409,7 @@
               <span class="gc-type">GIFT CERTIFICATE</span>
             </div>
             <div class="gc-body">
-              <div class="gc-amount" id="gcDisplayAmount">$45</div>
+              <div class="gc-amount" id="gcDisplayAmount">120 ₾</div>
               <div class="gc-motto">YOUR SPACE TO BREATHE</div>
             </div>
             <div class="gc-footer">
@@ -417,27 +424,27 @@
           <p class="gc-note" data-i18n="gc_note">{{ page.giftcards_picker_note|default:"Delivered instantly in digital form or as an embossed tactile sand-finish physical card." }}</p>
 
           <div class="amount-picker-grid">
-            <button class="amount-btn active" data-amount="$45">
-              <span class="ab-val">$45</span>
+            <button class="amount-btn active" data-amount="120 ₾">
+              <span class="ab-val">120 ₾</span>
               <span class="ab-sub" data-i18n="gc_sub_1">Classic / Relaxing Massage (60m)</span>
             </button>
-            <button class="amount-btn" data-amount="$60">
-              <span class="ab-val">$60</span>
+            <button class="amount-btn" data-amount="160 ₾">
+              <span class="ab-val">160 ₾</span>
               <span class="ab-sub" data-i18n="gc_sub_2">Extended 90m Deep Recovery</span>
             </button>
-            <button class="amount-btn" data-amount="$70">
-              <span class="ab-val">$70</span>
+            <button class="amount-btn" data-amount="190 ₾">
+              <span class="ab-val">190 ₾</span>
               <span class="ab-sub" data-i18n="gc_sub_3">Signature TOCH_KA Ritual (90m)</span>
             </button>
-            <button class="amount-btn" data-amount="$93">
-              <span class="ab-val">$93</span>
+            <button class="amount-btn" data-amount="250 ₾">
+              <span class="ab-val">250 ₾</span>
               <span class="ab-sub" data-i18n="gc_sub_4">4 Hands Synchronized Symphony (60m)</span>
             </button>
           </div>
 
-          <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" id="btnBuyGiftCard" class="btn-espresso full-width" data-i18n="gc_btn_buy">{{ page.giftcards_btn_text_ru|default:page.giftcards_btn_text|default:"ОФОРМИТЬ В САЛОНЕ ЛИЧНО" }}</a>
+          <a href="{{ page.loc_gmaps_url|default:'https://maps.app.goo.gl/xjAE2yyKdikHBroi9' }}" target="_blank" rel="noopener" id="btnBuyGiftCard" class="btn-espresso full-width" data-i18n="gc_btn_buy">{{ page.giftcards_btn_text_ru|default:page.giftcards_btn_text|default:"ОФОРМИТЬ ПРИ ПОСЕЩЕНИИ САЛОНА" }}</a>
           <div class="gc-in-person-note" data-i18n="gc_in_person_note">
-            ✦ Подарочные сертификаты оформляются исключительно лично при посещении салона (Батуми, ул. Лука Асатиани, 46)
+            ✦ Подарочные сертификаты оформляются при посещении салона (Батуми, ул. Лука Асатиани, 46)
           </div>
         </div>
       </div>
@@ -493,9 +500,9 @@
   <section class="omra-manifesto-banner">
     <div class="banner-photo-wrapper">
       {% if page.manifesto_image %}
-        {% image page.manifesto_image fill-1600x800 class="banner-img" alt="Tactile Wooden Branch & Spa Rituals" %}
+        {% image page.manifesto_image fill-1600x800 class="banner-img" alt="Массажный салон TOCHKA в Батуми — атмосфера спокойствия и релаксации" %}
       {% else %}
-        <img src="{% static 'home/images/3941719025657177039_clean.jpg' %}" alt="Tactile Wooden Branch & Spa Rituals" class="banner-img" />
+        <img src="{% static 'home/images/3941719025657177039_clean.jpg' %}" alt="Массажный салон TOCHKA в Батуми — атмосфера спокойствия и релаксации" class="banner-img" />
       {% endif %}
       <div class="banner-tint-overlay">
         <h2 class="banner-huge-text" data-i18n="banner_text">{{ page.manifesto_huge_text|default:"ALL YOU KNEAD IS CARE" }}</h2>
@@ -608,7 +615,7 @@
               </div>
               <div class="form-group">
                 <label for="guestPhone" data-i18n="form_phone_lbl">PHONE / WHATSAPP *</label>
-                <input type="tel" id="guestPhone" name="phone" placeholder="+995 591 22 61 45" required class="omra-input" />
+                <input type="tel" id="guestPhone" name="phone" placeholder="+995 591 22 61 45" required class="omra-input" inputmode="tel" autocomplete="tel" pattern="[\d\s+\-()]+" />
               </div>
             </div>
 
@@ -616,10 +623,10 @@
               <label for="ritualSelect" data-i18n="form_ritual_lbl">ВЫБОР ТИПА МАССАЖА *</label>
               <select id="ritualSelect" name="ritual" required class="omra-input omra-select">
                 <option value="" disabled selected data-i18n="form_ritual_select">Выберите вид массажа...</option>
-                <option value="Relaxing Massage">Расслабляющий массаж (60 мин — $45 / 90 мин — $60)</option>
-                <option value="Classic Massage">Классический массаж (60 мин — $45 / 90 мин — $60)</option>
-                <option value="Sports Massage">Спортивный массаж (60 мин — $52 / 90 мин — $67)</option>
-                <option value="Lymphatic Drainage Massage">Лимфодренажный массаж (60 мин — $48 / 90 мин — $63)</option>
+                <option value="Relaxing Massage">Расслабляющий массаж (60 мин — 120 ₾ / 90 мин — 160 ₾)</option>
+                <option value="Classic Massage">Классический массаж (60 мин — 120 ₾ / 90 мин — 160 ₾)</option>
+                <option value="Sports Massage">Спортивный массаж (60 мин — 140 ₾ / 90 мин — 180 ₾)</option>
+                <option value="Lymphatic Drainage Massage">Лимфодренажный массаж (60 мин — 130 ₾ / 90 мин — 170 ₾)</option>
               </select>
             </div>
 
@@ -771,9 +778,6 @@
 
       <div class="footer-bottom-bar">
         <p class="f-copyright" data-i18n="footer_copy">{{ page.footer_copyright|default:"© 2023–2026 TOCHKA. Anna Kolosova Massage Sanctuary, Batumi." }}</p>
-        <div class="f-legal">
-          <a href="/admin/" style="color: inherit;">Wagtail CMS Admin</a>
-        </div>
       </div>
     </div>
   </footer>
@@ -781,7 +785,6 @@
   <!-- Floating 1-Click Messenger Connect Widget -->
   <aside class="floating-messenger-widget" aria-label="Быстрая связь в мессенджерах">
     <div class="floating-messenger-tray">
-      <span class="tray-label">СВЯЗЬ:</span>
       <!-- WhatsApp (1-click) -->
       <a href="{{ page.loc_whatsapp_url|default:'https://wa.me/message/vopznnayguwab1' }}" target="_blank" rel="noopener" class="f-msg-btn f-wa" title="Открыть WhatsApp" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.31 3.8.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.11-.23-.17-.48-.3z"/></svg>

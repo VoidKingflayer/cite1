@@ -8,6 +8,8 @@
 
 const OMRA_TRANSLATIONS = {
   en: {
+    page_title: "TOCHKA — Luxury Massage in Batumi | Wellness & Body Rituals",
+    page_description: "Luxury massage sanctuary in Batumi at 46 Luka Asatiani St. Signature continuous-contact massage, deep recovery, sports, relaxing and lymphatic drainage therapies. 10% off your 1st session. Book online or via WhatsApp.",
     nav_concept: "CONCEPT",
     nav_rituals: "RITUALS & PRICES",
     nav_loyalty: "LOYALTY",
@@ -68,13 +70,13 @@ const OMRA_TRANSLATIONS = {
     gift_heading: "GIFT CARDS & CERTIFICATES",
     gift_subtext: "Give the gift of presence, tranquility, and restorative self-care.",
     gc_title: "Select Certificate Value",
-    gc_note: "Embossed tactile physical card in a signature envelope. Available exclusively in person upon visiting our sanctuary.",
+    gc_note: "Embossed tactile physical card in a signature envelope. Available upon visiting our sanctuary.",
     gc_sub_1: "Classic / Relaxing Massage (60m)",
     gc_sub_2: "Extended 90m Deep Recovery",
     gc_sub_3: "Signature TOCH_KA Ritual (90m)",
     gc_sub_4: "4 Hands Synchronized Symphony (60m)",
-    gc_btn_buy: "PURCHASE IN SANCTUARY IN PERSON",
-    gc_in_person_note: "✦ Gift certificates are issued exclusively in person upon visiting our sanctuary (46 Luka Asatiani St).",
+    gc_btn_buy: "PURCHASE UPON VISITING SANCTUARY",
+    gc_in_person_note: "✦ Gift certificates are issued upon visiting our sanctuary (46 Luka Asatiani St).",
     cert_del_digital: "In Person at Batumi Sanctuary",
     cert_del_envelope: "Physical Signature Envelope (46 Luka Asatiani St)",
     cert_buyer_lbl: "YOUR NAME (BUYER) *",
@@ -131,6 +133,8 @@ const OMRA_TRANSLATIONS = {
     footer_copy: "© 2023–2026 TOCHKA. Anna Kolosova Massage Sanctuary, Batumi."
   },
   ru: {
+    page_title: "Массаж в Батуми — Студия TOCHKA | Классический, Спортивный, Релакс, Цены и Запись",
+    page_description: "Студия массажа TOCHKA в Батуми (ул. Лука Асатиани, 46). Авторская техника непрерывного контакта мастера Анны Колосовой, релакс, спортивный и лимфодренажный массаж. Скидка 10% на первый визит. Онлайн-запись.",
     nav_concept: "КОНЦЕПЦИЯ",
     nav_rituals: "РИТУАЛЫ И ЦЕНЫ",
     nav_loyalty: "ЛОЯЛЬНОСТЬ",
@@ -191,13 +195,13 @@ const OMRA_TRANSLATIONS = {
     gift_heading: "ПОДАРОЧНЫЕ СЕРТИФИКАТЫ",
     gift_subtext: "Подарите близким моменты тишины, заботы и глубокого расслабления.",
     gc_title: "Выберите номинал сертификата",
-    gc_note: "Премиальная физическая карта с тиснением в фирменном конверте. Оформляется исключительно лично в салоне.",
+    gc_note: "Премиальная физическая карта с тиснением в фирменном конверте. Оформляется при посещении салона.",
     gc_sub_1: "Классический / Релакс-массаж (60 мин)",
     gc_sub_2: "Глубокая проработка тела (90 мин)",
     gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
     gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
-    gc_btn_buy: "ОФОРМИТЬ В САЛОНЕ ЛИЧНО",
-    gc_in_person_note: "✦ Подарочные сертификаты оформляются исключительно лично при посещении салона (Батуми, ул. Лука Асатиани, 46)",
+    gc_btn_buy: "ОФОРМИТЬ ПРИ ПОСЕЩЕНИИ САЛОНА",
+    gc_in_person_note: "✦ Подарочные сертификаты оформляются при посещении салона (Батуми, ул. Лука Асатиани, 46)",
     cert_del_digital: "Лично в салоне в Батуми",
     cert_del_envelope: "Фирменный конверт в салоне (ул. Лука Асатиани, 46)",
     cert_buyer_lbl: "ВАШЕ ИМЯ (ПОКУПАТЕЛЬ) *",
@@ -254,6 +258,8 @@ const OMRA_TRANSLATIONS = {
     footer_copy: "© 2023–2026 TOCHKA. Массажное пространство Анны Колосовой, Батуми."
   },
   ka: {
+    page_title: "მასაჟი ბათუმში — TOCHKA სტუდია | კლასიკური, სარელაქსაციო, სპორტული მასაჟი",
+    page_description: "მასაჟის სტუდია TOCHKA ბათუმში (ლუკა ასათიანის 46). კლასიკური, სარელაქსაციო, სპორტული და ლიმფოდრენაჟული მასაჟი. 10% ფასდაკლება პირველ ვიზიტზე. ონლაინ დაჯავშნა.",
     nav_concept: "კონცეფცია",
     nav_rituals: "რიტუალები და ფასები",
     nav_loyalty: "ლოიალობა",
@@ -314,13 +320,13 @@ const OMRA_TRANSLATIONS = {
     gift_heading: "სასაჩუქრე სერტიფიკატები",
     gift_subtext: "აჩუქეთ საყვარელ ადამიანებს სიმშვიდისა და ღრმა განტვირთვის წუთები.",
     gc_title: "აირჩიეთ სერტიფიკატის ნომინალი",
-    gc_note: "პრემიალური რელიეფური ფიზიკური ბარათი საფირმო კონვერტში. გაიცემა მხოლოდ პირადად სალონში.",
+    gc_note: "პრემიალური რელიეფური ფიზიკური ბარათი საფირმო კონვერტში. გაიცემა სალონში ვიზიტისას.",
     gc_sub_1: "კლასიკური / რელაქს მასაჟი (60 წთ)",
     gc_sub_2: "გაფართოებული ღრმა თერაპია (90 წთ)",
     gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
     gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
-    gc_btn_buy: "შეძენა სალონში პირადად",
-    gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატების შეძენა შესაძლებელია მხოლოდ პირადად სალონში ვიზიტისას (ბათუმი, ლუკა ასათიანის ქ. 46).",
+    gc_btn_buy: "შეძენა სალონში ვიზიტისას",
+    gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატების შეძენა შესაძლებელია სალონში ვიზიტისას (ბათუმი, ლუკა ასათიანის ქ. 46).",
     cert_del_digital: "პირადად ბათუმის სალონში",
     cert_del_envelope: "სასაჩუქრე კონვერტი სალონში (ლუკა ასათიანის ქ. 46)",
     cert_buyer_lbl: "თქვენი სახელი (მყიდველი) *",
@@ -378,16 +384,16 @@ const OMRA_TRANSLATIONS = {
   }
 };
 
-// Pricing data per language: EN = Dollars only ($), KA = Lari only (₾), RU = Dual format (₾ — $)
+// Pricing data per language: All languages now in GEL (₾ / лари)
 const OMRA_PRICE_DATA = {
   en: {
     rituals: [
-      [ { time: "60 min", cost: "$45" }, { time: "90 min", cost: "$60" } ],
-      [ { time: "60 min", cost: "$45" }, { time: "90 min", cost: "$60" } ],
-      [ { time: "60 min", cost: "$52" }, { time: "90 min", cost: "$67" } ],
-      [ { time: "60 min", cost: "$48" }, { time: "90 min", cost: "$63" } ]
+      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "160 ₾" } ],
+      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "160 ₾" } ],
+      [ { time: "60 min", cost: "140 ₾" }, { time: "90 min", cost: "180 ₾" } ],
+      [ { time: "60 min", cost: "130 ₾" }, { time: "90 min", cost: "170 ₾" } ]
     ],
-    certificates: [ "$45", "$60", "$70", "$93" ],
+    certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
     certSubs: [
       "Classic / Relaxing Massage (60m)",
       "Extended 90m Deep Recovery",
@@ -396,10 +402,10 @@ const OMRA_PRICE_DATA = {
     ],
     selectPlaceholder: "Select a massage ritual...",
     selectOptions: [
-      { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — $45 / 90 min — $60)" },
-      { value: "Classic Massage", text: "Classic Massage (60 min — $45 / 90 min — $60)" },
-      { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — $52 / 90 min — $67)" },
-      { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — $48 / 90 min — $63)" }
+      { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — 120 ₾ / 90 min — 160 ₾)" },
+      { value: "Classic Massage", text: "Classic Massage (60 min — 120 ₾ / 90 min — 160 ₾)" },
+      { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — 140 ₾ / 90 min — 180 ₾)" },
+      { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — 130 ₾ / 90 min — 170 ₾)" }
     ]
   },
   ka: {
@@ -420,18 +426,18 @@ const OMRA_PRICE_DATA = {
   },
   ru: {
     rituals: [
-      [ { time: "60 мин", cost: "$45" }, { time: "90 мин", cost: "$60" } ],
-      [ { time: "60 мин", cost: "$45" }, { time: "90 мин", cost: "$60" } ],
-      [ { time: "60 мин", cost: "$52" }, { time: "90 мин", cost: "$67" } ],
-      [ { time: "60 мин", cost: "$48" }, { time: "90 мин", cost: "$63" } ]
+      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "160 ₾" } ],
+      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "160 ₾" } ],
+      [ { time: "60 мин", cost: "140 ₾" }, { time: "90 мин", cost: "180 ₾" } ],
+      [ { time: "60 мин", cost: "130 ₾" }, { time: "90 мин", cost: "170 ₾" } ]
     ],
-    certificates: [ "$45", "$60", "$70", "$93" ],
+    certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
     selectPlaceholder: "Выберите вид массажа...",
     selectOptions: [
-      { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — $45 / 90 мин — $60)" },
-      { value: "Classic Massage", text: "Классический массаж (60 мин — $45 / 90 мин — $60)" },
-      { value: "Sports Massage", text: "Спортивный массаж (60 мин — $52 / 90 мин — $67)" },
-      { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — $48 / 90 мин — $63)" }
+      { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — 120 ₾ / 90 мин — 160 ₾)" },
+      { value: "Classic Massage", text: "Классический массаж (60 мин — 120 ₾ / 90 мин — 160 ₾)" },
+      { value: "Sports Massage", text: "Спортивный массаж (60 мин — 140 ₾ / 90 мин — 180 ₾)" },
+      { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — 130 ₾ / 90 мин — 170 ₾)" }
     ]
   }
 };
@@ -472,6 +478,23 @@ function applyOmraLanguage(lang) {
       btn.classList.remove('active');
     }
   });
+
+  // Update document title & SEO description dynamically
+  if (t.page_title) {
+    document.title = t.page_title;
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', t.page_title);
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', t.page_title);
+  }
+  if (t.page_description) {
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t.page_description);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', t.page_description);
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', t.page_description);
+  }
 
   // 1. Navigation
   document.querySelectorAll('[data-i18n="nav_concept"]').forEach(el => el.textContent = t.nav_concept);
@@ -1122,4 +1145,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 8. Numerical Phone Input Filter (Digits and + only)
+  document.querySelectorAll('input[type="tel"], #guestPhone').forEach(input => {
+    input.addEventListener('input', (e) => {
+      let val = e.target.value;
+      if (val.startsWith('+')) {
+        e.target.value = '+' + val.slice(1).replace(/\D/g, '');
+      } else {
+        e.target.value = val.replace(/\D/g, '');
+      }
+    });
+
+    input.addEventListener('keypress', (e) => {
+      if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
+        return;
+      }
+      if (e.key === '+' && input.selectionStart === 0 && !input.value.includes('+')) {
+        return;
+      }
+      if (!/\d/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const pasteData = (e.clipboardData || window.clipboardData).getData('text');
+      let clean = pasteData.trim();
+      if (clean.startsWith('+')) {
+        clean = '+' + clean.slice(1).replace(/\D/g, '');
+      } else {
+        clean = clean.replace(/\D/g, '');
+      }
+      document.execCommand('insertText', false, clean);
+    });
+  });
 });
+

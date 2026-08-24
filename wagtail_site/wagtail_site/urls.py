@@ -6,10 +6,47 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from django.http import HttpResponse
 from bookings.views import create_booking_api, get_available_slots_api, create_certificate_order_api
 from search import views as search_views
 
+SITEMAP_XML = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tochkabatumi.ge/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tochkabatumi.ge/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tochkabatumi.ge/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://tochkabatumi.ge/?lang=ka"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://tochkabatumi.ge/?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tochkabatumi.ge/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tochkabatumi.ge/"/>
+  </url>
+</urlset>"""
+
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "",
+        "Sitemap: https://tochkabatumi.ge/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain; charset=utf-8")
+
+
+def sitemap_xml(request):
+    return HttpResponse(SITEMAP_XML.strip(), content_type="application/xml; charset=utf-8")
+
+
 urlpatterns = [
+    path("googlef25e567605d37c65.html", lambda request: HttpResponse("google-site-verification: googlef25e567605d37c65.html", content_type="text/html")),
+    path("yandex_c35989e904dcbc0a.html", lambda request: HttpResponse("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body>Verification: c35989e904dcbc0a</body></html>", content_type="text/html; charset=utf-8")),
+    path("robots.txt", robots_txt, name="robots_txt"),
+    path("sitemap.xml", sitemap_xml, name="sitemap_xml"),
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),

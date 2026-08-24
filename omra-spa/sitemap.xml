@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tochkabatumi.ge/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tochkabatumi.ge/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tochkabatumi.ge/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://tochkabatumi.ge/?lang=ka"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://tochkabatumi.ge/?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tochkabatumi.ge/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tochkabatumi.ge/"/>
+  </url>
+</urlset>

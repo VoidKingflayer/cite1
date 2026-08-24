@@ -4,19 +4,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO Meta Tags for 'Массаж Батуми' (Multilingual: RU, EN, GE, TR, AR) -->
   <title>
     {% block title %}
-    {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title|default:"TOCHKA — Your Space to Breathe | Luxury Wellness & Body Rituals" }}{% endif %}
+    {% if page.seo_title %}{{ page.seo_title }}{% else %}Массаж в Батуми — Студия TOCHKA | Классический, Спортивный, Релакс, Цены и Онлайн-Запись{% endif %}
     {% endblock %}
   </title>
-  <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% else %}TOCHKA is born at the meeting point of body and soul — where touch becomes a language of care, and space itself breathes tranquility. Luxury massage therapies, body rituals, and wellness sanctuary in Batumi.{% endif %}" />
+  <meta name="title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}Массаж в Батуми — Студия TOCHKA | Классический, Спортивный, Релакс, Цены и Онлайн-Запись{% endif %}" />
+  <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% else %}Профессиональный массаж в Батуми: студия TOCHKA (ул. Лука Асатиани, 46). Авторская техника непрерывного контакта мастера Анны Колосовой, релакс, спортивный и лимфодренажный массаж. Скидка 10% на первый визит. Онлайн-запись и WhatsApp.{% endif %}" />
+  <meta name="keywords" content="массаж батуми, массаж в батуми, салон массажа батуми, массажист батуми, классический массаж батуми, спортивный массаж батуми, расслабляющий массаж батуми, массаж спины батуми, massage batumi, massage in batumi, best massage batumi, tochka batumi, მასაჟი ბათუმში, მასაჟი ბათუმი, სპა ბათუმი, batumi masaj, batum masaj salonu, batumi masaj terapisti, batumi spa, klasik masaj batum, rahatlatıcı masaj batumi, spor masajı batumi, مساج باتومي, مساج في باتومي, صالون مساج باتومي, سبا باتومي, تدليك باتومي, مساج استرخائي باتومي" />
+  <meta name="author" content="Анна Колосова (Anna Kolosova)" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- Canonical & Multilingual Hreflang Alternates (RU, EN, KA, TR, AR) -->
+  <link rel="canonical" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}" />
+  <link rel="alternate" hreflang="ru" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}?lang=ru" />
+  <link rel="alternate" hreflang="en" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}?lang=en" />
+  <link rel="alternate" hreflang="ka" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}?lang=ka" />
+  <link rel="alternate" hreflang="tr" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}?lang=tr" />
+  <link rel="alternate" hreflang="ar" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}?lang=ar" />
+  <link rel="alternate" hreflang="x-default" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}" />
+
+  <!-- Geo Meta Tags for Google Maps & Yandex Local Indexing (Batumi, Georgia) -->
+  <meta name="geo.region" content="GE-AJ" />
+  <meta name="geo.placename" content="Batumi, Georgia" />
+  <meta name="geo.position" content="41.6459;41.6417" />
+  <meta name="ICBM" content="41.6459, 41.6417" />
+
+  <!-- Open Graph / Facebook / Instagram / Telegram Social Meta -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:site_name" content="TOCHKA Massage Sanctuary Batumi" />
+  <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}Массаж в Батуми — Студия TOCHKA | Классический, Спортивный, Релакс{% endif %}" />
+  <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}Студия массажа TOCHKA в Батуми (ул. Лука Асатиани, 46). Авторская техника непрерывного контакта, глубокое расслабление и снятие стресса. Запишитесь онлайн!{% endif %}" />
+  <meta property="og:url" content="{{ page.full_url|default:'https://tochkabatumi.ge/' }}" />
+  <meta property="og:image" content="https://tochkabatumi.ge{% static 'home/images/3903587528438016601.jpg' %}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="TOCHKA Massage Sanctuary Batumi" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ka_GE" />
+  <meta property="og:locale:alternate" content="tr_TR" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}Массаж в Батуми — Студия TOCHKA | Классический, Спортивный, Релакс{% endif %}" />
+  <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}Студия массажа TOCHKA в Батуми (ул. Лука Асатиани, 46). Авторская техника, скидка 10% на первый сеанс.{% endif %}" />
+  <meta name="twitter:image" content="https://tochkabatumi.ge{% static 'home/images/3903587528438016601.jpg' %}" />
+
+  <!-- Structured Data (JSON-LD) - Schema.org LocalBusiness, MassageService, FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["HealthAndBeautyBusiness", "DaySpa", "MassageService"],
+        "@id": "{{ page.full_url|default:'https://tochkabatumi.ge/' }}#organization",
+        "name": "TOCHKA • Массаж в Батуми | Massage Sanctuary Batumi",
+        "alternateName": [
+          "Студия массажа ТОЧКА Батуми",
+          "TOCHKA Massage Studio Batumi",
+          "მასაჟის სტუდია TOCHKA ბათუმში",
+          "TOCHKA Masaj Salonu Batum",
+          "صالون توشكا للمساج باتومي (TOCHKA Massage Batumi)"
+        ],
+        "url": "{{ page.full_url|default:'https://tochkabatumi.ge/' }}",
+        "logo": "{{ page.full_url|default:'https://tochkabatumi.ge/' }}static/home/images/3903587528438016601.jpg",
+        "image": "{{ page.full_url|default:'https://tochkabatumi.ge/' }}static/home/images/3903587528438016601.jpg",
+        "description": "Студия профессионального массажа и телесных ритуалов в Батуми. Авторская техника непрерывного контакта, классический, релакс, спортивный и лимфодренажный массаж от мастера Анны Колосовой.",
+        "telephone": "+995591226145",
+        "priceRange": "$45 - $93",
+        "currenciesAccepted": "GEL, USD",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "46 Luka Asatiani St",
+          "addressLocality": "Batumi",
+          "addressRegion": "Adjara",
+          "postalCode": "6000",
+          "addressCountry": "GE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.6459,
+          "longitude": 41.6417
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "09:00",
+            "closes": "23:00"
+          }
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Анна Колосова (Anna Kolosova)",
+          "jobTitle": "Основатель и мастер массажа"
+        },
+        "sameAs": [
+          "https://www.instagram.com/toch._ka/",
+          "https://t.me/tochka_batumi",
+          "https://wa.me/message/vopznnayguwab1",
+          "https://maps.app.goo.gl/xjAE2yyKdikHBroi9"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Услуги массажа в Батуми / Batumi Massage Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Расслабляющий массаж в Батуми / Relaxing Massage / Rahatlatıcı Masaj / مساج استرخائي",
+                "description": "Плавные, мягкие движения, непрерывный контакт, снятие стресса и глубокое расслабление нервной системы.",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "priceCurrency": "USD",
+                  "lowPrice": "45",
+                  "highPrice": "60"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Классический массаж в Батуми / Classic Massage / Klasik Masaj / مساج كلاسيكي",
+                "description": "Средний темп, глубокая проработка мышц всего тела и спины.",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "priceCurrency": "USD",
+                  "lowPrice": "45",
+                  "highPrice": "60"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Спортивный массаж в Батуми / Sports Massage / Spor Masajı / مساج رياضي",
+                "description": "Интенсивная терапия мышц, фасций, глубокая проработка триггерных зон и зажимов.",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "priceCurrency": "USD",
+                  "lowPrice": "52",
+                  "highPrice": "67"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Лимфодренажный массаж в Батуми / Lymphatic Drainage Therapy / Lenf Drenaj / مساج التصريف اللمفاوي",
+                "description": "Мягкая проточная техника по ходу лимфотока для снятия отечности и детоксикации.",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "priceCurrency": "USD",
+                  "lowPrice": "48",
+                  "highPrice": "63"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Авторский ритуал TOCH_KA в 4 руки / 4-Hands Synchronized Ritual / 4 El Masajı / مساج 4 أيدي",
+                "description": "Синхронная симфония массажа в 4 руки с органическим кокосовым маслом.",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "priceCurrency": "USD",
+                  "lowPrice": "70",
+                  "highPrice": "93"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "{{ page.full_url|default:'https://tochkabatumi.ge/' }}#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Сколько стоит массаж в Батуми в студии TOCHKA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Стоимость сеанса классического или расслабляющего массажа в Батуми составляет $45 (120 GEL) за 60 минут или $60 (160 GEL) за 90 минут. На первый визит действует скидка 10%, а на 5-й сеанс — скидка 20%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Где находится студия массажа TOCHKA в Батуми?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Студия массажа TOCHKA расположена по адресу: Батуми, ул. Лука Асатиани, 46 (46 Luka Asatiani St, Batumi). Мы работаем ежедневно с 09:00 до 23:00."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Batum'da masaj fiyatları ne kadar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TOCHKA masaj stüdyosunda klasik ve relax masaj seansları 60 dakika için 45$ (120 GEL), 90 dakika için 60$ (160 GEL)'dir. İlk seansınızda %10 indirim uygulanır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Batum'da kaliteli masaj salonu nerede bulunur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TOCHKA Masaj Stüdyosu, Batum merkezde Luka Asatiani Cad. No: 46 (46 Luka Asatiani St) adresinde yer almaktadır. Her gün 09:00 - 23:00 saatleri arasında açıktır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كم سعر المساج في باتومي في صالون TOCHKA؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "تبدأ أسعار جلسات المساج الكلاسيكي والاسترخائي في باتومي من 45 دولارًا (120 لاري) لمدة 60 دقيقة، و60 دولارًا (160 لاري) لمدة 90 دقيقة. يتوفر خصم 10% على أول جلسة."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "أين يقع صالون المساج في باتومي؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "يقع صالون TOCHKA في وسط باتومي في شارع لوكا أساتياني رقم 46 (46 Luka Asatiani St, Batumi). مفتوح يومياً من الساعة 09:00 صباحاً حتى 23:00 مساءً."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Google Fonts: Cormorant Garamond, Forum, Playfair Display, Tenor Sans, Italiana, Montserrat, Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Forum&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Tenor+Sans&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet">
 
-  <link rel="stylesheet" href="{% static 'home/css/style.css' %}?v=2026_v112" />
+  <link rel="stylesheet" href="{% static 'home/css/style.css' %}?v=2026_v203" />
   <style>
     /* Clean Link & Element Overrides */
     a {
@@ -114,7 +355,7 @@
 
   {% block content %}{% endblock %}
 
-  <script src="{% static 'home/js/script.js' %}?v=2026_v112"></script>
+  <script src="{% static 'home/js/script.js' %}?v=2026_v203"></script>
 
   {% block extra_js %}{% endblock %}
 </body>
