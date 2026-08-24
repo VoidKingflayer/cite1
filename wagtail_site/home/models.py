@@ -281,17 +281,17 @@ class HomePage(Page):
 
     loyalty_desc = models.TextField(
         "03 Описание (EN)",
-        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — our little ritual of gratitude.",
+        default="Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — my little ritual of gratitude.",
     )
     loyalty_desc_ru = models.TextField(
         "03 Описание (RU)",
         blank=True,
-        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — наш маленький ритуал благодарности за ваше доверие.",
+        default="Больше удовольствия и заботы о себе. Скидка 20% на каждый 5-й массаж — мой маленький ритуал благодарности за ваше доверие.",
     )
     loyalty_desc_ka = models.TextField(
         "03 Описание (GE)",
         blank=True,
-        default="მეტი სიამოვნება და ზრუნვა საკუთარ თავზე. 20%-იანი ფასდაკლება მე-5 მასაჟზე — ჩვენი მადლიერების რიტუალი.",
+        default="მეტი სიამოვნება და ზრუნვა საკუთარ თავზე. 20%-იანი ფასდაკლება მე-5 მასაჟზე — ჩემი მადლიერების რიტუალი.",
     )
 
     loyalty_image = models.ForeignKey(
