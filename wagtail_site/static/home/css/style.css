@@ -1793,8 +1793,12 @@ img, video {
   border-radius: var(--radius-sm);
   padding: 0.95rem 1.1rem;
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--c-espresso);
+  color-scheme: light;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   transition: all var(--transition-fast);
 }
 
@@ -1802,10 +1806,24 @@ img, video {
   outline: none;
   border-color: var(--c-espresso);
   box-shadow: 0 0 12px rgba(22, 24, 27, 0.1);
+  background: #FFFFFF;
+  color: var(--c-espresso);
+}
+
+.omra-input::placeholder,
+textarea.omra-input::placeholder {
+  color: #8C96A5;
+  opacity: 1;
 }
 
 .omra-select {
   cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2316181B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 14px 14px;
+  padding-right: 2.5rem;
+  color-scheme: light;
 }
 
 .omra-select optgroup {
@@ -1825,6 +1843,15 @@ img, video {
   color: var(--c-espresso);
   background: #FFFFFF;
   padding: 0.5rem;
+}
+
+.omra-select option:disabled {
+  color: #8C96A5;
+}
+
+.omra-select option.slot-busy {
+  color: #A0AEC0;
+  background-color: #F8FAFC;
 }
 
 .btn-submit {
@@ -2594,10 +2621,27 @@ img, video {
     align-items: stretch;
     gap: 1rem;
     padding: 1.4rem 1.15rem;
-    border-radius: 16px;
-    background: rgba(22, 26, 32, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8EF !important;
+    box-shadow: 0 4px 16px rgba(22, 24, 27, 0.04);
     margin-bottom: 1rem;
+  }
+
+  .ritual-row.highlight-row {
+    background: #E8EFF5 !important;
+    border-left: 3px solid #16181B !important;
+  }
+
+  .ritual-row .r-name {
+    color: #16181B !important;
+    font-size: 1.3rem;
+  }
+
+  .ritual-row .r-desc {
+    color: #5C6470 !important;
+    font-size: 0.88rem;
+    line-height: 1.55;
   }
 
   .r-pricing-col {
@@ -2607,27 +2651,42 @@ img, video {
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.04);
+    background: #F4F6F8 !important;
     padding: 0.75rem 1rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid #E2E8EF !important;
   }
 
-  .r-price-val {
-    font-size: 1.15rem;
+  .r-pricing-col .tier-time {
+    color: #5C6470 !important;
+    font-size: 0.82rem;
+  }
+
+  .r-pricing-col .tier-cost {
+    color: #16181B !important;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: #FFFFFF;
   }
 
   .btn-select-ritual {
     width: 100%;
-    min-height: 46px;
+    min-height: 48px;
     text-align: center;
     justify-content: center;
     padding: 0.8rem 1rem;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    border-radius: 10px;
+    letter-spacing: 0.12em;
+    border-radius: 8px;
+    background: #16181B !important;
+    color: #FFFFFF !important;
+    border: 1px solid #16181B !important;
+    transition: all 0.2s ease;
+  }
+
+  .btn-select-ritual:active {
+    background: #000000 !important;
+    transform: scale(0.98);
   }
 
   /* Atmosphere / Video Reels (2x2 Grid on Phones) */
@@ -2700,7 +2759,7 @@ img, video {
     text-align: center;
   }
 
-  /* Booking Form */
+  /* Booking Form on Mobile */
   .form-row {
     grid-template-columns: 1fr;
     gap: 1.1rem;
@@ -2708,27 +2767,90 @@ img, video {
 
   .booking-form-wrapper {
     padding: 1.5rem 1.15rem;
-    border-radius: 18px;
-    background: rgba(18, 22, 27, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8EF !important;
+    box-shadow: 0 4px 20px rgba(22, 24, 27, 0.05);
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: #4D535E !important;
+    margin-bottom: 0.25rem;
   }
 
   .omra-input,
   .omra-select,
-  textarea.omra-input {
-    min-height: 50px;
+  textarea.omra-input,
+  input[type="text"].omra-input,
+  input[type="tel"].omra-input,
+  input[type="date"].omra-input,
+  select.omra-input {
+    min-height: 52px;
     font-size: 16px !important;
-    border-radius: 12px;
-    padding: 0.75rem 1rem;
-    background: rgba(10, 12, 15, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px !important;
+    padding: 0.85rem 1rem !important;
+    background-color: #FFFFFF !important;
+    color: #16181B !important;
+    border: 1px solid #D2D7DE !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    color-scheme: light !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    opacity: 1 !important;
+    line-height: normal !important;
+  }
+
+  .omra-select,
+  select.omra-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2316181B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    background-size: 14px 14px !important;
+    padding-right: 2.5rem !important;
+    cursor: pointer;
+  }
+
+  .omra-input::placeholder,
+  textarea.omra-input::placeholder {
+    color: #8C96A5 !important;
+    opacity: 1 !important;
   }
 
   .omra-input:focus,
   .omra-select:focus,
-  textarea.omra-input:focus {
-    border-color: #FFFFFF;
-    background: rgba(14, 17, 21, 0.95);
+  textarea.omra-input:focus,
+  input[type="text"].omra-input:focus,
+  input[type="tel"].omra-input:focus,
+  input[type="date"].omra-input:focus,
+  select.omra-input:focus {
+    outline: none !important;
+    border-color: #16181B !important;
+    background-color: #FFFFFF !important;
+    color: #16181B !important;
+    box-shadow: 0 0 0 3px rgba(22, 24, 27, 0.08) !important;
+  }
+
+  .omra-select option,
+  select.omra-input option {
+    background-color: #FFFFFF !important;
+    color: #16181B !important;
+    font-size: 15px !important;
+    padding: 8px !important;
+  }
+
+  .omra-select option:disabled,
+  select.omra-input option:disabled {
+    color: #8C96A5 !important;
+  }
+
+  .omra-select option.slot-busy,
+  select.omra-input option.slot-busy {
+    color: #A0AEC0 !important;
+    background-color: #F8FAFC !important;
   }
 
   .time-slot-grid {
