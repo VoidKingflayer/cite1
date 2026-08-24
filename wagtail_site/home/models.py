@@ -164,9 +164,9 @@ class HomePage(Page):
         related_name="+",
         verbose_name="Hero: Главное изображение (справа)",
     )
-    hero_card_tag_title = models.CharField("Hero: Метка на фото (EN)", max_length=100, default="TOCHKA RITUAL")
-    hero_card_tag_title_ru = models.CharField("Hero: Метка на фото (RU)", max_length=100, blank=True, default="РИТУАЛ ТОЧКА")
-    hero_card_tag_title_ka = models.CharField("Hero: Метка на фото (GE)", max_length=100, blank=True, default="წერტილის რიტუალი")
+    hero_card_tag_title = models.CharField("Hero: Метка на фото (EN)", max_length=100, default="TOCHKA")
+    hero_card_tag_title_ru = models.CharField("Hero: Метка на фото (RU)", max_length=100, blank=True, default="ТОЧКА")
+    hero_card_tag_title_ka = models.CharField("Hero: Метка на фото (GE)", max_length=100, blank=True, default="TOCHKA")
     hero_card_tag_loc = models.CharField("Hero: Метка на фото (локация)", max_length=100, default="BATUMI • 46 LUKA ASATIANI ST")
 
     # 3. Concept & Philosophy Section
