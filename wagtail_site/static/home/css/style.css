@@ -2238,6 +2238,11 @@ textarea.omra-input::placeholder {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .loyalty-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
   .giftcards-showcase-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -2596,10 +2601,37 @@ textarea.omra-input::placeholder {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  .hero-visual-col {
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+
   .hero-image-card {
-    min-height: 320px;
-    height: 340px;
+    width: 100%;
+    min-height: unset;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    max-height: 520px;
     border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 16px 36px rgba(22, 24, 27, 0.22);
+  }
+
+  .hero-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+
+  .hero-card-tag {
+    bottom: 0.85rem;
+    left: 0.85rem;
+    right: 0.85rem;
+    padding: 0.65rem 0.95rem;
+    border-radius: 10px;
   }
 
   /* Concept Section */
@@ -2745,13 +2777,61 @@ textarea.omra-input::placeholder {
   .omra-reel-video-box {
     aspect-ratio: 9 / 16;
     width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .omra-reel-video-box video {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+
+  /* Loyalty Card Section */
+  .loyalty-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.2rem !important;
+  }
+
+  .loyalty-visual-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .loyalty-mockup-card {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+  }
+
+  .loyalty-img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    display: block;
   }
 
   /* Manifesto Banner */
   .banner-photo-wrapper {
-    height: 320px;
+    height: 380px !important;
     border-radius: 16px;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+    display: block;
   }
 
   .banner-huge-text {
@@ -2760,6 +2840,12 @@ textarea.omra-input::placeholder {
   }
 
   /* Gift Cards Section */
+  .gift-card-visual {
+    padding: 1.8rem 1.4rem;
+    min-height: 230px;
+    border-radius: 14px;
+  }
+
   .amount-picker-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -3088,6 +3174,20 @@ textarea.omra-input::placeholder {
 
   .omra-form {
     padding: 1.25rem 0.85rem !important;
+  }
+
+  .hero-image-card {
+    aspect-ratio: 4 / 5;
+    max-height: 460px;
+  }
+
+  .banner-photo-wrapper {
+    height: 340px !important;
+  }
+
+  .gift-card-visual {
+    padding: 1.4rem 1.15rem;
+    min-height: 210px;
   }
 
   .location-card {

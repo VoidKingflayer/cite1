@@ -30,7 +30,7 @@ const OMRA_TRANSLATIONS = {
     concept_serial: "01",
     concept_heading: "CONCEPT & PHILOSOPHY",
     concept_quote: "“I wanted to create a place where you can feel tranquility from the very first moments: soft light, quiet, pleasant interior details, and a feeling of warmth. It is important to me that here you can not only relax your body, but also slow down, escape the everyday rush, and simply be in a comfortable, peaceful atmosphere.”",
-    concept_author: "— Anna Kolosova • TOCHKA Founder & Therapist",
+    concept_author: "",
     c_card_1_title: "Continuous-Contact Touch",
     c_card_1_text: "Our signature continuous-contact technique: the therapist's hands barely leave the body, moving in a smooth meditative flow. This rhythm signals safety to the nervous system, releasing chronic tension without sudden changes in pace.",
     c_card_2_title: "Atmosphere of Gentle Care",
@@ -72,9 +72,9 @@ const OMRA_TRANSLATIONS = {
     gc_title: "Select Certificate Value",
     gc_note: "Embossed tactile physical card in a signature envelope. Available upon visiting our sanctuary.",
     gc_sub_1: "Classic / Relaxing Massage (60m)",
-    gc_sub_2: "Extended 90m Deep Recovery",
-    gc_sub_3: "Signature TOCH_KA Ritual (90m)",
-    gc_sub_4: "4 Hands Synchronized Symphony (60m)",
+    gc_sub_2: "Classic / Relaxing Massage (90m)",
+    gc_sub_3: "Sports Massage (60m)",
+    gc_sub_4: "Sports Massage (90m)",
     gc_btn_buy: "PURCHASE UPON VISITING SANCTUARY",
     gc_in_person_note: "✦ Gift certificates are issued upon visiting our sanctuary (46 Luka Asatiani St).",
     cert_del_digital: "In Person at Batumi Sanctuary",
@@ -110,7 +110,7 @@ const OMRA_TRANSLATIONS = {
     palette_subtext: "Iron metallic black, brushed titanium steel, platinum sand, and raw forged charcoal.",
     booking_serial: "07",
     booking_heading: "RESERVE YOUR SANCTUARY",
-    booking_lead: "Select your ritual and preferred time. Master Anna Kolosova will confirm your appointment within 15 minutes.",
+    booking_lead: "Select your ritual and preferred time. Master Anna will confirm your appointment within 15 minutes.",
     form_name_lbl: "FULL NAME *",
     form_phone_lbl: "PHONE / WHATSAPP *",
     form_ritual_lbl: "CHOICE OF MASSAGE TYPE *",
@@ -121,7 +121,7 @@ const OMRA_TRANSLATIONS = {
     form_notes_ph: "Lower back focus, music playlist preference, pressure level...",
     form_submit_btn: "CONFIRM RESERVATION",
     form_transmitting: "TRANSMITTING RESERVATION...",
-    form_success: "✦ Reservation request received. Master Anna Kolosova will contact you via WhatsApp / Phone within 15 minutes to confirm your private suite.",
+    form_success: "✦ Reservation request received. Master Anna will contact you via WhatsApp / Phone within 15 minutes to confirm your private suite.",
     loc_heading: "SANCTUARY LOCATION",
     loc_city_batumi: "BATUMI SANCTUARY",
     loc_hours_batumi: "Daily: 09:00 — 23:00",
@@ -130,7 +130,7 @@ const OMRA_TRANSLATIONS = {
     f_title_rituals: "RITUALS",
     f_title_connect: "LOCATION & CONNECT",
     footer_motto: "Your space to breathe. Aesthetics & comfort as part of the healing process.",
-    footer_copy: "© 2023–2026 TOCHKA. Anna Kolosova Massage Sanctuary, Batumi."
+    footer_copy: "© 2023–2026 TOCHKA. Massage Sanctuary, Batumi."
   },
   ru: {
     page_title: "Массаж в Батуми — Студия TOCHKA | Классический, Спортивный, Релакс, Цены и Запись",
@@ -155,7 +155,7 @@ const OMRA_TRANSLATIONS = {
     concept_serial: "01",
     concept_heading: "КОНЦЕПЦИЯ И ФИЛОСОФИЯ",
     concept_quote: '«Мне хотелось создать место, в котором можно почувствовать спокойствие уже с первых минут: мягкий свет, тишина, приятные детали интерьера и ощущение уюта. Для меня важно, чтобы здесь вы могли не только расслабить тело, но и немного замедлиться, отвлечься от суеты и побыть в комфортной, спокойной обстановке».',
-    concept_author: "— Анна Колосова • Основатель и мастер студии ТОЧКА",
+    concept_author: "",
     c_card_1_title: "Непрерывный контакт",
     c_card_1_text: "Авторская техника непрерывного контакта: руки мастера практически не отрываются от тела, переходя из одного движения в другое. Такой ритм дает нервной системе сигнал безопасности и глубоко снимает накопившийся стресс.",
     c_card_2_title: "Атмосфера искренней заботы",
@@ -197,9 +197,9 @@ const OMRA_TRANSLATIONS = {
     gc_title: "Выберите номинал сертификата",
     gc_note: "Премиальная физическая карта с тиснением в фирменном конверте. Оформляется при посещении салона.",
     gc_sub_1: "Классический / Релакс-массаж (60 мин)",
-    gc_sub_2: "Глубокая проработка тела (90 мин)",
-    gc_sub_3: "Авторский ритуал TOCH_KA (90 мин)",
-    gc_sub_4: "Синхронный массаж в 4 руки (60 мин)",
+    gc_sub_2: "Классический / Релакс-массаж (90 мин)",
+    gc_sub_3: "Спортивный массаж (60 мин)",
+    gc_sub_4: "Спортивный массаж (90 мин)",
     gc_btn_buy: "ОФОРМИТЬ ПРИ ПОСЕЩЕНИИ САЛОНА",
     gc_in_person_note: "✦ Подарочные сертификаты оформляются при посещении салона (Батуми, ул. Лука Асатиани, 46)",
     cert_del_digital: "Лично в салоне в Батуми",
@@ -235,7 +235,7 @@ const OMRA_TRANSLATIONS = {
     palette_subtext: "Металлический черный, матовый титан, платиновый песок и кованый уголь.",
     booking_serial: "07",
     booking_heading: "ЗАБРОНИРОВАТЬ СЕАНС",
-    booking_lead: "Выберите желаемый ритуал и удобное время. Мастер Анна Колосова свяжется с вами в течение 15 минут для подтверждения записи.",
+    booking_lead: "Выберите желаемый ритуал и удобное время. Мастер Анна подтвердит вашу бронь в течение 15 минут.",
     form_name_lbl: "ВАШЕ ПОЛНОЕ ИМЯ *",
     form_phone_lbl: "ТЕЛЕФОН / WHATSAPP *",
     form_ritual_lbl: "ВЫБОР ТИПА МАССАЖА *",
@@ -246,7 +246,7 @@ const OMRA_TRANSLATIONS = {
     form_notes_ph: "Акцент на поясницу, пожелания по музыке, желаемая сила нажима...",
     form_submit_btn: "ПОДТВЕРДИТЬ БРОНИРОВАНИЕ",
     form_transmitting: "ОТПРАВКА БРОНИРОВАНИЯ...",
-    form_success: "✦ Запрос на бронирование получен. Мастер Анна Колосова свяжется с вами по WhatsApp / телефону в течение 15 минут для подтверждения записи.",
+    form_success: "✦ Запрос на бронирование получен. Мастер Анна свяжется с вами по WhatsApp / телефону в течение 15 минут для подтверждения записи.",
     loc_heading: "ЛОКАЦИЯ САНКТУАРИЯ",
     loc_city_batumi: "БАТУМИ САНКТУАРИЙ",
     loc_hours_batumi: "Ежедневно: 09:00 — 23:00",
@@ -255,7 +255,7 @@ const OMRA_TRANSLATIONS = {
     f_title_rituals: "РИТУАЛЫ",
     f_title_connect: "ЛОКАЦИЯ И СВЯЗЬ",
     footer_motto: "Ваше пространство для дыхания. Эстетика и комфорт как путь к исцелению.",
-    footer_copy: "© 2023–2026 TOCHKA. Массажное пространство Анны Колосовой, Батуми."
+    footer_copy: "© 2023–2026 TOCHKA. Массажное пространство, Батуми."
   },
   ka: {
     page_title: "მასაჟი ბათუმში — TOCHKA სტუდია | კლასიკური, სარელაქსაციო, სპორტული მასაჟი",
@@ -280,7 +280,7 @@ const OMRA_TRANSLATIONS = {
     concept_serial: "01",
     concept_heading: "კონცეფცია და ფილოსოფია",
     concept_quote: '„მინდოდა შემექმნა ადგილი, სადაც პირველივე წუთებიდან იგრძნობთ სიმშვიდეს: რბილი სინათლე, სიჩუმე, ინტერიერის სასიამოვნო დეტალები და სიმყუდროვე. ჩემთვის მნიშვნელოვანია, რომ აქ შეძლოთ არა მხოლოდ სხეულის მოდუნება, არამედ ცოტათი შეჩერება, ყოველდღიური აურზაურისგან განტვირთვა და კომფორტულ, მშვიდ გარემოში ყოფნა“.',
-    concept_author: "— ანა კოლოსოვა • TOCHKA-ს დამფუძნებელი და თერაპევტი",
+    concept_author: "",
     c_card_1_title: "უწყვეტი კონტაქტი",
     c_card_1_text: "საავტორო უწყვეტი კონტაქტის ტექნიკა: ოსტატის ხელები სხეულს არ შორდება, რაც ქმნის მედიტაციურ ნაკადს და ნერვულ სისტემას აძლევს სრული უსაფრთხოებისა და რელაქსაციის სიგნალს.",
     c_card_2_title: "ზრუნვის ატმოსფერო",
@@ -322,9 +322,9 @@ const OMRA_TRANSLATIONS = {
     gc_title: "აირჩიეთ სერტიფიკატის ნომინალი",
     gc_note: "პრემიალური რელიეფური ფიზიკური ბარათი საფირმო კონვერტში. გაიცემა სალონში ვიზიტისას.",
     gc_sub_1: "კლასიკური / რელაქს მასაჟი (60 წთ)",
-    gc_sub_2: "გაფართოებული ღრმა თერაპია (90 წთ)",
-    gc_sub_3: "საავტორო რიტუალი TOCH_KA (90 წთ)",
-    gc_sub_4: "სინქრონული მასაჟი 4 ხელში (60 წთ)",
+    gc_sub_2: "კლასიკური / რელაქს მასაჟი (90 წთ)",
+    gc_sub_3: "სპორტული მასაჟი (60 წთ)",
+    gc_sub_4: "სპორტული მასაჟი (90 წთ)",
     gc_btn_buy: "შეძენა სალონში ვიზიტისას",
     gc_in_person_note: "✦ სასაჩუქრე სერტიფიკატების შეძენა შესაძლებელია სალონში ვიზიტისას (ბათუმი, ლუკა ასათიანის ქ. 46).",
     cert_del_digital: "პირადად ბათუმის სალონში",
@@ -360,7 +360,7 @@ const OMRA_TRANSLATIONS = {
     palette_subtext: "მეტალის შავი, ტიტანის ფოლადი, პლატინის ქვიშა და ნახშირი.",
     booking_serial: "07",
     booking_heading: "სეანსის დაჯავშნა",
-    booking_lead: "აირჩიეთ სასურველი რიტუალი და დრო. ოსტატი ანა კოლოსოვა დაგიკავშირდებათ 15 წუთში.",
+    booking_lead: "აირჩიეთ სასურველი რიტუალი და დრო. მასტერი ანა დაგიკავშირდებათ 15 წუთში.",
     form_name_lbl: "სრული სახელი *",
     form_phone_lbl: "ტელეფონი / WHATSAPP *",
     form_ritual_lbl: "მასაჟის ტიპის არჩევა *",
@@ -371,7 +371,7 @@ const OMRA_TRANSLATIONS = {
     form_notes_ph: "ზურგზე აქცენტი, მუსიკალური პრეფერენციები, წნევის დონე...",
     form_submit_btn: "ჯავშნის დადასტურება",
     form_transmitting: "ჯავშანი იგზავნება...",
-    form_success: "✦ ჯავშნის მოთხოვნა მიღებულია. ანა კოლოსოვა დაგიკავშირდებათ WhatsApp-ით ან ტელეფონით 15 წუთში.",
+    form_success: "✦ ჯავშნის მოთხოვნა მიღებულია. მასტერი ანა დაგიკავშირდებათ WhatsApp-ით ან ტელეფონით 15 წუთში.",
     loc_heading: "სანქტუარიის ლოკაცია",
     loc_city_batumi: "ბათუმის სანქტუარია",
     loc_hours_batumi: "ყოველდღე: 09:00 — 23:00",
@@ -380,7 +380,7 @@ const OMRA_TRANSLATIONS = {
     f_title_rituals: "რიტუალები",
     f_title_connect: "ლოკაცია და კონტაქტი",
     footer_motto: "თქვენი სივრცე სუნთქვისთვის. ესთეტიკა და კომფორტი, როგორც განკურნების გზა.",
-    footer_copy: "© 2023–2026 TOCHKA. ანა კოლოსოვას მასაჟის სანქტუარია, ბათუმი."
+    footer_copy: "© 2023–2026 TOCHKA. მასაჟის სანქტუარია, ბათუმი."
   }
 };
 
@@ -388,56 +388,56 @@ const OMRA_TRANSLATIONS = {
 const OMRA_PRICE_DATA = {
   en: {
     rituals: [
-      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "160 ₾" } ],
-      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "160 ₾" } ],
-      [ { time: "60 min", cost: "140 ₾" }, { time: "90 min", cost: "180 ₾" } ],
-      [ { time: "60 min", cost: "130 ₾" }, { time: "90 min", cost: "170 ₾" } ]
+      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "170 ₾" } ],
+      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "170 ₾" } ],
+      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "170 ₾" } ],
+      [ { time: "60 min", cost: "120 ₾" }, { time: "90 min", cost: "170 ₾" } ]
     ],
-    certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
+    certificates: [ "120 ₾", "170 ₾", "120 ₾", "170 ₾" ],
     certSubs: [
       "Classic / Relaxing Massage (60m)",
-      "Extended 90m Deep Recovery",
-      "Signature TOCH_KA Ritual (90m)",
-      "4 Hands Synchronized Symphony (60m)"
+      "Classic / Relaxing Massage (90m)",
+      "Sports Massage (60m)",
+      "Sports Massage (90m)"
     ],
     selectPlaceholder: "Select a massage ritual...",
     selectOptions: [
-      { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — 120 ₾ / 90 min — 160 ₾)" },
-      { value: "Classic Massage", text: "Classic Massage (60 min — 120 ₾ / 90 min — 160 ₾)" },
-      { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — 140 ₾ / 90 min — 180 ₾)" },
-      { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — 130 ₾ / 90 min — 170 ₾)" }
+      { value: "Relaxing Massage", text: "Relaxing Continuous-Contact (60 min — 120 ₾ / 90 min — 170 ₾)" },
+      { value: "Classic Massage", text: "Classic Massage (60 min — 120 ₾ / 90 min — 170 ₾)" },
+      { value: "Sports Massage", text: "Sports & Deep Tissue (60 min — 120 ₾ / 90 min — 170 ₾)" },
+      { value: "Lymphatic Drainage Massage", text: "Lymphatic Drainage Therapy (60 min — 120 ₾ / 90 min — 170 ₾)" }
     ]
   },
   ka: {
     rituals: [
-      [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "160 ₾" } ],
-      [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "160 ₾" } ],
-      [ { time: "60 წთ", cost: "140 ₾" }, { time: "90 წთ", cost: "180 ₾" } ],
-      [ { time: "60 წთ", cost: "130 ₾" }, { time: "90 წთ", cost: "170 ₾" } ]
+      [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "170 ₾" } ],
+      [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "170 ₾" } ],
+      [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "170 ₾" } ],
+      [ { time: "60 წთ", cost: "120 ₾" }, { time: "90 წთ", cost: "170 ₾" } ]
     ],
-    certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
+    certificates: [ "120 ₾", "170 ₾", "120 ₾", "170 ₾" ],
     selectPlaceholder: "აირჩიეთ მასაჟის რიტუალი...",
     selectOptions: [
-      { value: "Relaxing Massage", text: "რელაქსაციის მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
-      { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ — 120 ₾ / 90 წთ — 160 ₾)" },
-      { value: "Sports Massage", text: "სპორტული მასაჟი (60 წთ — 140 ₾ / 90 წთ — 180 ₾)" },
-      { value: "Lymphatic Drainage Massage", text: "ლიმფოდრენაჟული მასაჟი (60 წთ — 130 ₾ / 90 წთ — 170 ₾)" }
+      { value: "Relaxing Massage", text: "რელაქსაციის მასაჟი (60 წთ — 120 ₾ / 90 წთ — 170 ₾)" },
+      { value: "Classic Massage", text: "კლასიკური მასაჟი (60 წთ — 120 ₾ / 90 წთ — 170 ₾)" },
+      { value: "Sports Massage", text: "სპორტული მასაჟი (60 წთ — 120 ₾ / 90 წთ — 170 ₾)" },
+      { value: "Lymphatic Drainage Massage", text: "ლიმფოდრენაჟული მასაჟი (60 წთ — 120 ₾ / 90 წთ — 170 ₾)" }
     ]
   },
   ru: {
     rituals: [
-      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "160 ₾" } ],
-      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "160 ₾" } ],
-      [ { time: "60 мин", cost: "140 ₾" }, { time: "90 мин", cost: "180 ₾" } ],
-      [ { time: "60 мин", cost: "130 ₾" }, { time: "90 мин", cost: "170 ₾" } ]
+      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "170 ₾" } ],
+      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "170 ₾" } ],
+      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "170 ₾" } ],
+      [ { time: "60 мин", cost: "120 ₾" }, { time: "90 мин", cost: "170 ₾" } ]
     ],
-    certificates: [ "120 ₾", "160 ₾", "190 ₾", "250 ₾" ],
+    certificates: [ "120 ₾", "170 ₾", "120 ₾", "170 ₾" ],
     selectPlaceholder: "Выберите вид массажа...",
     selectOptions: [
-      { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — 120 ₾ / 90 мин — 160 ₾)" },
-      { value: "Classic Massage", text: "Классический массаж (60 мин — 120 ₾ / 90 мин — 160 ₾)" },
-      { value: "Sports Massage", text: "Спортивный массаж (60 мин — 140 ₾ / 90 мин — 180 ₾)" },
-      { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — 130 ₾ / 90 мин — 170 ₾)" }
+      { value: "Relaxing Massage", text: "Расслабляющий массаж (60 мин — 120 ₾ / 90 мин — 170 ₾)" },
+      { value: "Classic Massage", text: "Классический массаж (60 мин — 120 ₾ / 90 мин — 170 ₾)" },
+      { value: "Sports Massage", text: "Спортивный массаж (60 мин — 120 ₾ / 90 мин — 170 ₾)" },
+      { value: "Lymphatic Drainage Massage", text: "Лимфодренажный массаж (60 мин — 120 ₾ / 90 мин — 170 ₾)" }
     ]
   }
 };
@@ -543,7 +543,15 @@ function applyOmraLanguage(lang) {
   if (conceptQuote) conceptQuote.textContent = t.concept_quote;
 
   const conceptAuthor = document.querySelector('.quote-author');
-  if (conceptAuthor) conceptAuthor.textContent = t.concept_author;
+  if (conceptAuthor) {
+    if (t.concept_author && t.concept_author.trim()) {
+      conceptAuthor.textContent = t.concept_author;
+      conceptAuthor.style.display = '';
+    } else {
+      conceptAuthor.textContent = '';
+      conceptAuthor.style.display = 'none';
+    }
+  }
 
   const cCard1Title = document.querySelector('.card-sand .c-card-title');
   if (cCard1Title) cCard1Title.textContent = t.c_card_1_title;

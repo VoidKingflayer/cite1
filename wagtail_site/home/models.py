@@ -190,9 +190,9 @@ class HomePage(Page):
         default='„მინდოდა შემექმნა ადგილი, სადაც პირველივე წუთებიდან იგრძნობთ სიმშვიდეს: რბილი სინათლე, სიჩუმე, ინტერიერის სასიამოვნო დეტალები და სიმყუდროვე. ჩემთვის მნიშვნელოვანია, რომ აქ შეძლოთ არა მხოლოდ სხეულის მოდუნება, არამედ ცოტათი შეჩერება, ყოველდღიური აურზაურისგან განტვირთვა და კომფორტულ, მშვიდ გარემოში ყოფნა“.',
     )
 
-    concept_author = models.CharField("01 Автор цитаты (EN)", max_length=100, default="— Anna Kolosova • TOCHKA Founder & Therapist")
-    concept_author_ru = models.CharField("01 Автор цитаты (RU)", max_length=100, blank=True, default="— Анна Колосова • Основатель и мастер студии ТОЧКА")
-    concept_author_ka = models.CharField("01 Автор цитаты (GE)", max_length=100, blank=True, default="— ანა კოლოსოვა • დამფუძნებელი და თერაპევტი")
+    concept_author = models.CharField("01 Автор цитаты (EN)", max_length=100, blank=True, default="")
+    concept_author_ru = models.CharField("01 Автор цитаты (RU)", max_length=100, blank=True, default="")
+    concept_author_ka = models.CharField("01 Автор цитаты (GE)", max_length=100, blank=True, default="")
 
     concept_card_1_title = models.CharField("01 Карточка 1 Заголовок (EN)", max_length=100, default="Continuous-Contact Touch")
     concept_card_1_title_ru = models.CharField("01 Карточка 1 Заголовок (RU)", max_length=100, blank=True, default="Непрерывный контакт")
@@ -366,17 +366,17 @@ class HomePage(Page):
 
     booking_lead = models.TextField(
         "Бронирование: Описание (EN)",
-        default="Select your ritual and preferred time. Master Anna Kolosova will confirm your appointment within 15 minutes.",
+        default="Select your ritual and preferred time. Master Anna will confirm your appointment within 15 minutes.",
     )
     booking_lead_ru = models.TextField(
         "Бронирование: Описание (RU)",
         blank=True,
-        default="Выберите желаемый ритуал и удобное время. Мастер Анна Колосова подтвердит вашу бронь в течение 15 минут.",
+        default="Выберите желаемый ритуал и удобное время. Мастер Анна подтвердит вашу бронь в течение 15 минут.",
     )
     booking_lead_ka = models.TextField(
         "Бронирование: Описание (GE)",
         blank=True,
-        default="აირჩიეთ სასურველი რიტუალი და დრო. მასტერი ანა კოლოსოვა დაადასტურებს თქვენს ჯავშანს 15 წუთში.",
+        default="აირჩიეთ სასურველი რიტუალი და დრო. მასტერი ანა დაადასტურებს თქვენს ჯავშანს 15 წუთში.",
     )
 
     booking_btn_text = models.CharField("Бронирование: Кнопка (EN)", max_length=50, default="CONFIRM RESERVATION")
