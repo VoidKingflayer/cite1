@@ -865,12 +865,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Interactive Loyalty Stamps Simulator
+  // 4. Interactive Loyalty Stamps Simulator (safely guarded)
   const stampSlots = document.querySelectorAll('.stamp-slot:not(.free-slot)');
   const freeSlot = document.querySelector('.stamp-slot.free-slot');
   const counterText = document.getElementById('stampCounterText');
 
   function updateStampMessage() {
+    if (!counterText) return;
     const t = OMRA_TRANSLATIONS[currentOmraLang] || OMRA_TRANSLATIONS.en;
     const activeCount = document.querySelectorAll('.stamp-slot.active:not(.free-slot)').length;
     if (activeCount === 4) {
@@ -891,18 +892,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  stampSlots.forEach(slot => {
-    slot.addEventListener('click', () => {
-      slot.classList.toggle('active');
-      const icon = slot.querySelector('.stamp-icon');
-      if (slot.classList.contains('active')) {
-        icon.innerText = '✋';
-      } else {
-        icon.innerText = '◯';
-      }
-      updateStampMessage();
+  if (stampSlots.length > 0) {
+    stampSlots.forEach(slot => {
+      slot.addEventListener('click', () => {
+        slot.classList.toggle('active');
+        const icon = slot.querySelector('.stamp-icon');
+        if (icon) {
+          if (slot.classList.contains('active')) {
+            icon.innerText = '✋';
+          } else {
+            icon.innerText = '◯';
+          }
+        }
+        updateStampMessage();
+      });
     });
-  });
+  }
 
   // 5. Gift Card Amount Switcher & Direct Salon Location Link
   const amountBtns = document.querySelectorAll('.amount-btn');

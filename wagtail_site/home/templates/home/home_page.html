@@ -342,31 +342,11 @@
               {{ page.loyalty_desc|default:"Receive more pleasure and care for yourself. Enjoy 20% off your 5th massage — our little ritual of gratitude. Collect 4 stamps and receive your privilege on the 5th session." }}
             </p>
 
-            <div class="stamp-interactive-box">
-              <span class="stamp-prompt" data-i18n="stamp_prompt">{{ page.loyalty_stamp_prompt|default:"CLICK TO TEST STAMP COLLECTION:" }}</span>
-              <div class="stamps-row" id="stampsRow">
-                <div class="stamp-slot active" title="1st Session Completed">
-                  <span class="stamp-icon">✋</span>
-                  <span class="stamp-num">1</span>
-                </div>
-                <div class="stamp-slot active" title="2nd Session Completed">
-                  <span class="stamp-icon">✋</span>
-                  <span class="stamp-num">2</span>
-                </div>
-                <div class="stamp-slot active" title="3rd Session Completed">
-                  <span class="stamp-icon">✋</span>
-                  <span class="stamp-num">3</span>
-                </div>
-                <div class="stamp-slot" title="Click to stamp">
-                  <span class="stamp-icon">◯</span>
-                  <span class="stamp-num">4</span>
-                </div>
-                <div class="stamp-slot free-slot" title="5th Session 20% Discount Reward!">
-                  <span class="stamp-icon">★</span>
-                  <span class="stamp-num">-20%</span>
-                </div>
-              </div>
-              <p class="stamp-counter-text" id="stampCounterText">3 of 4 stamps collected. 1 more until your 20% discount on the 5th session!</p>
+            <div class="loyalty-action-wrap" style="margin-top: 1.5rem;">
+              <a href="#booking" class="btn-sand-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                <span data-i18n="hero_btn_book">{{ page.hero_btn_book_text|default:"BOOK APPOINTMENT" }}</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </div>
 
