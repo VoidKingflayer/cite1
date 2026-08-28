@@ -155,6 +155,8 @@ class OpenRouterClient:
         self.site_url = site_url
         self.site_name = site_name
         self.timeout = timeout
+        self.custom_proxy = os.getenv("OPENROUTER_PROXY") or os.getenv("GEMINI_PROXY") or os.getenv("HTTPS_PROXY")
+        self.proxy_list = [self.custom_proxy] if self.custom_proxy else ["http://130.17.2.209:3128", "http://128.140.113.110:5153", "http://95.3.69.222:8080"]
 
     def set_model(self, model_name: str):
         """Switches the default model for future requests."""
@@ -192,6 +194,25 @@ class OpenRouterClient:
         if extra_params:
             payload.update(extra_params)
         return payload
+
+    def _execute_request(self, req: urllib.request.Request):
+        """Executes HTTP request with direct or proxy fallback."""
+        proxies_to_try = [None] + (self.proxy_list or [])
+        last_err = None
+        for p in proxies_to_try:
+            try:
+                if p:
+                    handler = urllib.request.ProxyHandler({"https": p, "http": p})
+                    opener = urllib.request.build_opener(handler)
+                    return opener.open(req, timeout=self.timeout)
+                else:
+                    return urllib.request.urlopen(req, timeout=self.timeout)
+            except Exception as e:
+                last_err = e
+                continue
+        if last_err:
+            raise last_err
+        raise RuntimeError("OpenRouter request failed.")
 
     # =========================================================================
     # Synchronous Chat Completions
@@ -232,7 +253,7 @@ class OpenRouterClient:
                     headers=self._get_headers(),
                     method="POST",
                 )
-                with urllib.request.urlopen(req, timeout=self.timeout) as response:
+                with self._execute_request(req) as response:
                     raw_data = response.read().decode("utf-8")
                     data = json.loads(raw_data)
 
