@@ -73,6 +73,9 @@ jobs:
           rsync -avz --delete \
             --exclude='.git' \
             --exclude='.github' \
+            --exclude='.env' \
+            --exclude='db.sqlite3' \
+            --exclude='*.sqlite3' \
             --exclude='venv' \
             --exclude='.venv' \
             --exclude='__pycache__' \
