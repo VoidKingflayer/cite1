@@ -1,0 +1,157 @@
+name: 🚀 Production CI/CD Deployment — TOCHKA Batumi
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  # -------------------------------------------------------------
+  # 1. TEST & VALIDATION STAGE
+  # -------------------------------------------------------------
+  test:
+    name: 🧪 Syntax & Django Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f wagtail_site/requirements.txt ]; then
+            pip install -r wagtail_site/requirements.txt
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          pip install flake8
+
+      - name: 🔍 Check Python Syntax
+        run: |
+          # Stop the build if there are Python syntax errors or undefined names
+          flake8 wagtail_site/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+  # -------------------------------------------------------------
+  # 2. AUTOMATED DEPLOY STAGE
+  # -------------------------------------------------------------
+  deploy:
+    name: 🚀 Deploy to Production Server
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔑 Configure SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: 📤 Sync Project Files via Rsync
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST || '37.252.22.92' }}
+          SERVER_USER: ${{ secrets.SERVER_USER || 'root' }}
+          TARGET_DIR: "/var/www/tochka"
+        run: |
+          # Add target server to known_hosts to prevent interactive prompt
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          echo "🚀 Syncing repository files to $SERVER_USER@$SERVER_HOST:$TARGET_DIR..."
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='venv' \
+            --exclude='.venv' \
+            --exclude='__pycache__' \
+            --exclude='*.pyc' \
+            --exclude='db.sqlite3.backup' \
+            --exclude='media' \
+            wagtail_site/ "$SERVER_USER@$SERVER_HOST:$TARGET_DIR/"
+
+      - name: ⚙️ Run Migrations, Collect Static & Restart Services
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST || '37.252.22.92' }}
+          username: ${{ secrets.SERVER_USER || 'root' }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            set -e
+            APP_DIR="/var/www/tochka"
+            cd "$APP_DIR"
+
+            echo "📦 1. Updating Python dependencies..."
+            if [ ! -d "venv" ]; then
+              python3 -m venv venv
+            fi
+            "$APP_DIR/venv/bin/pip" install --upgrade pip
+            "$APP_DIR/venv/bin/pip" install -r "$APP_DIR/requirements.txt"
+            "$APP_DIR/venv/bin/pip" install gunicorn
+
+            echo "🗄️ 2. Applying Django database migrations..."
+            export DJANGO_SETTINGS_MODULE=wagtail_site.settings.production
+            "$APP_DIR/venv/bin/python" manage.py migrate --noinput --settings=wagtail_site.settings.production
+
+            echo "🎨 3. Collecting static files..."
+            "$APP_DIR/venv/bin/python" manage.py collectstatic --noinput --settings=wagtail_site.settings.production
+
+            echo "🔒 4. Adjusting permissions..."
+            chown -R www-data:www-data "$APP_DIR"
+            chmod -R 775 "$APP_DIR/media" "$APP_DIR/static"
+            chmod 664 "$APP_DIR/db.sqlite3" || true
+            chmod 775 "$APP_DIR"
+
+            echo "🤖 5. Ensuring Telegram & WhatsApp Bot Systemd Service exists..."
+            cat << 'EOF' > /etc/systemd/system/tochka-bot.service
+            [Unit]
+            Description=Telegram & WhatsApp AI Bot Daemon for TOCHKA Massage Studio
+            After=network.target tochka.service
+
+            [Service]
+            Type=simple
+            User=root
+            Group=root
+            WorkingDirectory=/var/www/tochka
+            Environment="PYTHONUNBUFFERED=1"
+            Environment="DJANGO_SETTINGS_MODULE=wagtail_site.settings.production"
+            ExecStart=/var/www/tochka/venv/bin/python run_adapters.py
+            Restart=always
+            RestartSec=5
+
+            [Install]
+            WantedBy=multi-user.target
+            EOF
+
+            echo "🔄 6. Reloading Systemd and restarting Web & Bot daemons..."
+            systemctl daemon-reload
+            systemctl restart tochka
+            systemctl enable tochka
+            systemctl restart tochka-bot
+            systemctl enable tochka-bot
+            systemctl reload nginx
+
+            echo "✅ Deployment on server finished successfully!"
+
+      - name: 🌐 Health Check
+        run: |
+          echo "🔍 Checking live website status..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://tochkabatumi.ge || true)
+          echo "HTTP Status: $STATUS"
+          if [ "$STATUS" = "200" ] || [ "$STATUS" = "301" ] || [ "$STATUS" = "302" ]; then
+            echo "🎉 Site is up and healthy!"
+          else
+            echo "⚠️ Warning: Received HTTP $STATUS from https://tochkabatumi.ge"
+          fi

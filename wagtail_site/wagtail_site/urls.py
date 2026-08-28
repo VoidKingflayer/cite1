@@ -7,7 +7,14 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from django.http import HttpResponse
+from django.views.generic.base import RedirectView
 from bookings.views import create_booking_api, get_available_slots_api, create_certificate_order_api
+from bookings.ai_views import (
+    telegram_webhook_view,
+    whatsapp_webhook_view,
+    web_ai_chat_api_view,
+    ai_status_api_view,
+)
 from search import views as search_views
 
 SITEMAP_XML = """<?xml version="1.0" encoding="UTF-8"?>
@@ -45,6 +52,8 @@ def sitemap_xml(request):
 urlpatterns = [
     path("googlef25e567605d37c65.html", lambda request: HttpResponse("google-site-verification: googlef25e567605d37c65.html", content_type="text/html")),
     path("yandex_c35989e904dcbc0a.html", lambda request: HttpResponse("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body>Verification: c35989e904dcbc0a</body></html>", content_type="text/html; charset=utf-8")),
+    path("favicon.ico", RedirectView.as_view(url="/static/home/images/favicon.ico", permanent=True)),
+    path("site.webmanifest", RedirectView.as_view(url="/static/home/images/site.webmanifest", permanent=True)),
     path("robots.txt", robots_txt, name="robots_txt"),
     path("sitemap.xml", sitemap_xml, name="sitemap_xml"),
     path("django-admin/", admin.site.urls),
@@ -56,6 +65,11 @@ urlpatterns = [
     path("api/bookings/available-slots/", get_available_slots_api, name="api_available_slots"),
     path("api/bookings/slots/", get_available_slots_api, name="api_slots"),
     path("api/certificates/order/", create_certificate_order_api, name="api_certificate_order"),
+    # AI Administrator Multi-Channel Endpoints
+    path("api/ai/telegram/webhook/", telegram_webhook_view, name="api_ai_telegram_webhook"),
+    path("api/ai/whatsapp/webhook/", whatsapp_webhook_view, name="api_ai_whatsapp_webhook"),
+    path("api/ai/chat/", web_ai_chat_api_view, name="api_ai_chat"),
+    path("api/ai/status/", ai_status_api_view, name="api_ai_status"),
 ]
 
 

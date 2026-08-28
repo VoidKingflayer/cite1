@@ -16,6 +16,20 @@
   <meta name="author" content="Анна Колосова (Anna Kolosova)" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
+  <!-- Favicon & Mobile Icons for Google Search, Yandex, iOS, Android -->
+  <link rel="icon" type="image/x-icon" href="{% static 'home/images/favicon.ico' %}" />
+  <link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" />
+  <link rel="icon" type="image/svg+xml" href="{% static 'home/images/favicon.svg' %}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'home/images/favicon-16x16.png' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'home/images/favicon-32x32.png' %}" />
+  <link rel="icon" type="image/png" sizes="48x48" href="{% static 'home/images/favicon-48x48.png' %}" />
+  <link rel="icon" type="image/png" sizes="96x96" href="{% static 'home/images/favicon-96x96.png' %}" />
+  <link rel="icon" type="image/png" sizes="192x192" href="{% static 'home/images/favicon-192x192.png' %}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'home/images/apple-touch-icon.png' %}" />
+  <link rel="manifest" href="{% static 'home/images/site.webmanifest' %}" />
+  <meta name="theme-color" content="#121417" />
+  <meta name="msapplication-TileColor" content="#121417" />
+
   <!-- Canonical & Multilingual Hreflang Alternates (RU, EN, KA, TR, AR) -->
   <link rel="canonical" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}" />
   <link rel="alternate" hreflang="ru" href="{{ page.full_url|default:'https://tochkabatumi.ge/' }}?lang=ru" />

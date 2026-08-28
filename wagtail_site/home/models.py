@@ -2,6 +2,198 @@ from django.db import models
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.snippets.models import register_snippet
+from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
+
+
+DEFAULT_STUDIO_KNOWLEDGE_TEXT = """Информация о студии массажа TOCHKA (Батуми):
+- Адрес: Батуми, ул. Лука Асатиани, 46 (46 Luka Asatiani St, Batumi)
+- Телефон / WhatsApp: +995 591 226 145
+- Часы работы: ежедневно с 09:00 до 23:00
+- 👤 ЕДИНСТВЕННЫЙ МАСТЕР И ОСНОВАТЕЛЬ: Анна Колосова.
+  (В студии работает РОВНО ОДИН мастер — сама основатель Анна Колосова. Все сеансы проводит исключительно она лично по авторской технике непрерывного контакта. Других мастеров в салоне нет, что гарантирует 100% приватность, персональное внимание и авторское качество).
+
+Услуги и цены (В СТУДИИ РОВНО 4 ВИДА МАССАЖА):
+1. Расслабляющий (Релакс) массаж: 60 мин — 120 GEL ($45), 90 мин — 170 GEL ($65)
+   (плавные, мягкие движения, лёгкая проработка мышц, снятие стресса и глубокий отдых)
+2. Классический массаж тела: 60 мин — 120 GEL ($45), 90 мин — 170 GEL ($65)
+   (средний ритм, глубокая проработка мышц, улучшение тонуса и кровообращения)
+3. Спортивный массаж: 60 мин — 120 GEL ($45), 90 мин — 170 GEL ($65)
+   (интенсивная работа с мышцами, фасциями и триггерными точками, снятие сильных зажимов)
+4. Лимфодренажный массаж: 60 мин — 120 GEL ($45), 90 мин — 170 GEL ($65)
+   (мягкая работа по ходу лимфотока, снятие отечности, детокс и легкость)
+
+ВАЖНОЕ ПРИМЕЧАНИЕ:
+- В студии TOCHKA доступны ИСКЛЮЧИТЕЛЬНО эти 4 вида массажа тела.
+- Массажа в 4 руки, массажа лица и отдельных фокус-зон в меню НЕТ. Если гость спрашивает о них, вежливо поясни, что таких услуг нет, и предложи один из 4 ритуалов.
+- Все массажи выполняет лично основатель Анна Колосова.
+
+Специальные акции и условия:
+- Скидка 10% на первый визит по промокоду FIRST10.
+- Скидка 20% на каждый 5-й массаж по программе лояльности.
+- Подарочные сертификаты на любую сумму.
+- Оплата: наличные (USD, GEL), банковские карты, перевод."""
+
+DEFAULT_SYSTEM_PROMPT_TEXT = """Ты — заботливый, экспертный и деликатный администратор премиальной студии массажа TOCHKA в Батуми.
+
+Твоя цель:
+- Приветливо и профессионально встречать гостей, отвечать на вопросы, помогать с выбором ритуала.
+- 👤 В студии работает РОВНО ОДИН мастер — сама основатель Анна Колосова. Все сеансы проводит лично Анна по своей авторской технике непрерывного контакта. Других мастеров нет. Если гость интересуется мастером, с гордостью подчеркни, что процедуру проводит лично основатель.
+- В студии ровно 4 вида массажа тела по единой стоимости: 60 мин — 120 GEL ($45), 90 мин — 170 GEL ($65).
+- 🕒 ВАЖНО: ВСЕГДА, когда речь заходит о записи, свободных окнах или когда клиент упоминает относительные даты ("сегодня", "завтра", "в эту субботу", "через пару часов"), ПЕРВЫМ ДЕЛОМ вызови инструмент `get_current_datetime`, чтобы узнать точную дату, время и день недели в Батуми. Никогда не угадывай дату без вызова `get_current_datetime`!
+- При запросе о свободных окнах ОБЯЗАТЕЛЬНО используй инструмент `check_available_slots` с вычисленной точной датой (YYYY-MM-DD).
+- При просьбе записаться запрашивай имя, телефон, желаемый массаж, дату и время, а затем вызывай инструмент `create_booking_in_db`.
+- При вопросах о текущих записях используй `get_client_bookings`.
+
+Правила общения:
+- Тон: вежливый, теплый, спокойный, премиальный, ненавязчивый.
+- Всегда отвечай на том языке, на котором обратился клиент (Русский, English, ქართული, Türkçe, العربية).
+- Не пиши слишком длинный текст: 2-4 предложения или четкий структурированный список, чтобы клиенту было удобно читать в мессенджере (Telegram/WhatsApp).
+- Используй аккуратные эмодзи (🌿, ✨, 💆, 🕒, 📍).
+
+⛔ СТРОЖАЙШИЕ ПРАВИЛА ВЫВОДА:
+1. Твой ответ сразу видит реальный клиент в Telegram / WhatsApp.
+2. КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО выводить рассуждения, внутренний монолог, размышления, анализ ("User asks", "Context", "Tone", "Intent"), черновики ("Draft 1", "Draft 2", "Draft 3") или списки вариантов.
+3. Выдавай ТОЛЬКО готовый, вежливый итоговый ответ для гостя!"""
+
+DEFAULT_WELCOME_MSG = """Здравствуйте! ✨
+
+Я — заботливый виртуальный администратор премиальной студии массажа <b>TOCHKA</b> в Батуми 🌿
+
+Все сеансы массажа в нашей студии проводит исключительно ее основатель — <b>Анна Колосова</b> по авторской технике непрерывного контакта.
+
+Я помогу вам:
+• Выбрать подходящий ритуал массажа
+• Узнать цены и применить скидку 10% на первый визит (код <code>FIRST10</code>)
+• Проверить свободные часы на сегодня или любой другой день
+• Записаться онлайн прямо в этом диалоге
+
+Чем я могу порадовать вас сегодня?"""
+
+
+@register_setting(icon="cog")
+class AISettings(BaseGenericSetting):
+    """
+    Wagtail Admin Settings for AI Administrator, Prompts, Knowledge Base and Founder Profile.
+    """
+    # 1. Master & Founder Profile
+    master_name = models.CharField("Имя мастера", max_length=100, default="Анна Колосова")
+    master_role = models.CharField("Статус", max_length=150, default="Основатель и единственный ведущий мастер студии")
+    master_bio = models.TextField(
+        "Информация о мастере",
+        default="Все сеансы массажа в студии TOCHKA проводит лично основатель Анна Колосова по авторской технике непрерывного контакта. Других мастеров в студии нет, что гарантирует полную приватность и персональное внимание.",
+        blank=True,
+    )
+    master_phone = models.CharField("Телефон мастера / WhatsApp", max_length=50, default="+995 591 226 145")
+
+    # 2. Prompts & Knowledge Base (Fully Editable in Wagtail)
+    ai_system_prompt = models.TextField(
+        "Системный промпт (Инструкция для ИИ)",
+        default=DEFAULT_SYSTEM_PROMPT_TEXT,
+        help_text="Главная инструкция: роль, тон, правила поведения и запреты для нейросети.",
+    )
+    studio_knowledge_base = models.TextField(
+        "База знаний студии (Услуги, цены, правила)",
+        default=DEFAULT_STUDIO_KNOWLEDGE_TEXT,
+        help_text="Фактическая база знаний (услуги, цены, скидки, адрес), которую использует ИИ.",
+    )
+    ai_custom_instructions = models.TextField(
+        "Оперативные указания / Заметки",
+        blank=True,
+        help_text="Быстрые временные заметки (например: 'Сегодня скидка 15% в честь праздника' или 'Свободные часы уточняйте у мастера').",
+    )
+    telegram_welcome_message = models.TextField(
+        "Приветственное сообщение Telegram (/start)",
+        default=DEFAULT_WELCOME_MSG,
+        help_text="Текст первого приветствия, которое отправляет бот в Telegram при команде /start (поддерживает HTML-теги: <b>, <i>, <code>).",
+    )
+
+    # 3. Model & AI Engine Settings
+    ai_enabled = models.BooleanField("Включить ИИ-администратора", default=True)
+    ai_model_name = models.CharField(
+        "Модель нейросети",
+        max_length=100,
+        default="gemini-3.5-flash-lite",
+        help_text="gemini-3.5-flash-lite, gemini-3.5-flash, deepseek/deepseek-chat, openai/gpt-4o-mini",
+    )
+    ai_temperature = models.FloatField(
+        "Температура (креативность от 0.1 до 1.0)",
+        default=0.4,
+        help_text="0.2 — строго по фактам, 0.5 — естественный дружелюбный диалог",
+    )
+    ai_tools_enabled = models.BooleanField("Включить тулзы базы данных (проверка слотов, создание броней)", default=True)
+
+    # 4. Telegram & WhatsApp Connections & Admin Access
+    telegram_bot_token = models.CharField(
+        "Telegram Bot Token",
+        max_length=200,
+        blank=True,
+        default="8951216662:AAG_kHhM-l2F-hYUFUNKhT35Nn2OYja7ZJM",
+        help_text="Токен от @BotFather",
+    )
+    telegram_admin_usernames = models.CharField(
+        "Telegram Администраторы",
+        max_length=255,
+        default="Kingmachineflayer, Ankolosova",
+        help_text="Список username администраторов через запятую (например: Kingmachineflayer, Ankolosova). Этим пользователям бот предоставляет права управления заявками, расписанием и подтверждением броней.",
+    )
+    whatsapp_provider = models.CharField(
+        "Провайдер WhatsApp",
+        max_length=20,
+        default="greenapi",
+        choices=[("greenapi", "Green API (QR-код)"), ("meta", "Meta WhatsApp Cloud API")],
+    )
+    whatsapp_greenapi_instance = models.CharField("Green API Instance ID", max_length=100, blank=True)
+    whatsapp_greenapi_token = models.CharField("Green API Token", max_length=150, blank=True)
+
+    # 5. Loyalty & Promotions
+    first_visit_discount = models.CharField("Скидка на первый визит", max_length=50, default="10%")
+    first_visit_code = models.CharField("Промокод на первый визит", max_length=50, default="FIRST10")
+
+    panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel("ai_system_prompt"),
+                FieldPanel("studio_knowledge_base"),
+                FieldPanel("ai_custom_instructions"),
+                FieldPanel("telegram_welcome_message"),
+            ],
+            heading="📝 01. Промпты и База знаний ИИ (Редактирование в реальном времени)",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("master_name"),
+                FieldPanel("master_role"),
+                FieldPanel("master_bio"),
+                FieldPanel("master_phone"),
+            ],
+            heading="👤 02. Единственный мастер и основатель студии",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("ai_enabled"),
+                FieldPanel("ai_model_name"),
+                FieldPanel("ai_temperature"),
+                FieldPanel("ai_tools_enabled"),
+                FieldPanel("first_visit_discount"),
+                FieldPanel("first_visit_code"),
+            ],
+            heading="🤖 03. Движок и параметры нейросети",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("telegram_admin_usernames"),
+                FieldPanel("telegram_bot_token"),
+                FieldPanel("whatsapp_provider"),
+                FieldPanel("whatsapp_greenapi_instance"),
+                FieldPanel("whatsapp_greenapi_token"),
+            ],
+            heading="💬 04. Подключение Telegram, WhatsApp и Права Администраторов",
+        ),
+    ]
+
+    class Meta:
+        verbose_name = "Настройки ИИ и Мастера"
+        verbose_name_plural = "Настройки ИИ и Мастера"
 
 
 @register_snippet

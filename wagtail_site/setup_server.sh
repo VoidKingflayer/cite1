@@ -79,8 +79,11 @@ server {
     client_max_body_size 50M;
 
     location = /favicon.ico { 
+        alias /var/www/tochka/static/home/images/favicon.ico;
         access_log off; 
         log_not_found off; 
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
     }
 
     location /static/ {
