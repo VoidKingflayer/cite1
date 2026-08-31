@@ -61,16 +61,18 @@ jobs:
 
       - name: 📤 Sync Project Files via Rsync
         env:
-          SERVER_HOST: ${{ secrets.SERVER_HOST || '37.252.22.92' }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST || '72.56.65.153' }}
           SERVER_USER: ${{ secrets.SERVER_USER || 'root' }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
           TARGET_DIR: "/var/www/tochka"
         run: |
           # Add target server to known_hosts to prevent interactive prompt
           mkdir -p ~/.ssh
-          ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p "$SSH_PORT" -H "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
 
           echo "🚀 Syncing repository files to $SERVER_USER@$SERVER_HOST:$TARGET_DIR..."
           rsync -avz --delete \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             --exclude='.git' \
             --exclude='.github' \
             --exclude='.env' \
@@ -87,7 +89,7 @@ jobs:
       - name: ⚙️ Run Migrations, Collect Static & Restart Services
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SERVER_HOST || '37.252.22.92' }}
+          host: ${{ secrets.SERVER_HOST || '72.56.65.153' }}
           username: ${{ secrets.SERVER_USER || 'root' }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
