@@ -130,7 +130,7 @@ class OpenRouterClient:
     def __init__(
         self,
         api_key: Optional[str] = None,
-        default_model: str = OpenRouterModels.GOOGLE_GEMMA_31B_FREE,
+        default_model: str = OpenRouterModels.GPT_4O_MINI,
         fallback_models: Optional[List[str]] = None,
         base_url: str = DEFAULT_API_URL,
         site_url: Optional[str] = "https://tochkabatumi.ge",
@@ -144,12 +144,10 @@ class OpenRouterClient:
                 "OpenRouter API Key is required. Pass it via api_key='sk-or-...' "
                 "or set OPENROUTER_API_KEY in your .env file or environment variable."
             )
-        self.default_model = default_model
+        self.default_model = default_model or OpenRouterModels.GPT_4O_MINI
         self.fallback_models = fallback_models or [
-            OpenRouterModels.GOOGLE_GEMMA_26B_FREE,
+            OpenRouterModels.DEEPSEEK_V3,
             OpenRouterModels.NVIDIA_NEMOTRON_FREE,
-            OpenRouterModels.MINIMAX_M3_FREE,
-            OpenRouterModels.ZAI_GLM_FREE,
         ]
         self.base_url = base_url
         self.site_url = site_url
@@ -313,25 +311,38 @@ class OpenRouterClient:
         if not isinstance(messages, Conversation):
             conv.messages = list(messages)
 
-        current_model = model or self.default_model
+        candidate_models = [model or self.default_model] + [
+            m for m in self.fallback_models if m != (model or self.default_model)
+        ]
 
         for _ in range(max_iterations):
-            payload = self._prepare_payload(
-                messages=conv.get_messages(),
-                model=current_model,
-                temperature=temperature,
-                stream=False,
-                extra_params={"tools": tools, **kwargs},
-            )
-            req = urllib.request.Request(
-                self.base_url,
-                data=json.dumps(payload).encode("utf-8"),
-                headers=self._get_headers(),
-                method="POST",
-            )
-            with urllib.request.urlopen(req, timeout=self.timeout) as response:
-                raw_data = response.read().decode("utf-8")
-                data = json.loads(raw_data)
+            data = None
+            last_err = None
+            for current_model in candidate_models:
+                try:
+                    payload = self._prepare_payload(
+                        messages=conv.get_messages(),
+                        model=current_model,
+                        temperature=temperature,
+                        stream=False,
+                        extra_params={"tools": tools, **kwargs},
+                    )
+                    req = urllib.request.Request(
+                        self.base_url,
+                        data=json.dumps(payload).encode("utf-8"),
+                        headers=self._get_headers(),
+                        method="POST",
+                    )
+                    with urllib.request.urlopen(req, timeout=self.timeout) as response:
+                        raw_data = response.read().decode("utf-8")
+                        data = json.loads(raw_data)
+                        break
+                except Exception as req_err:
+                    last_err = req_err
+                    continue
+
+            if not data:
+                raise last_err or RuntimeError("All OpenRouter models failed during tool calling.")
 
             choice = data.get("choices", [{}])[0]
             message = choice.get("message", {})

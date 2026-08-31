@@ -99,17 +99,140 @@ class Booking(models.Model):
     @property
     def status_badge(self):
         colors = {
-            "pending": "#d97706",    # amber
-            "confirmed": "#16a34a",  # green
-            "completed": "#2563eb",  # blue
-            "cancelled": "#dc2626",  # red
+            "pending": ("#d97706", "#fef3c7", "⏳"),    # amber
+            "confirmed": ("#16a34a", "#dcfce7", "✅"),  # green
+            "completed": ("#2563eb", "#dbeafe", "✨"),  # blue
+            "cancelled": ("#dc2626", "#fee2e2", "❌"),  # red
         }
-        color = colors.get(self.status, "#6b7280")
+        text_color, bg_color, icon = colors.get(self.status, ("#4b5563", "#f3f4f6", "📌"))
         return format_html(
-            '<span style="background-color: {}; color: #fff; padding: 4px 10px; border-radius: 9999px; font-weight: 600; font-size: 0.8rem; display: inline-block;">{}</span>',
-            color,
-            self.get_status_display(),
+            '<span style="background-color: {}; color: {}; padding: 4px 12px; border-radius: 9999px; font-weight: 700; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.05);">'
+            '<span>{}</span><span>{}</span></span>',
+            bg_color,
+            text_color,
+            icon,
+            self.get_status_display().split(" ", 1)[-1] if " " in self.get_status_display() else self.get_status_display(),
         )
+
+    @property
+    def client_card_html(self):
+        import re
+        from django.utils.safestring import mark_safe
+        clean_phone = re.sub(r"[^\d]", "", self.client_phone or "")
+        wa_link = f"https://wa.me/{clean_phone}" if clean_phone else "#"
+        
+        email_part = f'<div style="font-size: 0.75rem; color: #6b7280; margin-top: 2px;">✉️ {self.client_email}</div>' if self.client_email else ''
+        
+        return format_html(
+            '<div style="min-width: 170px;">'
+            '<div style="font-weight: 700; color: #111827; font-size: 0.95rem; margin-bottom: 3px;">👤 {}</div>'
+            '<div style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem;">'
+            '<a href="tel:{}" style="color: #4b5563; text-decoration: none; font-weight: 600;">📞 {}</a>'
+            '<a href="{}" target="_blank" title="Написать в WhatsApp" style="display: inline-flex; align-items: center; justify-content: center; background: #25D366; color: #fff; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; text-decoration: none; font-weight: bold; box-shadow: 0 1px 2px rgba(0,0,0,0.15);">💬</a>'
+            '</div>'
+            '{}'
+            '</div>',
+            self.client_name,
+            self.client_phone,
+            self.client_phone,
+            wa_link,
+            mark_safe(email_part) if email_part else "",
+        )
+
+    @property
+    def datetime_badge_html(self):
+        from datetime import date, timedelta
+        from django.utils.safestring import mark_safe
+        today = date.today()
+        tomorrow = today + timedelta(days=1)
+        
+        weekdays_ru = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+        months_ru = ["", "янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"]
+        
+        b_date = self.booking_date
+        date_str = f"{b_date.day} {months_ru[b_date.month]} ({weekdays_ru[b_date.weekday()]})"
+        
+        tag_html = ""
+        if b_date == today:
+            tag_html = '<span style="background: #fee2e2; color: #dc2626; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; margin-left: 6px;">🔥 СЕГОДНЯ</span>'
+        elif b_date == tomorrow:
+            tag_html = '<span style="background: #fef3c7; color: #d97706; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; margin-left: 6px;">⚡ ЗАВТРА</span>'
+        elif b_date < today:
+            tag_html = '<span style="background: #f3f4f6; color: #9ca3af; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left: 6px;">Архив</span>'
+        
+        return format_html(
+            '<div style="min-width: 150px;">'
+            '<div style="font-weight: 700; color: #1f2937; font-size: 0.9rem; display: flex; align-items: center;">📅 {}{}</div>'
+            '<div style="font-weight: 800; color: #0284c7; font-size: 1rem; margin-top: 2px;">🕒 {}</div>'
+            '</div>',
+            date_str,
+            mark_safe(tag_html) if tag_html else "",
+            self.booking_time,
+        )
+
+    @property
+    def service_badge_html(self):
+        from django.utils.safestring import mark_safe
+        s_name = self.service_name or (self.service.name_ru if self.service else "Массаж")
+        price_tag = ""
+        if self.service:
+            price_tag = f'<span style="background: #f0fdf4; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 0.75rem; margin-left: 6px;">{self.service.price_1} / {self.service.price_2}</span>'
+        
+        return format_html(
+            '<div style="min-width: 150px;">'
+            '<div style="font-weight: 600; color: #111827; font-size: 0.88rem;">💆 {}{}</div>'
+            '</div>',
+            s_name,
+            mark_safe(price_tag) if price_tag else "",
+        )
+
+    @property
+    def notes_preview_html(self):
+        from django.utils.safestring import mark_safe
+        if not self.notes:
+            return mark_safe('<span style="color: #9ca3af; font-style: italic;">—</span>')
+        
+        preview = self.notes if len(self.notes) <= 45 else self.notes[:42] + "..."
+        return format_html(
+            '<div style="max-width: 200px; color: #4b5563; font-size: 0.82rem; line-height: 1.3;" title="{}">📝 {}</div>',
+            self.notes,
+            preview,
+        )
+
+    @property
+    def quick_actions_html(self):
+        from django.utils.safestring import mark_safe
+        edit_url = f"/admin/snippets/bookings/booking/{self.id}/"
+        import re
+        clean_phone = re.sub(r"[^\d]", "", self.client_phone or "")
+        wa_url = f"https://wa.me/{clean_phone}" if clean_phone else "#"
+        
+        btn_confirm = ""
+        btn_complete = ""
+        btn_cancel = ""
+        
+        if self.status == self.Status.PENDING:
+            btn_confirm = f'<button onclick="quickUpdateStatus({self.id}, \'confirmed\', event)" style="background: #16a34a; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.2s;" title="Подтвердить запись">✅ Подтвердить</button>'
+        if self.status in (self.Status.PENDING, self.Status.CONFIRMED):
+            btn_complete = f'<button onclick="quickUpdateStatus({self.id}, \'completed\', event)" style="background: #2563eb; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.2s;" title="Завершить сеанс">✨ Завершить</button>'
+        if self.status != self.Status.CANCELLED:
+            btn_cancel = f'<button onclick="quickUpdateStatus({self.id}, \'cancelled\', event)" style="background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; padding: 3px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.2s;" title="Отменить запись">❌</button>'
+            
+        return format_html(
+            '<div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">'
+            '{}'
+            '{}'
+            '{}'
+            '<a href="{}" style="background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none;" title="Редактировать всё">✏️ Изменить</a>'
+            '<a href="{}" target="_blank" style="background: #25D366; color: #fff; padding: 3px 7px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-decoration: none;" title="Написать клиенту">💬</a>'
+            '</div>',
+            mark_safe(btn_confirm) if btn_confirm else "",
+            mark_safe(btn_complete) if btn_complete else "",
+            mark_safe(btn_cancel) if btn_cancel else "",
+            edit_url,
+            wa_url,
+        )
+
 
 
 class BlockedTimeSlot(models.Model):

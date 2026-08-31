@@ -390,7 +390,16 @@ def handle_create_booking(
     time: str,
     notes: str = ""
 ) -> Dict[str, Any]:
-    """Creates a new record in bookings_booking table."""
+    """Creates a new record in bookings_booking table, ensuring valid client info."""
+    clean_n = (client_name or "").strip()
+    clean_p = (client_phone or "").strip()
+
+    if not clean_p or not clean_n or clean_n.lower() in ("гость", "клиент", "none", ""):
+        return {
+            "status": "need_info",
+            "message": "Для оформления записи в базе данных ОБЯЗАТЕЛЬНО требуются реальное имя гостя и контактный номер телефона. Не придумывай данные! Пожалуйста, вежливо уточни у клиента: 'С удовольствием запишу вас! Подскажите, пожалуйста, ваше имя и контактный номер телефона для подтверждения брони? 🌿' И только когда клиент назовет их, вызови create_booking_in_db повторно."
+        }
+
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     try:
@@ -409,8 +418,8 @@ def handle_create_booking(
                 created_at, updated_at
             ) VALUES (?, ?, '', ?, ?, ?, ?, ?, 'pending', ?, ?)
             """, (
-                client_name.strip(),
-                client_phone.strip(),
+                clean_n,
+                clean_p,
                 ritual_name.strip(),
                 service_id,
                 date.strip(),
@@ -425,11 +434,12 @@ def handle_create_booking(
             return {
                 "status": "success",
                 "booking_id": booking_id,
-                "client_name": client_name.strip(),
+                "client_name": clean_n,
+                "client_phone": clean_p,
                 "ritual": ritual_name.strip(),
                 "date": date.strip(),
                 "time": time.strip(),
-                "message": f"Запись #{booking_id} успешно создана в базе данных. Администратор свяжется для финального подтверждения."
+                "message": f"Запись #{booking_id} на имя {clean_n} ({clean_p}) успешно создана в базе данных. Администратор свяжется для финального подтверждения."
             }
     except Exception as e:
         logger.error("Error creating booking in DB: %s", e)

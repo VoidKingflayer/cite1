@@ -538,10 +538,12 @@ class TelegramAdapter:
             metadata={"telegram_chat_id": chat_id, "username": username, "is_admin": is_admin}
         )
 
-        response_text = result.get("response_text", "")
-        if not response_text:
-            response_text = "Извините, произошла небольшая заминка. Пожалуйста, напишите еще раз."
+        # If chat is in manual mode or AI is disabled for this channel -> Master will reply from Wagtail!
+        if result.get("manual_mode") or not result.get("response_text"):
+            logger.info("Telegram message from chat_id %s saved in DB for manual Master reply.", chat_id)
+            return True
 
+        response_text = result.get("response_text", "")
         self.tg.send_message(
             chat_id=chat_id,
             text=response_text,

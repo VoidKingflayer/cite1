@@ -74,7 +74,7 @@ echo "=== 7. Configuring Nginx ==="
 cat << 'EOF' > /etc/nginx/sites-available/tochka
 server {
     listen 80;
-    server_name tochkabatumi.ge www.tochkabatumi.ge 37.252.22.92;
+    server_name tochkabatumi.ge www.tochkabatumi.ge 72.56.65.153;
 
     client_max_body_size 50M;
 
@@ -110,13 +110,39 @@ rm -f /etc/nginx/sites-enabled/default
 nginx -t
 systemctl restart nginx
 
-echo "=== 8. Configuring Firewall ==="
+echo "=== 8. Configuring Bot Service ==="
+cat << 'EOF' > /etc/systemd/system/tochka-bot.service
+[Unit]
+Description=Telegram & WhatsApp AI Bot Daemon for TOCHKA Massage Studio
+After=network.target tochka.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/www/tochka
+Environment="PYTHONUNBUFFERED=1"
+Environment="DJANGO_SETTINGS_MODULE=wagtail_site.settings.production"
+ExecStart=/var/www/tochka/venv/bin/python run_adapters.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl restart tochka-bot
+systemctl enable tochka-bot
+
+echo "=== 9. Configuring Firewall ==="
 ufw allow 'Nginx Full'
 ufw allow 'OpenSSH'
 ufw --force enable
 
-echo "=== 9. Installing SSL Certificate (HTTPS) ==="
+echo "=== 10. Installing SSL Certificate (HTTPS) ==="
 certbot --nginx -d tochkabatumi.ge -d www.tochkabatumi.ge --non-interactive --agree-tos --register-unsafely-without-email || true
 
 echo "=== DEPLOYMENT COMPLETED SUCCESSFULLY ==="
 echo "Site is live at: https://tochkabatumi.ge"
+

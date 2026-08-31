@@ -28,9 +28,12 @@ logger = logging.getLogger(__name__)
 
 
 def clean_phone_number(phone: str) -> str:
-    """Normalizes phone number to digits only (e.g., +995 591 226 145 -> 995591226145)."""
-    digits = re.sub(r"[^\d]", "", str(phone))
-    return digits
+    """Normalizes phone number to digits only, preserving @lid or special JIDs if present."""
+    phone_str = str(phone).strip()
+    if "@lid" in phone_str:
+        return phone_str
+    digits = re.sub(r"[^\d]", "", phone_str)
+    return digits or phone_str
 
 
 class WhatsAppClient:
@@ -56,15 +59,20 @@ class WhatsAppClient:
         self.ultramsg_instance = os.getenv("WHATSAPP_ULTRAMSG_INSTANCE")
         self.ultramsg_token = os.getenv("WHATSAPP_ULTRAMSG_TOKEN")
 
+        # 4. Self-Hosted Baileys Gateway (100% Free)
+        self.self_hosted_url = os.getenv("WHATSAPP_GATEWAY_URL", "http://127.0.0.1:3001")
+
     @property
     def is_configured(self) -> bool:
-        if self.provider == "greenapi":
+        if self.provider == "self_hosted":
+            return True
+        elif self.provider == "greenapi":
             return bool(self.greenapi_instance and self.greenapi_token)
         elif self.provider in ("meta", "cloud"):
             return bool(self.meta_token and self.meta_phone_id)
         elif self.provider == "ultramsg":
             return bool(self.ultramsg_instance and self.ultramsg_token)
-        return False
+        return True
 
     def send_message(self, recipient_phone: str, text: str) -> Dict[str, Any]:
         """
@@ -74,19 +82,27 @@ class WhatsAppClient:
         if not clean_phone:
             return {"success": False, "error": "Invalid phone number"}
 
-        if self.provider == "greenapi" or (self.greenapi_instance and self.greenapi_token):
+        if self.provider == "self_hosted" or not (self.greenapi_instance or self.meta_token or self.ultramsg_instance):
+            # Prioritize self-hosted Baileys gateway if active
+            return self._send_self_hosted(clean_phone, text)
+        elif self.provider == "greenapi" or (self.greenapi_instance and self.greenapi_token):
             return self._send_greenapi(clean_phone, text)
         elif self.provider in ("meta", "cloud") or (self.meta_token and self.meta_phone_id):
             return self._send_meta_cloud(clean_phone, text)
         elif self.provider == "ultramsg" or (self.ultramsg_instance and self.ultramsg_token):
             return self._send_ultramsg(clean_phone, text)
         else:
-            logger.warning("No WhatsApp provider credentials configured in .env")
-            return {"success": False, "error": "WhatsApp credentials unconfigured"}
+            return self._send_self_hosted(clean_phone, text)
 
     # -------------------------------------------------------------------------
     # Provider-Specific Senders
     # -------------------------------------------------------------------------
+
+    def _send_self_hosted(self, phone: str, text: str) -> Dict[str, Any]:
+        """Self-hosted Baileys Gateway: POST http://127.0.0.1:3001/api/send"""
+        url = f"{self.self_hosted_url}/api/send"
+        data = {"phone": phone, "message": text}
+        return self._http_post(url, data)
 
     def _send_greenapi(self, phone: str, text: str) -> Dict[str, Any]:
         """Green API: POST /waInstance{idInstance}/sendMessage/{apiTokenInstance}"""
@@ -192,6 +208,16 @@ class WhatsAppAdapter:
             "provider": "greenapi" | "meta" | "ultramsg"
         }
         """
+        # 0. Self-hosted Baileys Gateway format
+        if data.get("provider") == "self_hosted":
+            return {
+                "sender_phone": clean_phone_number(data.get("sender_phone")),
+                "sender_name": data.get("sender_name") or "Гость WhatsApp",
+                "message_text": (data.get("text") or "").strip(),
+                "raw_sender": f"{data.get('sender_phone')}@s.whatsapp.net",
+                "provider": "self_hosted",
+            }
+
         # 1. Green API Webhook format
         type_webhook = data.get("typeWebhook")
         if type_webhook == "incomingMessageReceived":
@@ -283,7 +309,8 @@ class WhatsAppAdapter:
         response_text = result.get("response_text", "")
         if response_text:
             # Send reply via WhatsApp API
-            send_res = self.wa.send_message(sender_phone, response_text)
+            target_recipient = parsed.get("raw_sender") or sender_phone
+            send_res = self.wa.send_message(target_recipient, response_text)
             return {
                 "success": True,
                 "reply": response_text,

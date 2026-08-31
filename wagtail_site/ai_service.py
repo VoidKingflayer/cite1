@@ -252,20 +252,52 @@ class AIAssistantService:
                 "tools_called": [],
                 "engine": "disabled_by_admin",
                 "error": None,
+                "manual_mode": True,
             }
 
-        target_model = ai_cfg.get("model_name") or "gemini-3.5-flash-lite"
-        temperature = ai_cfg.get("temperature", 0.4)
-        use_tools = ai_cfg.get("tools_enabled", True)
+        # 0.1 Check Channel-Level AI Toggle (Telegram / WhatsApp / Instagram / Web)
+        channel_ai_enabled = self.memory.get_channel_ai_state(channel)
+        session_ai_mode = self.memory.get_session_ai_mode(session_id)
 
         # 1. Update client profile if contact info provided
         if client_name or client_phone or metadata:
+            client_username = (metadata or {}).get("username")
             self.memory.update_client_profile(
                 session_id=session_id,
                 name=client_name,
                 phone=client_phone,
                 metadata=metadata,
             )
+
+        # 2. Record user message in persistent SQLite DB
+        client_username = (metadata or {}).get("username")
+        self.memory.add_message(
+            session_id=session_id,
+            role="user",
+            content=user_text.strip(),
+            channel=channel,
+            client_name=client_name,
+            client_phone=client_phone,
+            client_username=client_username,
+        )
+
+        # 2.1 If channel is paused or chat is in manual Master mode -> do NOT auto-respond with AI!
+        if not channel_ai_enabled or session_ai_mode == "manual":
+            logger.info("Chat %s on channel %s is in manual/disabled mode (channel_enabled=%s, session_mode=%s)", session_id, channel, channel_ai_enabled, session_ai_mode)
+            return {
+                "success": True,
+                "response_text": "",
+                "session_id": session_id,
+                "channel": channel,
+                "tools_called": [],
+                "engine": "manual_master_mode",
+                "manual_mode": True,
+                "error": None,
+            }
+
+        target_model = ai_cfg.get("model_name") or "gemini-3.5-flash-lite"
+        temperature = ai_cfg.get("temperature", 0.4)
+        use_tools = ai_cfg.get("tools_enabled", True)
 
         # Check if caller is authorized studio admin / master
         caller_username = (metadata or {}).get("username")
@@ -286,15 +318,6 @@ class AIAssistantService:
 
 Отвечай четко, структурированно и профессионально, как персональный бизнес-ассистент руководителя студии. Всегда указывай ID заявок, имена, телефоны клиентов, выбранные услуги и статус.
 """
-
-        # 2. Record user message in DB
-        self.memory.add_message(
-            session_id=session_id,
-            role="user",
-            content=user_text.strip(),
-            channel=channel,
-        )
-
         # 3. Load conversation context from SQLite with dynamic system prompt
         effective_system_prompt = ai_cfg["full_system_prompt"] + admin_instructions
         conversation = self.memory.get_conversation(
@@ -317,34 +340,12 @@ class AIAssistantService:
             for name, handler in STUDIO_TOOL_HANDLERS.items()
         }
 
-        # 4. Try Google Gemini first (ultra-fast, 1500 free req/day)
+        # 4. Try OpenRouter first (ultra-fast, zero latency, no proxy delays)
         reply_text = ""
         engine_used = ""
         last_error = None
 
-        if self.gemini_client:
-            try:
-                if use_tools:
-                    reply_text = self.gemini_client.chat_with_tools(
-                        messages=conversation,
-                        tools=STUDIO_TOOLS_SCHEMA,
-                        tool_handlers=wrapped_handlers,
-                        model=target_model if "gemini" in target_model or "gemma" in target_model else None,
-                        temperature=temperature,
-                    )
-                else:
-                    reply_text = self.gemini_client.chat(
-                        messages=conversation,
-                        model=target_model if "gemini" in target_model or "gemma" in target_model else None,
-                        temperature=temperature,
-                    )
-                engine_used = f"Google Gemini ({self.gemini_client.default_model})"
-            except Exception as gemini_err:
-                logger.error(f"Gemini API error for session {session_id}: {gemini_err}. Trying OpenRouter fallback...")
-                last_error = str(gemini_err)
-
-        # 5. Fallback to OpenRouter if Gemini fails or is unconfigured
-        if not reply_text and self.openrouter_client:
+        if self.openrouter_client:
             try:
                 if use_tools:
                     reply_text = self.openrouter_client.chat_with_tools(
@@ -362,8 +363,30 @@ class AIAssistantService:
                     )
                 engine_used = f"OpenRouter ({self.openrouter_client.default_model})"
             except Exception as openrouter_err:
-                logger.error(f"OpenRouter API error for session {session_id}: {openrouter_err}")
+                logger.error(f"OpenRouter API error for session {session_id}: {openrouter_err}. Trying Gemini fallback...")
                 last_error = str(openrouter_err)
+
+        # 5. Fallback to Google Gemini
+        if not reply_text and self.gemini_client:
+            try:
+                if use_tools:
+                    reply_text = self.gemini_client.chat_with_tools(
+                        messages=conversation,
+                        tools=STUDIO_TOOLS_SCHEMA,
+                        tool_handlers=wrapped_handlers,
+                        model=target_model if "gemini" in target_model or "gemma" in target_model else None,
+                        temperature=temperature,
+                    )
+                else:
+                    reply_text = self.gemini_client.chat(
+                        messages=conversation,
+                        model=target_model if "gemini" in target_model or "gemma" in target_model else None,
+                        temperature=temperature,
+                    )
+                engine_used = f"Google Gemini ({self.gemini_client.default_model})"
+            except Exception as gemini_err:
+                logger.error(f"Gemini API error for session {session_id}: {gemini_err}")
+                last_error = str(gemini_err)
 
         if reply_text:
             reply_text = clean_ai_response(reply_text)

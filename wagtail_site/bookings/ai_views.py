@@ -78,6 +78,42 @@ def whatsapp_webhook_view(request):
 
 
 @csrf_exempt
+@require_http_methods(["GET", "POST"])
+def instagram_webhook_view(request):
+    """
+    Unified Instagram Direct Webhook for Meta Graph API.
+    Endpoint: /api/ai/instagram/webhook/ and /api/instagram/webhook/
+    - GET: Meta Webhook verification handshake (hub.challenge)
+    - POST: Incoming Instagram Direct messages
+    """
+    from instagram_adapter import InstagramAdapter, InstagramClient
+    client = InstagramClient()
+
+    # Meta Webhook Verification (GET)
+    if request.method == "GET":
+        mode = request.GET.get("hub.mode")
+        token = request.GET.get("hub.verify_token")
+        challenge = request.GET.get("hub.challenge")
+
+        if mode == "subscribe" and (token == client.verify_token or token == "tochka_ig_verify_token"):
+            logger.info("Meta Instagram webhook verified successfully.")
+            return HttpResponse(challenge, content_type="text/plain")
+        else:
+            logger.warning(f"Meta Instagram webhook verification failed: token={token}")
+            return HttpResponse("Forbidden", status=403)
+
+    # Incoming message processing (POST)
+    try:
+        data = json.loads(request.body.decode("utf-8"))
+        adapter = InstagramAdapter()
+        res = adapter.process_webhook_payload(data)
+        return JsonResponse(res)
+    except Exception as e:
+        logger.error(f"Instagram webhook handling error: {e}", exc_info=True)
+        return JsonResponse({"success": False, "error": str(e)}, status=500)
+
+
+@csrf_exempt
 @require_POST
 def web_ai_chat_api_view(request):
     """

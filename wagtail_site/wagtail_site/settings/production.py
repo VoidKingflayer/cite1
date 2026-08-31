@@ -7,6 +7,7 @@ WAGTAILADMIN_BASE_URL = "https://tochkabatumi.ge"
 ALLOWED_HOSTS = [
     "tochkabatumi.ge",
     "www.tochkabatumi.ge",
+    "72.56.65.153",
     "37.252.22.92",
     "127.0.0.1",
     "localhost",

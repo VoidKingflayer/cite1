@@ -1111,9 +1111,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ? 'სწრაფი დადასტურებისთვის ან კითხვისთვის:' 
             : 'For instant confirmation or questions:';
 
+          const redirectNotice = currentOmraLang === 'ru'
+            ? '✨ Заявка принята! Переходим на страницу подтверждения...'
+            : currentOmraLang === 'ka'
+            ? '✨ ჯავშანი მიღებულია! გადავდივართ დადასტურების გვერდზე...'
+            : '✨ Booking recorded! Redirecting to confirmation page...';
+
           feedback.innerHTML = `
             <div style="color: #A3E635; margin-bottom: 0.75rem; font-weight: 500;">
-              ${t.form_success}
+              ${redirectNotice}
             </div>
             <div class="feedback-actions-box">
               <span class="feedback-actions-title">${chatPromptText}</span>
@@ -1131,6 +1137,23 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           `;
           bookingForm.reset();
+
+          // Build confirmation page URL with booking data for conversion tracking
+          const confirmParams = new URLSearchParams({
+            id: resData.booking_id || '',
+            name: payload.name || '',
+            phone: payload.phone || '',
+            service: payload.ritual || '',
+            date: payload.date || '',
+            time: payload.time || '',
+            lang: currentOmraLang || 'ru'
+          });
+
+          // Smooth redirect to dedicated confirmation page for Google Ads / Conversion tracking & UX
+          setTimeout(() => {
+            window.location.href = `/booking/confirmed/?${confirmParams.toString()}`;
+          }, 1100);
+
           // Reload available slots so newly booked slot is immediately disabled
           if (bookingDateInput) {
             const todayStr = new Date().toISOString().split('T')[0];

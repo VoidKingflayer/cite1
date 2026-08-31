@@ -1,0 +1,1277 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags %}
+
+{% block titletag %}💬 Единый центр чатов и AI-контроль (Telegram / WhatsApp / Instagram) — TOCHKA{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<style>
+  :root {
+    --inbox-bg: #f8fafc;
+    --inbox-card: #ffffff;
+    --inbox-border: #e2e8f0;
+    --tg-color: #0284c7;
+    --wa-color: #10b981;
+    --ig-color: #d946ef;
+    --web-color: #6366f1;
+    --ai-color: #059669;
+    --manual-color: #8b5cf6;
+  }
+
+  .inbox-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+    font-family: inherit;
+    color: #1e293b;
+  }
+
+  /* Header & Global AI Controls */
+  .inbox-header-card {
+    background: #ffffff;
+    border: 1px solid var(--inbox-border);
+    border-radius: 16px;
+    padding: 22px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-bottom: 20px;
+  }
+
+  .inbox-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .inbox-header-title h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inbox-header-title p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+
+  /* Channel AI Toggles Bar */
+  .channel-toggles-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #f8fafc;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .toggle-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+
+  .toggle-item.active {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+  }
+
+  .toggle-indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #94a3b8;
+  }
+
+  .toggle-item.active .toggle-indicator {
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+  }
+
+  /* Metrics summary cards */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .m-box {
+    background: #ffffff;
+    border: 1px solid var(--inbox-border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .m-box-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+
+  .m-box-val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+  }
+
+  .m-box-lbl {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  /* Main Split Layout */
+  .inbox-main-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 20px;
+    min-height: 680px;
+  }
+
+  @media (max-width: 980px) {
+    .inbox-main-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Left Panel: Chat List */
+  .chat-sidebar {
+    background: #ffffff;
+    border: 1px solid var(--inbox-border);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 720px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+
+  .sidebar-filter-section {
+    padding: 16px;
+    border-bottom: 1px solid var(--inbox-border);
+    background: #fafafa;
+  }
+
+  .channel-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+  }
+
+  .ch-tab {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .ch-tab:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+  }
+
+  .ch-tab.active {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.88rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .search-input:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+  }
+
+  .chat-list-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+
+  .chat-card {
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .chat-card:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+
+  .chat-card.active {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  .chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .chat-avatar .ch-icon-badge {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    border: 2px solid #ffffff;
+  }
+
+  .chat-card-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .chat-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+  }
+
+  .chat-card-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chat-card-time {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .chat-card-preview {
+    font-size: 0.82rem;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+  }
+
+  .chat-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mode-pill {
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mode-pill.ai {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .mode-pill.manual {
+    background: #f3e8ff;
+    color: #7e22ce;
+  }
+
+  .unread-badge {
+    background: #ef4444;
+    color: #ffffff;
+    padding: 1px 7px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  /* Right Panel: Conversation Canvas */
+  .chat-canvas {
+    background: #ffffff;
+    border: 1px solid var(--inbox-border);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 720px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    overflow: hidden;
+  }
+
+  .canvas-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--inbox-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fafafa;
+  }
+
+  .canvas-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .canvas-user-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .canvas-user-sub {
+    font-size: 0.82rem;
+    color: #64748b;
+    display: flex;
+    gap: 12px;
+    margin-top: 2px;
+  }
+
+  .canvas-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .canvas-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .canvas-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .btn-takeover {
+    background: #8b5cf6;
+    color: #ffffff;
+  }
+
+  .btn-resume-ai {
+    background: #10b981;
+    color: #ffffff;
+  }
+
+  .btn-book-guest {
+    background: #f1f5f9;
+    color: #334155;
+    border-color: #cbd5e1;
+  }
+
+  /* Message Thread Container */
+  .messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .msg-row {
+    display: flex;
+    gap: 10px;
+    max-width: 80%;
+  }
+
+  .msg-row.user {
+    align-self: flex-start;
+  }
+
+  .msg-row.assistant,
+  .msg-row.master {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+  }
+
+  .msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  .msg-row.user .msg-avatar {
+    background: #cbd5e1;
+    color: #334155;
+  }
+
+  .msg-row.assistant .msg-avatar {
+    background: #10b981;
+    color: #ffffff;
+  }
+
+  .msg-row.master .msg-avatar {
+    background: #8b5cf6;
+    color: #ffffff;
+  }
+
+  .msg-bubble {
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .msg-row.user .msg-bubble {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #1e293b;
+    border-top-left-radius: 2px;
+  }
+
+  .msg-row.assistant .msg-bubble {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #064e3b;
+    border-top-right-radius: 2px;
+  }
+
+  .msg-row.master .msg-bubble {
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    color: #4c1d95;
+    border-top-right-radius: 2px;
+  }
+
+  .msg-author-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+  }
+
+  .msg-time {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 4px;
+    text-align: right;
+  }
+
+  .tool-call-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-top: 6px;
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  /* Quick Replies Pills */
+  .quick-replies-bar {
+    padding: 8px 18px;
+    background: #fafafa;
+    border-top: 1px solid var(--inbox-border);
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .qr-chip {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+
+  .qr-chip:hover {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+  }
+
+  /* Bottom Reply Composer Box */
+  .composer-section {
+    padding: 16px 20px;
+    border-top: 1px solid var(--inbox-border);
+    background: #ffffff;
+  }
+
+  .composer-form {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .composer-textarea {
+    flex: 1;
+    min-height: 52px;
+    max-height: 140px;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .composer-textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+  }
+
+  .composer-btn-send {
+    background: #8b5cf6;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .composer-btn-send:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  }
+
+  /* Empty state */
+  .empty-state-canvas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #94a3b8;
+    text-align: center;
+    padding: 40px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="inbox-wrapper">
+
+  <!-- Top Header & Global AI Controls Card -->
+  <div class="inbox-header-card">
+    <div class="inbox-header-top">
+      <div class="inbox-header-title">
+        <h1>💬 Единый центр чатов и AI-контроль</h1>
+        <p>Мониторинг всех диалогов (Telegram • WhatsApp • Instagram • Web) с гибким переключением AI/Ручного режима</p>
+      </div>
+
+      <!-- Quick Action: Switch Global AI Killswitch & WhatsApp QR -->
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <a 
+          href="/whatsapp/qr" 
+          target="_blank" 
+          class="canvas-btn"
+          style="background: #10b981; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 2px 8px rgba(16,185,129,0.25);"
+          title="Открыть страницу со сканированием QR-кода WhatsApp"
+        >
+          <span>📱 Подключить WhatsApp (QR)</span>
+        </a>
+
+        <button 
+          id="globalAiToggleBtn"
+          onclick="toggleChannelMode('all', {% if channel_states.all %}false{% else %}true{% endif %})" 
+          class="canvas-btn {% if channel_states.all %}btn-resume-ai{% else %}btn-takeover{% endif %}"
+          style="padding: 10px 20px; font-size: 0.92rem;"
+        >
+          {% if channel_states.all %}
+            🟢 ИИ-ассистент АКТИВЕН (Global)
+          {% else %}
+            🔴 ИИ ОТКЛЮЧЕН (Все каналы в ручном режиме)
+          {% endif %}
+        </button>
+      </div>
+    </div>
+
+    <!-- Per-Channel AI Toggles Bar -->
+    <div class="channel-toggles-bar">
+      <span style="font-weight: 700; font-size: 0.85rem; color: #475569;">Управление ИИ по каналам:</span>
+
+      <div class="toggle-item {% if channel_states.telegram %}active{% endif %}" id="tg-toggle" onclick="toggleChannelMode('telegram', {% if channel_states.telegram %}false{% else %}true{% endif %})">
+        <span class="toggle-indicator"></span>
+        <span>✈️ Telegram</span>
+        <small>({% if channel_states.telegram %}ВКЛ{% else %}ВЫКЛ{% endif %})</small>
+      </div>
+
+      <div class="toggle-item {% if channel_states.whatsapp %}active{% endif %}" id="wa-toggle" onclick="toggleChannelMode('whatsapp', {% if channel_states.whatsapp %}false{% else %}true{% endif %})">
+        <span class="toggle-indicator"></span>
+        <span>💬 WhatsApp</span>
+        <small>({% if channel_states.whatsapp %}ВКЛ{% else %}ВЫКЛ{% endif %})</small>
+      </div>
+
+      <div class="toggle-item {% if channel_states.instagram %}active{% endif %}" id="ig-toggle" onclick="toggleChannelMode('instagram', {% if channel_states.instagram %}false{% else %}true{% endif %})">
+        <span class="toggle-indicator"></span>
+        <span>📸 Instagram</span>
+        <small>({% if channel_states.instagram %}ВКЛ{% else %}ВЫКЛ{% endif %})</small>
+      </div>
+
+      <div class="toggle-item {% if channel_states.web %}active{% endif %}" id="web-toggle" onclick="toggleChannelMode('web', {% if channel_states.web %}false{% else %}true{% endif %})">
+        <span class="toggle-indicator"></span>
+        <span>🌐 Web-виджет</span>
+        <small>({% if channel_states.web %}ВКЛ{% else %}ВЫКЛ{% endif %})</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Metrics row -->
+  <div class="metrics-row">
+    <div class="m-box">
+      <div class="m-box-icon" style="background: #e0f2fe; color: #0284c7;">💬</div>
+      <div>
+        <div class="m-box-val" id="metric-total-chats">{{ stats.total_chats }}</div>
+        <div class="m-box-lbl">Всего диалогов</div>
+      </div>
+    </div>
+
+    <div class="m-box">
+      <div class="m-box-icon" style="background: #dcfce7; color: #16a34a;">🤖</div>
+      <div>
+        <div class="m-box-val" style="color: #16a34a;" id="metric-ai-chats">{{ stats.ai_chats }}</div>
+        <div class="m-box-lbl">На AI автопилоте</div>
+      </div>
+    </div>
+
+    <div class="m-box">
+      <div class="m-box-icon" style="background: #f3e8ff; color: #9333ea;">👤</div>
+      <div>
+        <div class="m-box-val" style="color: #7e22ce;" id="metric-manual-chats">{{ stats.manual_chats }}</div>
+        <div class="m-box-lbl">В ручном режиме (Мастер)</div>
+      </div>
+    </div>
+
+    <div class="m-box">
+      <div class="m-box-icon" style="background: #fee2e2; color: #dc2626;">⏳</div>
+      <div>
+        <div class="m-box-val" style="color: #dc2626;" id="metric-unread-chats">{{ stats.total_unread }}</div>
+        <div class="m-box-lbl">Непрочитанных сообщений</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Split Omnichannel Layout -->
+  <div class="inbox-main-layout">
+
+    <!-- Left Sidebar: Chat List & Filters -->
+    <div class="chat-sidebar">
+      <div class="sidebar-filter-section">
+        <!-- Channel tabs -->
+        <div class="channel-tabs">
+          <button class="ch-tab {% if selected_channel == 'all' %}active{% endif %}" onclick="filterChannel('all')">Все ({{ stats.total_chats }})</button>
+          <button class="ch-tab {% if selected_channel == 'telegram' %}active{% endif %}" onclick="filterChannel('telegram')">✈️ Telegram ({{ stats.tg_chats }})</button>
+          <button class="ch-tab {% if selected_channel == 'whatsapp' %}active{% endif %}" onclick="filterChannel('whatsapp')">💬 WA ({{ stats.wa_chats }})</button>
+          <button class="ch-tab {% if selected_channel == 'instagram' %}active{% endif %}" onclick="filterChannel('instagram')">📸 IG ({{ stats.ig_chats }})</button>
+        </div>
+
+        <!-- Search input -->
+        <input 
+          type="text" 
+          id="chatSearchInput" 
+          class="search-input" 
+          placeholder="🔍 Поиск по имени, номеру, @username..."
+          value="{{ search_query }}"
+          oninput="handleSearch(this.value)"
+        />
+      </div>
+
+      <!-- Chat list -->
+      <div class="chat-list-scroll" id="chatListContainer">
+        {% for chat in sessions %}
+          <div 
+            class="chat-card {% if chat.session_id == active_session_id %}active{% endif %}" 
+            id="chat-card-{{ chat.session_id }}"
+            onclick="selectChat('{{ chat.session_id }}')"
+          >
+            <div class="chat-avatar">
+              {{ chat.client_name|default:chat.session_id|slice:":1"|upper }}
+              <div class="ch-icon-badge" style="
+                {% if chat.channel == 'telegram' %}background: #0284c7; color: #fff;
+                {% elif chat.channel == 'whatsapp' %}background: #10b981; color: #fff;
+                {% elif chat.channel == 'instagram' %}background: #d946ef; color: #fff;
+                {% else %}background: #6366f1; color: #fff;{% endif %}
+              ">
+                {% if chat.channel == 'telegram' %}✈️
+                {% elif chat.channel == 'whatsapp' %}💬
+                {% elif chat.channel == 'instagram' %}📸
+                {% else %}🌐{% endif %}
+              </div>
+            </div>
+
+            <div class="chat-card-body">
+              <div class="chat-card-top">
+                <div class="chat-card-name">
+                  {{ chat.client_name|default:chat.session_id }}
+                </div>
+                <div class="chat-card-time">
+                  {{ chat.updated_at|slice:"11:16" }}
+                </div>
+              </div>
+
+              <div class="chat-card-preview">
+                {{ chat.last_message|default:"Нажмите для открытия диалога" }}
+              </div>
+
+              <div class="chat-card-bottom">
+                {% if chat.ai_mode == 'manual' %}
+                  <span class="mode-pill manual">👤 Ручной (Мастер)</span>
+                {% else %}
+                  <span class="mode-pill ai">🤖 AI Автопилот</span>
+                {% endif %}
+
+                {% if chat.unread_count > 0 %}
+                  <span class="unread-badge">{{ chat.unread_count }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <div style="padding: 30px 20px; text-align: center; color: #94a3b8; font-size: 0.9rem;">
+            Нет диалогов по заданным фильтрам
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Right Panel: Conversation Canvas -->
+    <div class="chat-canvas">
+      {% if active_session %}
+        <!-- Canvas Header -->
+        <div class="canvas-header" id="canvasHeader">
+          <div class="canvas-user-info">
+            <div class="chat-avatar" style="width: 46px; height: 46px; font-size: 1.1rem;">
+              {{ active_session.client_name|default:active_session.session_id|slice:":1"|upper }}
+            </div>
+            <div>
+              <div class="canvas-user-name">
+                <span id="canvasName">{{ active_session.client_name|default:active_session.session_id }}</span>
+                <span id="canvasModeBadge" class="mode-pill {% if active_session.ai_mode == 'manual' %}manual{% else %}ai{% endif %}">
+                  {% if active_session.ai_mode == 'manual' %}👤 Ручной (Мастер){% else %}🤖 AI Автопилот{% endif %}
+                </span>
+              </div>
+              <div class="canvas-user-sub">
+                <span id="canvasChannelTag">
+                  {% if active_session.channel == 'telegram' %}✈️ Telegram
+                  {% elif active_session.channel == 'whatsapp' %}💬 WhatsApp
+                  {% elif active_session.channel == 'instagram' %}📸 Instagram
+                  {% else %}🌐 Web{% endif %}
+                </span>
+                {% if active_session.client_phone %}
+                  <span>📞 <a href="tel:{{ active_session.client_phone }}" style="color: inherit;">{{ active_session.client_phone }}</a></span>
+                {% endif %}
+                {% if active_session.client_username %}
+                  <span>👤 @{{ active_session.client_username }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-actions">
+            <!-- Mode Toggle Button -->
+            {% if active_session.ai_mode == 'manual' %}
+              <button id="btnToggleMode" onclick="toggleChatMode('{{ active_session.session_id }}', 'ai')" class="canvas-btn btn-resume-ai">
+                🤖 Передать ИИ-ассистенту
+              </button>
+            {% else %}
+              <button id="btnToggleMode" onclick="toggleChatMode('{{ active_session.session_id }}', 'manual')" class="canvas-btn btn-takeover">
+                👤 Перехватить диалог (Ручной)
+              </button>
+            {% endif %}
+
+            <a href="/admin/snippets/bookings/booking/add/" target="_blank" class="canvas-btn btn-book-guest">
+              ➕ Записать клиента
+            </a>
+          </div>
+        </div>
+
+        <!-- Messages scroll container -->
+        <div class="messages-container" id="messagesContainer">
+          {% for msg in active_messages %}
+            <div class="msg-row {{ msg.role }}">
+              <div class="msg-avatar">
+                {% if msg.role == 'user' %}👤
+                {% elif msg.role == 'assistant' %}🤖
+                {% elif msg.role == 'master' %}👑
+                {% else %}📌{% endif %}
+              </div>
+
+              <div class="msg-bubble">
+                <div class="msg-author-tag">
+                  {% if msg.role == 'user' %}Гость
+                  {% elif msg.role == 'assistant' %}TOCHKA AI Assistant
+                  {% elif msg.role == 'master' %}Мастер Анна (Основатель)
+                  {% else %}Система{% endif %}
+                </div>
+                <div>{{ msg.content|linebreaksbr }}</div>
+                {% if msg.tool_calls %}
+                  <div class="tool-call-badge">⚙️ Вызов тулзы: {{ msg.tool_calls }}</div>
+                {% endif %}
+                <div class="msg-time">{{ msg.created_at|slice:"11:16" }}</div>
+              </div>
+            </div>
+          {% empty %}
+            <div class="empty-state-canvas">
+              <h3>История сообщений пуста</h3>
+              <p>Отправьте первое сообщение клиенту снизу</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Quick Reply Chips -->
+        <div class="quick-replies-bar">
+          <div class="qr-chip" onclick="insertQuickReply('Здравствуйте! ✨ Я Анна, основатель студии TOCHKA. Чем могу порадовать вас?')">👋 Приветствие от Анны</div>
+          <div class="qr-chip" onclick="insertQuickReply('Да, на это время есть свободное окошко! Записать вас?')">✅ Свободное окно есть</div>
+          <div class="qr-chip" onclick="insertQuickReply('Наш адрес: Батуми, ул. Лука Асатиани, 46. Ждём вас с теплом! 🌿')">📍 Адрес студии</div>
+          <div class="qr-chip" onclick="insertQuickReply('Сеанс массажа подтверждён! До скорой встречи ✨')">🎉 Запись подтверждена</div>
+        </div>
+
+        <!-- Composer section -->
+        <div class="composer-section">
+          <form id="replyForm" onsubmit="sendMasterReply(event)" class="composer-form">
+            {% csrf_token %}
+            <input type="hidden" name="session_id" id="composerSessionId" value="{{ active_session.session_id }}" />
+            <textarea 
+              name="text" 
+              id="replyTextInput" 
+              class="composer-textarea" 
+              placeholder="Напишите ответ клиенту в Telegram / WhatsApp / Instagram (Enter — новая строка, Ctrl+Enter — отправить)..."
+              required
+              onkeydown="handleComposerKey(event)"
+            ></textarea>
+            <button type="submit" class="composer-btn-send">
+              <span>Отправить</span>
+              <span>➔</span>
+            </button>
+          </form>
+        </div>
+
+      {% else %}
+        <div class="empty-state-canvas">
+          <div style="font-size: 3rem; margin-bottom: 12px;">💬</div>
+          <h3>Выберите диалог слева</h3>
+          <p>Здесь откроется переписка с клиентом из Telegram, WhatsApp или Instagram</p>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Toast notification box -->
+<div id="inboxToast" style="
+  position: fixed; bottom: 24px; right: 24px; background: #0f172a; color: #fff;
+  padding: 14px 22px; border-radius: 12px; font-weight: 700; font-size: 0.9rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25); z-index: 999999; display: none;
+  align-items: center; gap: 10px;
+"></div>
+
+<script>
+  let currentSessionId = "{{ active_session_id|default:'' }}";
+  let activeFilterChannel = "{{ selected_channel|default:'all' }}";
+  let activeAiMode = "{{ selected_ai_mode|default:'all' }}";
+  let activeSearch = "{{ search_query|default:'' }}";
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  function showToast(msg, icon = '✅') {
+    const toast = document.getElementById('inboxToast');
+    toast.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+    toast.style.display = 'flex';
+    setTimeout(() => { toast.style.display = 'none'; }, 3500);
+  }
+
+  function scrollMessagesToBottom() {
+    const box = document.getElementById('messagesContainer');
+    if (box) {
+      box.scrollTop = box.scrollHeight;
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    scrollMessagesToBottom();
+    // Start auto-poll every 4 seconds
+    setInterval(pollUpdates, 4000);
+  });
+
+  function handleComposerKey(e) {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      document.getElementById('replyForm').dispatchEvent(new Event('submit'));
+    }
+  }
+
+  function insertQuickReply(text) {
+    const input = document.getElementById('replyTextInput');
+    if (input) {
+      input.value = text;
+      input.focus();
+    }
+  }
+
+  // -------------------------------------------------------------------------
+  // Chat & Channel Actions
+  // -------------------------------------------------------------------------
+
+  function toggleChannelMode(channel, enabled) {
+    const csrftoken = getCookie('csrftoken');
+    fetch('/admin/inbox/api/toggle-channel-mode/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken,
+      },
+      body: new URLSearchParams({
+        'channel': channel,
+        'enabled': enabled ? 'true' : 'false'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        showToast(data.message);
+        setTimeout(() => window.location.reload(), 400);
+      } else {
+        alert('Ошибка: ' + data.error);
+      }
+    })
+    .catch(err => alert('Ошибка сети: ' + err));
+  }
+
+  function toggleChatMode(sessionId, targetMode) {
+    const csrftoken = getCookie('csrftoken');
+    fetch('/admin/inbox/api/toggle-chat-mode/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken,
+      },
+      body: new URLSearchParams({
+        'session_id': sessionId,
+        'mode': targetMode
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        showToast(data.message);
+        loadChatMessages(sessionId);
+        pollUpdates();
+      } else {
+        alert('Ошибка: ' + data.error);
+      }
+    })
+    .catch(err => alert('Ошибка сети: ' + err));
+  }
+
+  function selectChat(sessionId) {
+    currentSessionId = sessionId;
+    document.querySelectorAll('.chat-card').forEach(c => c.classList.remove('active'));
+    const card = document.getElementById('chat-card-' + sessionId);
+    if (card) card.classList.add('active');
+
+    loadChatMessages(sessionId);
+  }
+
+  function loadChatMessages(sessionId) {
+    fetch(`/admin/inbox/api/messages/?session_id=${encodeURIComponent(sessionId)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.success) return;
+
+        const session = data.session;
+        const messages = data.messages;
+
+        // Update header
+        document.getElementById('canvasName').innerText = session.client_name || session.session_id;
+        const modeBadge = document.getElementById('canvasModeBadge');
+        if (session.ai_mode === 'manual') {
+          modeBadge.className = 'mode-pill manual';
+          modeBadge.innerText = '👤 Ручной (Мастер)';
+        } else {
+          modeBadge.className = 'mode-pill ai';
+          modeBadge.innerText = '🤖 AI Автопилот';
+        }
+
+        // Update toggle button
+        const btnToggle = document.getElementById('btnToggleMode');
+        if (btnToggle) {
+          if (session.ai_mode === 'manual') {
+            btnToggle.className = 'canvas-btn btn-resume-ai';
+            btnToggle.innerHTML = '🤖 Передать ИИ-ассистенту';
+            btnToggle.setAttribute('onclick', `toggleChatMode('${sessionId}', 'ai')`);
+          } else {
+            btnToggle.className = 'canvas-btn btn-takeover';
+            btnToggle.innerHTML = '👤 Перехватить диалог (Ручной)';
+            btnToggle.setAttribute('onclick', `toggleChatMode('${sessionId}', 'manual')`);
+          }
+        }
+
+        document.getElementById('composerSessionId').value = sessionId;
+
+        // Render messages
+        const container = document.getElementById('messagesContainer');
+        container.innerHTML = '';
+
+        messages.forEach(msg => {
+          const row = document.createElement('div');
+          row.className = `msg-row ${msg.role}`;
+
+          let avatarIcon = '👤';
+          let authorTag = 'Гость';
+          if (msg.role === 'assistant') { avatarIcon = '🤖'; authorTag = 'TOCHKA AI Assistant'; }
+          else if (msg.role === 'master') { avatarIcon = '👑'; authorTag = 'Мастер Анна (Основатель)'; }
+
+          let toolBadge = msg.tool_calls ? `<div class="tool-call-badge">⚙️ Тулза: ${JSON.stringify(msg.tool_calls)}</div>` : '';
+          let formattedTime = msg.created_at ? msg.created_at.substring(11, 16) : '';
+
+          row.innerHTML = `
+            <div class="msg-avatar">${avatarIcon}</div>
+            <div class="msg-bubble">
+              <div class="msg-author-tag">${authorTag}</div>
+              <div>${msg.content.replace(/\n/g, '<br>')}</div>
+              ${toolBadge}
+              <div class="msg-time">${formattedTime}</div>
+            </div>
+          `;
+          container.appendChild(row);
+        });
+
+        scrollMessagesToBottom();
+      });
+  }
+
+  function sendMasterReply(e) {
+    e.preventDefault();
+    const sessionId = document.getElementById('composerSessionId').value;
+    const input = document.getElementById('replyTextInput');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const csrftoken = getCookie('csrftoken');
+
+    fetch('/admin/inbox/api/send/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken,
+      },
+      body: new URLSearchParams({
+        'session_id': sessionId,
+        'text': text,
+        'set_manual': 'true'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        input.value = '';
+        showToast(data.message || 'Отправлено клиенту!');
+        loadChatMessages(sessionId);
+        pollUpdates();
+      } else {
+        alert('Ошибка при отправке: ' + (data.error || 'Неизвестная ошибка'));
+      }
+    })
+    .catch(err => alert('Ошибка сети: ' + err));
+  }
+
+  function filterChannel(ch) {
+    activeFilterChannel = ch;
+    document.querySelectorAll('.ch-tab').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    pollUpdates();
+  }
+
+  let searchTimeout = null;
+  function handleSearch(val) {
+    activeSearch = val;
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(pollUpdates, 300);
+  }
+
+  function pollUpdates() {
+    fetch(`/admin/inbox/api/chats/?channel=${activeFilterChannel}&ai_mode=${activeAiMode}&q=${encodeURIComponent(activeSearch)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.success) return;
+
+        // Update stats
+        if (data.stats) {
+          document.getElementById('metric-total-chats').innerText = data.stats.total_chats;
+          document.getElementById('metric-ai-chats').innerText = data.stats.ai_chats;
+          document.getElementById('metric-manual-chats').innerText = data.stats.manual_chats;
+          document.getElementById('metric-unread-chats').innerText = data.stats.total_unread;
+        }
+
+        // Render chat list
+        const listContainer = document.getElementById('chatListContainer');
+        const chats = data.chats;
+        if (!chats || chats.length === 0) {
+          listContainer.innerHTML = '<div style="padding: 30px 20px; text-align: center; color: #94a3b8; font-size: 0.9rem;">Нет диалогов по заданным фильтрам</div>';
+          return;
+        }
+
+        let html = '';
+        chats.forEach(chat => {
+          const isActive = chat.session_id === currentSessionId ? 'active' : '';
+          const initial = (chat.client_name || chat.session_id).charAt(0).toUpperCase();
+
+          let chIcon = '✈️';
+          let chColor = 'background: #0284c7; color: #fff;';
+          if (chat.channel === 'whatsapp') { chIcon = '💬'; chColor = 'background: #10b981; color: #fff;'; }
+          else if (chat.channel === 'instagram') { chIcon = '📸'; chColor = 'background: #d946ef; color: #fff;'; }
+          else if (chat.channel === 'web') { chIcon = '🌐'; chColor = 'background: #6366f1; color: #fff;'; }
+
+          const modeTag = chat.ai_mode === 'manual' 
+            ? '<span class="mode-pill manual">👤 Ручной (Мастер)</span>' 
+            : '<span class="mode-pill ai">🤖 AI Автопилот</span>';
+
+          const unreadPill = chat.unread_count > 0 ? `<span class="unread-badge">${chat.unread_count}</span>` : '';
+          const timeFormatted = chat.updated_at ? chat.updated_at.substring(11, 16) : '';
+
+          html += `
+            <div class="chat-card ${isActive}" id="chat-card-${chat.session_id}" onclick="selectChat('${chat.session_id}')">
+              <div class="chat-avatar">
+                ${initial}
+                <div class="ch-icon-badge" style="${chColor}">${chIcon}</div>
+              </div>
+              <div class="chat-card-body">
+                <div class="chat-card-top">
+                  <div class="chat-card-name">${chat.client_name || chat.session_id}</div>
+                  <div class="chat-card-time">${timeFormatted}</div>
+                </div>
+                <div class="chat-card-preview">${chat.last_message || 'Нажмите для открытия диалога'}</div>
+                <div class="chat-card-bottom">
+                  ${modeTag}
+                  ${unreadPill}
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        listContainer.innerHTML = html;
+      });
+  }
+</script>
+{% endblock %}

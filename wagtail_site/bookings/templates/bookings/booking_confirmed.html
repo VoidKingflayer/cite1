@@ -1,0 +1,863 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ current_lang|default:'ru' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Запись подтверждена • TOCHKA Massage Sanctuary Batumi</title>
+  <meta name="robots" content="noindex, follow" />
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{% static 'home/images/favicon.ico' %}" />
+  <link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'home/images/apple-touch-icon.png' %}" />
+  <meta name="theme-color" content="#08090A" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Tenor+Sans&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet">
+
+  <style>
+    :root {
+      --c-black: #08090A;
+      --c-espresso: #121417;
+      --c-card-bg: rgba(22, 24, 27, 0.75);
+      --c-sand: #E8ECEF;
+      --c-sand-muted: #9BA4B0;
+      --c-gold: #D4AF37;
+      --c-gold-glow: rgba(212, 175, 55, 0.25);
+      --c-green: #A3E635;
+      --c-green-glow: rgba(163, 230, 53, 0.25);
+      --c-border: rgba(255, 255, 255, 0.12);
+      --c-border-gold: rgba(212, 175, 55, 0.4);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Outfit', 'Montserrat', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--c-black);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 10% 80%, rgba(163, 230, 53, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(232, 236, 239, 0.03) 0%, transparent 50%);
+      color: var(--c-sand);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.25rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient noise & backdrop glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.02), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .confirmation-container {
+      width: 100%;
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+      animation: fadeInScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Top Brand Bar & Language Picker */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding: 0 0.5rem;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #FFFFFF;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-logo .dot {
+      color: var(--c-gold);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--c-border);
+      border-radius: 50px;
+      padding: 4px 8px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--c-sand-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .lang-btn:hover {
+      color: #FFFFFF;
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #FFFFFF;
+    }
+
+    /* Success Card */
+    .confirm-card {
+      background: var(--c-card-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .confirm-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--c-gold), transparent);
+    }
+
+    /* Icon Animation */
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .success-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(163, 230, 53, 0.25), rgba(163, 230, 53, 0.05));
+      border: 1px solid var(--c-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-green);
+      font-size: 2rem;
+      box-shadow: 0 0 30px var(--c-green-glow);
+      animation: pulseGreen 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% {
+        box-shadow: 0 0 20px var(--c-green-glow);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(163, 230, 53, 0.45);
+        transform: scale(1.04);
+      }
+    }
+
+    /* Typography */
+    .confirm-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .confirm-title {
+      font-family: var(--font-serif);
+      font-size: 2.3rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .confirm-subtitle {
+      font-size: 0.95rem;
+      color: var(--c-sand-muted);
+      line-height: 1.5;
+    }
+
+    .highlight-guest {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    /* Booking Reference Pill */
+    .ref-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .ref-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 255, 255, 0.22);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--c-sand);
+    }
+
+    .ref-pill strong {
+      color: var(--c-gold);
+      font-family: monospace;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* Details Grid */
+    .details-box {
+      background: rgba(14, 16, 19, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-item.full-width {
+      grid-column: span 2;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .detail-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--c-sand-muted);
+      font-weight: 500;
+    }
+
+    .detail-value {
+      font-size: 1.05rem;
+      color: #FFFFFF;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .detail-value.gold {
+      color: var(--c-gold);
+    }
+
+    .detail-sub {
+      font-size: 0.8rem;
+      color: var(--c-sand-muted);
+    }
+
+    /* Action Buttons */
+    .actions-heading {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--c-sand-muted);
+      margin-bottom: 0.9rem;
+      text-align: center;
+    }
+
+    .actions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Primary Google Calendar Button */
+    .btn-action-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+      color: #0F172A;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .btn-action-primary:hover {
+      background: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-action-primary svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Secondary Messenger & Map Buttons */
+    .messenger-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .btn-action-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      color: var(--c-sand);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .btn-action-secondary.wa:hover {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: rgba(37, 211, 102, 0.4);
+      color: #4ADE80;
+    }
+
+    .btn-action-secondary.tg:hover {
+      background: rgba(34, 158, 217, 0.15);
+      border-color: rgba(34, 158, 217, 0.4);
+      color: #38BDF8;
+    }
+
+    .btn-action-secondary.gmaps:hover {
+      background: rgba(234, 67, 53, 0.15);
+      border-color: rgba(234, 67, 53, 0.4);
+      color: #F87171;
+    }
+
+    .btn-action-secondary.ical:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: rgba(212, 175, 55, 0.4);
+      color: var(--c-gold);
+    }
+
+    /* Guest Guidelines Notice */
+    .guidelines-box {
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .guidelines-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--c-gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .guidelines-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .guidelines-list li {
+      font-size: 0.85rem;
+      color: #C8CFD8;
+      line-height: 1.45;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .guidelines-list li::before {
+      content: "•";
+      color: var(--c-gold);
+      position: absolute;
+      left: 0;
+      top: -1px;
+      font-size: 1.1rem;
+    }
+
+    /* Back Home Link */
+    .footer-actions {
+      text-align: center;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--c-sand-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      padding: 0.5rem 1rem;
+    }
+
+    .btn-back-home:hover {
+      color: #FFFFFF;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 0.85rem;
+      }
+      .confirm-card {
+        padding: 1.8rem 1.25rem;
+      }
+      .confirm-title {
+        font-size: 1.85rem;
+      }
+      .details-box {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+      .detail-item.full-width {
+        grid-column: span 1;
+      }
+      .messenger-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Conversion DataLayer & Tracking Hooks for Google Ads / GA4 / Meta / Yandex -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    // 1. Google Analytics 4 & Google Ads Conversion Event
+    dataLayer.push({
+      event: 'booking_conversion',
+      event_category: 'ecommerce',
+      event_label: 'massage_booking',
+      transaction_id: '{{ booking_reference|escapejs }}',
+      booking_id: '{{ booking_id|escapejs }}',
+      service_name: '{{ service_name|escapejs }}',
+      value: {{ conversion_value_gel|default:120 }},
+      currency: 'GEL',
+      date: '{{ booking_date_iso|escapejs }}',
+      time: '{{ booking_time|escapejs }}'
+    });
+
+    // 2. Google Ads gtag conversion trigger (if gtag is configured)
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'transaction_id': '{{ booking_reference|escapejs }}',
+        'value': {{ conversion_value_gel|default:120 }},
+        'currency': 'GEL'
+      });
+    }
+
+    // 3. Meta / Facebook Pixel (if fbq is loaded)
+    if (typeof fbq === 'function') {
+      fbq('track', 'Schedule', {
+        content_name: '{{ service_name|escapejs }}',
+        value: {{ conversion_value_usd|default:45 }},
+        currency: 'USD'
+      });
+    }
+
+    // 4. Yandex Metrika goal (if ym is loaded)
+    if (typeof ym === 'function') {
+      ym(window.ym_counter_id || 0, 'reachGoal', 'booking_confirmed');
+    }
+  </script>
+</head>
+<body>
+
+  <div class="confirmation-container">
+    
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+      <a href="/" class="brand-logo">
+        TOCHKA<span class="dot">•</span>
+      </a>
+
+      <!-- Multilingual Picker -->
+      <div class="lang-switcher">
+        <button type="button" class="lang-btn {% if current_lang == 'ru' %}active{% endif %}" onclick="switchLang('ru')">RU</button>
+        <button type="button" class="lang-btn {% if current_lang == 'en' %}active{% endif %}" onclick="switchLang('en')">EN</button>
+        <button type="button" class="lang-btn {% if current_lang == 'ka' %}active{% endif %}" onclick="switchLang('ka')">GE</button>
+        <button type="button" class="lang-btn {% if current_lang == 'tr' %}active{% endif %}" onclick="switchLang('tr')">TR</button>
+      </div>
+    </div>
+
+    <!-- Main Confirmation Card -->
+    <div class="confirm-card">
+      
+      <!-- Animated Check Icon -->
+      <div class="icon-wrapper">
+        <div class="success-badge">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Header Title & Subtitle -->
+      <div class="confirm-header">
+        <h1 class="confirm-title" id="t-heading">Запись подтверждена! ✨</h1>
+        <p class="confirm-subtitle" id="t-subheading">
+          Спасибо, <span class="highlight-guest">{{ client_name }}</span>! Ваша заявка успешно зафиксирована.
+        </p>
+      </div>
+
+      <!-- Booking Reference ID -->
+      <div class="ref-container">
+        <div class="ref-pill">
+          <span id="t-ref-label">НОМЕР БРОНИ:</span>
+          <strong>{{ booking_reference }}</strong>
+        </div>
+      </div>
+
+      <!-- Summary Details Grid -->
+      <div class="details-box">
+        <div class="detail-item">
+          <span class="detail-label" id="t-label-service">Выбранный ритуал</span>
+          <span class="detail-value gold" id="val-service">{{ service_name }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label" id="t-label-master">Мастер</span>
+          <span class="detail-value">Анна Колосова</span>
+          <span class="detail-sub" id="t-master-sub">Основатель (авторская техника)</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label" id="t-label-date">Дата сеанса</span>
+          <span class="detail-value" id="val-date">{{ booking_date_formatted }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label" id="t-label-time">Время</span>
+          <span class="detail-value" id="val-time">{{ booking_time }} (GMT+4)</span>
+        </div>
+
+        <div class="detail-item full-width">
+          <span class="detail-label" id="t-label-address">Адрес студии</span>
+          <span class="detail-value" id="val-address">{{ salon_address }}</span>
+          <span class="detail-sub" id="t-address-sub">Студия массажа TOCHKA • Батуми</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions-heading" id="t-actions-heading">Сохранить и связаться</div>
+      <div class="actions-list">
+        
+        <!-- 1. Google Calendar Integration -->
+        <a href="{{ gcal_url }}" target="_blank" rel="noopener" class="btn-action-primary" id="btn-gcal">
+          <!-- Google Calendar Icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/>
+          </svg>
+          <span id="t-btn-gcal">Добавить в Google Календарь</span>
+        </a>
+
+        <!-- 2. Additional Quick Links Grid -->
+        <div class="messenger-grid">
+          <!-- iCal Download -->
+          <button type="button" class="btn-action-secondary ical" onclick="downloadICal()" id="btn-ical">
+            📅 <span id="t-btn-ical">Apple / iCal (.ics)</span>
+          </button>
+
+          <!-- Google Maps Navigation -->
+          <a href="{{ salon_gmaps }}" target="_blank" rel="noopener" class="btn-action-secondary gmaps" id="btn-maps">
+            🗺️ <span id="t-btn-maps">Google Карты</span>
+          </a>
+
+          <!-- WhatsApp Direct Chat -->
+          <a href="{{ direct_wa_url }}" target="_blank" rel="noopener" class="btn-action-secondary wa" id="btn-wa">
+            💬 <span>WhatsApp</span>
+          </a>
+
+          <!-- Telegram Direct Chat -->
+          <a href="{{ direct_tg_url }}" target="_blank" rel="noopener" class="btn-action-secondary tg" id="btn-tg">
+            ✈️ <span>Telegram</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Guidelines Notice -->
+      <div class="guidelines-box">
+        <div class="guidelines-title">
+          <span>🌿</span> <span id="t-guide-title">Памятка гостя</span>
+        </div>
+        <ul class="guidelines-list" id="guide-list">
+          <li id="t-guide-1">Пожалуйста, приходите за 5–10 минут до сеанса, чтобы спокойно переодеться и настроиться.</li>
+          <li id="t-guide-2">Мы используем органическое кокосовое масло или гипоаллергенный крем на ваш выбор.</li>
+          <li id="t-guide-3">После массажа вас ждет авторский чай или кофе и время для спокойного отдыха.</li>
+        </ul>
+      </div>
+
+      <!-- Return Link -->
+      <div class="footer-actions">
+        <a href="/" class="btn-back-home">
+          ← <span id="t-btn-home">Вернуться на главную TOCHKA</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Multilingual Dictionary & iCal Generator Script -->
+  <script>
+    const CONFIRM_I18N = {
+      ru: {
+        heading: "Запись подтверждена! ✨",
+        subheading: "Спасибо, <span class='highlight-guest'>{{ client_name }}</span>! Ваша заявка успешно зафиксирована.",
+        ref_label: "НОМЕР БРОНИ:",
+        label_service: "Выбранный ритуал",
+        label_master: "Мастер",
+        master_sub: "Основатель (авторская техника)",
+        label_date: "Дата сеанса",
+        label_time: "Время",
+        label_address: "Адрес студии",
+        address_sub: "Студия массажа TOCHKA • Батуми",
+        actions_heading: "Сохранить и связаться",
+        btn_gcal: "Добавить в Google Календарь",
+        btn_ical: "Apple / iCal (.ics)",
+        btn_maps: "Google Карты",
+        guide_title: "Памятка гостя",
+        guide_1: "Пожалуйста, приходите за 5–10 минут до сеанса, чтобы спокойно переодеться и настроиться.",
+        guide_2: "Мы используем органическое кокосовое масло или гипоаллергенный крем на ваш выбор.",
+        guide_3: "После массажа вас ждет авторский чай или кофе и время для спокойного отдыха.",
+        btn_home: "Вернуться на главную TOCHKA"
+      },
+      en: {
+        heading: "Booking Confirmed! ✨",
+        subheading: "Thank you, <span class='highlight-guest'>{{ client_name }}</span>! Your appointment has been recorded.",
+        ref_label: "BOOKING ID:",
+        label_service: "Selected Ritual",
+        label_master: "Therapist",
+        master_sub: "Founder (Continuous-Contact Flow)",
+        label_date: "Session Date",
+        label_time: "Time",
+        label_address: "Sanctuary Address",
+        address_sub: "TOCHKA Massage Sanctuary • Batumi",
+        actions_heading: "Save & Connect",
+        btn_gcal: "Add to Google Calendar",
+        btn_ical: "Apple / iCal (.ics)",
+        btn_maps: "Google Maps",
+        guide_title: "Guest Guidelines",
+        guide_1: "Please arrive 5–10 minutes early to change comfortably and settle in.",
+        guide_2: "We use organic virgin coconut oil or delicate unscented cream according to your choice.",
+        guide_3: "Complimentary artisanal herbal tea or espresso is served after your therapy.",
+        btn_home: "Return to TOCHKA Home"
+      },
+      ka: {
+        heading: "ჯავშანი დადასტურებულია! ✨",
+        subheading: "გმადლობთ, <span class='highlight-guest'>{{ client_name }}</span>! თქვენი ვიზიტი წარმატებით დარეგისტრირდა.",
+        ref_label: "ჯავშნის კოდი:",
+        label_service: "არჩეული რიტუალი",
+        label_master: "მასტერი",
+        master_sub: "დამფუძნებელი ანა კოლოსოვა",
+        label_date: "ვიზიტის თარიღი",
+        label_time: "დრო",
+        label_address: "სტუდიის მისამართი",
+        address_sub: "მასაჟის სტუდია TOCHKA • ბათუმი",
+        actions_heading: "შენახვა და კონტაქტი",
+        btn_gcal: "Google კალენდარში დამატება",
+        btn_ical: "Apple / iCal (.ics)",
+        btn_maps: "Google რუკა",
+        guide_title: "სტუმრის წესები",
+        guide_1: "გთხოვთ მობრძანდეთ 5–10 წუთით ადრე მოსამზადებლად.",
+        guide_2: "პროცედურისთვის ვიყენებთ ორგანულ ქოქოსის ზეთს ან ჰიპოალერგიულ კრემს.",
+        guide_3: "მასაჟის შემდეგ გელით ავტორული ჩაი ან ყავა მშვიდ გარემოში.",
+        btn_home: "მთავარ გვერდზე დაბრუნება"
+      },
+      tr: {
+        heading: "Rezervasyon Onaylandı! ✨",
+        subheading: "Teşekkürler, <span class='highlight-guest'>{{ client_name }}</span>! Randevunuz başarıyla oluşturuldu.",
+        ref_label: "REZERVASYON NO:",
+        label_service: "Seçilen Masaj",
+        label_master: "Terapist",
+        master_sub: "Kurucu Anna Kolosova",
+        label_date: "Tarih",
+        label_time: "Saat",
+        label_address: "Stüdyo Adresi",
+        address_sub: "TOCHKA Masaj Stüdyosu • Batum",
+        actions_heading: "Kaydet ve İletişim",
+        btn_gcal: "Google Takvime Ekle",
+        btn_ical: "Apple / iCal (.ics)",
+        btn_maps: "Google Haritalar",
+        guide_title: "Misafir Rehberi",
+        guide_1: "Lütfen seansınızdan 5–10 dakika önce geliniz.",
+        guide_2: "Seanslarda organik hindistan cevizi yağı veya hipoalerjenik krem kullanılır.",
+        guide_3: "Masaj sonrası özel bitki çayı veya kahve ikramımız mevcuttur.",
+        btn_home: "TOCHKA Ana Sayfasına Dön"
+      }
+    };
+
+    function switchLang(lang) {
+      const texts = CONFIRM_I18N[lang] || CONFIRM_I18N.en;
+      document.getElementById('t-heading').innerHTML = texts.heading;
+      document.getElementById('t-subheading').innerHTML = texts.subheading;
+      document.getElementById('t-ref-label').innerText = texts.ref_label;
+      document.getElementById('t-label-service').innerText = texts.label_service;
+      document.getElementById('t-label-master').innerText = texts.label_master;
+      document.getElementById('t-master-sub').innerText = texts.master_sub;
+      document.getElementById('t-label-date').innerText = texts.label_date;
+      document.getElementById('t-label-time').innerText = texts.label_time;
+      document.getElementById('t-label-address').innerText = texts.label_address;
+      document.getElementById('t-address-sub').innerText = texts.address_sub;
+      document.getElementById('t-actions-heading').innerText = texts.actions_heading;
+      document.getElementById('t-btn-gcal').innerText = texts.btn_gcal;
+      document.getElementById('t-btn-ical').innerText = texts.btn_ical;
+      document.getElementById('t-btn-maps').innerText = texts.btn_maps;
+      document.getElementById('t-guide-title').innerText = texts.guide_title;
+      document.getElementById('t-guide-1').innerText = texts.guide_1;
+      document.getElementById('t-guide-2').innerText = texts.guide_2;
+      document.getElementById('t-guide-3').innerText = texts.guide_3;
+      document.getElementById('t-btn-home').innerText = texts.btn_home;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.trim().toLowerCase() === (lang === 'ka' ? 'ge' : lang));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // Update URL query param without reload
+      const url = new URL(window.location);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', url);
+      try { localStorage.setItem('tochka_lang', lang); } catch(e){}
+    }
+
+    // Initialize Language from query param or localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      let storedLang = 'ru';
+      try { storedLang = localStorage.getItem('tochka_lang'); } catch(e){}
+      const targetLang = urlLang || storedLang || '{{ current_lang|default:"ru" }}';
+      if (CONFIRM_I18N[targetLang] && targetLang !== 'ru') {
+        switchLang(targetLang);
+      }
+    });
+
+    // Generate and download .ics file for Apple Calendar / Outlook
+    function downloadICal() {
+      const bookingRef = "{{ booking_reference|escapejs }}";
+      const service = "{{ service_name|escapejs }}";
+      const address = "{{ salon_address|escapejs }}";
+      const dateIso = "{{ booking_date_iso|escapejs }}";
+      const timeStr = "{{ booking_time|escapejs }}";
+
+      const [year, month, day] = dateIso.split('-');
+      const [hour, min] = timeStr.split(':');
+
+      const dtStart = `${year}${month}${day}T${hour.padStart(2, '0')}${min.padStart(2, '0')}00`;
+      // Calculate +75 min for end
+      const endDate = new Date(year, month - 1, day, parseInt(hour), parseInt(min) + 75);
+      const endYear = endDate.getFullYear();
+      const endMonth = String(endDate.getMonth() + 1).padStart(2, '0');
+      const endDay = String(endDate.getDate()).padStart(2, '0');
+      const endHour = String(endDate.getHours()).padStart(2, '0');
+      const endMin = String(endDate.getMinutes()).padStart(2, '0');
+      const dtEnd = `${endYear}${endMonth}${endDay}T${endHour}${endMin}00`;
+
+      const icsContent = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//TOCHKA Massage Sanctuary//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `UID:${bookingRef}@tochkabatumi.ge`,
+        `DTSTAMP:${dtStart}Z`,
+        `DTSTART;TZID=Asia/Tbilisi:${dtStart}`,
+        `DTEND;TZID=Asia/Tbilisi:${dtEnd}`,
+        `SUMMARY:💆 TOCHKA Massage: ${service}`,
+        `DESCRIPTION:Сеанс массажа в студии TOCHKA Батуми.\\nРитуал: ${service}\\nМастер: Анна Колосова\\nБронь: ${bookingRef}\\nТел: +995 591 226 145`,
+        `LOCATION:${address}`,
+        "STATUS:CONFIRMED",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', `TOCHKA_Booking_${bookingRef}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

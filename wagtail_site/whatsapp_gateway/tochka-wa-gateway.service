@@ -1,0 +1,19 @@
+[Unit]
+Description=TOCHKA WhatsApp Multi-Device Gateway Daemon
+After=network.target tochka.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/tochka/whatsapp_gateway
+Environment="WA_GATEWAY_PORT=3001"
+Environment="WA_SESSION_DIR=/var/www/tochka/whatsapp_session"
+Environment="DJANGO_WEBHOOK_URL=http://127.0.0.1:8000/api/whatsapp/webhook/"
+ExecStart=/usr/bin/node /var/www/tochka/whatsapp_gateway/server.js
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/tochka_wa_gateway.log
+StandardError=append:/var/log/tochka_wa_gateway_error.log
+
+[Install]
+WantedBy=multi-user.target

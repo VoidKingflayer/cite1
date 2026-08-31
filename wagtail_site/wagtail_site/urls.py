@@ -8,10 +8,16 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from django.http import HttpResponse
 from django.views.generic.base import RedirectView
-from bookings.views import create_booking_api, get_available_slots_api, create_certificate_order_api
+from bookings.views import (
+    create_booking_api,
+    get_available_slots_api,
+    create_certificate_order_api,
+    booking_confirmation_view,
+)
 from bookings.ai_views import (
     telegram_webhook_view,
     whatsapp_webhook_view,
+    instagram_webhook_view,
     web_ai_chat_api_view,
     ai_status_api_view,
 )
@@ -65,9 +71,17 @@ urlpatterns = [
     path("api/bookings/available-slots/", get_available_slots_api, name="api_available_slots"),
     path("api/bookings/slots/", get_available_slots_api, name="api_slots"),
     path("api/certificates/order/", create_certificate_order_api, name="api_certificate_order"),
+    # Booking Confirmation / Thank You Page (Google Ads, GA4, Meta & Yandex Conversions)
+    path("booking/confirmed/", booking_confirmation_view, name="booking_confirmed"),
+    path("booking-confirmation/", booking_confirmation_view, name="booking_confirmation_alias"),
+    path("booking/success/", booking_confirmation_view, name="booking_success_alias"),
+    path("thanks/", booking_confirmation_view, name="booking_thanks_alias"),
     # AI Administrator Multi-Channel Endpoints
     path("api/ai/telegram/webhook/", telegram_webhook_view, name="api_ai_telegram_webhook"),
     path("api/ai/whatsapp/webhook/", whatsapp_webhook_view, name="api_ai_whatsapp_webhook"),
+    path("api/whatsapp/webhook/", whatsapp_webhook_view, name="api_whatsapp_webhook_alias"),
+    path("api/ai/instagram/webhook/", instagram_webhook_view, name="api_ai_instagram_webhook"),
+    path("api/instagram/webhook/", instagram_webhook_view, name="api_instagram_webhook_alias"),
     path("api/ai/chat/", web_ai_chat_api_view, name="api_ai_chat"),
     path("api/ai/status/", ai_status_api_view, name="api_ai_status"),
 ]

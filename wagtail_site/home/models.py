@@ -41,7 +41,9 @@ DEFAULT_SYSTEM_PROMPT_TEXT = """Ты — заботливый, экспертн�
 - В студии ровно 4 вида массажа тела по единой стоимости: 60 мин — 120 GEL ($45), 90 мин — 170 GEL ($65).
 - 🕒 ВАЖНО: ВСЕГДА, когда речь заходит о записи, свободных окнах или когда клиент упоминает относительные даты ("сегодня", "завтра", "в эту субботу", "через пару часов"), ПЕРВЫМ ДЕЛОМ вызови инструмент `get_current_datetime`, чтобы узнать точную дату, время и день недели в Батуми. Никогда не угадывай дату без вызова `get_current_datetime`!
 - При запросе о свободных окнах ОБЯЗАТЕЛЬНО используй инструмент `check_available_slots` с вычисленной точной датой (YYYY-MM-DD).
-- При просьбе записаться запрашивай имя, телефон, желаемый массаж, дату и время, а затем вызывай инструмент `create_booking_in_db`.
+- ✍️ ПРАВИЛО ОФОРМЛЕНИЯ ЗАПИСИ (`create_booking_in_db`):
+  1. Чтобы оформить бронь в базе данных, тебе обязательно нужны: ИМЯ гостя, его КОНТАКТНЫЙ ТЕЛЕФОН, название ритуала, дата и время.
+  2. Запрещено вызывать `create_booking_in_db` с пустым телефоном или именем "Гость"! Если клиент написал только время (например "Запиши на завтра на 15:00"), сначала проверь свободные слоты через `check_available_slots`, подтверди наличие окошка и вежливо спроси: «Свободный слот есть! Подскажите, пожалуйста, ваше имя и номер телефона для подтверждения записи? 🌿». И только после ответа гостя вызывай `create_booking_in_db`.
 - При вопросах о текущих записях используй `get_client_bookings`.
 
 Правила общения:
@@ -145,7 +147,14 @@ class AISettings(BaseGenericSetting):
     whatsapp_greenapi_instance = models.CharField("Green API Instance ID", max_length=100, blank=True)
     whatsapp_greenapi_token = models.CharField("Green API Token", max_length=150, blank=True)
 
-    # 5. Loyalty & Promotions
+    # 5. Instagram Direct Integration
+    instagram_enabled = models.BooleanField("Включить бота в Instagram Direct", default=True)
+    instagram_account_name = models.CharField("Instagram аккаунт студии", max_length=100, blank=True, default="@tochka.batumi", help_text="Username аккаунта студии (например @tochka.batumi)")
+    instagram_access_token = models.CharField("Instagram Page Access Token", max_length=300, blank=True, help_text="Токен от Meta Graph API / Facebook Developer App")
+    instagram_page_id = models.CharField("Instagram Account / Page ID", max_length=100, blank=True, help_text="ID страницы Facebook или ID аккаунта Instagram")
+    instagram_verify_token = models.CharField("Instagram Webhook Verify Token", max_length=100, default="tochka_ig_verify_token", help_text="Секретный токен для проверки Webhook в Meta Developers")
+
+    # 6. Loyalty & Promotions
     first_visit_discount = models.CharField("Скидка на первый визит", max_length=50, default="10%")
     first_visit_code = models.CharField("Промокод на первый визит", max_length=50, default="FIRST10")
 
@@ -188,6 +197,16 @@ class AISettings(BaseGenericSetting):
                 FieldPanel("whatsapp_greenapi_token"),
             ],
             heading="💬 04. Подключение Telegram, WhatsApp и Права Администраторов",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("instagram_enabled"),
+                FieldPanel("instagram_account_name"),
+                FieldPanel("instagram_access_token"),
+                FieldPanel("instagram_page_id"),
+                FieldPanel("instagram_verify_token"),
+            ],
+            heading="📸 05. Подключение Instagram Direct (Meta Graph API)",
         ),
     ]
 

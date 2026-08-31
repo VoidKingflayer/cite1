@@ -1,0 +1,909 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags %}
+
+{% block titletag %}📅 Расписание и календарь записей — TOCHKA{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<style>
+  :root {
+    --tochka-emerald: #059669;
+    --tochka-dark: #111827;
+    --tochka-accent: #0284c7;
+    --tochka-gold: #d97706;
+  }
+
+  .schedule-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+    font-family: inherit;
+  }
+
+  /* Header & Navigation */
+  .schedule-header {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .schedule-title-area h1 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .schedule-title-area p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  .date-nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .nav-btn:hover {
+    background: #e5e7eb;
+    color: #111827;
+    transform: translateY(-1px);
+  }
+
+  .nav-btn.active {
+    background: #111827;
+    color: #ffffff;
+    border-color: #111827;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .date-picker-input {
+    padding: 8px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111827;
+    background: #ffffff;
+    outline: none;
+    cursor: pointer;
+  }
+
+  /* Metric summary cards */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .metric-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  .metric-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .metric-val {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.1;
+  }
+
+  .metric-lbl {
+    font-size: 0.82rem;
+    color: #6b7280;
+    font-weight: 600;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Timeline Grid */
+  .timeline-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    margin-bottom: 32px;
+  }
+
+  .timeline-header {
+    background: #f9fafb;
+    padding: 18px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .timeline-header h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .slot-row {
+    display: flex;
+    border-bottom: 1px solid #f3f4f6;
+    min-height: 72px;
+    transition: background 0.15s ease;
+  }
+
+  .slot-row:last-child {
+    border-bottom: none;
+  }
+
+  .slot-row:hover {
+    background: #fafafa;
+  }
+
+  .slot-time {
+    width: 100px;
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1f2937;
+    background: #fdfdfd;
+    border-right: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .slot-time small {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #9ca3af;
+  }
+
+  .slot-content {
+    flex: 1;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Booking Item in Slot */
+  .booking-entry {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-left: 5px solid #16a34a;
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    transition: all 0.2s ease;
+  }
+
+  .booking-entry.pending {
+    border-left-color: #d97706;
+    background: #fffbeb;
+  }
+
+  .booking-entry.confirmed {
+    border-left-color: #16a34a;
+    background: #f0fdf4;
+  }
+
+  .booking-entry.completed {
+    border-left-color: #2563eb;
+    background: #eff6ff;
+  }
+
+  .booking-entry.cancelled {
+    border-left-color: #dc2626;
+    background: #fef2f2;
+    opacity: 0.7;
+  }
+
+  .b-client-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .b-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #111827;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .b-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+  }
+
+  .b-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin-top: 2px;
+  }
+
+  .b-service {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .b-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s ease;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .btn-confirm { background: #16a34a; color: #fff; }
+  .btn-complete { background: #2563eb; color: #fff; }
+  .btn-cancel { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+  .btn-edit { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+  .btn-wa { background: #25D366; color: #fff; }
+
+  /* Free Slot */
+  .free-slot-state {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .free-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #059669;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .btn-quick-add {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px dashed #6ee7b7;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-quick-add:hover {
+    background: #059669;
+    color: #ffffff;
+    border-style: solid;
+  }
+
+  .btn-block-slot {
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid transparent;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-block-slot:hover {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  /* Blocked Slot */
+  .blocked-slot-state {
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 10px 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #6b7280;
+    font-size: 0.88rem;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+  }
+
+  .modal-box {
+    background: #ffffff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 520px;
+    padding: 28px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: modalIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #111827;
+  }
+
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #9ca3af;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #374151;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .form-control:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  /* Toast Notification */
+  .toast-box {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #111827;
+    color: #ffffff;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    animation: toastUp 0.3s ease;
+  }
+
+  @keyframes toastUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="schedule-container">
+  
+  <!-- Header with Date Controls -->
+  <div class="schedule-header">
+    <div class="schedule-title-area">
+      <h1>📅 Расписание и календарь записей</h1>
+      <p>Студия массажа TOCHKA (Батуми) • <strong>{{ date_formatted }}</strong></p>
+    </div>
+
+    <div class="date-nav-controls">
+      <a href="?date={{ yesterday_str }}" class="nav-btn" title="Предыдущий день">◀ Вчера</a>
+      <a href="?date={{ today_str }}" class="nav-btn {% if is_today %}active{% endif %}">📅 Сегодня</a>
+      <a href="?date={{ tomorrow_str }}" class="nav-btn {% if target_date_str == tomorrow_str %}active{% endif %}">⚡ Завтра</a>
+      
+      <form method="GET" action="" style="display: inline-flex; align-items: center; gap: 6px;">
+        <input type="date" name="date" value="{{ target_date_str }}" class="date-picker-input" onchange="this.form.submit()" />
+      </form>
+
+      <a href="?date={{ next_week_str }}" class="nav-btn" title="Через неделю">+7 дней ▶</a>
+      <button onclick="openNewBookingModal('{{ target_date_str }}', '12:00')" class="nav-btn" style="background: #059669; color: #fff; border-color: #059669;">➕ Записать гостя</button>
+    </div>
+  </div>
+
+  <!-- Summary Statistics Cards for Selected Date -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon" style="background: #e0f2fe; color: #0284c7;">📅</div>
+      <div>
+        <div class="metric-val">{{ total_count }}</div>
+        <div class="metric-lbl">Всего записей на дату</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon" style="background: #fef3c7; color: #d97706;">⏳</div>
+      <div>
+        <div class="metric-val" style="color: #d97706;">{{ pending_count }}</div>
+        <div class="metric-lbl">Ожидают подтверждения</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon" style="background: #dcfce7; color: #16a34a;">✅</div>
+      <div>
+        <div class="metric-val" style="color: #16a34a;">{{ confirmed_count }}</div>
+        <div class="metric-lbl">Подтверждено</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon" style="background: #f3e8ff; color: #9333ea;">💰</div>
+      <div>
+        <div class="metric-val" style="color: #7e22ce;">{{ est_revenue }} ₾</div>
+        <div class="metric-lbl">Ожидаемая выручка дня</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day Timeline Grid -->
+  <div class="timeline-card">
+    <div class="timeline-header">
+      <h2>⏰ Почасовой график работы студии (09:00 – 23:00)</h2>
+      <div style="display: flex; gap: 8px;">
+        {% if is_day_blocked %}
+          <button onclick="toggleBlockDay('{{ target_date_str }}', 'unblock', '{{ day_block_obj.id }}')" class="action-btn" style="background: #16a34a; color: #fff;">🔓 Открыть рабочий день</button>
+        {% else %}
+          <button onclick="toggleBlockDay('{{ target_date_str }}', 'block')" class="action-btn btn-cancel">⛔ Закрыть весь день (Выходной)</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="timeline-body">
+      {% for slot in timeline %}
+        <div class="slot-row" id="slot-row-{{ slot.time|cut:':' }}">
+          <div class="slot-time">
+            <span>{{ slot.time }}</span>
+            <small>60-90м</small>
+          </div>
+
+          <div class="slot-content">
+            {% if slot.is_blocked %}
+              <div class="blocked-slot-state">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 1.1rem;">⛔</span>
+                  <strong>Заблокировано:</strong> {{ slot.block_obj.reason|default:"Перерыв / Выходной" }}
+                </div>
+                <button onclick="toggleBlockSlot('{{ target_date_str }}', '{{ slot.time }}', 'unblock', '{{ slot.block_obj.id }}')" class="action-btn btn-edit">🔓 Разблокировать</button>
+              </div>
+
+            {% elif slot.bookings %}
+              {% for b in slot.bookings %}
+                <div class="booking-entry {{ b.status }}" id="booking-card-{{ b.id }}">
+                  <div class="b-client-info">
+                    <div class="b-avatar">{{ b.client_name|slice:":1"|upper }}</div>
+                    <div>
+                      <div class="b-name">{{ b.client_name }}</div>
+                      <div class="b-contact">
+                        <a href="tel:{{ b.client_phone }}" style="color: #4b5563; text-decoration: none; font-weight: 600;">📞 {{ b.client_phone }}</a>
+                        <a href="https://wa.me/{{ b.client_phone|cut:'+'|cut:' '|cut:'-' }}" target="_blank" class="action-btn btn-wa" style="padding: 2px 7px; font-size: 0.72rem;">💬 WhatsApp</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="b-service">💆 {{ b.service_name|default:"Массаж" }}</div>
+                    {% if b.notes %}
+                      <div style="font-size: 0.78rem; color: #6b7280; margin-top: 2px; max-width: 260px;">📝 {{ b.notes }}</div>
+                    {% endif %}
+                  </div>
+
+                  <div>
+                    {{ b.status_badge }}
+                  </div>
+
+                  <div class="b-actions">
+                    {% if b.status == 'pending' %}
+                      <button onclick="quickUpdateStatus({{ b.id }}, 'confirmed')" class="action-btn btn-confirm">✅ Подтвердить</button>
+                    {% endif %}
+                    {% if b.status != 'completed' and b.status != 'cancelled' %}
+                      <button onclick="quickUpdateStatus({{ b.id }}, 'completed')" class="action-btn btn-complete">✨ Завершить</button>
+                    {% endif %}
+                    {% if b.status != 'cancelled' %}
+                      <button onclick="quickUpdateStatus({{ b.id }}, 'cancelled')" class="action-btn btn-cancel" title="Отменить">❌</button>
+                    {% endif %}
+                    <a href="/admin/snippets/bookings/booking/{{ b.id }}/" class="action-btn btn-edit">✏️ Редактировать</a>
+                  </div>
+                </div>
+              {% endfor %}
+
+            {% else %}
+              <div class="free-slot-state">
+                <div class="free-badge">
+                  <span style="font-size: 1.1rem;">🟢</span>
+                  <span>Свободный слот</span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button onclick="openNewBookingModal('{{ target_date_str }}', '{{ slot.time }}')" class="btn-quick-add">➕ Быстрая запись</button>
+                  <button onclick="toggleBlockSlot('{{ target_date_str }}', '{{ slot.time }}', 'block')" class="btn-block-slot">⛔ Закрыть слот</button>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Recent Bookings Fast Table -->
+  <div class="timeline-card">
+    <div class="timeline-header">
+      <h2>📋 Последние полученные онлайн-записи</h2>
+      <a href="{% url 'wagtailsnippets_bookings_booking:list' %}" class="nav-btn">Открыть полную таблицу записей →</a>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb; text-align: left;">
+            <th style="padding: 12px 18px; color: #4b5563; font-weight: 700;">ID</th>
+            <th style="padding: 12px 18px; color: #4b5563; font-weight: 700;">Гость / Контакты</th>
+            <th style="padding: 12px 18px; color: #4b5563; font-weight: 700;">Процедура</th>
+            <th style="padding: 12px 18px; color: #4b5563; font-weight: 700;">Дата и время</th>
+            <th style="padding: 12px 18px; color: #4b5563; font-weight: 700;">Статус</th>
+            <th style="padding: 12px 18px; color: #4b5563; font-weight: 700;">Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for b in recent_bookings %}
+            <tr style="border-bottom: 1px solid #f3f4f6;">
+              <td style="padding: 14px 18px; font-weight: 700; color: #6b7280;">#{{ b.id }}</td>
+              <td style="padding: 14px 18px;">{{ b.client_card_html }}</td>
+              <td style="padding: 14px 18px;">{{ b.service_badge_html }}</td>
+              <td style="padding: 14px 18px;">{{ b.datetime_badge_html }}</td>
+              <td style="padding: 14px 18px;">{{ b.status_badge }}</td>
+              <td style="padding: 14px 18px;">{{ b.quick_actions_html }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- Quick Booking Modal -->
+<div class="modal-overlay" id="quickBookingModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>➕ Быстрая запись клиента</h3>
+      <button class="modal-close" onclick="closeModal('quickBookingModal')">×</button>
+    </div>
+
+    <form id="quickBookingForm" onsubmit="submitQuickBooking(event)">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>Имя клиента *</label>
+        <input type="text" name="client_name" class="form-control" placeholder="Например: Мария" required />
+      </div>
+
+      <div class="form-group">
+        <label>Телефон / WhatsApp *</label>
+        <input type="text" name="client_phone" class="form-control" placeholder="+995 591 226 145" required />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label>Дата визита *</label>
+          <input type="date" name="booking_date" id="modalDate" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>Время *</label>
+          <input type="text" name="booking_time" id="modalTime" class="form-control" placeholder="14:00" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Ритуал массажа</label>
+        <select name="service_id" class="form-control">
+          {% for r in rituals %}
+            <option value="{{ r.id }}">💆 {{ r.name_ru|default:r.name }} ({{ r.price_1 }} / {{ r.price_2 }})</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Пожелания / Комментарий</label>
+        <textarea name="notes" class="form-control" rows="2" placeholder="Особые пожелания или детали"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="action-btn btn-edit" onclick="closeModal('quickBookingModal')">Отмена</button>
+        <button type="submit" class="action-btn btn-confirm" style="padding: 10px 20px; font-size: 0.9rem;">💾 Сохранить запись</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Message Container -->
+<div class="toast-box" id="toastMsg"></div>
+
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  function showToast(msg, icon = '✅') {
+    const toast = document.getElementById('toastMsg');
+    toast.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+    toast.style.display = 'flex';
+    setTimeout(() => { toast.style.display = 'none'; }, 3500);
+  }
+
+  function quickUpdateStatus(bookingId, newStatus, evt) {
+    if (evt) evt.preventDefault();
+    const csrftoken = getCookie('csrftoken');
+
+    fetch('/admin/schedule/api/status/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken,
+      },
+      body: new URLSearchParams({
+        'booking_id': bookingId,
+        'status': newStatus
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        showToast(`Статус записи #${bookingId} успешно изменен на: ${data.status_display}`);
+        setTimeout(() => { window.location.reload(); }, 600);
+      } else {
+        alert('Ошибка: ' + (data.error || 'Не удалось обновить'));
+      }
+    })
+    .catch(err => {
+      alert('Ошибка запроса: ' + err);
+    });
+  }
+
+  function openNewBookingModal(dateVal, timeVal) {
+    document.getElementById('modalDate').value = dateVal;
+    document.getElementById('modalTime').value = timeVal;
+    document.getElementById('quickBookingModal').style.display = 'flex';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  function submitQuickBooking(e) {
+    e.preventDefault();
+    const form = document.getElementById('quickBookingForm');
+    const formData = new FormData(form);
+    const csrftoken = getCookie('csrftoken');
+
+    fetch('/admin/schedule/api/quick-create/', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,
+      },
+      body: formData,
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        closeModal('quickBookingModal');
+        showToast(data.message);
+        setTimeout(() => { window.location.reload(); }, 600);
+      } else {
+        alert('Ошибка: ' + (data.error || 'Не удалось создать'));
+      }
+    })
+    .catch(err => alert('Ошибка сети: ' + err));
+  }
+
+  function toggleBlockSlot(dateVal, timeVal, action, slotId) {
+    const csrftoken = getCookie('csrftoken');
+    let reason = 'Перерыв / Занято';
+    if (action === 'block') {
+      reason = prompt('Укажите причину блокировки слота ' + timeVal + ':', 'Перерыв / Личные дела');
+      if (reason === null) return;
+    }
+
+    fetch('/admin/schedule/api/toggle-block/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken,
+      },
+      body: new URLSearchParams({
+        'action': action,
+        'date': dateVal,
+        'time_slot': timeVal,
+        'reason': reason || 'Занято',
+        'slot_id': slotId || ''
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        showToast(data.message);
+        setTimeout(() => { window.location.reload(); }, 600);
+      } else {
+        alert('Ошибка: ' + (data.error || 'Ошибка блокировки'));
+      }
+    });
+  }
+
+  function toggleBlockDay(dateVal, action, slotId) {
+    const csrftoken = getCookie('csrftoken');
+    let reason = 'Выходной день';
+    if (action === 'block') {
+      reason = prompt('Укажите причину закрытия дня ' + dateVal + ':', 'Выходной день');
+      if (reason === null) return;
+    }
+
+    fetch('/admin/schedule/api/toggle-block/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken,
+      },
+      body: new URLSearchParams({
+        'action': action,
+        'date': dateVal,
+        'time_slot': 'ALL_DAY',
+        'reason': reason || 'Выходной',
+        'slot_id': slotId || ''
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        showToast(data.message);
+        setTimeout(() => { window.location.reload(); }, 600);
+      } else {
+        alert('Ошибка: ' + (data.error || 'Ошибка блокировки дня'));
+      }
+    });
+  }
+</script>
+{% endblock %}
