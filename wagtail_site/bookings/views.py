@@ -11,6 +11,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
 from home.models import Ritual, HomePage
 from .models import Booking, BlockedTimeSlot
+from .notifications import (
+    send_booking_whatsapp_alert,
+    notify_master_whatsapp,
+    format_certificate_notification,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -103,58 +108,11 @@ def get_available_slots_api(request):
 
 def send_callmebot_notification(booking, homepage=None):
     """
-    Sends an automated notification directly to the master's WhatsApp via CallMeBot API.
-    100% free and instant.
+    Sends an automated notification directly to the master's WhatsApp.
+    Uses unified multi-channel notifications (CallMeBot + WhatsApp Gateway).
     """
-    if not homepage:
-        homepage = HomePage.objects.first()
-    if not homepage:
-        return False
-
-    phone = (homepage.whatsapp_notify_phone or "").strip()
-    apikey = (homepage.whatsapp_notify_apikey or "").strip()
-
-    if not phone or not apikey:
-        logger.info("CallMeBot: whatsapp_notify_phone or whatsapp_notify_apikey is not configured in Wagtail.")
-        return False
-
-    # Normalize master phone: digits only (e.g. 995591226145)
-    clean_master_phone = re.sub(r"[^\d]", "", phone)
-
-    clean_client_phone = re.sub(r"[^\d]", "", booking.client_phone)
-
-    # Format notification message
-    lines = [
-        "🔔 *НОВАЯ ЗАПИСЬ В TOCHKA!*",
-        "",
-        f"👤 *Имя:* {booking.client_name}",
-        f"📞 *Телефон:* {booking.client_phone}",
-        f"💆 *Ритуал:* {booking.service_name or 'Не указан'}",
-        f"📅 *Дата:* {booking.booking_date}",
-        f"⏰ *Время:* {booking.booking_time or 'Не указано'}",
-        f"📝 *Пожелания:* {booking.notes or '—'}",
-        "",
-        f"💬 *Написать клиенту в WhatsApp:*",
-        f"https://wa.me/{clean_client_phone}",
-    ]
-    message_text = "\n".join(lines)
-    encoded_text = urllib.parse.quote(message_text)
-
-    # CallMeBot WhatsApp API Endpoint
-    url = f"https://api.callmebot.com/whatsapp.php?phone={urllib.parse.quote(clean_master_phone)}&text={encoded_text}&apikey={apikey}"
-
-    try:
-        req = urllib.request.Request(
-            url,
-            headers={"User-Agent": "TOCHKA-Sanctuary-Booking/1.0"},
-        )
-        with urllib.request.urlopen(req, timeout=4) as response:
-            res_body = response.read().decode("utf-8", errors="ignore")
-            logger.info("CallMeBot notification sent: %s", res_body)
-            return True
-    except Exception as err:
-        logger.error("CallMeBot notification failed: %s", err)
-        return False
+    res = send_booking_whatsapp_alert(booking, source="🌐 Онлайн-форма сайта")
+    return res.get("success", False)
 
 
 @csrf_exempt
@@ -303,38 +261,19 @@ def create_certificate_order_api(request):
 
         homepage = HomePage.objects.first()
 
-        # Send CallMeBot WhatsApp notification to Master
-        wa_sent = False
-        try:
-            if homepage:
-                phone = (homepage.whatsapp_notify_phone or "").strip()
-                apikey = (homepage.whatsapp_notify_apikey or "").strip()
-                if phone and apikey:
-                    clean_master_phone = re.sub(r"[^\d]", "", phone)
-                    clean_buyer_phone = re.sub(r"[^\d]", "", buyer_phone)
-                    lines = [
-                        "🎁 *НОВЫЙ ЗАКАЗ ПОДАРОЧНОГО СЕРТИФИКАТА В TOCHKA!*",
-                        "",
-                        f"💰 *Сертификат:* {cert_value}",
-                        f"👤 *Покупатель:* {buyer_name}",
-                        f"📞 *Телефон:* {buyer_phone}",
-                        f"🎀 *Получатель:* {recipient_name or 'Не указан'}",
-                        f"📦 *Формат:* {delivery_type}",
-                        f"💌 *Пожелания:* {wishes or '—'}",
-                        "",
-                        f"💬 *Написать покупателю в WhatsApp:*",
-                        f"https://wa.me/{clean_buyer_phone}",
-                    ]
-                    msg_text = "\n".join(lines)
-                    encoded_text = urllib.parse.quote(msg_text)
-                    url = f"https://api.callmebot.com/whatsapp.php?phone={urllib.parse.quote(clean_master_phone)}&text={encoded_text}&apikey={apikey}"
-                    req = urllib.request.Request(url, headers={"User-Agent": "TOCHKA-Sanctuary-Booking/1.0"})
-                    with urllib.request.urlopen(req, timeout=4) as response:
-                        res_body = response.read().decode("utf-8", errors="ignore")
-                        logger.info("CallMeBot certificate notification sent: %s", res_body)
-                        wa_sent = True
-        except Exception as e:
-            logger.error("Error sending CallMeBot notification for certificate: %s", e)
+        # Send WhatsApp notification to Master
+        cert_msg = format_certificate_notification(
+            buyer_name=buyer_name,
+            buyer_phone=buyer_phone,
+            cert_value=cert_value,
+            recipient_name=recipient_name,
+            delivery_type=delivery_type,
+            wishes=wishes,
+            booking_id=booking.id,
+            source="🎁 Заказ сертификата на сайте"
+        )
+        wa_res = notify_master_whatsapp(cert_msg)
+        wa_sent = wa_res.get("success", False)
 
         # Prepare direct chat link for client (Click-to-Chat with salon)
         salon_whatsapp = (homepage.loc_whatsapp_url if homepage else "https://wa.me/message/vopznnayguwab1")

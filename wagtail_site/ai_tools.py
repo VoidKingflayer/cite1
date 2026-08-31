@@ -431,6 +431,21 @@ def handle_create_booking(
             booking_id = cur.lastrowid
             conn.commit()
 
+            # Trigger instant WhatsApp notification to master
+            try:
+                from bookings.notifications import send_booking_whatsapp_alert
+                send_booking_whatsapp_alert({
+                    "id": booking_id,
+                    "client_name": clean_n,
+                    "client_phone": clean_p,
+                    "service_name": ritual_name.strip(),
+                    "booking_date": date.strip(),
+                    "booking_time": time.strip(),
+                    "notes": notes.strip(),
+                }, source="🤖 ИИ-администратор (Чат/Мессенджер)")
+            except Exception as notify_err:
+                logger.error("Failed to send WhatsApp notification from AI tool: %s", notify_err)
+
             return {
                 "status": "success",
                 "booking_id": booking_id,
