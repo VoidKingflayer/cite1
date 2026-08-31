@@ -94,6 +94,9 @@ class TelegramClient:
             except Exception:
                 return {"ok": False, "error_code": err.code, "description": err_body}
         except Exception as e:
+            if method == "getUpdates" and "timed out" in str(e).lower():
+                logger.debug(f"Telegram long-poll timeout (no new updates): {e}")
+                return {"ok": True, "result": []}
             logger.error(f"Telegram API network exception on {method}: {e}")
             return {"ok": False, "description": str(e)}
 
