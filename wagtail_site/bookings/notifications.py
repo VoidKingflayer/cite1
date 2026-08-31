@@ -144,11 +144,41 @@ def send_callmebot_whatsapp(phone: str, text: str, apikey: str) -> bool:
         )
         with urllib.request.urlopen(req, timeout=8) as response:
             res_body = response.read().decode("utf-8", errors="ignore")
+            lower_body = res_body.lower()
+            if "paused" in lower_body:
+                logger.warning(
+                    "⚠️ CallMeBot Account is PAUSED for +%s. Please send 'resume' to +34 623 78 95 80 on WhatsApp.",
+                    digits_phone
+                )
+                return False
+            if "invalid" in lower_body or "not authorized" in lower_body:
+                logger.warning("⚠️ CallMeBot Invalid API key for +%s: %s", digits_phone, res_body)
+                return False
+
             logger.info("CallMeBot WhatsApp notification sent to +%s: %s", digits_phone, res_body[:100])
             return True
     except Exception as e:
         logger.error("CallMeBot WhatsApp send error for +%s: %s", digits_phone, e)
         return False
+
+
+def send_telegram_admin_alert(text: str) -> bool:
+    """
+    Sends duplicate notification to Telegram Admin(s) if configured.
+    """
+    try:
+        from home.models import AISettings
+        from telegram_adapter import TelegramClient
+        ai = AISettings.load()
+        token = getattr(ai, "telegram_bot_token", None) or os.getenv("TELEGRAM_BOT_TOKEN")
+        admin_chat_id = os.getenv("TELEGRAM_ADMIN_CHAT_ID")
+        if token and admin_chat_id:
+            client = TelegramClient(token)
+            res = client.send_message(chat_id=admin_chat_id, text=text, parse_mode="HTML")
+            return res.get("ok", False)
+    except Exception as e:
+        logger.debug("Telegram admin alert not sent: %s", e)
+    return False
 
 
 def send_gateway_whatsapp(phone: str, text: str) -> bool:
@@ -232,12 +262,16 @@ def notify_master_whatsapp(message_text: str) -> Dict[str, Any]:
         # Try Gateway / Green API
         sent_gateway = send_gateway_whatsapp(phone, message_text)
 
-        success = sent_callmebot or sent_gateway
+        # Try Telegram fallback
+        sent_tg = send_telegram_admin_alert(message_text)
+
+        success = sent_callmebot or sent_gateway or sent_tg
         results.append({
             "phone": phone,
             "success": success,
             "callmebot": sent_callmebot,
-            "gateway": sent_gateway
+            "gateway": sent_gateway,
+            "telegram": sent_tg,
         })
 
     return {
