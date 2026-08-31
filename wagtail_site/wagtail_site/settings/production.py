@@ -26,6 +26,12 @@ from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
 class NonStrictManifestStaticFilesStorage(ManifestStaticFilesStorage):
     manifest_strict = False
 
+    def stored_name(self, name):
+        try:
+            return super().stored_name(name)
+        except ValueError:
+            return name
+
 
 STORAGES = {
     "default": {
