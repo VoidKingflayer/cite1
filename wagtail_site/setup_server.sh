@@ -98,6 +98,18 @@ server {
         add_header Cache-Control "public, no-transform";
     }
 
+    location ^~ /whatsapp/ {
+        proxy_pass http://127.0.0.1:3001/;
+        include proxy_params;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+    location = /whatsapp {
+        return 301 https://$host/whatsapp/;
+    }
+
     location / {
         include proxy_params;
         proxy_pass http://127.0.0.1:8000;
