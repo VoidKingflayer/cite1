@@ -325,7 +325,7 @@ app.post('/api/reset', (req, res) => {
 });
 
 // QR Code & Pairing Code Web Page
-app.get('/qr', (req, res) => {
+app.get(['/', '/qr', '/whatsapp', '/whatsapp/qr'], (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html lang="ru">
