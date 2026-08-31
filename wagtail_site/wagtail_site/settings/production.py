@@ -20,11 +20,21 @@ CSRF_TRUSTED_ORIGINS = [
     "http://www.tochkabatumi.ge",
 ]
 
-# ManifestStaticFilesStorage is recommended in production, to prevent
-# outdated JavaScript / CSS assets being served from cache
-# (e.g. after a Wagtail upgrade).
-# See https://docs.djangoproject.com/en/6.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
+
+
+class NonStrictManifestStaticFilesStorage(ManifestStaticFilesStorage):
+    manifest_strict = False
+
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "wagtail_site.settings.production.NonStrictManifestStaticFilesStorage",
+    },
+}
 
 try:
     from .local import *

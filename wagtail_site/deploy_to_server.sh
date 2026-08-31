@@ -14,7 +14,7 @@ echo "📦 1. Creating target directory on server..."
 ssh -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_IP" "mkdir -p $TARGET_DIR"
 
 echo "📤 2. Uploading project files to server..."
-rsync -avz --exclude='venv' --exclude='__pycache__' --exclude='.git' --exclude='db.sqlite3' --exclude='*.backup' \
+rsync -avz --exclude='venv' --exclude='__pycache__' --exclude='.git' --exclude='db.sqlite3' --exclude='*.backup' --exclude='static' \
       "$PROJECT_DIR/" "$SERVER_USER@$SERVER_IP:$TARGET_DIR/"
 
 echo "⚙️ 3. Running setup & launching Wagtail + Nginx + SSL on server..."

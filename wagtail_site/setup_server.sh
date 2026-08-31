@@ -35,7 +35,7 @@ fi
 echo "=== 4. Running Migrations & Collectstatic ==="
 export DJANGO_SETTINGS_MODULE=wagtail_site.settings.production
 "$APP_DIR/venv/bin/python" manage.py migrate --settings=wagtail_site.settings.production
-"$APP_DIR/venv/bin/python" manage.py collectstatic --noinput --settings=wagtail_site.settings.production
+"$APP_DIR/venv/bin/python" manage.py collectstatic --noinput --clear --settings=wagtail_site.settings.production
 
 echo "=== 5. Setting Permissions ==="
 chown -R www-data:www-data "$APP_DIR"

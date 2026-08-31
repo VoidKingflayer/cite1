@@ -84,6 +84,7 @@ jobs:
             --exclude='*.pyc' \
             --exclude='db.sqlite3.backup' \
             --exclude='media' \
+            --exclude='static' \
             wagtail_site/ "$SERVER_USER@$SERVER_HOST:$TARGET_DIR/"
 
       - name: ⚙️ Run Migrations, Collect Static & Restart Services
@@ -111,7 +112,7 @@ jobs:
             "$APP_DIR/venv/bin/python" manage.py migrate --noinput --settings=wagtail_site.settings.production
 
             echo "🎨 3. Collecting static files..."
-            "$APP_DIR/venv/bin/python" manage.py collectstatic --noinput --settings=wagtail_site.settings.production
+            "$APP_DIR/venv/bin/python" manage.py collectstatic --noinput --clear --settings=wagtail_site.settings.production
 
             echo "🔒 4. Adjusting permissions..."
             chown -R www-data:www-data "$APP_DIR"
