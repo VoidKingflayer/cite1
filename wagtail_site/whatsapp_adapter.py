@@ -76,15 +76,16 @@ class WhatsAppClient:
 
     def send_message(self, recipient_phone: str, text: str) -> Dict[str, Any]:
         """
-        Sends an outgoing WhatsApp message to a phone number.
+        Sends an outgoing WhatsApp message to a phone number or JID.
         """
-        clean_phone = clean_phone_number(recipient_phone)
-        if not clean_phone:
+        target = str(recipient_phone).strip()
+        clean_phone = clean_phone_number(target)
+        if not clean_phone and not target:
             return {"success": False, "error": "Invalid phone number"}
 
         if self.provider == "self_hosted" or not (self.greenapi_instance or self.meta_token or self.ultramsg_instance):
             # Prioritize self-hosted Baileys gateway if active
-            return self._send_self_hosted(clean_phone, text)
+            return self._send_self_hosted(target, text)
         elif self.provider == "greenapi" or (self.greenapi_instance and self.greenapi_token):
             return self._send_greenapi(clean_phone, text)
         elif self.provider in ("meta", "cloud") or (self.meta_token and self.meta_phone_id):
@@ -92,7 +93,7 @@ class WhatsAppClient:
         elif self.provider == "ultramsg" or (self.ultramsg_instance and self.ultramsg_token):
             return self._send_ultramsg(clean_phone, text)
         else:
-            return self._send_self_hosted(clean_phone, text)
+            return self._send_self_hosted(target, text)
 
     # -------------------------------------------------------------------------
     # Provider-Specific Senders
@@ -101,7 +102,7 @@ class WhatsAppClient:
     def _send_self_hosted(self, phone: str, text: str) -> Dict[str, Any]:
         """Self-hosted Baileys Gateway: POST http://127.0.0.1:3001/api/send"""
         url = f"{self.self_hosted_url}/api/send"
-        data = {"phone": phone, "message": text}
+        data = {"phone": phone, "jid": phone, "message": text}
         return self._http_post(url, data)
 
     def _send_greenapi(self, phone: str, text: str) -> Dict[str, Any]:
@@ -210,11 +211,13 @@ class WhatsAppAdapter:
         """
         # 0. Self-hosted Baileys Gateway format
         if data.get("provider") == "self_hosted":
+            raw_jid = data.get("raw_jid") or data.get("sender_phone") or ""
+            phone = clean_phone_number(data.get("sender_phone") or raw_jid)
             return {
-                "sender_phone": clean_phone_number(data.get("sender_phone")),
+                "sender_phone": phone,
                 "sender_name": data.get("sender_name") or "Гость WhatsApp",
                 "message_text": (data.get("text") or "").strip(),
-                "raw_sender": f"{data.get('sender_phone')}@s.whatsapp.net",
+                "raw_sender": raw_jid if ("@" in raw_jid) else f"{phone}@s.whatsapp.net",
                 "provider": "self_hosted",
             }
 

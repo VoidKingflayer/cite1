@@ -574,7 +574,8 @@
   <div class="timeline-card">
     <div class="timeline-header">
       <h2>⏰ Почасовой график работы студии (09:00 – 23:00)</h2>
-      <div style="display: flex; gap: 8px;">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <button onclick="openRangeModal()" class="action-btn" style="background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-weight: 600; box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);">🏖️ Закрыть несколько дней (Отпуск)</button>
         {% if is_day_blocked %}
           <button onclick="toggleBlockDay('{{ target_date_str }}', 'unblock', '{{ day_block_obj.id }}')" class="action-btn" style="background: #16a34a; color: #fff;">🔓 Открыть рабочий день</button>
         {% else %}
@@ -749,6 +750,51 @@
   </div>
 </div>
 
+<!-- Multi-day Range Block Modal -->
+<div class="modal-overlay" id="rangeBlockModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>🏖️ Закрыть несколько дней сразу (Отпуск / Выходные)</h3>
+      <button class="modal-close" onclick="closeModal('rangeBlockModal')">×</button>
+    </div>
+
+    <form id="rangeBlockForm" onsubmit="submitRangeBlock(event)">
+      {% csrf_token %}
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label>Дата начала *</label>
+          <input type="date" name="date" id="rangeStartDate" class="form-control" value="{{ target_date_str }}" required />
+        </div>
+        <div class="form-group">
+          <label>Дата окончания *</label>
+          <input type="date" name="end_date" id="rangeEndDate" class="form-control" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Что закрыть?</label>
+        <select name="time_slot" id="rangeTimeSlot" class="form-control">
+          <option value="ALL_DAY" selected>⛔ Весь день (Полностью закрыто на все дни диапазона)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Причина / Заметка</label>
+        <input type="text" name="reason" id="rangeReason" class="form-control" placeholder="Например: Отпуск мастера, Отъезд" value="Отпуск мастера" />
+      </div>
+
+      <div style="margin-top: 10px; padding: 12px; background: #f8fafc; border-radius: 8px; font-size: 0.82rem; color: #64748b; line-height: 1.4;">
+        💡 <strong>Подсказка:</strong> Все дни в выбранном диапазоне (включительно) автоматически закроются для онлайн-записи и бота. При необходимости любой отдельный день можно будет открыть обратно.
+      </div>
+
+      <div class="modal-actions" style="margin-top: 18px;">
+        <button type="button" class="action-btn btn-edit" onclick="closeModal('rangeBlockModal')">Отмена</button>
+        <button type="submit" class="action-btn btn-cancel" style="padding: 10px 20px; font-size: 0.9rem; background: #dc2626; color: #fff;">⛔ Заблокировать все дни</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- Toast Message Container -->
 <div class="toast-box" id="toastMsg"></div>
 
@@ -812,6 +858,48 @@
 
   function closeModal(id) {
     document.getElementById(id).style.display = 'none';
+  }
+
+  function openRangeModal() {
+    document.getElementById('rangeBlockModal').style.display = 'flex';
+  }
+
+  function submitRangeBlock(e) {
+    e.preventDefault();
+    const form = document.getElementById('rangeBlockForm');
+    const formData = new FormData(form);
+    formData.append('action', 'block');
+    const csrftoken = getCookie('csrftoken');
+
+    const startDate = document.getElementById('rangeStartDate').value;
+    const endDate = document.getElementById('rangeEndDate').value;
+    if (!startDate || !endDate) {
+      alert('Пожалуйста, укажите дату начала и окончания периода.');
+      return;
+    }
+    if (endDate < startDate) {
+      alert('Дата окончания не может быть раньше даты начала!');
+      return;
+    }
+
+    fetch('/admin/schedule/api/toggle-block/', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,
+      },
+      body: formData,
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        closeModal('rangeBlockModal');
+        showToast(data.message);
+        setTimeout(() => { window.location.reload(); }, 700);
+      } else {
+        alert('Ошибка: ' + (data.error || 'Не удалось заблокировать период'));
+      }
+    })
+    .catch(err => alert('Ошибка соединения: ' + err));
   }
 
   function submitQuickBooking(e) {

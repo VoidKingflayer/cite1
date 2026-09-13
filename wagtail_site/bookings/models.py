@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.html import format_html
+from django.core.exceptions import ValidationError
+from datetime import timedelta
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 
@@ -254,25 +256,36 @@ class BlockedTimeSlot(models.Model):
         ("22:00", "22:00"),
     ]
 
-    date = models.DateField("Дата", default=timezone.now, help_text="Дата, для которой блокируется слот")
+    date = models.DateField(
+        "Дата начала (или один день)",
+        default=timezone.now,
+        help_text="Дата блокировки, либо дата начала периода (если нужно закрыть несколько дней подряд)",
+    )
+    end_date = models.DateField(
+        "Дата окончания (необязательно)",
+        null=True,
+        blank=True,
+        help_text="Укажите, если хотите закрыть сразу несколько дней подряд (например, отпуск с 13 по 28 сентября). Все дни диапазона будут автоматически заблокированы!",
+    )
     time_slot = models.CharField(
         "Время или период",
         max_length=50,
         choices=SLOT_CHOICES,
         default="ALL_DAY",
-        help_text="Выберите конкретный час или 'Весь день'",
+        help_text="Выберите конкретный час или 'Весь день' для выходного",
     )
     reason = models.CharField(
         "Причина / Заметка",
         max_length=200,
         blank=True,
-        default="Занято / Недоступно",
-        help_text="Например: Обед, Личная встреча, Выходной",
+        default="Выходной / Отпуск",
+        help_text="Например: Отпуск мастера, Личные дела, Ремонт",
     )
     created_at = models.DateTimeField("Создано", auto_now_add=True)
 
     panels = [
         FieldPanel("date"),
+        FieldPanel("end_date"),
         FieldPanel("time_slot"),
         FieldPanel("reason"),
     ]
@@ -282,5 +295,31 @@ class BlockedTimeSlot(models.Model):
         verbose_name_plural = "Заблокированные слоты / Выходные"
         ordering = ["-date", "time_slot"]
 
+    def clean(self):
+        super().clean()
+        if self.end_date and self.date and self.end_date < self.date:
+            raise ValidationError({"end_date": "Дата окончания периода не может быть раньше даты начала!"})
+
+    def save(self, *args, **kwargs):
+        is_range = bool(self.end_date and self.end_date > self.date)
+        range_end = self.end_date
+        super().save(*args, **kwargs)
+
+        # Automatically create entries for all intermediate days in the range
+        if is_range:
+            curr = self.date + timedelta(days=1)
+            while curr <= range_end:
+                BlockedTimeSlot.objects.get_or_create(
+                    date=curr,
+                    time_slot=self.time_slot,
+                    defaults={
+                        "reason": self.reason,
+                        "end_date": range_end,
+                    }
+                )
+                curr += timedelta(days=1)
+
     def __str__(self):
-        return f"{self.date} [{self.get_time_slot_display()}]: {self.reason or 'Заблокировано'}"
+        if self.end_date and self.end_date > self.date:
+            return f"{self.date.strftime('%d.%m.%Y')} — {self.end_date.strftime('%d.%m.%Y')} [{self.get_time_slot_display()}]: {self.reason or 'Заблокировано'}"
+        return f"{self.date.strftime('%d.%m.%Y')} [{self.get_time_slot_display()}]: {self.reason or 'Заблокировано'}"

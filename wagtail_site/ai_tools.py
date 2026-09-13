@@ -290,8 +290,8 @@ def handle_check_available_slots(date_str: str) -> Dict[str, Any]:
             
             # Check full day blocked
             cur.execute(
-                "SELECT time_slot FROM bookings_blockedtimeslot WHERE date = ? AND (time_slot = 'ALL_DAY' OR time_slot = '' OR time_slot IS NULL)",
-                (target_date_str,)
+                "SELECT time_slot FROM bookings_blockedtimeslot WHERE (date = ? OR (date <= ? AND end_date >= ?)) AND (time_slot = 'ALL_DAY' OR time_slot = '' OR time_slot IS NULL)",
+                (target_date_str, target_date_str, target_date_str)
             )
             if cur.fetchone():
                 return {
@@ -302,7 +302,10 @@ def handle_check_available_slots(date_str: str) -> Dict[str, Any]:
                 }
 
             # Blocked hours
-            cur.execute("SELECT time_slot FROM bookings_blockedtimeslot WHERE date = ?", (target_date_str,))
+            cur.execute(
+                "SELECT time_slot FROM bookings_blockedtimeslot WHERE (date = ? OR (date <= ? AND end_date >= ?))",
+                (target_date_str, target_date_str, target_date_str)
+            )
             blocked_slots = {r["time_slot"].strip()[:5] for r in cur.fetchall() if r["time_slot"]}
 
             # Active Booked hours

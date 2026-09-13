@@ -100,6 +100,7 @@ class BlockedTimeSlotViewSet(SnippetViewSet):
 
     list_display = [
         "date",
+        "end_date",
         "time_slot",
         "reason",
         "created_at",

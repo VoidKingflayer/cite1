@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
+from django.db.models import Q
 from home.models import Ritual, HomePage
 from .models import Booking, BlockedTimeSlot
 from .notifications import (
@@ -50,12 +51,14 @@ def get_available_slots_api(request):
 
     # Check if the entire day is blocked
     is_day_blocked = BlockedTimeSlot.objects.filter(
-        date=target_date,
+        Q(date=target_date) | Q(date__lte=target_date, end_date__gte=target_date),
         time_slot__in=["ALL_DAY", "all_day", "весь день", ""]
     ).exists()
 
     # Specific blocked time slots
-    blocked_slot_objs = BlockedTimeSlot.objects.filter(date=target_date).exclude(time_slot__in=["ALL_DAY", "all_day", "весь день", ""])
+    blocked_slot_objs = BlockedTimeSlot.objects.filter(
+        Q(date=target_date) | Q(date__lte=target_date, end_date__gte=target_date)
+    ).exclude(time_slot__in=["ALL_DAY", "all_day", "весь день", ""])
     blocked_times = {b.time_slot.strip()[:5]: (b.reason or "Занято") for b in blocked_slot_objs if b.time_slot}
 
     # Active bookings on that date
@@ -347,15 +350,17 @@ def admin_schedule_view(request):
 
     # Blocked slots on target_date
     is_day_blocked = BlockedTimeSlot.objects.filter(
-        date=target_date,
+        Q(date=target_date) | Q(date__lte=target_date, end_date__gte=target_date),
         time_slot__in=["ALL_DAY", "all_day", "весь день", ""]
     ).exists()
     day_block_obj = BlockedTimeSlot.objects.filter(
-        date=target_date,
+        Q(date=target_date) | Q(date__lte=target_date, end_date__gte=target_date),
         time_slot__in=["ALL_DAY", "all_day", "весь день", ""]
     ).first()
 
-    blocked_slots = BlockedTimeSlot.objects.filter(date=target_date).exclude(
+    blocked_slots = BlockedTimeSlot.objects.filter(
+        Q(date=target_date) | Q(date__lte=target_date, end_date__gte=target_date)
+    ).exclude(
         time_slot__in=["ALL_DAY", "all_day", "весь день", ""]
     )
     blocked_dict = {b.time_slot.strip()[:5]: b for b in blocked_slots if b.time_slot}
@@ -526,39 +531,80 @@ def admin_quick_create_booking_api(request):
 def admin_toggle_block_slot_api(request):
     """
     AJAX endpoint to block or unblock time slots or days off.
+    Supports both single day and multi-day date ranges (date to end_date).
     """
     action = request.POST.get("action", "block")  # "block" or "unblock"
     date_str = request.POST.get("date", "").strip()
-    time_slot = request.POST.get("time_slot", "").strip()
-    reason = request.POST.get("reason", "Занято / Недоступно").strip()
+    end_date_str = request.POST.get("end_date", "").strip()
+    time_slot = request.POST.get("time_slot", "").strip() or "ALL_DAY"
+    reason = request.POST.get("reason", "Выходной / Отпуск").strip()
 
     if not date_str:
-        return JsonResponse({"success": False, "error": "Укажите дату."}, status=400)
+        return JsonResponse({"success": False, "error": "Укажите дату начала."}, status=400)
 
     try:
-        target_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        start_date = datetime.strptime(date_str, "%Y-%m-%d").date()
     except ValueError:
-        return JsonResponse({"success": False, "error": "Неверный формат даты."}, status=400)
+        return JsonResponse({"success": False, "error": "Неверный формат даты начала (ожидается ГГГГ-ММ-ДД)."}, status=400)
 
+    end_date = None
+    if end_date_str:
+        try:
+            end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+        except ValueError:
+            return JsonResponse({"success": False, "error": "Неверный формат даты окончания (ожидается ГГГГ-ММ-ДД)."}, status=400)
+
+        if end_date < start_date:
+            return JsonResponse({"success": False, "error": "Дата окончания не может быть раньше даты начала!"}, status=400)
+
+    # Multi-day range handling
+    if end_date and end_date >= start_date:
+        curr = start_date
+        count = 0
+        while curr <= end_date:
+            if action == "unblock":
+                BlockedTimeSlot.objects.filter(
+                    Q(date=curr) | Q(date__lte=curr, end_date__gte=curr),
+                    time_slot=time_slot
+                ).delete()
+            else:
+                BlockedTimeSlot.objects.get_or_create(
+                    date=curr,
+                    time_slot=time_slot,
+                    defaults={"reason": reason, "end_date": end_date},
+                )
+            curr += timedelta(days=1)
+            count += 1
+
+        verb = "разблокирован" if action == "unblock" else "заблокирован"
+        return JsonResponse({
+            "success": True,
+            "message": f"Диапазон с {start_date.strftime('%d.%m.%Y')} по {end_date.strftime('%d.%m.%Y')} ({count} дн.) успешно {verb}!",
+        })
+
+    # Single day handling
     if action == "unblock":
         slot_id = request.POST.get("slot_id")
         if slot_id:
             BlockedTimeSlot.objects.filter(id=slot_id).delete()
         else:
-            BlockedTimeSlot.objects.filter(date=target_date, time_slot=time_slot).delete()
-        return JsonResponse({"success": True, "message": "Слот разблокирован."})
+            BlockedTimeSlot.objects.filter(
+                Q(date=start_date) | Q(date__lte=start_date, end_date__gte=start_date),
+                time_slot=time_slot
+            ).delete()
+        return JsonResponse({"success": True, "message": f"Слот/день {start_date.strftime('%d.%m.%Y')} разблокирован."})
 
     else:
         slot, created = BlockedTimeSlot.objects.get_or_create(
-            date=target_date,
-            time_slot=time_slot or "ALL_DAY",
+            date=start_date,
+            time_slot=time_slot,
             defaults={"reason": reason},
         )
         if not created and reason:
             slot.reason = reason
             slot.save(update_fields=["reason"])
 
-        return JsonResponse({"success": True, "message": f"Слот {time_slot} заблокирован."})
+        return JsonResponse({"success": True, "message": f"День {start_date.strftime('%d.%m.%Y')} ({time_slot}) успешно заблокирован."})
 
 
 def booking_confirmation_view(request):
