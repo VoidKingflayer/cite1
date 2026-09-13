@@ -204,7 +204,7 @@ def create_booking_api(request):
                 "success": True,
                 "booking_id": booking.id,
                 "whatsapp_notified": wa_sent,
-                "message": f"Спасибо, {client_name}! Ваша заявка на {booking.booking_date} принята. Мастер свяжется с вами в течение 15 минут.",
+                "message": f"Спасибо, {client_name}! Ваша заявка на {booking.booking_date} принята. Я свяжусь с вами в течение 15 минут для подтверждения. До встречи! 🌿",
                 "direct_whatsapp_url": direct_wa_url,
                 "direct_telegram_url": salon_telegram,
                 "direct_instagram_url": salon_instagram,

@@ -418,8 +418,8 @@ if __name__ == "__main__":
     print(f"📦 Основная модель: {client.default_model}")
     print(f"🔄 Резервные модели: {client.fallback_models}")
 
-    q = "Привет! Студия TOCHKA открыта? Ответь кратко на грузинском и русском."
+    q = "Привет! Можно ли записаться к вам на массаж? Ответь кратко."
     print(f"\n👤 Клиент: {q}")
-    res = client.ask(q, system_prompt="Ты администратор TOCHKA в Батуми.")
+    res = client.ask(q, system_prompt="Ты — Анна Колосова, создатель TOCHKA в Батуми. Отвечай лично от первого лица, слово «студия» запрещено.")
     print("\n✨ Ответ ИИ:\n", res)
     print("=" * 65)

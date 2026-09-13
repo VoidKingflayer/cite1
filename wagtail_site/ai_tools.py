@@ -457,7 +457,7 @@ def handle_create_booking(
                 "ritual": ritual_name.strip(),
                 "date": date.strip(),
                 "time": time.strip(),
-                "message": f"Запись #{booking_id} на имя {clean_n} ({clean_p}) успешно создана в базе данных. Администратор свяжется для финального подтверждения."
+                "message": f"Запись #{booking_id} на имя {clean_n} ({clean_p}) успешно создана. Я лично забронировала это время и свяжусь с вами при необходимости. До встречи на сеансе! 🌿"
             }
     except Exception as e:
         logger.error("Error creating booking in DB: %s", e)

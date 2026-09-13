@@ -17,7 +17,25 @@ from openrouter_client import Conversation
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "db.sqlite3")
+def _get_default_db_path() -> str:
+    try:
+        from django.conf import settings
+        if hasattr(settings, "DATABASES") and "default" in settings.DATABASES:
+            db_name = settings.DATABASES["default"].get("NAME")
+            if db_name:
+                return str(db_name)
+    except Exception:
+        pass
+    standard = os.path.join(os.path.dirname(os.path.abspath(__file__)), "db.sqlite3")
+    if os.path.exists(standard):
+        return standard
+    parent_db = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db.sqlite3")
+    if os.path.exists(parent_db):
+        return parent_db
+    return standard
+
+
+DEFAULT_DB_PATH = _get_default_db_path()
 
 
 class ChatMemoryManager:

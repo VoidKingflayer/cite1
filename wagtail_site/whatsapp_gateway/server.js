@@ -505,7 +505,7 @@ app.get(['/', '/qr', '/whatsapp', '/whatsapp/qr'], (req, res) => {
     <body>
       <div class="card">
         <h1>📱 Подключение WhatsApp</h1>
-        <p>Студия массажа TOCHKA (Батуми) • Шлюз AI-Администратора</p>
+        <p>TOCHKA Batumi • WhatsApp Шлюз</p>
 
         <div id="statusBadge" class="badge loading">
           ⏳ Проверка статуса...
