@@ -88,6 +88,7 @@ Booking.datetime_badge_html.fget.short_description = "📅 Дата и врем�
 Booking.status_badge.fget.short_description = "Статус"
 Booking.notes_preview_html.fget.short_description = "📝 Пожелания"
 Booking.quick_actions_html.fget.short_description = "⚡ Быстрые действия"
+BlockedTimeSlot.quick_actions_html.fget.short_description = "⚡ Быстрые действия"
 
 
 class BlockedTimeSlotViewSet(SnippetViewSet):
@@ -103,6 +104,7 @@ class BlockedTimeSlotViewSet(SnippetViewSet):
         "end_date",
         "time_slot",
         "reason",
+        "quick_actions_html",
         "created_at",
     ]
     list_filter = ["date", "time_slot"]
@@ -251,6 +253,100 @@ def insert_bookings_admin_js():
                 window.location.reload();
             } else {
                 alert('Ошибка: ' + (data.error || 'Не удалось обновить статус'));
+            }
+        })
+        .catch(err => alert('Ошибка сети: ' + err));
+    }
+
+    function quickUnblockSlot(slotId, dateStr, evt) {
+        if (evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+        }
+        if (!confirm('Открыть и разблокировать день ' + dateStr + '?')) return;
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        const csrftoken = getCookie('csrftoken');
+        fetch('/admin/schedule/api/toggle-block/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrftoken,
+            },
+            body: new URLSearchParams({
+                'action': 'unblock',
+                'slot_id': slotId,
+                'date': dateStr,
+                'time_slot': 'ALL_DAY'
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload();
+            } else {
+                alert('Ошибка: ' + (data.error || 'Не удалось разблокировать слот'));
+            }
+        })
+        .catch(err => alert('Ошибка сети: ' + err));
+    }
+
+    function quickUnblockRange(startDate, endDate, evt) {
+        if (evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+        }
+        if (!confirm('Разблокировать и открыть ВСЕ дни периода с ' + startDate + ' по ' + endDate + '?')) return;
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        const csrftoken = getCookie('csrftoken');
+        fetch('/admin/schedule/api/toggle-block/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrftoken,
+            },
+            body: new URLSearchParams({
+                'action': 'unblock',
+                'date': startDate,
+                'end_date': endDate,
+                'time_slot': 'ALL_DAY'
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload();
+            } else {
+                alert('Ошибка: ' + (data.error || 'Не удалось разблокировать период'));
             }
         })
         .catch(err => alert('Ошибка сети: ' + err));

@@ -319,6 +319,35 @@ class BlockedTimeSlot(models.Model):
                 )
                 curr += timedelta(days=1)
 
+    @property
+    def quick_actions_html(self):
+        from django.utils.safestring import mark_safe
+        from django.utils.html import format_html
+        
+        range_btn = ""
+        if self.end_date and self.end_date > self.date:
+            range_btn = (
+                f'<button type="button" onclick="quickUnblockRange(\'{self.date.strftime("%Y-%m-%d")}\', \'{self.end_date.strftime("%Y-%m-%d")}\', event)" '
+                f'style="background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; padding: 4px 9px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer; transition: 0.2s;" '
+                f'title="Разблокировать весь период с {self.date.strftime("%d.%m")} по {self.end_date.strftime("%d.%m")}">'
+                f'🔓 Снять весь период ({self.date.strftime("%d.%m")}–{self.end_date.strftime("%d.%m")})'
+                f'</button>'
+            )
+
+        day_btn = (
+            f'<button type="button" onclick="quickUnblockSlot({self.id}, \'{self.date.strftime("%Y-%m-%d")}\', event)" '
+            f'style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; padding: 4px 9px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; cursor: pointer; transition: 0.2s;" '
+            f'title="Разблокировать только этот день">🔓 Открыть день</button>'
+        )
+
+        return format_html(
+            '<div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">'
+            '{}{}'
+            '</div>',
+            mark_safe(range_btn),
+            mark_safe(day_btn)
+        )
+
     def __str__(self):
         if self.end_date and self.end_date > self.date:
             return f"{self.date.strftime('%d.%m.%Y')} — {self.end_date.strftime('%d.%m.%Y')} [{self.get_time_slot_display()}]: {self.reason or 'Заблокировано'}"
